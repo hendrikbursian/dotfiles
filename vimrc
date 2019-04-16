@@ -1,14 +1,3 @@
-" An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2017 Sep 20
-"
-" To use it, copy it to
-"     for Unix and OS/2:  $HOME/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
-
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
   finish
@@ -55,7 +44,29 @@ if has('syntax') && has('eval')
 endif
 
 " USER SETTINGS
-syntax on
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-sensible'
+Plug 'junegunn/goyo.vim'
+Plug 'morhetz/gruvbox'
+call plug#end()
+
+" Colors
+set termguicolors
+set background=dark
+let g:gruvbox_italic=1
+let g:gruvbox_bold=1
+let g:gruvbox_underline=1
+let g:gruvbox_contrast_light="medium"
+let g:gruvbox_contrast_dark="medium"
+let g:gruvbox_italicize_comments=1
+let g:gruvbox_italicize_strings=0
+colorscheme gruvbox 
 
 set path=**
 
@@ -67,7 +78,6 @@ set incsearch
 set tabstop=4
 set shiftwidth=4
 set expandtab
-filetype plugin indent on
 
 set history=1000
 
@@ -86,9 +96,12 @@ set relativenumber
 
 set nowrap
 
+set ruler
+
 " Backup / Swap files
 set backupdir-=.
 set backupdir^=$HOME/tmp,/tmp
 set undodir^=$HOME/tmp,/tmp
 set noswapfile
-set ruler
+
+
