@@ -68,7 +68,12 @@ let g:gruvbox_italicize_comments=1
 let g:gruvbox_italicize_strings=0
 colorscheme gruvbox 
 
+let g:netrw_banner=1 "No header spam in directory mode
+let g:netrw_liststyle=3 "Tree style
+let g:netrw_browse_split=2
+
 set path=**
+set shell=/usr/bin/zsh
 
 " Searching
 set hlsearch
@@ -81,21 +86,12 @@ set expandtab
 
 set history=1000
 
-set shell=/usr/bin/zsh
-
-let g:netrw_banner=1 "No header spam in directory mode
-
-let g:netrw_liststyle=3 "Tree style
-
-let g:netrw_browse_split=2
-
 " Line numbers
 set number
 set number!
 set relativenumber
 
 set nowrap
-
 set ruler
 
 " Backup / Swap files
