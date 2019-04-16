@@ -1,0 +1,9 @@
+[user]
+	name = Hendrik
+	email = hendrikbursian@protonmail.com
+[core]
+	excludesfile = /home/hendrik/.gitignore
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
