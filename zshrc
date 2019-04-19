@@ -11,7 +11,9 @@ ENABLE_CORRECTION="true"
 
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git)
+plugins=(
+    git
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -28,3 +30,4 @@ HISTFILE=~/.zsh_history
 HISTSIZE=4096
 SAVEHIST=4096
 
+eval `dircolors ~/.dir_colors/dircolors`
