@@ -1,9 +1,12 @@
 [user]
 	name = Hendrik Bursian
 	email = hendrikbursian@protonmail.com
+	signingKey = 4B2E81AE6685DE45
 [core]
 	excludesfile = /home/hendrik/.gitignore
 [diff]
 	tool = vimdiff
 [merge]
 	tool = vimdiff
+[commit]
+	gpgSign = true

@@ -52,6 +52,8 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/goyo.vim'
 Plug 'morhetz/gruvbox'
 call plug#end()
@@ -80,6 +82,8 @@ set shell=/usr/bin/zsh
 " Searching
 set hlsearch
 set incsearch
+set ignorecase
+set smartcase
 
 " Identing
 set tabstop=4
