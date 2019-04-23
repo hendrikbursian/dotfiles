@@ -52,22 +52,26 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/goyo.vim'
 Plug 'morhetz/gruvbox'
 call plug#end()
 
 " Colors
 set termguicolors
-set background=dark
+set background=light
 let g:gruvbox_italic=1
 let g:gruvbox_bold=1
 let g:gruvbox_underline=1
-let g:gruvbox_contrast_light="medium"
 let g:gruvbox_contrast_dark="medium"
+let g:gruvbox_contrast_light="medium"
 let g:gruvbox_italicize_comments=1
 let g:gruvbox_italicize_strings=0
 colorscheme gruvbox 
 
+" Directory browsing
+let g:netrw_winsize = 25
 let g:netrw_banner=1 "No header spam in directory mode
 let g:netrw_liststyle=3 "Tree style
 let g:netrw_browse_split=2
@@ -78,6 +82,8 @@ set shell=/usr/bin/zsh
 " Searching
 set hlsearch
 set incsearch
+set ignorecase
+set smartcase
 
 " Identing
 set tabstop=4
@@ -99,5 +105,4 @@ set backupdir-=.
 set backupdir^=$HOME/tmp,/tmp
 set undodir^=$HOME/tmp,/tmp
 set noswapfile
-
 
