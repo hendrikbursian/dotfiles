@@ -56,6 +56,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/goyo.vim'
 Plug 'morhetz/gruvbox'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 " Colors
@@ -70,11 +71,23 @@ let g:gruvbox_italicize_comments=1
 let g:gruvbox_italicize_strings=0
 colorscheme gruvbox 
 
+" Session management
+let g:session_dir='~/.vim_sessions'
+exec 'nnoremap <Leader>ss :mksession! ' . g:session_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
+exec 'nnoremap <Leader>sr :so ' . g:session_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
+
 " Directory browsing
 let g:netrw_winsize = 25
 let g:netrw_banner=1 "No header spam in directory mode
 let g:netrw_liststyle=3 "Tree style
 let g:netrw_browse_split=2
+
+" Typescript
+let g:typescript_compiler_binary='./node_modules/.bin/tsc'
+" let g:typescript_compiler_options
+
+autocmd QuickFixCmdPost [^1]* nested cwindow " Shows quicklist after :make
+autocmd QuickFixCmdPost 1* nested lwindow
 
 set path=**
 set shell=/usr/bin/zsh
@@ -84,6 +97,7 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+set wildignore+=**/node_modules/**
 
 " Identing
 set tabstop=4
