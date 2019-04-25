@@ -5,5 +5,6 @@ ln -fs $DIR/gitignore ~/.gitignore
 ln -fs $DIR/vimrc ~/.vimrc
 ln -fs $DIR/zsh_custom ~/.zsh_custom
 ln -fs $DIR/zshrc ~/.zshrc
+ln -fs $DIR/solarized ~/.solarized
 
 echo "Done"
