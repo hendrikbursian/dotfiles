@@ -1,0 +1,85 @@
+{
+  "workbench.statusBar.feedback.visible": false,
+  "editor.minimap.enabled": false,
+  "editor.trimAutoWhitespace": true,
+  "explorer.confirmDragAndDrop": false,
+  "window.zoomLevel": -1,
+  "breadcrumbs.enabled": true,
+  "explorer.confirmDelete": false,
+  "editor.renderWhitespace": "none",
+  "workbench.colorTheme": "Default Light+",
+  "workbench.startupEditor": "newUntitledFile",
+
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "git.branchWhitespaceChar": "-",
+  "git.showProgress": true,
+  "git.decorations.enabled": true,
+  "git.showInlineOpenFileAction": true,
+  "git.showPushSuccessNotification": true,
+  "git.useForcePushWithLease": true,
+  "git.autorefresh": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+
+  "gitlens.views.repositories.autoRefresh": true,
+  "gitlens.blame.ignoreWhitespace": false,
+  "gitlens.advanced.telemetry.enabled": false,
+
+  "javascript.preferences.quoteStyle": "single",
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.suggest.autoImports": true,
+  "typescript.implementationsCodeLens.enabled": true,
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.referencesCodeLens.enabled": false,
+  "typescript.suggest.completeFunctionCalls": true,
+  "typescript.tsserver.log": "verbose",
+
+  "tslint.enable": true,
+  "tslint.packageManager": "yarn",
+  "tslint.run": "onType",
+  "tslint.validateWithDefaultConfig": true,
+  "tslint.jsEnable": true,
+  "tslint.autoFixOnSave": true,
+  "tslint.alwaysShowStatus": true,
+  "tslint.ignoreDefinitionFiles": false,
+
+  "prettier.printWidth": 140,
+  "prettier.singleQuote": true,
+  "prettier.tslintIntegration": true,
+  
+  "scss.lint.boxModel": "warning",
+  "scss.lint.duplicateProperties": "warning",
+  "scss.lint.emptyRules": "error",
+  "scss.lint.float": "warning",
+  "scss.lint.ieHack": "warning",
+  "scss.lint.important": "warning",
+  "scss.lint.importStatement": "warning",
+  "scss.lint.universalSelector": "warning",
+
+  "emmet.optimizeStylesheetParsing": false,
+
+  "php.validate.executablePath": "/usr/bin/php",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "window.menuBarVisibility": "hidden",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "zenMode.restore": true,
+  "workbench.editor.showTabs": false,
+  "zenMode.fullScreen": false,
+  "zenMode.hideLineNumbers": false,
+  "editor.hover.delay": 0,
+  "editor.quickSuggestionsDelay": 0
+}

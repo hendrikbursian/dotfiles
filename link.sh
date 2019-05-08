@@ -1,10 +1,13 @@
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+DIR="$(pwd)"
+echo "$DIR"
 
-ln -fs $DIR/gitconfig ~/.gitconfig
-ln -fs $DIR/gitignore ~/.gitignore
-ln -fs $DIR/vimrc ~/.vimrc
-ln -fs $DIR/zsh_custom ~/.zsh_custom
-ln -fs $DIR/zshrc ~/.zshrc
-ln -fs $DIR/solarized ~/.solarized
-
-echo "Done"
+ln -fvs "$DIR/gitconfig" "$HOME/.gitconfig"
+ln -fvs "$DIR/gitignore" "$HOME/.gitignore"
+ln -fvs "$DIR/vimrc" "$HOME/.vimrc"
+ln -fvs "$DIR/zsh_custom/" "$HOME/.zsh_custom/"
+ln -fvs "$DIR/zshrc" "$HOME/.zshrc"
+ln -fvs "$DIR/.solarized/" "$HOME/.solarized/"
+ln -fvs "$DIR/texpander/" "$HOME/.texpander"
+ln -fvs "$DIR/VSCode/settings.json" "$HOME/.config/Code/User/settings.json"
+ln -fvs "$DIR/VSCode/keybindings.json" "$HOME/.config/Code/User/keybindings.json"
+ln -fvs "$DIR/VSCode/snippets" "$HOME/.config/Code/User/snippets"
