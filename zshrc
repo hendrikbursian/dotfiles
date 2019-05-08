@@ -5,6 +5,8 @@
 export ZSH="/home/hendrik/.oh-my-zsh"
 export ZSH_CUSTOM="/home/hendrik/.zsh_custom"
 
+export GOPATH="/snap/bin/go"
+
 ZSH_THEME="avit"
 
 ENABLE_CORRECTION="true"
@@ -35,7 +37,7 @@ export NVM_DIR="/home/hendrik/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Dircolors of solarized theme 
-eval `dircolors ~/dircolors`
+# Dircolors for solarized theme
+eval `dircolors ~/.dir_colors`
 
 source <(antibody init)

@@ -27,11 +27,11 @@
   "git.useForcePushWithLease": true,
   "git.autorefresh": true,
   "diffEditor.ignoreTrimWhitespace": false,
-  
+
   "gitlens.views.repositories.autoRefresh": true,
   "gitlens.blame.ignoreWhitespace": false,
   "gitlens.advanced.telemetry.enabled": false,
-  
+
   "javascript.preferences.quoteStyle": "single",
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "javascript.updateImportsOnFileMove.enabled": "always",
@@ -46,7 +46,7 @@
   "typescript.referencesCodeLens.enabled": false,
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.tsserver.log": "verbose",
-  
+
   "tslint.enable": true,
   "tslint.packageManager": "yarn",
   "tslint.run": "onType",
@@ -55,14 +55,14 @@
   "tslint.autoFixOnSave": true,
   "tslint.alwaysShowStatus": true,
   "tslint.ignoreDefinitionFiles": false,
-    "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-  
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
   "prettier.printWidth": 140,
   "prettier.singleQuote": true,
   "prettier.tslintIntegration": true,
-  
+
   "scss.lint.boxModel": "warning",
   "scss.lint.duplicateProperties": "warning",
   "scss.lint.emptyRules": "error",
@@ -79,6 +79,16 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  
-  "php.validate.executablePath": "/usr/bin/php",
+
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+
+  "shellcheck.enable": true,
+  "shellcheck.run": "onType",
+  "shellcheck.executablePath": "/snap/bin/shellcheck",
+
+  "shellformat.path": "/snap/bin/shfmt",
+
+  "php.validate.executablePath": "/usr/bin/php"
 }
