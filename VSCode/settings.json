@@ -1,14 +1,21 @@
 {
-  "workbench.statusBar.feedback.visible": false,
-  "editor.minimap.enabled": false,
-  "editor.trimAutoWhitespace": true,
-  "explorer.confirmDragAndDrop": false,
-  "window.zoomLevel": -1,
   "breadcrumbs.enabled": true,
-  "explorer.confirmDelete": false,
+  "editor.minimap.enabled": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.renderWhitespace": "none",
+  "editor.trimAutoWhitespace": true,
+  "editor.quickSuggestionsDelay": 0,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "window.menuBarVisibility": "hidden",
+  "window.zoomLevel": -1,
+  "workbench.editor.showTabs": false,
+  "workbench.statusBar.feedback.visible": false,
   "workbench.colorTheme": "Default Light+",
   "workbench.startupEditor": "newUntitledFile",
+  "zenMode.fullScreen": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.restore": true,
 
   "git.autofetch": true,
   "git.enableSmartCommit": true,
@@ -20,14 +27,17 @@
   "git.useForcePushWithLease": true,
   "git.autorefresh": true,
   "diffEditor.ignoreTrimWhitespace": false,
-
+  
   "gitlens.views.repositories.autoRefresh": true,
   "gitlens.blame.ignoreWhitespace": false,
   "gitlens.advanced.telemetry.enabled": false,
-
+  
   "javascript.preferences.quoteStyle": "single",
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.suggest.autoImports": true,
@@ -36,7 +46,7 @@
   "typescript.referencesCodeLens.enabled": false,
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.tsserver.log": "verbose",
-
+  
   "tslint.enable": true,
   "tslint.packageManager": "yarn",
   "tslint.run": "onType",
@@ -45,7 +55,10 @@
   "tslint.autoFixOnSave": true,
   "tslint.alwaysShowStatus": true,
   "tslint.ignoreDefinitionFiles": false,
-
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+  
   "prettier.printWidth": 140,
   "prettier.singleQuote": true,
   "prettier.tslintIntegration": true,
@@ -60,26 +73,12 @@
   "scss.lint.universalSelector": "warning",
 
   "emmet.optimizeStylesheetParsing": false,
-
-  "php.validate.executablePath": "/usr/bin/php",
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "window.menuBarVisibility": "hidden",
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "zenMode.restore": true,
-  "workbench.editor.showTabs": false,
-  "zenMode.fullScreen": false,
-  "zenMode.hideLineNumbers": false,
-  "editor.hover.delay": 0,
-  "editor.quickSuggestionsDelay": 0
+  
+  "php.validate.executablePath": "/usr/bin/php",
 }
