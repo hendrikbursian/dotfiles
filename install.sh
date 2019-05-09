@@ -1,20 +1,40 @@
 #! /usr/bin/env bash
+
+DIR=$(dirname $(readlink -f "$0"))
+
 sudo add-apt-repository -y ppa:sporkwitch/autokey
 
-sudo apt update -y && sudo apt upgrade -y
-
+sudo apt update -y && sudo apt upgrade -y 
 sudo apt-get install -y vim zsh git curl jq python-xlib dconf autokey-gtk snapd
 
+# docker
+curl -sSL https://get.docker.com | sh -s
+sudo usermod -aG docker "$USER"
+
+# docker compose
+latesttagurl=$(curl -Lw "%{url_effective}\n" -o /dev/null -s http://github.com/docker/compose/releases/latest)
+sudo curl -L "${latesttagurl/tag/download}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+#kubernetes
+sudo snap install microk8s --classic
+
+# antibody
 curl -sSL git.io/antibody | sh -s
 
+# oh-my-zsh
 curl -sSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh -s
 
+# shellcheck
 sudo snap install shellcheck --channel=edge
 
+# golang
 sudo snap install go
 
+# shell format
 sudo snap install shfmt
 
+# vscode
 sudo snap install code --classic
 code --install-extension anjali.clipboard-history
 code --install-extension dotjoshjohnson.xml
@@ -28,11 +48,29 @@ code --install-extension pflannery.vscode-versionlens
 code --install-extension ryu1kn.partial-diff
 code --install-extension timonwong.shellcheck
 
+# hugo
 sudo snap install hugo --channel=extended
 
+# krita
 sudo snap install krita
 
+# spotify
 sudo snap install spotify
-./add-links
 
-echo "Done. Please start a new shell"
+# link dotfiles
+$DIR/add-links.sh
+
+# terminal customization
+if [ "$XDG_CURRENT_DESKTOP" == "ubuntu:GNOME" ]; then
+    echo "Found ubuntu gnome terminal. Load solarized theme and terminal profile"
+
+    profileid=$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "'")
+    profilekey="/org/gnome/terminal/legacy/profiles:/:$profileid/"
+
+    $DIR/solarized/install.sh --scheme dark --profile "$profileid" --skip-dircolors
+
+    # Import profile settings
+    dconf load "$profilekey" < ./terminal-profile.dconf
+
+    gnome-session-quit
+fi

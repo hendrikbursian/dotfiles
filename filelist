@@ -3,9 +3,8 @@
 .vimrc vimrc 
 .zsh_custom zsh_custom
 .zshrc zshrc 
-.solarized solarized 
 .dir_colors dir_colors 
-.config/Code/User/settings.json VSCode/settings.json 
-.config/Code/User/keybindings.json VSCode/keybindings.json 
-.config/Code/User/snippets VSCode/snippets 
+.config/Code/User/settings.json vscode/settings.json 
+.config/Code/User/keybindings.json vscode/keybindings.json 
+.config/Code/User/snippets vscode/snippets 
 # NO NEWLINE AFTER THIS LINE!
