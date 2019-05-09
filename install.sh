@@ -67,10 +67,12 @@ if [ "$XDG_CURRENT_DESKTOP" == "ubuntu:GNOME" ]; then
     profileid=$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "'")
     profilekey="/org/gnome/terminal/legacy/profiles:/:$profileid/"
 
-    $DIR/solarized/install.sh --scheme dark --profile "$profileid" --skip-dircolors
-
     # Import profile settings
     dconf load "$profilekey" < ./terminal-profile.dconf
+
+    # Install color scheme
+    $DIR/solarized/install.sh --scheme dark --profile "$profileid" --install-dircolors
+    rm "$HOME/.dir_colors.old"
 
     gnome-session-quit
 fi
