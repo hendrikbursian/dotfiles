@@ -54,9 +54,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
-Plug 'junegunn/goyo.vim'
 Plug 'morhetz/gruvbox'
 Plug 'leafgarland/typescript-vim'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 " Colors
@@ -70,11 +70,6 @@ let g:gruvbox_contrast_light="medium"
 let g:gruvbox_italicize_comments=1
 let g:gruvbox_italicize_strings=0
 colorscheme gruvbox 
-
-" Session management
-let g:session_dir='~/.vim_sessions'
-exec 'nnoremap <Leader>ss :mksession! ' . g:session_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
-exec 'nnoremap <Leader>sr :so ' . g:session_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
 
 " Directory browsing
 let g:netrw_winsize = 25

@@ -75,6 +75,9 @@ sudo snap install spotify
 # link dotfiles
 $DIR/add-links.sh
 
+# install vim plugins
+vim +'PlugInstall --sync' +qa
+
 # terminal customization
 if [ "$XDG_CURRENT_DESKTOP" == "ubuntu:GNOME" ]; then
     echo "Found ubuntu gnome terminal. Load solarized theme and terminal profile"
