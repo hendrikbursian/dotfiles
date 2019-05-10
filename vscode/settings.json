@@ -2,6 +2,7 @@
   "breadcrumbs.enabled": true,
   "editor.minimap.enabled": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.lineNumbers": "relative",
   "editor.renderWhitespace": "none",
   "editor.trimAutoWhitespace": true,
   "editor.quickSuggestionsDelay": 0,
@@ -12,11 +13,12 @@
   "workbench.editor.showTabs": false,
   "workbench.statusBar.feedback.visible": false,
   "workbench.colorTheme": "Default Light+",
+  "workbench.settings.editor": "json",
   "workbench.startupEditor": "newUntitledFile",
   "zenMode.fullScreen": false,
   "zenMode.hideLineNumbers": false,
   "zenMode.restore": true,
-
+  
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   "git.branchWhitespaceChar": "-",
@@ -27,9 +29,10 @@
   "git.useForcePushWithLease": true,
   "git.autorefresh": true,
   "diffEditor.ignoreTrimWhitespace": false,
-
-  "gitlens.views.repositories.autoRefresh": true,
+  
   "gitlens.blame.ignoreWhitespace": false,
+  "gitlens.views.repositories.autoRefresh": true,
+  "gitlens.settings.mode": "advanced",
   "gitlens.advanced.telemetry.enabled": false,
 
   "javascript.preferences.quoteStyle": "single",
@@ -90,5 +93,5 @@
 
   "shellformat.path": "/snap/bin/shfmt",
 
-  "php.validate.executablePath": "/usr/bin/php"
+  "php.validate.executablePath": "/usr/bin/php",
 }
