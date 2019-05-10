@@ -1,6 +1,9 @@
 # antibody
 alias plug='load_plugins'
 
+# vscode
+alias c='code'
+
 # git
 alias grb='git rebase -i origin/develop'
 alias gdev='git checkout develop && git pull'
