@@ -53,10 +53,10 @@ code --install-extension eamodio.gitlens
 code --install-extension eg2.tslint
 code --install-extension esbenp.prettier-vscode
 code --install-extension foxundermoon.shell-format
-code --install-extension mechatroner.rainbow-csv
 code --install-extension peterjausovec.vscode-docker
 code --install-extension pflannery.vscode-versionlens
 code --install-extension ryu1kn.partial-diff
+code --install-extension vscodevim.vim
 code --install-extension timonwong.shellcheck
 
 # hugo

@@ -1,6 +1,6 @@
 .gitconfig gitconfig
 .gitignore gitignore
-.vimrc vimrc
+.gitmessage gitmessage
 .zshrc zshrc
 .zsh_custom zsh_custom
 .zsh_plugins zsh_plugins
