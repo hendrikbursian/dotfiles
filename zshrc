@@ -14,7 +14,6 @@ ZSH_THEME="avit"
 
 plugins=(
     git
-    toggl
     docker
     docker-compose
 )
@@ -61,24 +60,6 @@ load-nvmrc
 
 # Dircolors for solarized theme
 eval `dircolors $HOME/.dir_colors/dircolors`
-
-# open https://toggl.com/app/workspaces. Select the workspace you want to use,
-# click on the three dots and open "Settings". Get the id from the URL in your
-# browser. Eg. https://toggl.com/app/workspaces/12345678/settings?
-export TOGGL_WORKSPACE_ID="1469640"
-
-# open https://www.toggl.com/app/projects and select the project(s) you want to
-# use in the report. Again copy the id from the url. In this case
-# https://www.toggl.com/app/projects/12345678/edit/98765 the id would be 98765.
-# This value can look like: "98765" or "98765,43210" for multiple project ids.
-export TOGGL_PROJECT_IDS="19091233,30863060,24034734,150135856"
-
-# open https://toggl.com/app/profile and get the API token from the bottom of
-# the page
-export TOGGL_API_TOKEN="eb175480b2ea71ccfb38710f74aed348"
-
-
-
 
 # Profiling
 # zprof

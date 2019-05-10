@@ -65,6 +65,9 @@ sudo snap install hugo --channel=extended
 # krita
 sudo snap install krita
 
+# pall (color picker)
+sudo snap install pall
+
 # spotify
 sudo snap install spotify
 
@@ -74,7 +77,6 @@ $DIR/add-links.sh
 # terminal customization
 if [ "$XDG_CURRENT_DESKTOP" == "ubuntu:GNOME" ]; then
     echo "Found ubuntu gnome terminal. Load solarized theme and terminal profile"
-
     profileid=$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "'")
     profilekey="/org/gnome/terminal/legacy/profiles:/:$profileid/"
 
