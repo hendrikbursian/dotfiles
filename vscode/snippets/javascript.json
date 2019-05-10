@@ -1,7 +1,7 @@
 {
   "Print to console": {
     "prefix": "l",
-    "body": ["console.log('${1:output}');"],
+    "body": ["console.log(${1:output});"],
     "description": "Log output to console"
   }
 }
