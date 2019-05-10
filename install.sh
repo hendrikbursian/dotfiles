@@ -58,6 +58,7 @@ code --install-extension pflannery.vscode-versionlens
 code --install-extension ryu1kn.partial-diff
 code --install-extension vscodevim.vim
 code --install-extension timonwong.shellcheck
+code --install-extension twakatime.vscode-wakatime
 
 # hugo
 sudo snap install hugo --channel=extended
