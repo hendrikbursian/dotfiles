@@ -65,6 +65,7 @@
   "prettier.printWidth": 140,
   "prettier.singleQuote": true,
   "prettier.tslintIntegration": true,
+  "prettier.trailingComma": "none",
 
   "scss.lint.boxModel": "warning",
   "scss.lint.duplicateProperties": "warning",
