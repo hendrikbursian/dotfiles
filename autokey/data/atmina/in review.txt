@@ -1,0 +1,5 @@
+/unlabel ~"In Progress" ~"ready for review" ~"in progress" ~"confirmed" ~"ready for review" ~"Ready for Review"
+/label ~"in review" ~"In Review"
+/assign @hendrik.bursian
+
+** Beginning the review **
