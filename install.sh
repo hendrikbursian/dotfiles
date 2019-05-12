@@ -5,7 +5,7 @@ DIR=$(dirname $(readlink -f "$0"))
 sudo add-apt-repository -y ppa:sporkwitch/autokey
 
 sudo apt update -y && sudo apt upgrade -y 
-sudo apt-get install -y vim zsh git curl jq python-xlib autokey-gtk dconf snapd
+sudo apt-get install -y vim zsh git curl jq python-xlib autokey-gtk htop dconf snapd
 
 # nvm
 curl -sSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | sh -s

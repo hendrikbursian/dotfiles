@@ -57,6 +57,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'morhetz/gruvbox'
 Plug 'leafgarland/typescript-vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'justinmk/vim-sneak'
 call plug#end()
 
 " Colors
