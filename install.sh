@@ -4,7 +4,7 @@ DIR=$(dirname $(readlink -f "$0"))
 
 sudo add-apt-repository -y ppa:sporkwitch/autokey
 
-sudo apt update -y && sudo apt upgrade -y 
+sudo apt update -y && sudo apt upgrade -y
 sudo apt-get install -y vim zsh git curl jq python-xlib autokey-gtk htop dconf snapd
 
 # nvm
@@ -85,7 +85,7 @@ if [ "$XDG_CURRENT_DESKTOP" == "ubuntu:GNOME" ]; then
     profilekey="/org/gnome/terminal/legacy/profiles:/:$profileid/"
 
     # Import profile settings
-    dconf load "$profilekey" < ./terminal-profile.dconf
+    dconf load "$profilekey" <./terminal-profile.dconf
 
     # Install color scheme
     $DIR/solarized/install.sh --scheme dark --profile "$profileid" --install-dircolors
