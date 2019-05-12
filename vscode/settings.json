@@ -123,9 +123,9 @@
 
   "shellcheck.enable": true,
   "shellcheck.run": "onType",
-  "shellcheck.executablePath": "/snap/bin/shellcheck",
+  "shellcheck.executablePath": "/snap/shellcheck/current/usr/bin/shellcheck",
 
-  "shellformat.path": "/snap/bin/shfmt",
+  "shellformat.path": "/snap/shfmt/current/bin/shfmt",
 
   "php.validate.executablePath": "/usr/bin/php",
 }
