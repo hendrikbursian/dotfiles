@@ -1,5 +1,5 @@
 # antibody
-alias plug='load_plugins'
+alias plug='__load_plugins'
 
 # vscode
 alias c='code'
@@ -10,7 +10,8 @@ alias gdev='git checkout develop && git pull'
 alias gpf='git push --force-with-lease'
 alias gcf='git commit --fixup'
 
-# alias kubectl='microk8s.kubectl'
+# transparency
+alias tr='__set_transparency'
 
 # wobcom
 alias bmock='/home/hendrik/workspace/cssp/abestmockadapter/contrib/build.ps1'
