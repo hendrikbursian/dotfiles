@@ -35,6 +35,8 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 #kubernetes
 sudo snap install microk8s --classic
+sudo snap alias microk8s.kubectl kubectl
+sudo snap alias microk8s.isteoctl isteoctl
 
 # shellcheck
 sudo snap install shellcheck --channel=edge
@@ -59,6 +61,9 @@ code --install-extension ryu1kn.partial-diff
 code --install-extension vscodevim.vim
 code --install-extension timonwong.shellcheck
 code --install-extension wakatime.vscode-wakatime
+
+# brave (browser)
+sudo snap install brave --edge
 
 # hugo
 sudo snap install hugo --channel=extended
