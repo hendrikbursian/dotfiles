@@ -1,0 +1,7 @@
+/unlabel  ~"In Progress" ~"in progress" ~"in review" ~"In Review" ~"ready for review"  ~"confirmed" ~"Ready for Review" 
+/label ~"ready for final review"
+
+LGTM apart from small things in the discussions.
+You can put it into  if the discussions are resolved.
+
+/assign @

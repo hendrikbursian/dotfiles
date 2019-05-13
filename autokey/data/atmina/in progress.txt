@@ -1,5 +1,6 @@
-/unlabel  ~"in review" ~"In Review" ~"ready for review"  ~"confirmed" ~"ready for review" ~"Ready for Review"
+/unlabel  ~"in review" ~"In Review" ~"needs confirmation" ~"ready for review"  ~"confirmed" ~"ready for review" ~"Ready for Review"
 /label ~"In Progress" ~"in progress"
+/create_merge_request
 /assign @hendrik.bursian
 
 ** Beginning the work **

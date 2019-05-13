@@ -4,8 +4,7 @@
 .zshrc zshrc
 .zsh_custom zsh_custom
 .zsh_plugins zsh_plugins
-.config/autokey/data autokey/data
-.config/autokey/autokey.json autokey/autokey.json
+.config/autokey
 .config/Code/User/snippets vscode/snippets
 .config/Code/User/settings.json vscode/settings.json
 .config/Code/User/keybindings.json vscode/keybindings.json
