@@ -36,7 +36,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 #kubernetes
 sudo snap install microk8s --classic
 sudo snap alias microk8s.kubectl kubectl
-sudo snap alias microk8s.isteoctl isteoctl
+sudo snap alias microk8s.isteictl istioctl
 
 # shellcheck
 sudo snap install shellcheck --channel=edge
