@@ -129,4 +129,6 @@
   "shellformat.path": "/snap/shfmt/current/bin/shfmt",
 
   "php.validate.executablePath": "/usr/bin/php",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 }
