@@ -1,3 +1,5 @@
+#! /usr/bin/env bash
+
 # antibody
 alias plug='__load_plugins'
 

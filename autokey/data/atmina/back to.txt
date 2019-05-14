@@ -1,7 +1,7 @@
 /unlabel  ~"in review" ~"In Review" ~"ready for review"  ~"confirmed" ~"ready for review" ~"Ready for Review"
 /label ~"In Progress" ~"in progress"
 
-LGTM apart from small things in the discussion.
-Please put it into ~"ready for final review" if the discussions are resolved.
+LGTM apart from small things in the discussions.
+You can put it into ~"ready for final review" if the discussions are resolved.
 
 /assign @

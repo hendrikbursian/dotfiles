@@ -1,5 +1,5 @@
 /unlabel ~"In Progress"  ~"in progress" ~"confirmed"  ~"Ready for Review" ~"in review" ~"In Review"
-/label ~"ready for review" ~"ready for review"
+/label ~"ready for review" ~"Ready for Review" 
 /wip
 /unassign
 /spend hm (put time in issue)

@@ -1,21 +1,21 @@
 {
     "type": "phrase",
-    "description": "ready for review",
+    "description": "lgtm",
     "modes": [
         1
     ],
-    "usageCount": 7,
+    "usageCount": 0,
     "prompt": false,
     "omitTrigger": false,
     "matchCase": false,
-    "showInTrayMenu": false,
+    "showInTrayMenu": true,
     "abbreviation": {
         "abbreviations": [
-            "rfr"
+            "lgtm"
         ],
         "backspace": true,
         "ignoreCase": false,
-        "immediate": false,
+        "immediate": true,
         "triggerInside": false,
         "wordChars": "[\\w]"
     },

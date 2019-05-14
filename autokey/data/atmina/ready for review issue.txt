@@ -1,0 +1,3 @@
+/unlabel ~"In Progress"  ~"in progress" ~"confirmed"  ~"in review" ~"In Review"
+/label ~"ready for review" ~"Ready for Review"
+/spend hm (put time in issue)
