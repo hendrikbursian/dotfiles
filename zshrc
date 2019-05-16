@@ -63,5 +63,7 @@ source <(kubectl completion zsh | sed "s/complete -o default -F __start_kubectl 
 # Dircolors for solarized theme
 eval `dircolors $HOME/.dir_colors/dircolors`
 
+source .zshrc.local
+
 # Profiling
 # zprof
