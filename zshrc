@@ -16,6 +16,7 @@ plugins=(
     git
     docker
     docker-compose
+    terminal-toggl
 )
 source $ZSH/oh-my-zsh.sh
 
