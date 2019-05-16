@@ -6,6 +6,9 @@
   "editor.renderWhitespace": "none",
   "editor.trimAutoWhitespace": true,
   "editor.quickSuggestionsDelay": 0,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  },
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "window.menuBarVisibility": "hidden",
@@ -50,13 +53,7 @@
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.tsserver.log": "verbose",
 
-  "tslint.enable": true,
-  "tslint.packageManager": "yarn",
-  "tslint.run": "onType",
-  "tslint.validateWithDefaultConfig": true,
   "tslint.jsEnable": true,
-  "tslint.autoFixOnSave": true,
-  "tslint.alwaysShowStatus": true,
   "tslint.ignoreDefinitionFiles": false,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -64,7 +61,6 @@
 
   "prettier.printWidth": 140,
   "prettier.singleQuote": true,
-  "prettier.tslintIntegration": true,
   "prettier.trailingComma": "none",
 
   "scss.lint.boxModel": "warning",
@@ -130,5 +126,4 @@
 
   "php.validate.executablePath": "/usr/bin/php",
   "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 }
