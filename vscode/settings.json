@@ -15,7 +15,7 @@
   "window.zoomLevel": -1,
   "workbench.editor.showTabs": false,
   "workbench.statusBar.feedback.visible": false,
-  "workbench.colorTheme": "Default Light+",
+  "workbench.colorTheme": "Quiet Light",
   "workbench.settings.editor": "json",
   "workbench.startupEditor": "newUntitledFile",
   "zenMode.fullScreen": false,
