@@ -12,6 +12,8 @@ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py --user
 rm -f get-pip.py
 pip install --user pipenv
+pip install --user virtualenv
+pip install --user virtualenvwrapper
 
 # nvm
 curl -sSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | sh -s
