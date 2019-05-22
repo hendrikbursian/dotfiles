@@ -69,6 +69,7 @@ code --install-extension ryu1kn.partial-diff
 code --install-extension vscodevim.vim
 code --install-extension timonwong.shellcheck
 code --install-extension wakatime.vscode-wakatime
+code --install-extension fatihacet.gitlab-workflow
 
 # brave (browser)
 sudo snap install brave --edge

@@ -38,6 +38,8 @@
   "gitlens.settings.mode": "advanced",
   "gitlens.advanced.telemetry.enabled": false,
 
+  "gitlab.instanceUrl": "https://gitlab.intern.atmina.systems",
+  
   "javascript.preferences.quoteStyle": "single",
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "javascript.updateImportsOnFileMove.enabled": "always",
@@ -125,5 +127,5 @@
   "shellformat.path": "/snap/shfmt/current/bin/shfmt",
 
   "php.validate.executablePath": "/usr/bin/php",
-  "editor.suggestSelection": "first",
+  "editor.suggestSelection": "first"
 }
