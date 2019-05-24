@@ -21,7 +21,7 @@
   "zenMode.fullScreen": false,
   "zenMode.hideLineNumbers": false,
   "zenMode.restore": true,
-  
+
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   "git.branchWhitespaceChar": "-",
@@ -32,14 +32,14 @@
   "git.useForcePushWithLease": true,
   "git.autorefresh": true,
   "diffEditor.ignoreTrimWhitespace": false,
-  
+
   "gitlens.blame.ignoreWhitespace": false,
   "gitlens.views.repositories.autoRefresh": true,
   "gitlens.settings.mode": "advanced",
   "gitlens.advanced.telemetry.enabled": false,
 
   "gitlab.instanceUrl": "https://gitlab.intern.atmina.systems",
-  
+
   "javascript.preferences.quoteStyle": "single",
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "javascript.updateImportsOnFileMove.enabled": "always",
@@ -84,6 +84,11 @@
 
   "[shellscript]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+
+  "python.linting.lintOnSave": true,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
   },
 
   "vim.easymotion": true,
