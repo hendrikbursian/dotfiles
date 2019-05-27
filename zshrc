@@ -1,11 +1,13 @@
 # Profiling
 #zmodload zsh/zprof
 
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:.$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/.zsh_custom"
+
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 
 export GOPATH="/snap/bin/go"
 

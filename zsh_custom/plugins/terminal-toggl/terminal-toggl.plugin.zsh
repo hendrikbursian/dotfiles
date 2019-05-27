@@ -1,5 +1,4 @@
-#! /usr/bin/env zsh
-#TODO ADD TSLINTPLUGIN TO INTSAALLATOIN
+#! /usr/bin/env bash
 # TERMINAL TOGGL
 #
 # This plugin is used to start toggl entries depending on the branch that is currently checked out.
@@ -11,11 +10,52 @@
 #
 # Tested on ubuntu 18.04
 
-gitlab_url=
-gitlab_token=
-gitlab_project_id=
-toggl_token=
-toggl_project_id=
+gitlab_url=https://gitlab.intern.atmina.systems
+gitlab_token=Ymgx_AQyf2qPzSprMX4G
+
+setup() {
+    echo "Hey,"
+    echo ""
+    echo "before we start I need some info from you to help you with your toggle entries."
+    echo ""
+    echo "First of all, please give me your toggl token (Visit https://toggl.com/app/profile and paste your API token)"
+    read -r toggl_token
+
+    echo ""
+    echo "Thanks!"
+    echo ""
+    echo "In order to search through your issues and merge requests I'll need your gitlab instance url and an access token"
+    echo "Gitlab instance url (i.e. https://gitlab.com)"
+    read -r gitlab_url
+
+    echo ""
+    echo "Gitlab access token (Visit https://gitlab.intern.atmina.systems/profile/personal_access_tokens)"
+    read -r gitlab_token
+
+    # TODO: Create Mapping for every project
+    echo ""
+    echo "And finally I need some defaults."
+    echo ""
+    echo "Default toggl project id (Visit https://toggl.com/app/projects/ click on your project and paste the id from the url in here)"
+    read -r toggl_project_id
+
+    echo ""
+    echo "Default gitlab project id (Visit $gitlab_url click on your project and paste the \"Project ID\" (i.e. 38) in here)"
+    read -r gitlab_project_id
+
+    rm "$HOME"/.terminal-toggl
+    # TODO using env vars instead of exporting
+    echo "export toggl_token=$toggl_token" >>"$HOME/.terminal-toggl"
+    echo "export toggl_project_id=$toggl_project_id" >>"$HOME/.terminal-toggl"
+    echo "export gitlab_url=$gitlab_url" >>"$HOME/.terminal-toggl"
+    echo "export gitlab_token=$gitlab_token" >>"$HOME/.terminal-toggl"
+    echo "export gitlab_project_id=$gitlab_project_id" >>"$HOME/.terminal-toggl"
+
+    source "$HOME/.terminal-toggl"
+
+    echo "Thanks! Your setup is complete!"
+    echo ""
+}
 
 choose_from_related_issues() {
     issues_response=$(curl -sL --url "$gitlab_url/api/v4/projects/$gitlab_project_id/merge_requests/$merge_request_id/closes_issues" --header "PRIVATE-TOKEN: $gitlab_token")
@@ -62,14 +102,31 @@ choose_from_related_merge_requests() {
 }
 
 start_time_entry() {
-    curl -s \
-        -u "$toggl_token\:api_token" \
-        -X POST https://www.toggl.com/api/v8/time_entries/start \
-        -H "Content-type: application/json" \
-        -d "{\"time_entry\":{\"description\":\"$toggl_entry_title\",\"tags\":[],\"pid\":$toggl_project_id}}" | jq
+    data=$(jq -n \
+        --arg pid "$toggl_project_id" --arg description "$toggl_entry_title" \
+        '{
+            time_entry: {
+                description: $description,
+                tags: [],
+                pid: $pid,
+                created_with: "terminal-toggl"
+            }
+        }')
+echo $data
+    curl --request POST \
+        --url https://www.toggl.com/api/v8/time_entries/start \
+        --user "${toggl_token}:api_token" \
+        --header 'content-type: application/json' \
+        --data $data
 }
 
 start() {
+    if [[ ! -e "$HOME/.terminal-toggl" ]]; then
+        setup
+    elif [[ -n $toggl_token ]]; then
+        source <"$HOME/.terminal-toggl"
+    fi
+
     toggl_entry_title=$1
 
     if [[ -n "$toggl_entry_title" ]]; then
