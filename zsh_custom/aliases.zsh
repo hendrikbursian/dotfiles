@@ -15,5 +15,5 @@ alias gcf='git commit --fixup'
 # transparency
 alias tr='__set_transparency'
 
-# wobcom
-alias bmock='/home/hendrik/workspace/cssp/abestmockadapter/contrib/build.ps1'
+# kill process on port
+alias killport='sudo kill $(sudo lsof -t -i:8080)'
