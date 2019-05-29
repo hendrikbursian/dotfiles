@@ -2,4 +2,4 @@
 /label ~"in review" ~"In Review"
 /assign @hendrik.bursian
 
-** Beginning the review **
+**Beginning review**
