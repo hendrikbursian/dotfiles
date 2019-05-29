@@ -4,6 +4,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.lineNumbers": "relative",
   "editor.renderWhitespace": "none",
+  "editor.suggestSelection": "first",
   "editor.trimAutoWhitespace": true,
   "editor.quickSuggestionsDelay": 0,
   "editor.codeActionsOnSave": {
@@ -16,6 +17,8 @@
   "workbench.editor.showTabs": false,
   "workbench.statusBar.feedback.visible": false,
   "workbench.colorTheme": "Quiet Light",
+  "workbench.editor.enablePreview": true,
+  "workbench.editor.enablePreviewFromQuickOpen": true,
   "workbench.settings.editor": "json",
   "workbench.startupEditor": "newUntitledFile",
   "zenMode.fullScreen": false,
@@ -54,6 +57,8 @@
   "typescript.referencesCodeLens.enabled": false,
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.tsserver.log": "verbose",
+
+  "typescriptHero.imports.insertSpaceBeforeAndAfterImportBraces": false,
 
   "tslint.jsEnable": true,
   "tslint.ignoreDefinitionFiles": false,
@@ -135,11 +140,5 @@
 
   "shellformat.path": "/snap/shfmt/current/bin/shfmt",
 
-  "php.validate.executablePath": "/usr/bin/php",
-<<<<<<< Updated upstream
-  "editor.suggestSelection": "first"
-=======
-  "editor.suggestSelection": "first",
-  "python.jediEnabled": false,
->>>>>>> Stashed changes
+  "php.validate.executablePath": "/usr/bin/php"
 }
