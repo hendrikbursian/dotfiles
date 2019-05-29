@@ -133,6 +133,7 @@
     "<C-f>": false,
     "<C-w>": false
   },
+  "vim.debug.silent": true,
 
   "shellcheck.enable": true,
   "shellcheck.run": "onType",
