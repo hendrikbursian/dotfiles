@@ -1,8 +1,5 @@
 #! /usr/bin/env bash
 
-# antibody
-alias plug='__load_plugins'
-
 # vscode
 alias c='code'
 
@@ -15,5 +12,5 @@ alias gcf='git commit --fixup'
 # transparency
 alias tr='__set_transparency'
 
-# wobcom
-alias bmock='/home/hendrik/workspace/cssp/abestmockadapter/contrib/build.ps1'
+# copy to clipboard
+alias clip='xclip -sel clip<<<'
