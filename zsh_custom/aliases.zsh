@@ -16,4 +16,7 @@ alias gcf='git commit --fixup'
 alias tr='__set_transparency'
 
 # kill process on port
-alias killport='sudo kill $(sudo lsof -t -i:8080)'
+function __killport {
+    kill "$(sudo lsof -t -i:"$1")";
+}
+alias killport='__killport'
