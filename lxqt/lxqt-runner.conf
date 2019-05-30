@@ -1,0 +1,6 @@
+[General]
+__userfile__=true
+
+[dialog]
+shortcut=Alt+F2
+width=400
