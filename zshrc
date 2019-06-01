@@ -7,6 +7,7 @@ export PATH=$HOME/.local/bin:.$HOME/bin:/usr/local/bin:/snap/bin:$PATH
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/.zsh_custom"
 
+ZSH_THEME="avit"
 
 # Oh my zsh
 source $ZSH/oh-my-zsh.sh
@@ -31,7 +32,7 @@ HISTSIZE=4096
 SAVEHIST=4096
 
 
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+[[ -f ~/.local/.zshrc ]] && source ~/.local/.zshrc
 
 # Profiling
 # zprof

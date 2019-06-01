@@ -9,7 +9,7 @@
 [merge]
 	tool = vimdiff
 [commit]
-	gpgSign = true
+	# gpgSign = true
 	template = ~/.gitmessage
 [fetch]
 	prune = true
