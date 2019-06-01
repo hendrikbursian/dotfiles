@@ -31,7 +31,6 @@ HISTFILE=~/.zsh_history
 HISTSIZE=4096
 SAVEHIST=4096
 
-
 [[ -f ~/.local/.zshrc ]] && source ~/.local/.zshrc
 
 # Profiling
