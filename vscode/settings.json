@@ -103,7 +103,6 @@
   "vim.hlsearch": true,
   "vim.ignorecase": true,
   "vim.smartcase": true,
-  "vim.debug.suppress": true,
   "vim.insertModeKeyBindings": [
     {
       "before": ["j", "j"],
@@ -128,11 +127,14 @@
     "<C-f>": false,
     "<C-w>": false
   },
+  "vim.debug.silent": true,
+  "vim.debug.loggingLevelForAlert": "error",
+  "vim.debug.loggingLevelForConsole": "error",
 
   "shellcheck.enable": true,
   "shellcheck.run": "onType",
   "shellcheck.executablePath": "/snap/shellcheck/current/usr/bin/shellcheck",
-
+  
   "shellformat.path": "/snap/shfmt/current/bin/shfmt",
 
   "php.validate.executablePath": "/usr/bin/php"

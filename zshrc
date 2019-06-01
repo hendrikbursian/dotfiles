@@ -2,8 +2,6 @@
 # zmodload zsh/zprof
 
 export PATH=$HOME/.local/bin:.$HOME/bin:/usr/local/bin:/snap/bin:$PATH
-
-# Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/.zsh_custom"
 
@@ -11,6 +9,10 @@ ZSH_THEME="avit"
 
 # Oh my zsh
 source $ZSH/oh-my-zsh.sh
+
+# asdf-vm
+source ~/.asdf/asdf.sh
+source ~/.asdf/completions/asdf.bash
 
 plugins=(
     git

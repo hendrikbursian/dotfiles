@@ -14,3 +14,17 @@ sudo apt-get install -y \
   unixodbc-dev \
   unzip \
   curl
+  
+# git submodule update --init --recursive
+# git checkout "$(git describe --abbrev=0 --tags)"
+
+# asdf plugin-add python
+# asdf plugin-add nodejs
+# asdf plugin-add golang
+# asdf plugin-add yarn
+
+# Add gpg keyring
+# ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+
+# Run this in $HOME
+# asdf install
