@@ -28,3 +28,6 @@ sudo apt-get install -y \
 
 # Run this in $HOME
 # asdf install
+
+# With python3
+# pip install bpython
