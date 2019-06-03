@@ -1,8 +1,5 @@
 #! /usr/bin/env bash
 
-# antibody
-alias plug='__load_plugins'
-
 # vscode
 alias c='code'
 
@@ -20,3 +17,6 @@ function __killport {
     kill "$(sudo lsof -t -i:"$1")";
 }
 alias killport='__killport'
+
+# copy to clipboard
+alias clip='xclip -sel clip<<<'

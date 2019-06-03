@@ -1,0 +1,6 @@
+{
+  "git.detectSubmodules": false,
+  "files.watcherExclude": {
+    "**/asdf/**": true
+  }
+}
