@@ -11,8 +11,8 @@ ZSH_THEME="avit"
 source $ZSH/oh-my-zsh.sh
 
 # asdf-vm
-source ~/.asdf/asdf.sh
-source ~/.asdf/completions/asdf.bash
+source $HOME/.asdf/asdf.sh
+source $HOME/.asdf/completions/asdf.bash
 
 plugins=(
     git

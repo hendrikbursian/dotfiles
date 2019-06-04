@@ -61,16 +61,16 @@ Plug 'justinmk/vim-sneak'
 call plug#end()
 
 " Colors
-set termguicolors
-set background=light
-let g:gruvbox_italic=1
-let g:gruvbox_bold=1
-let g:gruvbox_underline=1
-let g:gruvbox_contrast_dark="medium"
-let g:gruvbox_contrast_light="medium"
-let g:gruvbox_italicize_comments=1
-let g:gruvbox_italicize_strings=0
-colorscheme gruvbox 
+" set termguicolors
+" set background=light
+" let g:gruvbox_italic=1
+" let g:gruvbox_bold=1
+" let g:gruvbox_underline=1
+" let g:gruvbox_contrast_dark="medium"
+" let g:gruvbox_contrast_light="medium"
+" let g:gruvbox_italicize_comments=1
+" let g:gruvbox_italicize_strings=0
+" colorscheme gruvbox 
 
 " Directory browsing
 let g:netrw_winsize = 25
@@ -103,9 +103,9 @@ set expandtab
 set history=1000
 
 " Line numbers
-set number
-set number!
-set relativenumber
+" set number
+" set number!
+" set relativenumber
 
 set nowrap
 set ruler
@@ -116,3 +116,6 @@ set backupdir^=$HOME/tmp,/tmp
 set undodir^=$HOME/tmp,/tmp
 set noswapfile
 
+
+" Keymaps
+let mapleader=" " 
