@@ -9,7 +9,7 @@ sudo apt-get install -y \
   jq \
   htop \
   snapd
-  # needed for apt repositories that use https
+  # needed for apt repositories that use https (docker)
   apt-transport-https \
   ca-certificates \
   gnupg-agent \
