@@ -20,3 +20,6 @@ alias killport='__killport'
 
 # copy to clipboard
 alias clip='xclip -sel clip<<<'
+
+# activate virtual env in python project
+alias a="source */bin/activate"
