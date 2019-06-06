@@ -7,8 +7,6 @@ export ZSH_CUSTOM="$HOME/.zsh_custom"
 
 ZSH_THEME="avit"
 
-# Oh my zsh
-source $ZSH/oh-my-zsh.sh
 
 # asdf-vm
 source ~/.asdf/asdf.sh
@@ -19,6 +17,9 @@ plugins=(
     docker
     docker-compose
 )
+
+# Oh my zsh
+source $ZSH/oh-my-zsh.sh
 
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
