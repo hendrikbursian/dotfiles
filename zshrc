@@ -27,6 +27,9 @@ COMPLETION_WAITING_DOTS="true"
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+# Enable globbing to include hidden files (.*)
+setopt dotglob
+
 # History settings
 setopt hist_ignore_all_dups inc_append_history
 HISTFILE=~/.zsh_history
