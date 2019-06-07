@@ -14,8 +14,11 @@ sudo apt-get install -y \
   unixodbc-dev \
   unzip \
   curl
-  
+
+# Change into dotfiles repository
 # git submodule update --init --recursive
+
+# cd asdf
 # git checkout "$(git describe --abbrev=0 --tags)"
 
 # asdf plugin-add python

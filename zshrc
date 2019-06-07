@@ -7,18 +7,18 @@ export ZSH_CUSTOM="$HOME/.zsh_custom"
 
 ZSH_THEME="avit"
 
+plugins=(
+    git
+    docker
+    docker-compose
+)
+
 # Oh my zsh
 source $ZSH/oh-my-zsh.sh
 
 # asdf-vm
 source $HOME/.asdf/asdf.sh
 source $HOME/.asdf/completions/asdf.bash
-
-plugins=(
-    git
-    docker
-    docker-compose
-)
 
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"

@@ -54,23 +54,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
-Plug 'morhetz/gruvbox'
 Plug 'leafgarland/typescript-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-sneak'
 call plug#end()
-
-" Colors
-" set termguicolors
-" set background=light
-" let g:gruvbox_italic=1
-" let g:gruvbox_bold=1
-" let g:gruvbox_underline=1
-" let g:gruvbox_contrast_dark="medium"
-" let g:gruvbox_contrast_light="medium"
-" let g:gruvbox_italicize_comments=1
-" let g:gruvbox_italicize_strings=0
-" colorscheme gruvbox 
 
 " Directory browsing
 let g:netrw_winsize = 25

@@ -13,6 +13,6 @@ sudo curl -L "${latesttagurl/tag/download}/docker-compose-$(uname -s)-$(uname -m
 sudo chmod +x /usr/local/bin/docker-compose
 
 #kubernetes
-# sudo snap install microk8s --classic
-# sudo snap alias microk8s.kubectl kubectl
-# sudo snap alias microk8s.isteictl istioctl
+sudo snap install microk8s --classic
+sudo snap alias microk8s.kubectl kubectl
+sudo snap alias microk8s.istioctl istioctl
