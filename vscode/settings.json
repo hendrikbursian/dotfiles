@@ -2,6 +2,8 @@
   "breadcrumbs.enabled": true,
   "editor.minimap.enabled": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontSize": 14,
   "editor.lineNumbers": "relative",
   "editor.renderWhitespace": "none",
   "editor.suggestSelection": "first",
@@ -13,7 +15,7 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "window.menuBarVisibility": "hidden",
-  "window.zoomLevel": -1,
+  "window.zoomLevel": 0,
   "workbench.editor.showTabs": false,
   "workbench.statusBar.feedback.visible": false,
   "workbench.colorTheme": "Quiet Light",
@@ -58,8 +60,6 @@
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.tsserver.log": "verbose",
 
-  "typescriptHero.imports.insertSpaceBeforeAndAfterImportBraces": false,
-
   "tslint.jsEnable": true,
   "tslint.ignoreDefinitionFiles": false,
   "[typescript]": {
@@ -69,8 +69,6 @@
   "prettier.printWidth": 140,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "none",
-
-  "python.pythonPath": "/usr/bin/python",
 
   "scss.lint.boxModel": "warning",
   "scss.lint.duplicateProperties": "warning",
@@ -102,16 +100,18 @@
   },
 
   "vim.easymotion": true,
+  "vim.easymotionMarkerYOffset": 1,
+  "vim.easymotionMarkerWidthPerChar": 8,
+  "vim.easymotionMarkerHeight": 18,
+  "vim.easymotionMarkerFontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "vim.easymotionMarkerBackgroundColor": "#f5f5f5",
+  "vim.easymotionMarkerForegroundColorOneChar": "#f00",
+  "vim.easymotionMarkerForegroundColorTwoChar": "#f00",
+
   "vim.sneak": true,
   "vim.camelCaseMotion.enable": true,
   "vim.incsearch": true,
   "vim.useSystemClipboard": true,
-  "vim.easymotionMarkerFontSize": "14",
-  "vim.easymotionMarkerHeight": 18,
-  "vim.easymotionMarkerWidthPerChar": 7,
-  "vim.easymotionMarkerBackgroundColor": "#fff",
-  "vim.easymotionMarkerForegroundColorOneChar": "#f00",
-  "vim.easymotionMarkerForegroundColorTwoChar": "#f00",
   "vim.useCtrlKeys": false,
   "vim.hlsearch": true,
   "vim.ignorecase": true,
@@ -147,8 +147,8 @@
   "shellcheck.enable": true,
   "shellcheck.run": "onType",
   "shellcheck.executablePath": "/snap/shellcheck/current/usr/bin/shellcheck",
-  
+
   "shellformat.path": "/snap/shfmt/current/bin/shfmt",
 
-  "php.validate.executablePath": "/usr/bin/php",
+  "php.validate.executablePath": "/usr/bin/php"
 }
