@@ -10,6 +10,10 @@ while IFS=" " read -r homefile target; do
         continue
     fi
 
+    if [[ ${homefile:0:1} == '#' ]]; then
+        continue
+    fi
+
     ln -fvs "$DIR/$target" "$HOME/$homefile"
 done <"$filelist"
 
