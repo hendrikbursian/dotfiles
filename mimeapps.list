@@ -1,0 +1,6 @@
+[Added Associations]
+image/jpeg=lximage-qt.desktop;
+image/png=krita_krita.desktop;
+[Default Applications]
+application/xhtml+xml=brave_brave.desktop;
+text/html=brave_brave.desktop;

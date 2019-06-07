@@ -8,6 +8,9 @@
 .config/autokey autokey
 .asdf asdf
 .tool-versions tool-versions
+.config/compton.conf compton.conf
+.config/mimeapps.list mimeapps.list
+.config/qterminal.ini qterminal.ini
 .config/lxqt/globalkeyshortcuts.conf lxqt/globalkeyshortcuts.conf
 .config/lxqt/lxqt.conf lxqt/lxqt.conf
 .config/lxqt/lxqt-config-appearance.conf lxqt/lxqt-config-appearance.conf
