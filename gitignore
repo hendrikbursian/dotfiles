@@ -4,5 +4,6 @@
 *.swp
 *.swo
 
-.nvmrc
-zshrc.local
+.tools-version
+
+XDG_CACHE_HOME
