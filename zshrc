@@ -37,7 +37,8 @@ HISTFILE="$HOME/.zsh_history"
 HISTSIZE=4096
 SAVEHIST=4096
 
-[[ -f "$HOME/local/.zshrc" ]] && source "$HOME/.local/.zshrc"
+# Load local .zshrc
+[[ -f "$HOME/.local/.zshrc" ]] && source "$HOME/.local/.zshrc"
 
 # Profiling
 # zprof
