@@ -4,6 +4,7 @@
 export PATH="$HOME/.local/bin:.$HOME/bin:/usr/local/bin:/snap/bin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/.zsh_custom"
+export DOTFILES="$(dirname "$(readlink $HOME/.zshrc)")"
 
 ZSH_THEME="avit"
 
