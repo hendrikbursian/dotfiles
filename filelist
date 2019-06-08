@@ -9,6 +9,7 @@
 .asdf asdf
 .tool-versions tool-versions
 .config/compton.conf compton.conf
+.config/openbox/lxqt-rc.xml openbox/lxqt-rc.xml
 .config/mimeapps.list mimeapps.list
 .config/qterminal.ini qterminal.ini
 .config/lxqt/globalkeyshortcuts.conf lxqt/globalkeyshortcuts.conf
