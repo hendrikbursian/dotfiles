@@ -105,4 +105,12 @@ set noswapfile
 " Keymaps
 let mapleader=" " 
 
-" Reminder to use h, this is nice j, k, l for navigation 
+" Training not to use arrow keys or h, j, k, l for navigation 
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+noremap k <NOP>
+noremap j <NOP>
+noremap h <Left> <NOP>
+noremap l <Right> <NOP>
