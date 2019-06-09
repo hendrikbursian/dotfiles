@@ -2,5 +2,9 @@
 image/jpeg=lximage-qt.desktop;
 image/png=krita_krita.desktop;
 [Default Applications]
+application/rdf+xml=brave_brave.desktop;
+application/rss+xml=brave_brave.desktop;
 application/xhtml+xml=brave_brave.desktop;
+application/xml=brave_brave.desktop;
 text/html=brave_brave.desktop;
+video/webm=vlc.desktop;
