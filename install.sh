@@ -14,5 +14,8 @@ sudo snap install brave --edge
 # spotify
 sudo snap install spotify
 
+# termdown
+sudo snap install termdown
+
 # link dotfiles
 sudo "$DIR/add-links.sh"
