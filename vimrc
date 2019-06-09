@@ -54,7 +54,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
-Plug 'leafgarland/typescript-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-sneak'
 call plug#end()
@@ -103,6 +102,7 @@ set backupdir^=$HOME/tmp,/tmp
 set undodir^=$HOME/tmp,/tmp
 set noswapfile
 
-
 " Keymaps
 let mapleader=" " 
+
+" Reminder to use h, this is nice j, k, l for navigation 
