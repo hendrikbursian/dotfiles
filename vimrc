@@ -89,9 +89,9 @@ set expandtab
 set history=1000
 
 " Line numbers
-" set number
+set number
 " set number!
-" set relativenumber
+set relativenumber
 
 set nowrap
 set ruler
