@@ -26,5 +26,9 @@
     {
         "key": "shift+alt+s",
         "command": "git.stageSelectedRanges"
+    },
+    {
+        "key": "ctrl+alt+s",
+        "command": "workbench.action.files.saveAll"
     }
 ]
