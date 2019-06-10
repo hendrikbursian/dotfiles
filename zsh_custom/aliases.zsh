@@ -24,4 +24,11 @@ alias killport='__killport'
 alias clip='xclip -sel clip<<<'
 
 # activate virtual env in python project
-alias a="source */bin/activate"
+alias a='source */bin/activate'
+
+# timers
+alias coffee='termdown -bs -T "Coffee! :)" -c 20 5m'
+alias t1='termdown -bs -t "Check your path" -c 150 15m'
+alias t2='termdown -bs -t "Check your path" -c 300 30m'
+alias t3='termdown -bs -t "Check your path" -c 600 60m'
+alias t4='termdown -bs -t "Check your path" -c 900 90m'
