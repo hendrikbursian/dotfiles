@@ -15,9 +15,6 @@ alias gwip='git add && git commit -m "WIP"'
 alias tr='__set_transparency'
 
 # kill process on port
-function __killport {
-    kill "$(sudo lsof -t -i:"$1" | head -n 1)";
-}
 alias killport='__killport'
 
 # copy to clipboard
