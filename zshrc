@@ -21,6 +21,9 @@ source "$ZSH/oh-my-zsh.sh"
 source "$HOME/.asdf/asdf.sh"
 source "$HOME/.asdf/completions/asdf.bash"
 
+# kubectl
+source <(kubectl completion zsh)
+
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
