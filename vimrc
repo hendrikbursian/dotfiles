@@ -106,11 +106,11 @@ set noswapfile
 let mapleader=" " 
 
 " Training not to use arrow keys or h, j, k, l for navigation 
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-noremap k <NOP>
-noremap j <NOP>
-noremap h <Left> <NOP>
-noremap l <Right> <NOP>
+" noremap <Up> <NOP>
+" noremap <Down> <NOP>
+" noremap <Left> <NOP>
+" noremap <Right> <NOP>
+" noremap k <NOP>
+" noremap j <NOP>
+" noremap h <Left> <NOP>
+" noremap l <Right> <NOP>

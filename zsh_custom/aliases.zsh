@@ -26,6 +26,9 @@ alias clip='xclip -sel clip<<<'
 # activate virtual env in python project
 alias a='source */bin/activate'
 
+# load env files
+alias lenv='source .env.* && echo "Environment loaded"'
+
 # timers
 alias coffee='termdown -bs -T "Coffee! :)" -c 20 5m'
 alias t1='termdown -bs -t "Check your path" -c 150 15m'

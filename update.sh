@@ -11,3 +11,4 @@ git pull --recurse-submodules
 ./add-links.sh
 
 cd "$OLDDIR" || exit 1
+
