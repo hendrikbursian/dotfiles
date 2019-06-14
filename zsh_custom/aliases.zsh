@@ -26,6 +26,9 @@ alias a='source */bin/activate'
 # make executable
 alias x='chmod +x'
 
+# load env files
+alias lenv='source .env.* && echo "Environment loaded"'
+
 # timers
 alias coffee='termdown -bs -T "Coffee! :)" -c 20 5m'
 alias t1='termdown -bs -t "Check your path" -c 150 15m'
