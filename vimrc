@@ -56,6 +56,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-sneak'
+Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 " Directory browsing
