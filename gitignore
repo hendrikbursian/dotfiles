@@ -7,3 +7,5 @@
 .tools-version
 
 XDG_CACHE_HOME
+
+.tool-versions
