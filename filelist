@@ -3,6 +3,7 @@
 .gitmessage gitmessage
 .vimrc vimrc
 .zshrc zshrc
+.asdfrc asdfrc
 .zsh_custom zsh_custom
 .zsh_plugins zsh_plugins
 .config/autokey autokey
