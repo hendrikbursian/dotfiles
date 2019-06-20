@@ -35,3 +35,8 @@ alias t1='termdown -bs -t "Check your path" -c 150 15m'
 alias t2='termdown -bs -t "Check your path" -c 300 30m'
 alias t3='termdown -bs -t "Check your path" -c 600 60m'
 alias t4='termdown -bs -t "Check your path" -c 900 90m'
+
+# selenium
+# to prevent page breakdowns the shm size needs to be increased
+alias sel='docker run --rm --network host --shm-size=512m selenium/standalone-chrome'
+alias selui='docker run --rm --network host --shm-size=512m --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --env="DISPLAY" selenium/standalone-chrome'
