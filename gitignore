@@ -4,7 +4,7 @@
 *.swp
 *.swo
 
-.tools-version
+.tool-versions
 
 XDG_CACHE_HOME
 
