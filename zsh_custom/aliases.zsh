@@ -20,6 +20,10 @@ alias killport='__killport'
 # copy to clipboard
 alias clip='xclip -sel clip<<<'
 
+# Screenshots
+alias ssareafile='import $HOME/Desktop/screenshot.png'
+alias ssareaclip='import /tmp/screenshot.png && xclip -sel clip -t image/png /tmp/screenshot.png'
+
 # activate virtual env in python project
 alias a='source */bin/activate'
 
