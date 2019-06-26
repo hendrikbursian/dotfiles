@@ -62,6 +62,7 @@
 
   "tslint.jsEnable": true,
   "tslint.ignoreDefinitionFiles": false,
+  "typescript.tsdk": "node_modules/typescript/lib",
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -149,6 +150,5 @@
   "shellcheck.enable": true,
   "shellcheck.run": "onType",
   "shellcheck.executablePath": "/snap/shellcheck/current/usr/bin/shellcheck",
-
-  "php.validate.executablePath": "/usr/bin/php"
+  "hadolint.hadolintPath": "/home/hendrik/.local/bin/hadolint",
 }
