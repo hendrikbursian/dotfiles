@@ -16,3 +16,4 @@ code --install-extension timonwong.shellcheck
 code --install-extension wakatime.vscode-wakatime
 code --install-extension fatihacet.gitlab-workflow
 code --install-extension ms-python.python
+code --install-extension exiasr.hadolint
