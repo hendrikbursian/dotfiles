@@ -1,154 +1,156 @@
 {
-  "breadcrumbs.enabled": true,
-  "editor.minimap.enabled": false,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-  "editor.fontSize": 14,
-  "editor.lineNumbers": "relative",
-  "editor.renderWhitespace": "none",
-  "editor.suggestSelection": "first",
-  "editor.trimAutoWhitespace": true,
-  "editor.quickSuggestionsDelay": 0,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.tslint": true
-  },
-  "explorer.confirmDelete": false,
-  "explorer.confirmDragAndDrop": false,
-  "window.menuBarVisibility": "hidden",
-  "window.title": "${dirty}${activeEditorLong}${separator}${rootName}${separator}${appName}", 
-  "workbench.editor.showTabs": false,
-  "workbench.statusBar.feedback.visible": false,
-  "workbench.colorTheme": "Quiet Light",
-  "workbench.editor.enablePreview": true,
-  "workbench.editor.enablePreviewFromQuickOpen": true,
-  "workbench.settings.editor": "json",
-  "workbench.startupEditor": "newUntitledFile",
-  "zenMode.fullScreen": false,
-  "zenMode.hideLineNumbers": false,
-  "zenMode.restore": true,
-
-  "git.autofetch": true,
-  "git.enableSmartCommit": true,
-  "git.branchWhitespaceChar": "-",
-  "git.showProgress": true,
-  "git.decorations.enabled": true,
-  "git.showInlineOpenFileAction": true,
-  "git.showPushSuccessNotification": true,
-  "git.useForcePushWithLease": true,
-  "git.autorefresh": true,
-  "diffEditor.ignoreTrimWhitespace": false,
-
-  "gitlens.blame.ignoreWhitespace": false,
-  "gitlens.views.repositories.autoRefresh": true,
-  "gitlens.settings.mode": "advanced",
-  "gitlens.advanced.telemetry.enabled": false,
-
-  "gitlab.instanceUrl": "https://gitlab.intern.atmina.systems",
-
-  "javascript.preferences.quoteStyle": "single",
-  "javascript.preferences.importModuleSpecifier": "non-relative",
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "typescript.suggest.autoImports": true,
-  "typescript.implementationsCodeLens.enabled": true,
-  "typescript.preferences.quoteStyle": "single",
-  "typescript.referencesCodeLens.enabled": false,
-  "typescript.suggest.completeFunctionCalls": true,
-  "typescript.tsserver.log": "verbose",
-
-  "tslint.jsEnable": true,
-  "tslint.ignoreDefinitionFiles": false,
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-
-  "prettier.printWidth": 140,
-  "prettier.singleQuote": true,
-  "prettier.tabWidth": 4,
-  "prettier.trailingComma": "none",
-
-  "scss.lint.boxModel": "warning",
-  "scss.lint.duplicateProperties": "warning",
-  "scss.lint.emptyRules": "error",
-  "scss.lint.float": "warning",
-  "scss.lint.ieHack": "warning",
-  "scss.lint.important": "warning",
-  "scss.lint.importStatement": "warning",
-  "scss.lint.universalSelector": "warning",
-
-  "emmet.optimizeStylesheetParsing": false,
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-
-  "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-
-  "python.pythonPath": "/usr/bin/python3",
-  "python.formatting.blackArgs": ["--line-length=120"],
-  "python.linting.lintOnSave": true,
-  "python.formatting.provider": "black",
-  "python.jediEnabled": false,
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.python"
-  },
-
-  "vim.easymotion": true,
-  "vim.easymotionMarkerYOffset": 1,
-  "vim.easymotionMarkerWidthPerChar": 8,
-  "vim.easymotionMarkerHeight": 18,
-  "vim.easymotionMarkerFontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-  "vim.easymotionMarkerBackgroundColor": "#f5f5f5",
-  "vim.easymotionMarkerForegroundColorOneChar": "#f00",
-  "vim.easymotionMarkerForegroundColorTwoChar": "#f00",
-
-  "vim.sneak": true,
-  "vim.camelCaseMotion.enable": true,
-  "vim.incsearch": true,
-  "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": false,
-  "vim.hlsearch": true,
-  "vim.ignorecase": true,
-  "vim.smartcase": true,
-  "vim.insertModeKeyBindings": [
-    {
-      "before": ["j", "j"],
-      "after": ["<Esc>"]
-    }
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<leader>", "d"],
-      "after": ["d", "d"]
+    "breadcrumbs.enabled": true,
+    "editor.minimap.enabled": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontSize": 14,
+    "editor.lineNumbers": "relative",
+    "editor.renderWhitespace": "none",
+    "editor.suggestSelection": "first",
+    "editor.trimAutoWhitespace": true,
+    "editor.quickSuggestionsDelay": 0,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.tslint": true
     },
-    {
-      "before": ["<C-n>"],
-      "commands": [":nohl"]
-    }
-  ],
-  "vim.leader": "<space>",
-  "vim.handleKeys": {
-    "<C-a>": false,
-    "<C-c>": false,
-    "<C-d>": false,
-    "<C-f>": false,
-    "<C-w>": false
-  },
-  "vim.debug.silent": true,
-  "vim.debug.loggingLevelForAlert": "error",
-  "vim.debug.loggingLevelForConsole": "error",
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "window.menuBarVisibility": "hidden",
+    "window.title": "${dirty}${activeEditorLong}${separator}${rootName}${separator}${appName}",
+    "window.zoomLevel": -1,
+    "workbench.editor.showTabs": false,
+    "workbench.statusBar.feedback.visible": false,
+    "workbench.colorTheme": "Quiet Light",
+    "workbench.editor.enablePreview": true,
+    "workbench.editor.enablePreviewFromQuickOpen": true,
+    "workbench.settings.editor": "json",
+    "workbench.startupEditor": "newUntitledFile",
+    "zenMode.fullScreen": false,
+    "zenMode.hideLineNumbers": false,
+    "zenMode.restore": true,
 
-  "shellcheck.enable": true,
-  "shellcheck.run": "onType",
-  "shellcheck.executablePath": "/snap/shellcheck/current/usr/bin/shellcheck",
-  "hadolint.hadolintPath": "/home/hendrik/.local/bin/hadolint",
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "git.branchWhitespaceChar": "-",
+    "git.showProgress": true,
+    "git.decorations.enabled": true,
+    "git.showInlineOpenFileAction": true,
+    "git.showPushSuccessNotification": true,
+    "git.useForcePushWithLease": true,
+    "git.autorefresh": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+
+    "gitlens.blame.ignoreWhitespace": false,
+    "gitlens.views.repositories.autoRefresh": true,
+    "gitlens.settings.mode": "advanced",
+    "gitlens.advanced.telemetry.enabled": false,
+
+    "gitlab.instanceUrl": "https://gitlab.intern.atmina.systems",
+
+    "javascript.preferences.quoteStyle": "single",
+    "javascript.preferences.importModuleSpecifier": "non-relative",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.suggest.autoImports": true,
+    "typescript.implementationsCodeLens.enabled": true,
+    "typescript.preferences.quoteStyle": "single",
+    "typescript.referencesCodeLens.enabled": false,
+    "typescript.suggest.completeFunctionCalls": true,
+    "typescript.tsserver.log": "verbose",
+
+    "tslint.jsEnable": true,
+    "tslint.ignoreDefinitionFiles": false,
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    "prettier.printWidth": 140,
+    "prettier.singleQuote": true,
+    "prettier.tabWidth": 4,
+    "prettier.trailingComma": "none",
+
+    "scss.lint.boxModel": "warning",
+    "scss.lint.duplicateProperties": "warning",
+    "scss.lint.emptyRules": "error",
+    "scss.lint.float": "warning",
+    "scss.lint.ieHack": "warning",
+    "scss.lint.important": "warning",
+    "scss.lint.importStatement": "warning",
+    "scss.lint.universalSelector": "warning",
+
+    "emmet.optimizeStylesheetParsing": false,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+
+    "python.pythonPath": "/usr/bin/python3",
+    "python.formatting.blackArgs": ["--line-length=120"],
+    "python.linting.lintOnSave": true,
+    "python.formatting.provider": "black",
+    "python.jediEnabled": false,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python"
+    },
+
+    "vim.easymotion": true,
+    "vim.easymotionMarkerYOffset": 1,
+    "vim.easymotionMarkerWidthPerChar": 8,
+    "vim.easymotionMarkerHeight": 18,
+    "vim.easymotionMarkerFontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "vim.easymotionMarkerBackgroundColor": "#f5f5f5",
+    "vim.easymotionMarkerForegroundColorOneChar": "#f00",
+    "vim.easymotionMarkerForegroundColorTwoChar": "#f00",
+
+    "vim.sneak": true,
+    "vim.camelCaseMotion.enable": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": false,
+    "vim.hlsearch": true,
+    "vim.ignorecase": true,
+    "vim.smartcase": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "d"],
+            "after": ["d", "d"]
+        },
+        {
+            "before": ["<C-n>"],
+            "commands": [":nohl"]
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-c>": false,
+        "<C-d>": false,
+        "<C-f>": false,
+        "<C-w>": false
+    },
+    "vim.debug.silent": true,
+    "vim.debug.loggingLevelForAlert": "error",
+    "vim.debug.loggingLevelForConsole": "error",
+
+    "shellcheck.enable": true,
+    "shellcheck.run": "onType",
+    "shellcheck.executablePath": "/snap/shellcheck/current/usr/bin/shellcheck",
+    "hadolint.hadolintPath": "/home/hendrik/.local/bin/hadolint",
+    "php.validate.executablePath": "/usr/bin/php"
 }

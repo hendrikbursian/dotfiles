@@ -14,7 +14,6 @@ alias gwip='git add && git commit -m "WIP"'
 # transparency
 alias tr='__set_transparency'
 
-# kill process on port
 alias killport='__killport'
 
 # copy to clipboard
@@ -40,3 +39,6 @@ alias t4='termdown -bs -t "Check your path" -c 900 90m'
 # to prevent page breakdowns the shm size needs to be increased
 alias sel='docker run --rm --network host --shm-size=512m selenium/standalone-chrome'
 alias selui='docker run --rm --network host --shm-size=512m --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --env="DISPLAY" selenium/standalone-chrome'
+
+# stop all docker containers
+alias docksall='docker stop $(docker ps -aq)'
