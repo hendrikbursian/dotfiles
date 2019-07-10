@@ -61,7 +61,7 @@ call plug#end()
 let g:netrw_winsize = 25
 let g:netrw_banner=1 "No header spam in directory mode
 let g:netrw_liststyle=3 "Tree style
-let g:netrw_browseim'_split=2
+let g:netrw_browse_split=2
 
 autocmd QuickFixCmdPost [^1]* nested cwindow " Shows quicklist after :make
 autocmd QuickFixCmdPost 1* nested lwindow
