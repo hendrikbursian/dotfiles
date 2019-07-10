@@ -4,12 +4,11 @@
 alias c='code'
 
 # git
-alias grb='git rebase -i origin/develop'
 alias gdev='git checkout develop && git pull'
-alias gpf='git push --force-with-lease'
 alias gcf='git commit --fixup'
 alias gs='git status'
-alias gwip='git add && git commit -m "WIP"'
+alias gwip='git add . && git commit -m "WIP"'
+alias gu='git undo'
 
 # transparency
 alias tr='__set_transparency'
