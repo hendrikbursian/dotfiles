@@ -54,8 +54,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
-Plug 'easymotion/vim-easymotion'
-Plug 'justinmk/vim-sneak'
 Plug 'wakatime/vim-wakatime'
 call plug#end()
 
@@ -63,11 +61,7 @@ call plug#end()
 let g:netrw_winsize = 25
 let g:netrw_banner=1 "No header spam in directory mode
 let g:netrw_liststyle=3 "Tree style
-let g:netrw_browse_split=2
-
-" Typescript
-let g:typescript_compiler_binary='./node_modules/.bin/tsc'
-" let g:typescript_compiler_options
+let g:netrw_browseim'_split=2
 
 autocmd QuickFixCmdPost [^1]* nested cwindow " Shows quicklist after :make
 autocmd QuickFixCmdPost 1* nested lwindow

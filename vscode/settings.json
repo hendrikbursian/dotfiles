@@ -3,7 +3,7 @@
     "editor.minimap.enabled": false,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.fontSize": 14,
+    "editor.fontSize": 16,
     "editor.lineNumbers": "on",
     "editor.renderWhitespace": "none",
     "editor.suggestSelection": "first",
@@ -29,9 +29,10 @@
     "zenMode.fullScreen": false,
     "zenMode.hideLineNumbers": false,
     "zenMode.restore": true,
-    
+
     "git.enabled": true,
     "git.autofetch": true,
+    "git.enableCommitSigning": true,
     "git.enableSmartCommit": true,
     "git.branchWhitespaceChar": "-",
     "git.showProgress": true,
@@ -46,16 +47,16 @@
     "gitlens.views.repositories.autoRefresh": true,
     "gitlens.settings.mode": "advanced",
     "gitlens.advanced.telemetry.enabled": false,
-    
+
     "gitlab.instanceUrl": "https://gitlab.intern.atmina.systems",
-    
+
     "javascript.preferences.quoteStyle": "single",
     "javascript.preferences.importModuleSpecifier": "non-relative",
     "javascript.updateImportsOnFileMove.enabled": "always",
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    
+
     "typescript.updateImportsOnFileMove.enabled": "always",
     "typescript.suggest.autoImports": true,
     "typescript.implementationsCodeLens.enabled": true,
@@ -63,7 +64,7 @@
     "typescript.referencesCodeLens.enabled": false,
     "typescript.suggest.completeFunctionCalls": true,
     "typescript.tsserver.log": "verbose",
-    
+
     "tslint.jsEnable": true,
     "tslint.packageManager": "yarn",
     "tslint.configFile": "linter_configurations/tslint.json",
@@ -153,19 +154,18 @@
     "vim.debug.silent": true,
     "vim.debug.loggingLevelForAlert": "error",
     "vim.debug.loggingLevelForConsole": "error",
-    
+
     "shellcheck.enable": true,
     "shellcheck.run": "onType",
     "shellcheck.executablePath": "/snap/shellcheck/current/usr/bin/shellcheck",
 
     "php.validate.executablePath": "/usr/bin/php",
-    
+
     "[xml]": {
         "editor.defaultFormatter": "DotJoshJohnson.xml"
     },
-    
+
     "[markdown]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    
+    }
 }

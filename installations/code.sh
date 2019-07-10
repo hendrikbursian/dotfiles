@@ -21,5 +21,4 @@ code-insiders --install-extension ms-vsliveshare.vsliveshare
 code-insiders --install-extension ms-vscode-remote.remote-ssh
 code-insiders --install-extension ms-vscode-remote.remote-container
 code-insiders --install-extension ms-vscode-remote.vscode-remote-extensionpack
-
-
+code-insiders --install-extensions arcticicestudio.nord-visual-studio-code
