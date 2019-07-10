@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # vscode
-alias c='code'
+alias c='code-insiders'
 
 # git
 alias gdev='git checkout develop && git pull'

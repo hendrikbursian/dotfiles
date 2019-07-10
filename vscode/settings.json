@@ -19,9 +19,9 @@
     "window.menuBarVisibility": "hidden",
     "window.title": "${dirty}${activeEditorLong}${separator}${rootName}${separator}${appName}",
     "window.zoomLevel": -1,
+    "workbench.colorTheme": "Nord",
     "workbench.editor.showTabs": false,
     "workbench.statusBar.feedback.visible": false,
-    "workbench.colorTheme": "Quiet Light",
     "workbench.editor.enablePreview": true,
     "workbench.editor.enablePreviewFromQuickOpen": true,
     "workbench.settings.editor": "json",
@@ -70,6 +70,8 @@
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+
+    "hadolint.hadolintPath": "hadolint",
 
     "prettier.printWidth": 140,
     "prettier.singleQuote": true,
@@ -155,11 +157,15 @@
     "shellcheck.enable": true,
     "shellcheck.run": "onType",
     "shellcheck.executablePath": "/snap/shellcheck/current/usr/bin/shellcheck",
-    "hadolint.hadolintPath": "/home/hendrik/.local/bin/hadolint",
+
     "php.validate.executablePath": "/usr/bin/php",
     
     "[xml]": {
         "editor.defaultFormatter": "DotJoshJohnson.xml"
+    },
+    
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     
 }
