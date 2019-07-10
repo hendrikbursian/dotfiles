@@ -4,7 +4,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "editor.fontSize": 14,
-  "editor.lineNumbers": "relative",
+  "editor.lineNumbers": "on",
   "editor.renderWhitespace": "none",
   "editor.suggestSelection": "first",
   "editor.trimAutoWhitespace": true,
@@ -27,6 +27,7 @@
   "zenMode.hideLineNumbers": false,
   "zenMode.restore": true,
 
+  "git.enableCommitSigning": true,
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   "git.branchWhitespaceChar": "-",
@@ -70,6 +71,7 @@
   "prettier.singleQuote": true,
   "prettier.tabWidth": 4,
   "prettier.trailingComma": "none",
+  "prettier.tslintIntegration": true,
 
   "scss.lint.boxModel": "warning",
   "scss.lint.duplicateProperties": "warning",
@@ -150,5 +152,12 @@
   "shellcheck.run": "onType",
   "shellcheck.executablePath": "/snap/shellcheck/current/usr/bin/shellcheck",
 
-  "php.validate.executablePath": "/usr/bin/php"
+  "php.validate.executablePath": "/usr/bin/php",
+  "window.zoomLevel": -1,
+  "terminal.integrated.rendererType": "dom",
+  
+  "[xml]": {
+    "editor.defaultFormatter": "DotJoshJohnson.xml"
+  },
+  "terminal.integrated.shell.linux": "/bin/bash"
 }
