@@ -38,5 +38,9 @@
     {
         "key": "ctrl+shift+e",
         "command": "-workbench.view.explorer"
+    },
+    {
+        "key": "ctrl+m",
+        "command": "-editor.action.toggleTabFocusMode"
     }
 ]

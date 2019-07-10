@@ -4,7 +4,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontSize": 14,
-    "editor.lineNumbers": "relative",
+    "editor.lineNumbers": "on",
     "editor.renderWhitespace": "none",
     "editor.suggestSelection": "first",
     "editor.trimAutoWhitespace": true,
@@ -28,6 +28,7 @@
     "zenMode.hideLineNumbers": false,
     "zenMode.restore": true,
 
+    "git.enabled": true,
     "git.autofetch": true,
     "git.enableSmartCommit": true,
     "git.branchWhitespaceChar": "-",
@@ -43,7 +44,7 @@
     "gitlens.views.repositories.autoRefresh": true,
     "gitlens.settings.mode": "advanced",
     "gitlens.advanced.telemetry.enabled": false,
-
+    
     "gitlab.instanceUrl": "https://gitlab.intern.atmina.systems",
 
     "javascript.preferences.quoteStyle": "single",
@@ -52,7 +53,7 @@
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-
+    
     "typescript.updateImportsOnFileMove.enabled": "always",
     "typescript.suggest.autoImports": true,
     "typescript.implementationsCodeLens.enabled": true,
@@ -62,8 +63,8 @@
     "typescript.tsserver.log": "verbose",
 
     "tslint.jsEnable": true,
-    "tslint.ignoreDefinitionFiles": false,
-    "typescript.tsdk": "node_modules/typescript/lib",
+    "tslint.packageManager": "yarn",
+    "tslint.configFile": "linter_configurations/tslint.json",
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -152,5 +153,9 @@
     "shellcheck.run": "onType",
     "shellcheck.executablePath": "/snap/shellcheck/current/usr/bin/shellcheck",
     "hadolint.hadolintPath": "/home/hendrik/.local/bin/hadolint",
-    "php.validate.executablePath": "/usr/bin/php"
+    "php.validate.executablePath": "/usr/bin/php",
+
+    "[xml]": {
+        "editor.defaultFormatter": "DotJoshJohnson.xml"
+    }
 }
