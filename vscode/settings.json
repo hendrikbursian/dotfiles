@@ -21,7 +21,6 @@
     "window.zoomLevel": -1,
     "workbench.colorTheme": "Nord",
     "workbench.editor.showTabs": false,
-    "workbench.statusBar.feedback.visible": false,
     "workbench.editor.enablePreview": true,
     "workbench.editor.enablePreviewFromQuickOpen": true,
     "workbench.settings.editor": "json",
@@ -158,8 +157,6 @@
     "shellcheck.enable": true,
     "shellcheck.run": "onType",
     "shellcheck.executablePath": "/snap/shellcheck/current/usr/bin/shellcheck",
-
-    "php.validate.executablePath": "/usr/bin/php",
 
     "[xml]": {
         "editor.defaultFormatter": "DotJoshJohnson.xml"

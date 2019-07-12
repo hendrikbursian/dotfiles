@@ -7,6 +7,8 @@ export ZSH_CUSTOM="$HOME/.zsh_custom"
 export DOTFILES="$(dirname "$(readlink $HOME/.zshrc)")"
 
 ZSH_THEME="avit"
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
 
 plugins=(
     git
@@ -14,7 +16,7 @@ plugins=(
     docker-compose
 )
 
-# Oh my zsh
+# oh-my-zsh
 source "$ZSH/oh-my-zsh.sh"
 
 # asdf-vm
@@ -22,10 +24,7 @@ source "$HOME/.asdf/asdf.sh"
 source "$HOME/.asdf/completions/asdf.bash"
 
 # kubectl
-source <(kubectl completion zsh)
-
-ENABLE_CORRECTION="true"
-COMPLETION_WAITING_DOTS="true"
+[[ $(microk8s.kubectl completion zsh) != *"microk8s is not running"* ]] && source <(microk8s.kubectl completion zsh)
 
 # Editor settings
 export VISUAL=vim
