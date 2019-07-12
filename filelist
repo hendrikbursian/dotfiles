@@ -1,6 +1,7 @@
 .gitconfig@gitconfig
 .gitignore@gitignore
 .gitmessage@gitmessage
+../../usr/share/qtermwidget5/color-schemes/Nord.colorscheme@Nord.colorscheme
 .vimrc@vimrc
 .zshrc@zshrc
 .asdfrc@asdfrc
