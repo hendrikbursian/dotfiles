@@ -33,6 +33,7 @@
     "workbench.editor.showTabs": false,
     "workbench.editor.enablePreview": true,
     "workbench.editor.enablePreviewFromQuickOpen": true,
+    "workbench.panel.defaultLocation": "right",
     "workbench.settings.editor": "json",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.useExperimentalGridLayout": true,

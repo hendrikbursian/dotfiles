@@ -100,5 +100,5 @@
         "key": "ctrl+k ctrl+f",
         "command": "prettier",
         "when": "editorHasDocumentSelectionFormattingProvider && editorHasDocumentSelectionFormattingProvider && editorTextFocus && !editorReadonly"
-    } 
+    }
 ]
