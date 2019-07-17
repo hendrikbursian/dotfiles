@@ -13,7 +13,7 @@
 .config/compton.conf@compton.conf
 .config/openbox/lxqt-rc.xml@openbox/lxqt-rc.xml
 .config/mimeapps.list@mimeapps.list
-.config/qterminal.ini@qterminal.ini
+.config/qterminal.org/qterminal.ini@qterminal.ini
 .config/lxqt/globalkeyshortcuts.conf@lxqt/globalkeyshortcuts.conf
 .config/lxqt/lxqt.conf@lxqt/lxqt.conf
 .config/lxqt/lxqt-config-appearance.conf@lxqt/lxqt-config-appearance.conf
