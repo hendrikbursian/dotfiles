@@ -1,5 +1,6 @@
 {
     "breadcrumbs.enabled": true,
+    "breadcrumbs.filePath": "last",
     "editor.minimap.enabled": false,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
@@ -14,9 +15,18 @@
     },
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
+    "explorer.enableDragAndDrop": true,
+    "search.quickOpen.includeHistory": true,
+    "search.smartCase": true,
     "terminal.integrated.rendererType": "dom",
     "terminal.integrated.shell.linux": "/bin/zsh",
+    "window.closeWhenEmpty": false,
+    "window.enableMenuBarMnemonics": true,
     "window.menuBarVisibility": "hidden",
+    "window.newWindowDimensions": "default",
+    "window.openFoldersInNewWindow": "on",
+    "window.restoreFullscreen": false,
+    "window.restoreWindows": "one",
     "window.title": "${dirty}${activeEditorLong}${separator}${rootName}${separator}${appName}",
     "window.zoomLevel": 0,
     "workbench.colorTheme": "Nord",
@@ -25,6 +35,7 @@
     "workbench.editor.enablePreviewFromQuickOpen": true,
     "workbench.settings.editor": "json",
     "workbench.startupEditor": "newUntitledFile",
+    "workbench.useExperimentalGridLayout": true,
     "zenMode.fullScreen": false,
     "zenMode.hideLineNumbers": false,
     "zenMode.restore": true,
@@ -65,7 +76,6 @@
 
     "tslint.jsEnable": true,
     "tslint.packageManager": "yarn",
-    "tslint.configFile": "linter_configurations/tslint.json",
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
