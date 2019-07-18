@@ -17,6 +17,7 @@ alias killport='__killport'
 
 # copy to clipboard
 alias clip='xclip -sel clip<<<'
+alias clipfile='xclip -selection clip'
 
 # Screenshots
 alias ssareafile='import $HOME/Desktop/screenshot.png'
@@ -28,9 +29,6 @@ alias a='source */bin/activate'
 # make executable
 alias x='chmod +x'
 
-# load env files
-alias lenv='source .env.* && echo "Environment loaded"'
-
 # timers
 alias coffee='termdown -bs -T "Coffee! :)" -c 20 5m'
 alias t1='termdown -bs -t "Check your path" -c 150 15m'
@@ -39,7 +37,6 @@ alias t3='termdown -bs -t "Check your path" -c 600 60m'
 alias t4='termdown -bs -t "Check your path" -c 900 90m'
 
 # selenium
-# to prevent page breakdowns the shm size needs to be increased
 alias sel='docker run --rm --network host --shm-size=512m selenium/standalone-chrome'
 alias selui='docker run --rm --network host --shm-size=512m --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --env="DISPLAY" selenium/standalone-chrome'
 
