@@ -7,7 +7,7 @@
     <screen_edge_strength>50</screen_edge_strength>
   </resistance>
   <focus>
-    <focusNew>yes</focusNew>
+    <focusNew>no</focusNew>
     <!-- always try to focus new windows when they appear. other rules do
        apply -->
     <followMouse>no</followMouse>
