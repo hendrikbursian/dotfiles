@@ -10,9 +10,6 @@ alias gs='git status'
 alias gwip='git add . && git commit -m "WIP"'
 alias gu='git undo'
 
-# transparency
-alias tr='__set_transparency'
-
 alias killport='__killport'
 
 # copy to clipboard

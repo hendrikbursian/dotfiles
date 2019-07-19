@@ -2,8 +2,6 @@
 
 # vscode-insiders
 sudo snap install code-insiders --classic
-
-code-insiders --install-extension eg2.tslint
 code-insiders --install-extension exiasr.hadolint
 code-insiders --install-extension timonwong.shellcheck
 code-insiders --install-extension esbenp.prettier-vscode
@@ -15,6 +13,7 @@ code-insiders --install-extension dotjoshjohnson.xml
 code-insiders --install-extension pflannery.vscode-versionlens
 code-insiders --install-extension peterjausovec.vscode-docker
 code-insiders --install-extension eamodio.gitlens
+code-insiders --install-extension ms-vscode.vscode-typescript-tslint-plugin
 code-insiders --install-extension ms-python.python
 code-insiders --install-extension ms-vsliveshare.vsliveshare
 code-insiders --install-extension ms-vscode-remote.remote-ssh
