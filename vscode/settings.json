@@ -63,9 +63,6 @@
     "javascript.preferences.quoteStyle": "single",
     "javascript.preferences.importModuleSpecifier": "non-relative",
     "javascript.updateImportsOnFileMove.enabled": "always",
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
 
     "typescript.updateImportsOnFileMove.enabled": "always",
     "typescript.suggest.autoImports": true,
@@ -98,35 +95,45 @@
     "scss.lint.universalSelector": "warning",
 
     "emmet.optimizeStylesheetParsing": false,
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-
-    "[shellscript]": {
-        "editor.defaultFormatter": "foxundermoon.shell-format"
-    },
-
+    
     "python.pythonPath": "/usr/bin/python3",
     "python.formatting.blackArgs": ["--line-length=120"],
     "python.linting.lintOnSave": true,
     "python.formatting.provider": "black",
     "python.jediEnabled": false,
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.python"
-    },
 
     "shellcheck.enable": true,
     "shellcheck.run": "onType",
     "shellcheck.executablePath": "/snap/shellcheck/current/usr/bin/shellcheck",
 
-    "[xml]": {
-        "editor.defaultFormatter": "DotJoshJohnson.xml"
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
 
     "[markdown]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python"
+    },
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    
+    "[sql]": {
+        "editor.defaultFormatter": "mtxr.sqltools"
+    },
+
+    "[xml]": {
+        "editor.defaultFormatter": "DotJoshJohnson.xml"
     }
 }
