@@ -25,9 +25,6 @@
 .config/lxqt/power.conf@lxqt/power.conf
 .config/lxqt/session.conf@lxqt/session.conf
 .config/lxqt/windowmanagers.conf@lxqt/windowmanagers.conf
-.config/Code/User/snippets@vscode/snippets
-.config/Code/User/settings.json@vscode/settings.json
-.config/Code/User/keybindings.json@vscode/keybindings.json
 .config/Code - Insiders/User/snippets@vscode/snippets
 .config/Code - Insiders/User/settings.json@vscode/settings.json
 .config/Code - Insiders/User/keybindings.json@vscode/keybindings.json

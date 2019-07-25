@@ -73,6 +73,10 @@
         "when": "editorTextFocus && editorLangId == html"
     },
     {
+        "key": "shift+alt+right",
+        "command": "-expandLineSelection",
+    },
+    {
         "key": "ctrl+shift+b",
         "command": "-workbench.action.tasks.build"
     },

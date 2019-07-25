@@ -8,6 +8,7 @@
 [core]
 	excludesfile = /home/hendrik/.gitignore
 	autocrlf = input
+	safecrlf = warn
 [diff]
 	tool = vimdiff
 [merge]
