@@ -13,6 +13,7 @@ code-insiders --install-extension dotjoshjohnson.xml
 code-insiders --install-extension pflannery.vscode-versionlens
 code-insiders --install-extension peterjausovec.vscode-docker
 code-insiders --install-extension eamodio.gitlens
+code-insiders --install-extension mtxr.sqltools
 code-insiders --install-extension ms-vscode.vscode-typescript-tslint-plugin
 code-insiders --install-extension ms-python.python
 code-insiders --install-extension ms-vsliveshare.vsliveshare
