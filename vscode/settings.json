@@ -3,6 +3,7 @@
     "breadcrumbs.filePath": "on",
     "editor.minimap.enabled": false,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.dragAndDrop": true,
     "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontSize": 16,
     "editor.lineNumbers": "on",
