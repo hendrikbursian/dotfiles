@@ -19,6 +19,22 @@
 			"\t$2",
 			"}",
 		],
-		"description": "Add min-width query with breakpoint"
+		"description": "Add min-width query with breakpoint."
+	},
+	"Insert min-width media query": {
+		"prefix": "qmin",
+		"body": [
+			"@media (min-width: screensize($1)) {",
+			"    $2",
+			"}",
+		],
+		"description": "Insert min-width media query."
+	},
+	"Insert red border": {
+		"prefix": "bred",
+		"body": [
+			"border: 1px solid #f00;",
+		],
+		"description": "Insert red border for debugging."
 	},
 }

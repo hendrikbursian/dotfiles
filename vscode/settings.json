@@ -151,10 +151,13 @@
     "vim.debug.loggingLevelForAlert": "error",
     "vim.debug.loggingLevelForConsole": "error",
 
+    "sqltools.telemetry": false,
+    "sqltools.useNodeRuntime": true,
+
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    
+
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -173,7 +176,7 @@
     "[shellscript]": {
         "editor.defaultFormatter": "foxundermoon.shell-format"
     },
-    
+
     "[sql]": {
         "editor.defaultFormatter": "mtxr.sqltools"
     },
