@@ -21,4 +21,21 @@
 		],
 		"description": "Add min-width query with breakpoint"
 	},
+	"Insert red dotted border": {
+		"prefix": "bred",
+		"body": [
+			"border: 2px dotted #f007;",
+		],
+		"description": "Insert red dotted border to debug selectors"
+	},
+	"Insert min-width media query": {
+		"prefix": "qmin",
+		"body": [
+			"@media (min-width: $1px) {",
+			"    $2",
+			"}"
+		],
+		"description": "Insert min-width media query"
+	}
+
 }

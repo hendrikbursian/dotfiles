@@ -99,10 +99,5 @@
     {
         "key": "ctrl+b shift+5",
         "command": "workbench.action.newGroupRight"
-    },
-    {
-        "key": "ctrl+k ctrl+f",
-        "command": "prettier",
-        "when": "editorHasDocumentSelectionFormattingProvider && editorHasDocumentSelectionFormattingProvider && editorTextFocus && !editorReadonly"
     }
 ]
