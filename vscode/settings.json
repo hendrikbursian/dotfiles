@@ -6,6 +6,7 @@
     "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontSize": 16,
     "editor.lineNumbers": "on",
+    "editor.renderLineHighlight": "line",
     "editor.renderWhitespace": "none",
     "editor.suggestSelection": "first",
     "editor.trimAutoWhitespace": true,
@@ -17,7 +18,7 @@
     "explorer.confirmDragAndDrop": false,
     "explorer.enableDragAndDrop": true,
     "search.quickOpen.includeHistory": true,
-    "search.smartCase": true,
+    "search.smartCase": false,
     "terminal.integrated.rendererType": "dom",
     "window.closeWhenEmpty": false,
     "window.enableMenuBarMnemonics": false,
@@ -59,6 +60,13 @@
     "gitlens.advanced.telemetry.enabled": false,
 
     "gitlab.instanceUrl": "https://gitlab.intern.atmina.systems",
+
+    "rest-client.previewOption": "full",
+    "rest-client.enableSendRequestCodeLens": true,
+    "rest-client.enableTelemetry": false,
+    "rest-client.enableCustomVariableReferencesCodeLens": true,
+    "rest-client.previewColumn": "beside",
+    "rest-client.previewResponsePanelTakeFocus": true,
 
     "javascript.preferences.quoteStyle": "single",
     "javascript.preferences.importModuleSpecifier": "non-relative",
@@ -105,6 +113,52 @@
     "shellcheck.enable": true,
     "shellcheck.run": "onType",
     "shellcheck.executablePath": "/snap/shellcheck/current/usr/bin/shellcheck",
+
+    "vim.easymotion": true,
+    "vim.easymotionMarkerYOffset": 1,
+    "vim.easymotionMarkerWidthPerChar": 8,
+    "vim.easymotionMarkerHeight": 18,
+    "vim.easymotionMarkerFontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "vim.easymotionMarkerBackgroundColor": "#f5f5f5",
+    "vim.easymotionMarkerForegroundColorOneChar": "#f00",
+    "vim.easymotionMarkerForegroundColorTwoChar": "#f00",
+
+    "vim.sneak": true,
+    "vim.camelCaseMotion.enable": true,
+    "vim.incsearch": true,
+    "vim.overrideCopy": false, 
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": false,
+    "vim.hlsearch": true,
+    "vim.ignorecase": true,
+    "vim.smartcase": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "d"],
+            "after": ["d", "d"]
+        },
+        {
+            "before": ["<C-n>"],
+            "commands": [":nohl"]
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-c>": false,
+        "<C-d>": false,
+        "<C-f>": false,
+        "<C-w>": false
+    },
+    "vim.debug.silent": true,
+    "vim.debug.loggingLevelForAlert": "error",
+    "vim.debug.loggingLevelForConsole": "error",
 
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
