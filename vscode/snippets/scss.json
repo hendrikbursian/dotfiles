@@ -1,25 +1,28 @@
 {
-	// Place your snippets for scss here. Each snippet is defined under a snippet name and has a prefix, body and 
-	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
-	// same ids are connected.
-	// Example:
-	// "Print to console": {
-	// 	"prefix": "log",
-	// 	"body": [
-	// 		"console.log('$1');",
-	// 		"$2"
-	// 	],
-	// 	"description": "Log output to console"
-	// }
 	"Insert breakpoint mixin": {
 		"prefix": "bp",
 		"body": [
 			"@include breakpoint($1) {",
 			"\t$2",
-			"}",
+			"}"
 		],
-		"description": "Add min-width query with breakpoint"
+		"description": "Add min-width query with breakpoint."
+	},
+	"Insert min-width media query": {
+		"prefix": "qmin",
+		"body": [
+			"@media (min-width: screensize($1)) {",
+			"    $2",
+			"}"
+		],
+		"description": "Insert min-width media query."
+	},
+	"Insert red border": {
+		"prefix": "bred",
+		"body": [
+			"border: 1px solid #f00;"
+		],
+		"description": "Insert red border for debugging."
 	},
 	"Insert red dotted border": {
 		"prefix": "bred",
@@ -27,15 +30,5 @@
 			"border: 2px dotted #f007;",
 		],
 		"description": "Insert red dotted border to debug selectors"
-	},
-	"Insert min-width media query": {
-		"prefix": "qmin",
-		"body": [
-			"@media (min-width: $1px) {",
-			"    $2",
-			"}"
-		],
-		"description": "Insert min-width media query"
 	}
-
 }

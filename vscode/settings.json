@@ -3,6 +3,7 @@
     "breadcrumbs.filePath": "on",
     "editor.minimap.enabled": false,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.dragAndDrop": true,
     "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontSize": 16,
     "editor.lineNumbers": "on",
@@ -103,7 +104,7 @@
     "scss.lint.universalSelector": "warning",
 
     "emmet.optimizeStylesheetParsing": false,
-    
+
     "python.pythonPath": "/usr/bin/python3",
     "python.formatting.blackArgs": ["--line-length=120"],
     "python.linting.lintOnSave": true,
@@ -160,10 +161,13 @@
     "vim.debug.loggingLevelForAlert": "error",
     "vim.debug.loggingLevelForConsole": "error",
 
+    "sqltools.telemetry": false,
+    "sqltools.useNodeRuntime": true,
+
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    
+
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -182,7 +186,7 @@
     "[shellscript]": {
         "editor.defaultFormatter": "foxundermoon.shell-format"
     },
-    
+
     "[sql]": {
         "editor.defaultFormatter": "mtxr.sqltools"
     },
