@@ -9,6 +9,7 @@
     "editor.lineNumbers": "on",
     "editor.minimap.enabled": true,
     "editor.minimap.renderCharacters": true,
+    "editor.renderLineHighlight": "line",
     "editor.renderWhitespace": "none",
     "editor.suggestSelection": "first",
     "editor.tabCompletion": "on",
@@ -21,7 +22,7 @@
     "explorer.confirmDragAndDrop": false,
     "explorer.enableDragAndDrop": true,
     "search.quickOpen.includeHistory": true,
-    "search.smartCase": true,
+    "search.smartCase": false,
     "terminal.integrated.rendererType": "dom",
     "window.closeWhenEmpty": false,
     "window.enableMenuBarMnemonics": false,
@@ -64,6 +65,13 @@
 
     "gitlab.instanceUrl": "https://gitlab.intern.atmina.systems",
 
+    "rest-client.previewOption": "full",
+    "rest-client.enableSendRequestCodeLens": true,
+    "rest-client.enableTelemetry": false,
+    "rest-client.enableCustomVariableReferencesCodeLens": true,
+    "rest-client.previewColumn": "beside",
+    "rest-client.previewResponsePanelTakeFocus": true,
+
     "javascript.preferences.quoteStyle": "single",
     "javascript.preferences.importModuleSpecifier": "non-relative",
     "javascript.updateImportsOnFileMove.enabled": "always",
@@ -75,9 +83,6 @@
     "typescript.referencesCodeLens.enabled": false,
     "typescript.suggest.completeFunctionCalls": true,
     "typescript.tsserver.log": "verbose",
-
-    "rest-client.enableTelemetry": false,
-    "rest-client.previewOption": "full",
 
     "tslint.jsEnable": true,
     "tslint.packageManager": "yarn",
@@ -127,6 +132,7 @@
     "vim.sneak": true,
     "vim.camelCaseMotion.enable": true,
     "vim.incsearch": true,
+    "vim.overrideCopy": false, 
     "vim.useSystemClipboard": false,
     "vim.useCtrlKeys": false,
     "vim.autoindent": true,
