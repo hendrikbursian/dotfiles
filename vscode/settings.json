@@ -7,7 +7,7 @@
     "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontSize": 16,
     "editor.lineNumbers": "on",
-    "editor.minimap.enabled": true,
+    "editor.minimap.enabled": false,
     "editor.minimap.renderCharacters": true,
     "editor.renderLineHighlight": "line",
     "editor.renderWhitespace": "none",
