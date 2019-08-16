@@ -10,8 +10,6 @@ alias gs='git status'
 alias gwip='git add . && git commit -m "WIP"'
 alias gu='git undo'
 
-alias killport='__killport'
-
 # copy to clipboard
 alias clip='xclip -sel clip<<<'
 alias clipfile='xclip -selection clip'
