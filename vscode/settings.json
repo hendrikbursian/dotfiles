@@ -52,7 +52,7 @@
     "workbench.panel.defaultLocation": "bottom",
     "workbench.settings.editor": "json",
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.useExperimentalGridLayout": true,
+    "workbench.useExperimentalGridLayout": false,
     "zenMode.centerLayout": false,
     "zenMode.fullScreen": false,
     "zenMode.hideLineNumbers": false,
