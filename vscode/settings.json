@@ -31,7 +31,8 @@
     "explorer.confirmDragAndDrop": false,
     "explorer.enableDragAndDrop": true,
     "files.associations": {
-        "**/nginx/**": "NGINX"
+        "**/nginx/**": "NGINX",
+        "**/postfix/**": "ini"
     },
     "search.quickOpen.includeHistory": true,
     "search.smartCase": false,
