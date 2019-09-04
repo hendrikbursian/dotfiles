@@ -30,10 +30,6 @@
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "explorer.enableDragAndDrop": true,
-    "files.associations": {
-        "**/nginx/**": "NGINX",
-        "**/postfix/**": "ini"
-    },
     "search.quickOpen.includeHistory": true,
     "search.smartCase": false,
     "terminal.integrated.rendererType": "dom",
@@ -125,6 +121,9 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
 
+    "eslint.packageManager": "yarn",
+    "npm.packageManager": "yarn",
+
     "hadolint.hadolintPath": "hadolint",
 
     "prettier.printWidth": 140,
@@ -157,6 +156,7 @@
     "shellcheck.run": "onType",
     "shellcheck.executablePath": "/snap/shellcheck/current/usr/bin/shellcheck",
 
+    "vim.disableExtension": true,
     "vim.easymotion": true,
     "vim.easymotionMarkerYOffset": 2,
     "vim.easymotionMarkerWidthPerChar": 7,
@@ -168,7 +168,7 @@
     "vim.sneak": true,
     "vim.camelCaseMotion.enable": true,
     "vim.incsearch": true,
-    "vim.overrideCopy": false, 
+    "vim.overrideCopy": false,
     "vim.useSystemClipboard": false,
     "vim.useCtrlKeys": false,
     "vim.autoindent": true,

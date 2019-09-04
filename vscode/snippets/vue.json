@@ -1,0 +1,12 @@
+{
+	"Insert seperated template": {
+		"prefix": "vuesep",
+		"body": [
+			"<template src=\"$1.html\"></template>",
+			"<script lang=\"ts\" src=\"$1.ts\"></script>",
+			"<style lang=\"scss\" src=\"$1.scss\"></style>",
+			"$2"
+		],
+		"description": "Inserts a template for vue files that refernences to seperate files."
+	}
+}
