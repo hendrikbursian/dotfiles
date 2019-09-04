@@ -30,6 +30,9 @@
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "explorer.enableDragAndDrop": true,
+    "git.autoRepositoryDetection": "subFolders",
+    "git.promptToSaveFilesBeforeCommit": "staged",
+    "git.smartCommitChanges": "tracked",
     "search.quickOpen.includeHistory": true,
     "search.smartCase": false,
     "terminal.integrated.rendererType": "dom",
@@ -144,6 +147,8 @@
     "sqltools.useNodeRuntime": true,
 
     "emmet.optimizeStylesheetParsing": false,
+
+    "browser-preview.chromeExecutable": "chromium-browser",
 
     "python.formatting.blackArgs": ["--line-length=120"],
     "python.formatting.provider": "black",
