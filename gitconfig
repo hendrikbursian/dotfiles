@@ -4,7 +4,7 @@
 	signingKey = D957CA89A0A3726A
 
 	# email = hendrik.bursian@atmina.de
-	# signingKey = 105B7E9574F16AEB
+	# signingKey = D56185113B0639CC
 [core]
 	excludesfile = /home/hendrik/.gitignore
 	autocrlf = input
