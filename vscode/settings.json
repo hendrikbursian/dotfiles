@@ -1,9 +1,13 @@
 {
     "breadcrumbs.enabled": true,
     "breadcrumbs.filePath": "on",
+    "editor.acceptSuggestionOnCommitCharacter": true,
     "editor.cursorSurroundingLines": 10,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.dragAndDrop": true,
+    "editor.fastScrollSensitivity": 5,
+    "editor.folding": true,
+    "editor.foldingStrategy": "auto",
     "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontSize": 16,
     "editor.lineNumbers": "on",
@@ -11,16 +15,25 @@
     "editor.minimap.renderCharacters": true,
     "editor.renderLineHighlight": "line",
     "editor.renderWhitespace": "none",
+    "editor.showFoldingControls": "mouseover",
     "editor.suggestSelection": "first",
     "editor.tabCompletion": "on",
     "editor.trimAutoWhitespace": true,
     "editor.quickSuggestionsDelay": 0,
+    "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {
-        "source.fixAll.tslint": true
+        "source.fixAll.tslint": true,
+        "source.organizeImports": true,
+        "source.fixAll": true
     },
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "explorer.enableDragAndDrop": true,
+    "files.associations": {
+        "**/nginx/**": "nginx",
+        "**/*.conf{.tmpl}": "nginx",
+    },
+    "files.hotExit": "onExit",
     "search.quickOpen.includeHistory": true,
     "search.smartCase": false,
     "terminal.integrated.rendererType": "dom",
@@ -45,7 +58,7 @@
     "zenMode.fullScreen": false,
     "zenMode.hideLineNumbers": false,
     "zenMode.restore": true,
-
+    
     "git.enabled": true,
     "git.autofetch": true,
     "git.enableCommitSigning": true,
@@ -58,45 +71,49 @@
     "git.useForcePushWithLease": true,
     "git.autorefresh": true,
     "diffEditor.ignoreTrimWhitespace": false,
-
+    
     "gitlens.blame.ignoreWhitespace": false,
     "gitlens.views.repositories.autoRefresh": true,
     "gitlens.advanced.telemetry.enabled": false,
 
     "gitlab.instanceUrl": "https://gitlab.intern.atmina.systems",
-
+    
     "rest-client.previewOption": "full",
     "rest-client.enableSendRequestCodeLens": true,
     "rest-client.enableTelemetry": false,
     "rest-client.enableCustomVariableReferencesCodeLens": true,
     "rest-client.previewColumn": "beside",
     "rest-client.previewResponsePanelTakeFocus": true,
-
+    
     "javascript.preferences.quoteStyle": "single",
-    "javascript.preferences.importModuleSpecifier": "non-relative",
+    "javascript.preferences.importModuleSpecifier": "relative",
     "javascript.updateImportsOnFileMove.enabled": "always",
-
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "typescript.suggest.autoImports": true,
+    
     "typescript.implementationsCodeLens.enabled": true,
+    "typescript.preferences.importModuleSpecifier": "relative",
     "typescript.preferences.quoteStyle": "single",
     "typescript.referencesCodeLens.enabled": false,
+    "typescript.suggest.autoImports": true,
     "typescript.suggest.completeFunctionCalls": true,
-    "typescript.tsserver.log": "verbose",
-
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    
+    "eslint.autoFixOnSave": true,
+    "eslint.packageManager": "yarn",
+    
+    "tslint.alwaysShowRuleFailuresAsWarnings": false,
+    "tslint.configFile": "tslint.json",
     "tslint.jsEnable": true,
     "tslint.packageManager": "yarn",
     "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "vscode.typescript-language-features"
     },
-
+    
+    "prettier.requireConfig": true,
+    
     "hadolint.hadolintPath": "hadolint",
-
-    "prettier.printWidth": 140,
-    "prettier.singleQuote": true,
-    "prettier.tabWidth": 4,
-    "prettier.trailingComma": "none",
-
+    
+    "npm.packageManager": "yarn",
+    
     "scss.lint.boxModel": "warning",
     "scss.lint.duplicateProperties": "warning",
     "scss.lint.emptyRules": "error",
@@ -105,22 +122,30 @@
     "scss.lint.important": "warning",
     "scss.lint.importStatement": "warning",
     "scss.lint.universalSelector": "warning",
-
+    
     "sqltools.telemetry": false,
     "sqltools.useNodeRuntime": true,
-
+    
     "emmet.optimizeStylesheetParsing": false,
-
-    "python.pythonPath": "/usr/bin/python3",
+    
     "python.formatting.blackArgs": ["--line-length=120"],
-    "python.linting.lintOnSave": true,
     "python.formatting.provider": "black",
-    "python.jediEnabled": false,
-
+    "python.insidersChannel": "weekly",
+    "python.linting.lintOnSave": true,
+    "python.pythonPath": "/usr/bin/python3",
+    
     "shellcheck.enable": true,
     "shellcheck.run": "onType",
     "shellcheck.executablePath": "/snap/shellcheck/current/usr/bin/shellcheck",
-
+    
+    "yaml.completion": true,
+    "yaml.hover": true,
+    "yaml.schemaStore.enable": false,
+    "yaml.schemas": {
+        "http://json.schemastore.org/swagger-2.0": "swagger.yml"
+    },
+    "yaml.validate": true,
+    
     "vim.easymotion": true,
     "vim.easymotionMarkerYOffset": 2,
     "vim.easymotionMarkerWidthPerChar": 7,

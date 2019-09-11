@@ -1,11 +1,11 @@
 # Profiling
 # zmodload zsh/zprof
 
-export PATH="$HOME/.local/bin:.$HOME/bin:/usr/local/bin:/snap/bin:$HOME/dotnet:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/.zsh_custom"
 export DOTFILES="$(dirname "$(readlink $HOME/.zshrc)")"
 export DOTNET_ROOT="$HOME/dotnet"
+export PATH="$HOME/.local/bin:.$HOME/bin:/usr/local/bin:/snap/bin:$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 

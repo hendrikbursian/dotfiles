@@ -3,5 +3,10 @@
     "prefix": "l",
     "body": ["console.log(${1:output});"],
     "description": "Log output to console"
+  },
+  "Insert arrow function": {
+    "prefix": "func",
+    "body": ["($1) => {$2}"],
+    "description": "Insert arrow function"
   }
 }
