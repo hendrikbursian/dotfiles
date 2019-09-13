@@ -1,7 +1,7 @@
 {
-    "Insert shebang": {
-        "prefix": "#!",
-        "body": ["#! /usr/bin/env bash"],
-        "description": "Inserts shebang"
-    }
+  "Insert shebang": {
+    "prefix": "#!",
+    "body": ["#! /usr/bin/env bash"],
+    "description": "Inserts shebang"
+  }
 }

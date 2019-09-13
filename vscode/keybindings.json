@@ -1,103 +1,103 @@
 [
-    {
-        "key": "shift+alt+down",
-        "command": "editor.action.copyLinesDownAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+j",
-        "command": "editor.action.joinLines"
-    },
-    {
-        "key": "shift+alt+up",
-        "command": "editor.action.copyLinesUpAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "escape escape",
-        "command": "-workbench.action.exitZenMode",
-        "when": "inZenMode"
-    },
-    {
-        "key": "shift+alt+r",
-        "command": "git.revertSelectedRanges"
-    },
-    {
-        "key": "shift+alt+s",
-        "command": "git.stageSelectedRanges"
-    },
-    {
-        "key": "ctrl+alt+s",
-        "command": "workbench.action.files.saveAll"
-    },
-    {
-        // Bound to emoji symbol search on lubuntu
-        "key": "ctrl+shift+e",
-        "command": "-workbench.view.explorer"
-    },
-    {
-        "key": "shift+alt+e",
-        "command": "workbench.view.explorer"
-    },
-    {
-        "key": "ctrl+m",
-        "command": "-editor.action.toggleTabFocusMode"
-    },
-    {
-        "key": "ctrl+shift+7",
-        "command": "editor.emmet.action.toggleComment",
-        "when": "editorTextFocus && editorLangId == html"
-    },
-    {
-        "key": "ctrl+7",
-        "command": "editor.action.commentLine",
-        "when": "editorTextFocus && editorLangId == html"
-    },
-    {
-        "key": "shift+alt+5",
-        "command": "editor.action.jumpToBracket",
-    },
-    {
-        "key": "shift+alt+5",
-        "command": "editor.emmet.action.matchTag",
-        "when": "editorTextFocus && editorLangId == html"
-    },
-    {
-        "key": "shift+alt+left",
-        "command": "editor.emmet.action.balanceIn",
-        "when": "editorTextFocus && editorLangId == html"
-    },
-    {
-        "key": "shift+alt+right",
-        "command": "editor.emmet.action.balanceOut",
-        "when": "editorTextFocus && editorLangId == html"
-    },
-    {
-        "key": "shift+alt+right",
-        "command": "-expandLineSelection",
-    },
-    {
-        "key": "ctrl+shift+b",
-        "command": "-workbench.action.tasks.build"
-    },
-    {
-        "key": "ctrl+b ctrl+b",
-        "command": "workbench.action.toggleSidebarVisibility"
-    },
-    {
-        "key": "ctrl+shift+b",
-        "command": "workbench.action.toggleTabsVisibility"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "-workbench.action.toggleSidebarVisibility"
-    },
-    {
-        "key": "ctrl+b shift+2",
-        "command": "workbench.action.newGroupBelow"
-    },
-    {
-        "key": "ctrl+b shift+5",
-        "command": "workbench.action.newGroupRight"
-    }
+  {
+    "key": "shift+alt+down",
+    "command": "editor.action.copyLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "editor.action.joinLines"
+  },
+  {
+    "key": "shift+alt+up",
+    "command": "editor.action.copyLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "escape escape",
+    "command": "-workbench.action.exitZenMode",
+    "when": "inZenMode"
+  },
+  {
+    "key": "shift+alt+r",
+    "command": "git.revertSelectedRanges"
+  },
+  {
+    "key": "shift+alt+s",
+    "command": "git.stageSelectedRanges"
+  },
+  {
+    "key": "ctrl+alt+s",
+    "command": "workbench.action.files.saveAll"
+  },
+  {
+    // Bound to emoji symbol search on lubuntu
+    "key": "ctrl+shift+e",
+    "command": "-workbench.view.explorer"
+  },
+  {
+    "key": "shift+alt+e",
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "ctrl+m",
+    "command": "-editor.action.toggleTabFocusMode"
+  },
+  {
+    "key": "ctrl+shift+7",
+    "command": "editor.emmet.action.toggleComment",
+    "when": "editorTextFocus && editorLangId == html"
+  },
+  {
+    "key": "ctrl+7",
+    "command": "editor.action.commentLine",
+    "when": "editorTextFocus && editorLangId == html"
+  },
+  {
+    "key": "shift+alt+5",
+    "command": "editor.action.jumpToBracket"
+  },
+  {
+    "key": "shift+alt+5",
+    "command": "editor.emmet.action.matchTag",
+    "when": "editorTextFocus && editorLangId == html"
+  },
+  {
+    "key": "shift+alt+left",
+    "command": "editor.emmet.action.balanceIn",
+    "when": "editorTextFocus && editorLangId == html"
+  },
+  {
+    "key": "shift+alt+right",
+    "command": "editor.emmet.action.balanceOut",
+    "when": "editorTextFocus && editorLangId == html"
+  },
+  {
+    "key": "shift+alt+right",
+    "command": "-expandLineSelection"
+  },
+  {
+    "key": "ctrl+shift+b",
+    "command": "-workbench.action.tasks.build"
+  },
+  {
+    "key": "ctrl+b ctrl+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+shift+b",
+    "command": "workbench.action.toggleTabsVisibility"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+b shift+2",
+    "command": "workbench.action.newGroupBelow"
+  },
+  {
+    "key": "ctrl+b shift+5",
+    "command": "workbench.action.newGroupRight"
+  }
 ]
