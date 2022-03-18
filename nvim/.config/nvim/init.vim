@@ -1,6 +1,6 @@
 set path+=**
 
-" Source succesive config files for overriding
+" Source successive config files for overriding
 set exrc
 
 " Disable notifications
@@ -20,7 +20,7 @@ set number
 set hidden
 set noswapfile
 set nobackup
-set undodir=$XDG_CONFIG_HOME/nvim/undodir
+set undodir=$XDG_CONFIG_HOME/nvim/undo
 set undofile
 
 " Seaching
@@ -82,4 +82,3 @@ nnoremap <Leader><CR> :so $XDG_CONFIG_HOME/nvim/init.vim<CR>
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endifn
-
