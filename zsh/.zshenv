@@ -26,7 +26,7 @@ export VISUAL="nvim"
 # Misc
 export COMPOSER_HOME="$XDG_CONFIG_HOME/composer"
 export NVM_DIR="$XDG_CONFIG_HOME/nvm"
-export _Z_DATA="$XDG_DATA_HOME/z/z"
+export _Z_DATA="$XDG_DATA_HOME/z/.z"
 
 # Path
 export PATH="$HOME/bin:$PATH"

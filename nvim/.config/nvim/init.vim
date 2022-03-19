@@ -1,3 +1,5 @@
+set encoding=utf8
+
 set path+=**
 
 " Source successive config files for overriding
@@ -24,9 +26,9 @@ set undodir=$XDG_CONFIG_HOME/nvim/undo
 set undofile
 
 " Seaching
-set nohlsearch
+set hlsearch
 set ignorecase
-set smartcase
+" set smartcase
 set incsearch
 
 " Misc
@@ -59,9 +61,10 @@ endif
 
 call plug#begin()
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'neovim/nvim-lspconfig'
 
 Plug 'gruvbox-community/gruvbox'
 call plug#end()
@@ -70,15 +73,17 @@ colorscheme gruvbox
 
 let mapleader = " "
 
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+command W w
+
+nnoremap <Esc> :nohl<CR>
+nnoremap <C-s> :w<CR>
 
 nnoremap <Leader><CR> :so $XDG_CONFIG_HOME/nvim/init.vim<CR>
+
+" Trim trailing whitespace on write
+autocmd BufWritePre * :%s/\s\+$//e
 
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
-\| endifn
+\| endif
