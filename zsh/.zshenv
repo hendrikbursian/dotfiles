@@ -18,6 +18,7 @@ export DISABLE_UNTRACKED_FILES_DIRTY="true"
 export HIST_STAMPS="yyyy-mm-dd"
 export PROMPT='$(_user_host)${_current_dir} $(git_prompt_info)
 %{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
+export _Z_DATA="$XDG_DATA_HOME/z/z"
 
 # Editor
 export EDITOR="nvim"
