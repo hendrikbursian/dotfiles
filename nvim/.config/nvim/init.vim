@@ -21,6 +21,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'onsails/lspkind-nvim'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+Plug 'nvim-lua/lsp_extensions.nvim'
 
 " For luasnip users.
 Plug 'L3MON4D3/LuaSnip'
@@ -39,6 +40,10 @@ let mapleader = " "
 
 " Save on typo
 command W w
+
+" Save as root
+nnoremap <leader>w <cmd>lua require('hendrik').sudo_write()<CR>
+" command Sw lua require'hendrik'.sudo_write()
 
 "Break habits
 cabbrev wq echo "Use ZZ"

@@ -27,3 +27,5 @@ fi
 [ -s "$HOME/.local/completions/wp-completions.bash" ] && source $HOME/.local/completions/wp-completion.bash
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+[ -s "$ZDOTDIR/.zshrc.local" ] && source "$ZDOTDIR/.zshrc.local"
