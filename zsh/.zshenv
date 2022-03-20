@@ -36,6 +36,7 @@ export PATH="$COMPOSER_HOME/vendor/bin:$PATH"
 export PATH="$HOME/.phpenv/bin:$PATH"
 export PATH="$HOME/neovim/bin:$PATH"
 export PATH="$HOME/phpactor/bin:$PATH"
+export PATH="$PATH:/usr/local/go/bin"
 
 # WSL XServer
 export DISPLAY="$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2; exit;}'):0.0"
