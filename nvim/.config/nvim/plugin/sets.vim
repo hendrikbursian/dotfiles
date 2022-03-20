@@ -26,7 +26,7 @@ set undodir=$XDG_CONFIG_HOME/nvim/undo
 set undofile
 
 " Seaching
-set hlsearch
+set nohlsearch
 set ignorecase
 " set smartcase
 set incsearch

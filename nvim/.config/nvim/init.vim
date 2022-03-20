@@ -37,28 +37,59 @@ let mapleader = " "
 
 :lua require("hendrik")
 
+" Save on typo
 command W w
 
-" nnoremap <Esc> :nohl<CR>
+"Break habits
+cabbrev wq echo "Use ZZ"
+cabbrev q echo "Use ZQ"
+cabbrev x echo "Use ZZ"
+
+" Save
 nnoremap <C-s> :w<CR>
 
+" Move lines
+vnoremap K :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
+
+" Tame Yank!
+nnoremap Y yg$
+
+" Center everything
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+nnoremap <leader>s :so %<CR>
+
+" Reload config
 nnoremap <Leader><CR> :so $XDG_CONFIG_HOME/nvim/init.vim<CR>
 
-inoremap <C-S> <Cmd>lua require('cmp').complete()<CR>
+" Jump qlist
+nnoremap <Leader>j :cnext<CR>
+nnoremap <Leader>k :cprev<CR>
 
+" Autocompletion
+inoremap <C-S> <cmd>lua require('cmp').complete()<CR>
+
+" TODO: Check this! Tab hasn't a function here
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
-inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
+inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<CR>
 
-snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
-snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
+snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<CR>
+snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<CR>
 
-imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
-smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
-
-" Trim trailing whitespace on write
-autocmd BufWritePre * :%s/\s\+$//e
+imap <silent><expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-e>'
+smap <silent><expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-e>'
 
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
+
+augroup HENDRIK
+    autocmd!
+    " autocmd BufWritePre *.lua Neoformat
+    autocmd BufWritePre * %s/\s\+$//e
+    autocmd BufEnter,BufWinEnter,TabEnter * :lua require'lsp_extensions'.inlay_hints{}
+augroup END
