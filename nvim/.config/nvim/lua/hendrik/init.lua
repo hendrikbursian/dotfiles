@@ -11,6 +11,7 @@ Inoremap = CreateNoremap("i", { noremap = true })
 require("hendrik.telescope")
 require("hendrik.lsp")
 require("hendrik.luasnip")
+require("hendrik.status")
 
 if pcall(require, "plenary") then
 	RELOAD = require("plenary.reload").reload_module

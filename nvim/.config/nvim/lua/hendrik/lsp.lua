@@ -10,7 +10,67 @@ local source_mapping = {
 	cmp_tabnine = "[TN]",
 	path = "[Path]",
 }
+
+local cmp_kinds = {
+  Text = '  ',
+  Method = '  ',
+  Function = '  ',
+  Constructor = '  ',
+  Field = '  ',
+  Variable = '  ',
+  Class = '  ',
+  Interface = '  ',
+  Module = '  ',
+  Property = '  ',
+  Unit = '  ',
+  Value = '  ',
+  Enum = '  ',
+  Keyword = '  ',
+  Snippet = '  ',
+  Color = '  ',
+  File = '  ',
+  Reference = '  ',
+  Folder = '  ',
+  EnumMember = '  ',
+  Constant = '  ',
+  Struct = '  ',
+  Event = '  ',
+  Operator = '  ',
+  TypeParameter = '  ',
+}
+
 local lspkind = require("lspkind")
+
+local formatting = {
+
+    minimal = function(entry, vim_item)
+        vim_item.kind = lspkind.presets.default[vim_item.kind]
+        local menu = source_mapping[entry.source.name]
+        if entry.source.name == "cmp_tabnine" then
+            if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+                menu = entry.completion_item.data.detail .. " " .. menu
+            end
+            vim_item.kind = ""
+        end
+        vim_item.menu = menu
+        return vim_item
+    end,
+
+    standard = {
+        format = function(_, vim_item)
+            vim_item.kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
+            return vim_item
+        end,
+    },
+
+    vscode = {
+        fields = { "kind", "abbr" },
+        format = function(_, vim_item)
+            vim_item.kind = cmp_kinds[vim_item.kind] or ""
+            return vim_item
+        end,
+    },
+}
 
 local sorting = {
     priority_weight = 2,
@@ -45,27 +105,44 @@ cmp.setup({
     mapping = {
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-Space>'] = cmp.mapping(function (fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            else
+                cmp.mapping.complete()
+            end
+        end, { "i", "s" }),
+
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            elseif has_words_before() then
+                cmp.complete()
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
+
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
     },
 
     sorting = sorting,
 
-	formatting = {
-		format = function(entry, vim_item)
-			vim_item.kind = lspkind.presets.default[vim_item.kind]
-			local menu = source_mapping[entry.source.name]
-			if entry.source.name == "cmp_tabnine" then
-				if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-					menu = entry.completion_item.data.detail .. " " .. menu
-				end
-			    vim_item.kind = ""
-			end
-			vim_item.menu = menu
-			return vim_item
-		end,
-	},
+	formatting = formatting.vscode,
 
     sources = {
+        { name = "path" },
+
         { name = "cmp_tabnine" },
 
         { name = 'nvim_lsp' },
@@ -75,9 +152,22 @@ cmp.setup({
         -- { name = 'ultisnips' }, -- For ultisnips users.
         -- { name = 'snippy' }, -- For snippy users.
 
+        { name = 'calc' },
+
         { name = 'buffer' },
     },
+})
 
+cmp.setup.cmdline('/', {
+    sources = {
+        { name = 'buffer' }
+    }
+})
+
+cmp.setup.cmdline(':', {
+    sources = {
+        { name = 'cmdline' }
+    }
 })
 
 -- Setup lspconfig.

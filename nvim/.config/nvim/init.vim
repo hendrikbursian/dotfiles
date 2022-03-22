@@ -12,16 +12,23 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+" Learning motions
+" Plug 'wikitopian/hardmode'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-calc'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'onsails/lspkind-nvim'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'nvim-lua/lsp_extensions.nvim'
+
+" Statusline
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 
 " For luasnip users.
 Plug 'L3MON4D3/LuaSnip'
@@ -78,14 +85,34 @@ nnoremap <Leader>k :cprev<CR>
 inoremap <C-S> <cmd>lua require('cmp').complete()<CR>
 
 " TODO: Check this! Tab hasn't a function here
-imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
-inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<CR>
+" imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
+" inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<CR>
+"
+" snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<CR>
+" snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<CR>
+"
+" imap <silent><expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-e>'
+" smap <silent><expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-e>'
 
-snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<CR>
-snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<CR>
+" Finder
+function ToggleNetrwAtFileFolder()
+    let filename = expand('%:h')
+    if filename == '.' " netrw open?
+        execute 'silent Lexplore'
+    else
+        execute 'silent Lexplore ' . filename
+    endif
+endfunction
 
-imap <silent><expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-e>'
-smap <silent><expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-e>'
+nnoremap <C-b> <cmd>silent :call ToggleNetrwAtFileFolder()<CR>
+
+" Auto brackets
+inoremap (( ()<Esc>i
+inoremap [[ []<Esc>i
+inoremap {{ {}<Esc>i
+inoremap "" ""<Esc>i
+inoremap '' ''<Esc>i
+inoremap `` ``<Esc>i
 
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
@@ -98,3 +125,6 @@ augroup HENDRIK
     autocmd BufWritePre * %s/\s\+$//e
     autocmd BufEnter,BufWinEnter,TabEnter * :lua require'lsp_extensions'.inlay_hints{}
 augroup END
+
+" Hardmode
+" autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()

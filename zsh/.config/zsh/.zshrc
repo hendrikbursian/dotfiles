@@ -1,5 +1,4 @@
 # ZSH Config
-
 plugins=(
   git
   z
