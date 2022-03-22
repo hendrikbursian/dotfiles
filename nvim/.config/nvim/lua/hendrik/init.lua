@@ -12,6 +12,7 @@ require("hendrik.telescope")
 require("hendrik.lsp")
 require("hendrik.luasnip")
 require("hendrik.status")
+require("hendrik.git")
 
 if pcall(require, "plenary") then
 	RELOAD = require("plenary.reload").reload_module

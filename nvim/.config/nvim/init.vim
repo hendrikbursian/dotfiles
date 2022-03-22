@@ -15,6 +15,7 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " Learning motions
 " Plug 'wikitopian/hardmode'
 
+" Autocompletion
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -22,9 +23,12 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-calc'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'onsails/lspkind-nvim'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+Plug 'onsails/lspkind-nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
+
+" Git
+Plug 'lewis6991/gitsigns.nvim'
 
 " Statusline
 Plug 'nvim-lualine/lualine.nvim'
