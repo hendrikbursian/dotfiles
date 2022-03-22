@@ -94,18 +94,6 @@ inoremap <C-S> <cmd>lua require('cmp').complete()<CR>
 " imap <silent><expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-e>'
 " smap <silent><expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-e>'
 
-" Finder
-function ToggleNetrwAtFileFolder()
-    let filename = expand('%:h')
-    if filename == '.' " netrw open?
-        execute 'silent Lexplore'
-    else
-        execute 'silent Lexplore ' . filename
-    endif
-endfunction
-
-nnoremap <C-b> <cmd>silent :call ToggleNetrwAtFileFolder()<CR>
-
 " Auto brackets
 inoremap (( ()<Esc>i
 inoremap [[ []<Esc>i
