@@ -29,6 +29,7 @@ Plug 'nvim-lua/lsp_extensions.nvim'
 
 " Git
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'tpope/vim-fugitive'
 
 " Statusline
 Plug 'nvim-lualine/lualine.nvim'
@@ -47,7 +48,14 @@ colorscheme gruvbox
 
 let mapleader = " "
 
-:lua require("hendrik")
+lua require("hendrik")
+
+"lua require("nvim-treesitter.install").compilers
+lua require('nvim-treesitter.configs').setup({
+    highlight = { enable = true },
+    incremental_selection = { enable = true },
+    textobjects = { enable = true },
+})
 
 " Save on typo
 command W w
@@ -76,6 +84,7 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
 
+" Source file
 nnoremap <leader>s :so %<CR>
 
 " Reload config
@@ -86,7 +95,7 @@ nnoremap <Leader>j :cnext<CR>
 nnoremap <Leader>k :cprev<CR>
 
 " Autocompletion
-inoremap <C-S> <cmd>lua require('cmp').complete()<CR>
+" inoremap <C-S> <cmd>lua require('cmp').complete()<CR>
 
 " TODO: Check this! Tab hasn't a function here
 " imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
@@ -115,7 +124,7 @@ augroup HENDRIK
     autocmd!
     " autocmd BufWritePre *.lua Neoformat
     autocmd BufWritePre * %s/\s\+$//e
-    autocmd BufEnter,BufWinEnter,TabEnter * :lua require'lsp_extensions'.inlay_hints{}
+    autocmd BufEnter,BufWinEnter,TabEnter * :lua require('lsp_extensions').inlay_hints{}
 augroup END
 
 " Hardmode

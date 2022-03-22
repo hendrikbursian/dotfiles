@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+export COLORTERM="truecolor"
+
 export DOTFILES="$HOME/.dotfiles"
 
 # XDG
@@ -26,7 +28,8 @@ export VISUAL="nvim"
 
 # Misc
 export COMPOSER_HOME="$XDG_CONFIG_HOME/composer"
-export NVM_DIR="$XDG_CONFIG_HOME/nvm"
+export ASDF_NPM_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/.default-npm-packages"
+export ASDF_PYTHON_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/.default-python-packages"
 
 # Path
 export PATH="$HOME/bin:$PATH"

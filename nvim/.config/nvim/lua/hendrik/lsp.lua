@@ -65,8 +65,20 @@ local formatting = {
 
     vscode = {
         fields = { "kind", "abbr" },
-        format = function(_, vim_item)
-            vim_item.kind = cmp_kinds[vim_item.kind] or ""
+        format = function(entry, vim_item)
+            local menu = source_mapping[entry.source.name]
+
+            if entry.source.name == "cmp_tabnine" then
+                if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+                    menu = entry.completion_item.data.detail .. " " .. menu
+                end
+                vim_item.kind = ""
+            else
+                vim_item.kind = cmp_kinds[vim_item.kind] or ""
+            end
+
+            vim_item.menu = menu
+
             return vim_item
         end,
     },
@@ -113,27 +125,27 @@ cmp.setup({
             end
         end, { "i", "s" }),
 
-        ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
-            elseif has_words_before() then
-                cmp.complete()
-            else
-                fallback()
-            end
-        end, { "i", "s" }),
-
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
-            else
-                fallback()
-            end
-        end, { "i", "s" }),
+--        ["<Tab>"] = cmp.mapping(function(fallback)
+--            if cmp.visible() then
+--                cmp.select_next_item()
+--            elseif luasnip.expand_or_jumpable() then
+--                luasnip.expand_or_jump()
+--            elseif has_words_before() then
+--                cmp.complete()
+--            else
+--                fallback()
+--            end
+--        end, { "i", "s" }),
+--
+--        ["<S-Tab>"] = cmp.mapping(function(fallback)
+--            if cmp.visible() then
+--                cmp.select_prev_item()
+--            elseif luasnip.jumpable(-1) then
+--                luasnip.jump(-1)
+--            else
+--                fallback()
+--            end
+--        end, { "i", "s" }),
     },
 
     sorting = sorting,
@@ -160,13 +172,14 @@ cmp.setup({
 
 cmp.setup.cmdline('/', {
     sources = {
-        { name = 'buffer' }
+        { name = 'buffer' },
     }
 })
 
 cmp.setup.cmdline(':', {
     sources = {
-        { name = 'cmdline' }
+        { name = 'path' },
+        { name = 'cmdline' },
     }
 })
 
@@ -205,20 +218,29 @@ require("lspconfig").ccls.setup(config())
 
 require('lspconfig').html.setup(config())
 
-require('lspconfig').phpactor.setup(config())
 
---require('lspconfig').intelephense.setup(config({
---    settings = {
---        intelephense = {
---            stubs = {
---                "bcmath", "bz2", "calendar", "Core", "curl", "date", "dba", "dom", "enchant", "fileinfo", "filter", "ftp", "gd", "gettext", "hash", "iconv", "imap", "intl", "json", "ldap", "libxml", "mbstring", "mcrypt", "mysql", "mysqli", "password", "pcntl", "pcre", "PDO", "pdo_mysql", "Phar", "readline", "recode", "Reflection", "regex", "session", "SimpleXML", "soap", "sockets", "sodium", "SPL", "standard", "superglobals", "sysvsem", "sysvshm", "tokenizer", "xml", "xdebug", "xmlreader", "xmlwriter", "yaml", "zip", "zlib", "wordpress", "woocommerce", "acf-pro", "wordpress-globals", "wp-cli", "genesis", "polylang"
---            },
---            files = {
---                maxSize = 5000000;
---            },
---        }
---    }
---}))
+local function file_exists(name)
+    local f=io.open(name,"r")
+    if f~=nil then io.close(f) return true else return false end
+end
+
+local licence_path = vim.env.HOME .. "/intelephense/licence.txt"
+if(not file_exists(licence_path)) then
+    print("Intelephense License missing!")
+end
+
+require('lspconfig').intelephense.setup(config({
+    settings = {
+        intelephense = {
+            stubs = {
+                "bcmath", "bz2", "calendar", "Core", "curl", "date", "dba", "dom", "enchant", "fileinfo", "filter", "ftp", "gd", "gettext", "hash", "iconv", "imap", "intl", "json", "ldap", "libxml", "mbstring", "mcrypt", "mysql", "mysqli", "password", "pcntl", "pcre", "PDO", "pdo_mysql", "Phar", "readline", "recode", "Reflection", "regex", "session", "SimpleXML", "soap", "sockets", "sodium", "SPL", "standard", "superglobals", "sysvsem", "sysvshm", "tokenizer", "xml", "xdebug", "xmlreader", "xmlwriter", "yaml", "zip", "zlib", "wordpress", "woocommerce", "acf-pro", "wordpress-globals", "wp-cli", "genesis", "polylang"
+            },
+            files = {
+                maxSize = 5000000;
+            },
+        }
+    }
+}))
 
 local snippets_paths = function()
 	local plugins = { "friendly-snippets" }
