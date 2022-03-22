@@ -1,3 +1,6 @@
+set termguicolors
+set background=dark
+
 " VSCode Like Completion
 " gray
 highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080

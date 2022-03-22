@@ -37,8 +37,6 @@ set scrolloff=8
 set signcolumn=yes
 set colorcolumn=80
 set updatetime=50
-set termguicolors
-set background=dark
 
 " Nice menu when typing `:find *.py`
 set wildmode=longest,list,full
