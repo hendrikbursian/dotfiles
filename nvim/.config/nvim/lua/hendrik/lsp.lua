@@ -102,6 +102,14 @@ if hastabnine then
     table.insert(sorting.comparators, 0, tabnine.compare)
 end
 
+local function next_or_complete(fallback)
+    if cmp.visible() then
+        cmp.select_next_item()
+    else
+        cmp.mapping.complete()
+    end
+end
+
 cmp.setup({
 
     snippet = {
@@ -117,13 +125,7 @@ cmp.setup({
     mapping = {
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping(function (fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            else
-                cmp.mapping.complete()
-            end
-        end, { "i", "s" }),
+        ['<C-Space>'] = cmp.mapping(next_or_complete, { "i", "s" }),
 
 --        ["<Tab>"] = cmp.mapping(function(fallback)
 --            if cmp.visible() then
@@ -171,15 +173,20 @@ cmp.setup({
 })
 
 cmp.setup.cmdline('/', {
-    sources = {
-        { name = 'buffer' },
+    sources = { { name = 'buffer' }, },
+    mapping = {
+        ['<C-Space>'] = cmp.mapping(next_or_complete, { "i", "s" }),
     }
 })
 
 cmp.setup.cmdline(':', {
     sources = {
         { name = 'path' },
-        { name = 'cmdline' },
+        { name = 'cmdline', keyword_pattern=[=[[^[:blank:]\!]*]=] },
+    },
+
+    mapping = {
+        ['<C-Space>'] = cmp.mapping(next_or_complete, { "i", "s" }),
     }
 })
 
