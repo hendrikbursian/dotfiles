@@ -37,10 +37,7 @@ local M = {}
 
 -- 'git_files' if repo 'find_files' otherwise
 function M.project_files()
-    local opts = {
-        hidden = true,
-        shorten_paths = true,
-    }
+    local opts = { hidden = true }
     local ok = pcall(require("telescope.builtin").git_files, opts)
     if not ok then require("telescope.builtin").find_files(opts) end
 end
