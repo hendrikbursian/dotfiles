@@ -127,29 +127,13 @@ cmp.setup({
     mapping = {
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping(next_or_complete, { "i", "s" }),
-
---        ["<Tab>"] = cmp.mapping(function(fallback)
---            if cmp.visible() then
---                cmp.select_next_item()
---            elseif luasnip.expand_or_jumpable() then
---                luasnip.expand_or_jump()
---            elseif has_words_before() then
---                cmp.complete()
---            else
---                fallback()
---            end
---        end, { "i", "s" }),
---
---        ["<S-Tab>"] = cmp.mapping(function(fallback)
---            if cmp.visible() then
---                cmp.select_prev_item()
---            elseif luasnip.jumpable(-1) then
---                luasnip.jump(-1)
---            else
---                fallback()
---            end
---        end, { "i", "s" }),
+        ['<C-Space>'] = cmp.mapping(function (fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            else
+                cmp.mapping.complete()
+            end
+        end, { "i", "s" }),
     },
 
     sorting = sorting,
@@ -163,10 +147,7 @@ cmp.setup({
 
         { name = 'nvim_lsp' },
 
-        -- { name = 'vsnip' }, -- For vsnip users.
-        { name = 'luasnip' }, -- For luasnip users.
-        -- { name = 'ultisnips' }, -- For ultisnips users.
-        -- { name = 'snippy' }, -- For snippy users.
+        { name = 'luasnip' },
 
         { name = 'calc' },
 
@@ -338,7 +319,6 @@ require("lspconfig").eslint.setup(config())
 require("lspconfig").spectral.setup(config())
 
 require("lspconfig").ccls.setup(config())
-
 
 local function file_exists(name)
     local f=io.open(name,"r")
