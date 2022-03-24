@@ -14,4 +14,5 @@ require("hendrik.lsp")
 require("hendrik.luasnip")
 require("hendrik.status")
 require("hendrik.git")
+require("hendrik.tree")
 

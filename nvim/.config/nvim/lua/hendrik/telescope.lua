@@ -7,55 +7,32 @@ local previewers = require("telescope.previewers")
 local conf = require("telescope.config").values
 
 require("telescope").setup{
-	defaults = {
-		file_sorter = require("telescope.sorters").get_fzy_sorter,
-		prompt_prefix = " >",
-		color_devicons = true,
-
-		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-
-		mappings = {
-			i = {
-				-- ["<Esc>"] = actions.close,
-				["<C-x>"] = false,
-				["<C-q>"] = actions.send_to_qflist,
-			},
-
-            -- TODO: doesnt work!
-            -- n = {
-            --     ["cd"] = function(prompt_bufnr)
-            --         local selection = require("telescope.actions.state").get_selected_entry()
-            --         local dir = vim.fn.fnamemodify(selection.path, ":p:h")
-            --         require("telescope.actions").close(prompt_bufnr)
-            --         -- Depending on what you want put `cd`, `lcd`, `tcd`
-            --         vim.cmd(string.format("lcd %s", dir))
-            --     end
-            -- },
-        },
-
-        vimgrep_arguments = {
-            "rg",
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
-            "--trim",
-            "-g=**/*"
-        },
-	},
-
-	extensions = {
-		fzy_native = {
-			override_generic_sorter = false,
-			override_file_sorter = true,
-		},
-	},
+--    defaults = {
+--        file_sorter = require("telescope.sorters").get_fzy_sorter,
+--        prompt_prefix = " >",
+--        color_devicons = true,
+--        shorten_path = true,
+--
+--        file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+--        grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+--        qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+--
+--        mappings = {
+--            i = {
+--                ["<C-x>"] = false,
+--                ["<C-q>"] = actions.send_to_qflist,
+--            },
+--        },
+--    },
+--
+--    extensions = {
+--        fzy_native = {
+--            override_generic_sorter = false,
+--            override_file_sorter = true,
+--        },
+--    },
 }
-require("telescope").load_extension("fzy_native")
+-- require("telescope").load_extension("fzy_native")
 
 local M = {}
 

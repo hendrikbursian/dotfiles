@@ -2,6 +2,8 @@ local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local cmp = require('cmp')
 local compare = require('cmp.config.compare')
 local hastabnine,tabnine = pcall(require,"cmp_tabnine.config")
+local lspconfig_configs = require('lspconfig.configs')
+local lspconfig_util = require('lspconfig.util')
 
 local source_mapping = {
 	buffer = "[Buffer]",
@@ -179,16 +181,17 @@ cmp.setup.cmdline('/', {
     }
 })
 
-cmp.setup.cmdline(':', {
-    sources = {
-        { name = 'path' },
-        { name = 'cmdline', keyword_pattern=[=[[^[:blank:]\!]*]=] },
-    },
+-- TODO: !<expansion> not working
+-- cmp.setup.cmdline(':', {
+--     sources = {
+--         { name = 'path', keyword_pattern=[=[[^[:blank:]\!]*]=] },
+--         { name = 'cmdline', keyword_pattern=[=[[^[:blank:]\!]*]=] },
+--     },
 
-    mapping = {
-        ['<C-Space>'] = cmp.mapping(next_or_complete, { "i", "s" }),
-    }
-})
+--     mapping = {
+--         ['<C-Space>'] = cmp.mapping(next_or_complete, { "i", "s" }),
+--     }
+-- })
 
 -- Setup lspconfig.
 if hastabnine then
@@ -219,11 +222,122 @@ local function config(_config)
 	}, _config or {})
 end
 
-require("lspconfig").tsserver.setup(config())
+local function on_new_config(new_config, new_root_dir)
+    local function get_typescript_server_path(root_dir)
+        local project_root = lspconfig_util.find_node_modules_ancestor(root_dir)
+        return project_root and (lspconfig_util.path.join(project_root, 'node_modules', 'typescript', 'lib', 'tsserverlibrary.js'))
+        or ''
+    end
+
+    if
+        new_config.init_options
+        and new_config.init_options.typescript
+        and new_config.init_options.typescript.serverPath == '' then
+        new_config.init_options.typescript.serverPath = get_typescript_server_path(new_root_dir)
+    end
+end
+
+-- TODO: Check vue language server
+local volar_cmd = {'vue-language-server', '--stdio'}
+local volar_root_dir = lspconfig_util.root_pattern('package.json')
+
+lspconfig_configs.volar_api = {
+    default_config = {
+        cmd = volar_cmd,
+        root_dir = volar_root_dir,
+        on_new_config = on_new_config,
+        -- filetypes = { 'vue'},
+        -- If you want to use Volar's Take Over Mode (if you know, you know)
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+        init_options = {
+            typescript = {
+                serverPath = ''
+            },
+            languageFeatures = {
+                implementation = true, -- new in @volar/vue-language-server v0.33
+                references = true,
+                definition = true,
+                typeDefinition = true,
+                callHierarchy = true,
+                hover = true,
+                rename = true,
+                renameFileRefactoring = true,
+                signatureHelp = true,
+                codeAction = true,
+                workspaceSymbol = true,
+                completion = {
+                    defaultTagNameCase = 'both',
+                    defaultAttrNameCase = 'kebabCase',
+                    getDocumentNameCasesRequest = false,
+                    getDocumentSelectionRequest = false,
+                },
+            }
+        },
+    }
+}
+require("lspconfig").volar_api.setup(config())
+
+lspconfig_configs.volar_doc = {
+    default_config = {
+        cmd = volar_cmd,
+        root_dir = volar_root_dir,
+        on_new_config = on_new_config,
+
+        --filetypes = { 'vue' },
+        -- If you want to use Volar's Take Over Mode (if you know, you know):
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+        init_options = {
+            typescript = {
+                serverPath = ''
+            },
+            languageFeatures = {
+                implementation = true, -- new in @volar/vue-language-server v0.33
+                documentHighlight = true,
+                documentLink = true,
+                codeLens = { showReferencesNotification = true},
+                -- not supported - https://github.com/neovim/neovim/pull/15723
+                semanticTokens = false,
+                diagnostics = true,
+                schemaRequestService = true,
+            }
+        },
+    }
+}
+require("lspconfig").volar_doc.setup(config())
+
+lspconfig_configs.volar_html = {
+    default_config = {
+        cmd = volar_cmd,
+        root_dir = volar_root_dir,
+        on_new_config = on_new_config,
+
+        --filetypes = { 'vue'},
+        -- If you want to use Volar's Take Over Mode (if you know, you know), intentionally no 'json':
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+        init_options = {
+            typescript = {
+                serverPath = ''
+            },
+            documentFeatures = {
+                selectionRange = true,
+                foldingRange = true,
+                linkedEditingRange = true,
+                documentSymbol = true,
+                documentColor = true,
+                documentFormatting = {
+                    defaultPrintWidth = 100,
+                },
+            }
+        },
+    }
+}
+require("lspconfig").volar_html.setup(config())
+
+require("lspconfig").eslint.setup(config())
+
+require("lspconfig").spectral.setup(config())
 
 require("lspconfig").ccls.setup(config())
-
-require('lspconfig').html.setup(config())
 
 
 local function file_exists(name)
@@ -249,22 +363,23 @@ require('lspconfig').intelephense.setup(config({
     }
 }))
 
+-- TODO: Check this!
 local snippets_paths = function()
-	local plugins = { "friendly-snippets" }
-	local paths = {}
-	local path
-	local root_path = vim.env.XDG_DATA_HOME .. "/nvim/plugged/"
-	for _, plug in ipairs(plugins) do
-		path = root_path .. plug
-		if vim.fn.isdirectory(path) ~= 0 then
-			table.insert(paths, path)
-		end
-	end
-	return paths
+    local plugins = { "friendly-snippets" }
+    local paths = {}
+    local path
+    local root_path = vim.env.XDG_DATA_HOME .. "/nvim/plugged/"
+    for _, plug in ipairs(plugins) do
+        path = root_path .. plug
+        if vim.fn.isdirectory(path) ~= 0 then
+            table.insert(paths, path)
+        end
+    end
+    return paths
 end
 
 require("luasnip.loaders.from_vscode").lazy_load({
-	paths = snippets_paths(),
-	include = nil, -- Load all languages
-	exclude = {},
+    paths = snippets_paths(),
+    include = nil, -- Load all languages
+    exclude = {},
 })

@@ -1,2 +1,4 @@
 neovim
 intelephense
+@volar/vue-language-server
+vscode-langservers-extracted

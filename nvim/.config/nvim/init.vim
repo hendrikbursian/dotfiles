@@ -12,6 +12,10 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+" File tree
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-web-devicons'
+
 " Learning motions
 " Plug 'wikitopian/hardmode'
 
@@ -31,9 +35,11 @@ Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 
+" File tree
+Plug 'kyazdani42/nvim-tree.lua'
+
 " Statusline
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 
 " For luasnip users.
 Plug 'L3MON4D3/LuaSnip'
@@ -66,7 +72,7 @@ cabbrev q echo "Use ZQ"
 cabbrev x echo "Use ZZ"
 
 " Save
-nnoremap <C-s> :w<CR>
+" nnoremap <C-s> :w<CR>
 
 " Move lines
 vnoremap K :m '<-2<CR>gv=gv
