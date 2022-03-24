@@ -35,8 +35,8 @@ Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 
-" File tree
-Plug 'kyazdani42/nvim-tree.lua'
+" Debugging
+Plug 'mfussenegger/nvim-dap'
 
 " Statusline
 Plug 'nvim-lualine/lualine.nvim'
