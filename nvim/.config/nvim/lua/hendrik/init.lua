@@ -16,4 +16,4 @@ require("hendrik.status")
 require("hendrik.git")
 require("hendrik.tree")
 require("hendrik.debug")
-
+require("hendrik.cmp")

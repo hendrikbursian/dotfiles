@@ -21,6 +21,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 " Autocompletion
 Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -37,6 +38,10 @@ Plug 'tpope/vim-fugitive'
 
 " Debugging
 Plug 'mfussenegger/nvim-dap'
+Plug 'Pocco81/DAPInstall.nvim'
+
+" Formatting
+Plug 'gpanders/editorconfig.nvim'
 
 " Statusline
 Plug 'nvim-lualine/lualine.nvim'
@@ -62,7 +67,7 @@ lua require('nvim-treesitter.configs').setup({ highlight = { enable = true }, in
 command W w
 
 " Save as root
-nnoremap <leader>w <cmd>lua require('hendrik').sudo_write()<CR>
+nnoremap <leader>w <cmd>lua require('hendrik').sudo_write()<cr>
 " command Sw lua require'hendrik'.sudo_write()
 
 "Break habits
@@ -71,11 +76,11 @@ cabbrev q echo "Use ZQ"
 cabbrev x echo "Use ZZ"
 
 " Save
-" nnoremap <C-s> :w<CR>
+" nnoremap <C-s> :w<cr>
 
 " Move lines
-vnoremap K :m '<-2<CR>gv=gv
-vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<cr>gv=gv
+vnoremap J :m '>+1<cr>gv=gv
 
 " Tame Yank!
 nnoremap Y yg$
@@ -86,26 +91,29 @@ nnoremap N Nzzzv
 nnoremap J mzJ`z
 
 " Source file
-nnoremap <leader>s :so %<CR>
+nnoremap <leader>s :so %<cr>
 
 " Reload config
-nnoremap <Leader><CR> :so $XDG_CONFIG_HOME/nvim/init.vim<CR>
+nnoremap <leader><cr> :so $XDG_CONFIG_HOME/nvim/init.vim<cr>
+nnoremap <leader>r <cmd>:lua require('plenary.reload').reload_module('hendrik', true)<cr>
 
 " Jump qlist
-nnoremap <Leader>j :cnext<CR>
-nnoremap <Leader>k :cprev<CR>
+nnoremap <leader>j :cnext<cr>
+nnoremap <leader>k :cprev<cr>
+
+nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<cr>
 
 nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
 
 " Autocompletion
-" inoremap <C-S> <cmd>lua require('cmp').complete()<CR>
+" inoremap <C-S> <cmd>lua require('cmp').complete()<cr>
 
 " TODO: Check this! Tab hasn't a function here
 " imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
-" inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<CR>
+" inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<cr>
 "
-" snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<CR>
-" snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<CR>
+" snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<cr>
+" snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<cr>
 "
 " imap <silent><expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-e>'
 " smap <silent><expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-e>'

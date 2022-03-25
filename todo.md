@@ -14,6 +14,4 @@
 - [ ] Ansible
 - [ ] Treesitter
 - [x] Project navigation
-
-installscript for debuggers
-= git clone https://github.com/microsoft/vscode-node-debug2.git
+- [x] Open Nvim tree at src file

@@ -1,47 +1,52 @@
 if pcall(require, "plenary") then
-	RELOAD = require("plenary.reload").reload_module
+    RELOAD = require("plenary.reload").reload_module
 
-	R = function(name)
-		RELOAD(name)
-		return require(name)
-	end
+    R = function(name)
+        RELOAD(name)
+        return require(name)
+    end
 end
 
 -- From https://github.com/ibhagwan/nvim-lua/blob/main/lua/utils.lua
 local M = {}
 
+function M.file_exists(name)
+    local f=io.open(name,"r")
+    if f~=nil then io.close(f) return true else return false end
+end
+
 function M._echo_multiline(msg)
-  for _, s in ipairs(vim.fn.split(msg, "\n")) do
-    vim.cmd("echom '" .. s:gsub("'", "''").."'")
-  end
+    for _, s in ipairs(vim.fn.split(msg, "\n")) do
+        vim.cmd("echom '" .. s:gsub("'", "''").."'")
+    end
 end
 
 function M.err(msg)
-  vim.cmd('echohl ErrorMsg')
-  M._echo_multiline(msg)
-  vim.cmd('echohl None')
+    vim.cmd('echohl ErrorMsg')
+    M._echo_multiline(msg)
+    vim.cmd('echohl None')
 end
 
 function M.info(msg)
-  vim.cmd('echohl Directory')
-  M._echo_multiline(msg)
-  vim.cmd('echohl None')
+    vim.cmd('echohl Directory')
+    M._echo_multiline(msg)
+    vim.cmd('echohl None')
 end
 
 function M.sudo_exec(cmd, print_output)
-  local password = vim.fn.inputsecret("Password: ")
-  if not password or #password == 0 then
-      M.warn("Invalid password, sudo aborted")
-      return false
-  end
-  local out = vim.fn.system(string.format("sudo -p '' -S %s", cmd), password)
-  if vim.v.shell_error ~= 0 then
-    print("\r\n")
-    M.err(out)
-    return false
-  end
-  if print_output then print("\r\n", out) end
-  return true
+    local password = vim.fn.inputsecret("Password: ")
+    if not password or #password == 0 then
+        M.warn("Invalid password, sudo aborted")
+        return false
+    end
+    local out = vim.fn.system(string.format("sudo -p '' -S %s", cmd), password)
+    if vim.v.shell_error ~= 0 then
+        print("\r\n")
+        M.err(out)
+        return false
+    end
+    if print_output then print("\r\n", out) end
+    return true
 end
 
 function M.sudo_write(tmpfile, filepath)
