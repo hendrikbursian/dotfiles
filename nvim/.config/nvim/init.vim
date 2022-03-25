@@ -18,6 +18,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 " Learning motions
 " Plug 'wikitopian/hardmode'
+Plug 'tpope/vim-surround'
 
 " Autocompletion
 Plug 'neovim/nvim-lspconfig'
@@ -98,8 +99,8 @@ nnoremap <leader><cr> :so $XDG_CONFIG_HOME/nvim/init.vim<cr>
 nnoremap <leader>r <cmd>:lua require('plenary.reload').reload_module('hendrik', true)<cr>
 
 " Jump qlist
-nnoremap <leader>j :cnext<cr>
-nnoremap <leader>k :cprev<cr>
+nnoremap <leader>j :silent cnext<cr>
+nnoremap <leader>k :silent cprev<cr>
 
 nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<cr>
 
