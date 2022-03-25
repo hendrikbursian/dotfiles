@@ -1,12 +1,12 @@
 #!/usr/bin/env zsh
 
-function update_nvim {
-  git clone git@github.com:neovim/neovim.git $HOME/neovim
-  
-  cd $HOME/neovim
-  rm -r build/
-  make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
-  make install
+function update_neovim() {
+    tmp_path=/tmp/nvim.appimage
 
-  export PATH="$HOME/neovim/bin:$PATH"
+    echo "Downloading Neovim Appimage..."
+    curl -Lo $tmp_path https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    chmod u+x $tmp_path
+    sudo mv $tmp_path /usr/local/bin/nvim
+
+    echo "Neovim updated!"
 }

@@ -65,7 +65,7 @@ lua require("hendrik")
 lua require('nvim-treesitter.configs').setup({ highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }, })
 
 " Save on typo
-command W w
+command! W w
 
 " Save as root
 nnoremap <leader>w <cmd>lua require('hendrik').sudo_write()<cr>
