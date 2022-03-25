@@ -1,5 +1,6 @@
 # TODO
 
+- [ ] Proper luasnip expansion
 - [ ] Telescope configuration
   - [ ] Shortened paths
   - [ ] Hidden files
@@ -12,3 +13,7 @@
 - [ ] Git Worktree Support (https://github.com/ThePrimeagen/git-worktree.nvim)
 - [ ] Ansible
 - [ ] Treesitter
+- [x] Project navigation
+
+installscript for debuggers
+= git clone https://github.com/microsoft/vscode-node-debug2.git

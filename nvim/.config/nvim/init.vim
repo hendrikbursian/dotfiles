@@ -95,6 +95,8 @@ nnoremap <Leader><CR> :so $XDG_CONFIG_HOME/nvim/init.vim<CR>
 nnoremap <Leader>j :cnext<CR>
 nnoremap <Leader>k :cprev<CR>
 
+nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
+
 " Autocompletion
 " inoremap <C-S> <cmd>lua require('cmp').complete()<CR>
 

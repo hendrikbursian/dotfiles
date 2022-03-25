@@ -10,3 +10,4 @@ alias ssl='openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout ssl
 alias dot="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias vim="nvim"
 alias gpriv="git config user.email 'hendrikbursian@pm.me' && git config user.name 'Hendrik Bursian'"
+alias x="chmod +x"
