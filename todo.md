@@ -16,4 +16,5 @@
 - [x] Project navigation
 - [x] Open Nvim tree at src file
 - [ ] Git: Stage selected lines
+- [ ] Debugging: Find process faster
 

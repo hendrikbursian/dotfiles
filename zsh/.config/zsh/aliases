@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 alias e="explorer.exe"
-alias c="code"
+alias c="code-insiders"
 alias v="vim"
 alias dc="docker-compose"
 alias gcf="git commit --fixup"
@@ -11,3 +11,4 @@ alias dot="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias vim="nvim"
 alias gpriv="git config user.email 'hendrikbursian@pm.me' && git config user.name 'Hendrik Bursian'"
 alias x="chmod +x"
+alias f="fzf --preview 'cat {}'"

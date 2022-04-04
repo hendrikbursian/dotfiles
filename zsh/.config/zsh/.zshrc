@@ -3,6 +3,7 @@ plugins=(
   asdf
   git
   z
+  fzf
 )
 
 source $ZSH/oh-my-zsh.sh

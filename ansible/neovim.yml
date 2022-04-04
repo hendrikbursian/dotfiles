@@ -1,0 +1,27 @@
+- name: Install Neovim
+  hosts: 127.0.0.1
+  become: true
+  vars:
+    tmp_path: /tmp/nvim.appimage
+    dest_path: /usr/local/bin/nvim
+
+  tasks:
+     - name: Download Neovim
+       get_url:
+         url: https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+         dest: /tmp/nvim.appimage
+     - name: Copy neovim executable
+       copy:
+         src: /tmp/nvim.appimage
+         owner: root
+         group: root
+         mode: 755
+         dest: /usr/local/bin/nvim
+     - name: Remove downloaded file
+       file:
+         path: /tmp/nvim.appimage
+         state: absent
+     - name: Installing Neovim plugins
+       command: /usr/local/bin/nvim -E -s -c "source $HOME/.config/nvim/init.vim" -c PlugInstall -c qa
+       become: no
+

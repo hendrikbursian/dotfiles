@@ -2,6 +2,8 @@ set encoding=utf8
 
 set path+=**
 
+set guicursor=
+
 " Source successive config files for overriding
 set exrc
 

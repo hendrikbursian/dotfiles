@@ -1,0 +1,6 @@
+- name: Install Dotfiles
+  hosts: 127.0.0.1
+  tasks:
+    - name: Stow dotfiles
+      command: $HOME/.dotfiles/ubuntu
+

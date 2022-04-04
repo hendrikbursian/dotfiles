@@ -1,10 +1,6 @@
 -- Inspiration: https://github.com/ThePrimeagen/.dotfiles
 
-local pickers = require("telescope.pickers")
-local sorters = require("telescope.sorters")
 local actions = require("telescope.actions")
-local previewers = require("telescope.previewers")
-local conf = require("telescope.config").values
 
 require("telescope").setup{
     defaults = {

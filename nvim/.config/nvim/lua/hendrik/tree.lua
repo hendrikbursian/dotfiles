@@ -3,8 +3,13 @@ local find_file = require "nvim-tree".find_file
 local open = require "nvim-tree".open
 
 require("nvim-tree").setup({
+    view = {
+        width = '33%'
+    },
     actions = {
-        quit_on_open = true,
+        open_file = {
+            quit_on_open = true,
+        }
     },
     update_focused_file = {
         enable = true,
