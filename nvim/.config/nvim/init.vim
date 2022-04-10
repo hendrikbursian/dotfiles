@@ -41,6 +41,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'mfussenegger/nvim-dap'
 Plug 'Pocco81/DAPInstall.nvim'
 Plug 'theHamsta/nvim-dap-virtual-text'
+" check this
+" Plug 'vim-vdebug/vdebug'
 
 " Formatting
 Plug 'gpanders/editorconfig.nvim'
