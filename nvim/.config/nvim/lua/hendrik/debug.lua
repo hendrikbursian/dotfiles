@@ -29,35 +29,33 @@ dap.configurations.typescript = {
     },
 }
 
+-- Use K for debug hover
 local api = vim.api
 local keymap_restore = {}
-dap.listeners.after.event_initialized.me = function()
-    for _, buf in pairs(api.nvim_list_bufs()) do
-        local keymaps = api.nvim_buf_get_keymap(buf, 'n')
-        for _, keymap in pairs(keymaps) do
-            if keymap.lhs == "K" then
-                table.insert(keymap_restore, keymap)
-                api.nvim_buf_del_keymap(buf, 'n', 'K')
-            end
-        end
+dap.listeners.after['event_initialized']['me'] = function()
+  for _, buf in pairs(api.nvim_list_bufs()) do
+    local keymaps = api.nvim_buf_get_keymap(buf, 'n')
+    for _, keymap in pairs(keymaps) do
+      if keymap.lhs == "K" then
+        table.insert(keymap_restore, keymap)
+        api.nvim_buf_del_keymap(buf, 'n', 'K')
+      end
     end
-    api.nvim_set_keymap(
-    'n', 'K', '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
+  end
+  api.nvim_set_keymap('n', 'K', '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
 end
 
-dap.listeners.after.event_terminated.me = function()
-    for _, keymap in pairs(keymap_restore) do
-        api.nvim_buf_set_keymap(
-            keymap.mode,
-            keymap.buffer,
-            keymap.lhs,
-            keymap.rhs,
-            {
-                silent = keymap.silent == 1
-            }
-        )
-    end
-    keymap_restore = {}
+dap.listeners.after['event_terminated']['me'] = function()
+  for _, keymap in pairs(keymap_restore) do
+    api.nvim_buf_set_keymap(
+      keymap.buffer,
+      keymap.mode,
+      keymap.lhs,
+      keymap.rhs,
+      { silent = keymap.silent == 1 }
+    )
+  end
+  keymap_restore = {}
 end
 
 require("nvim-dap-virtual-text").setup {
@@ -74,32 +72,3 @@ require("nvim-dap-virtual-text").setup {
     virt_text_win_col = nil             -- position the virtual text at a fixed window column (starting from the first text column) ,
     -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
 }
-
-local M = {}
-
--- function M.pick_process()
---     local output = vim.fn.system({'ps', 'a'})
---     local lines = vim.split(output, '\n')
---     local procs = {}
---     for _, line in pairs(lines) do
---         -- output format
---         --    " 107021 pts/4    Ss     0:00 /bin/zsh <args>"
---         local parts = vim.fn.split(vim.fn.trim(line), ' \\+')
---         local pid = parts[1]
---         local name = table.concat({unpack(parts, 5)}, ' ')
---         if pid and pid ~= 'PID' then
---             pid = tonumber(pid)
---             if pid ~= vim.fn.getpid() then
---                 table.insert(procs, { pid = pid, name = name })
---             end
---         end
---     end
---     local label_fn = function(proc)
---         return string.format("id=%d name=%s", proc.pid, proc.name)
---     end
---     local result = require('dap.ui').pick_one_sync(procs, "Select process", label_fn)
---     return result and result.pid or nil
--- end
-
-return M
-

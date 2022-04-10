@@ -10,11 +10,12 @@ local function map_keys()
     Nnoremap("[d", ":lua vim.lsp.diagnostic.goto_next()<CR>")
     Nnoremap("]d", ":lua vim.lsp.diagnostic.goto_prev()<CR>")
     Nnoremap("<leader>vca", ":lua vim.lsp.buf.code_action()<CR>")
-    Nnoremap("<leader>vrr", ":lua vim.lsp.buf.references()<CR>")
+    Nnoremap("<leader>.", ":lua vim.lsp.buf.code_action()<CR>")
+--  Nnoremap("<leader>vrr", ":lua vim.lsp.buf.references()<CR>")
     Nnoremap("<leader>vrn", ":lua vim.lsp.buf.rename()<CR>")
-    Inoremap("<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-    -- TODO: use Range where applicable
-    -- vim.lsp.buf.range_formatting()
+    Nnoremap("<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+    -- N- TODO: use Range where applicable
+    -- N- vim.lsp.buf.range_formatting()
     Nnoremap("<leader>vf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 end
 
