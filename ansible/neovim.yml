@@ -25,3 +25,6 @@
        command: /usr/local/bin/nvim -E -s -c "source $HOME/.config/nvim/init.vim" -c PlugInstall -c qa
        become: no
 
+# add LSP Installation
+# ['sumneko_lua', 'bashls', 'dockerls', 'gopls', 'jedi_language_server', 'tailwindcss', 'html', 'vimls', 'yamlls', 'ansiblels', 'graphql', 'cssls', 'lemminx', 'eslint', 'prismals', 'spectral', '
+# sqlls', 'taplo', 'tsserver', 'volar', 'zk', 'rome', 'intelephense']
