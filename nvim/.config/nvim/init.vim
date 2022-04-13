@@ -9,6 +9,9 @@ Plug 'nvim-lua/plenary.nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
+" Navigation
+Plug 'ThePrimeagen/harpoon'
+Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
@@ -36,11 +39,18 @@ Plug 'nvim-lua/lsp_extensions.nvim'
 " Git
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
+Plug 'ThePrimeagen/git-worktree.nvim'
 
 " Debugging
 Plug 'mfussenegger/nvim-dap'
 Plug 'Pocco81/DAPInstall.nvim'
 Plug 'theHamsta/nvim-dap-virtual-text'
+Plug '~/workspace/personal/telescope-dap.nvim/master'
+
+" Testing
+Plug 'vim-test/vim-test'
+Plug 'tpope/vim-dispatch'
+
 " check this
 " Plug 'vim-vdebug/vdebug'
 
@@ -58,8 +68,6 @@ Plug 'rafamadriz/friendly-snippets'
 
 Plug 'gruvbox-community/gruvbox'
 call plug#end()
-
-colorscheme gruvbox
 
 let mapleader = " "
 
@@ -83,8 +91,8 @@ cabbrev x echo "Use ZZ"
 " nnoremap <C-s> :w<cr>
 
 " Move lines
-vnoremap K :m '<-2<cr>gv=gv
-vnoremap J :m '>+1<cr>gv=gv
+" vnoremap K :m '<-2<cr>gv=gv
+" vnoremap J :m '>+1<cr>gv=gv
 
 " Tame Yank!
 nnoremap Y yg$
@@ -100,10 +108,6 @@ nnoremap <leader>s :so %<cr>
 " Reload config
 nnoremap <leader><cr> :so $XDG_CONFIG_HOME/nvim/init.vim<cr>
 nnoremap <leader>r <cmd>:lua require('plenary.reload').reload_module('hendrik', true)<cr>
-
-" Jump qlist
-nnoremap <leader>j :silent cnext<cr>
-nnoremap <leader>k :silent cprev<cr>
 
 nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<cr>
 
@@ -136,9 +140,15 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 augroup HENDRIK
     autocmd!
     " autocmd BufWritePre *.lua Neoformat
+    autocmd BufWritePre *.go :lua vim.lsp.buf.formatting()
     " autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_seq_sync({}, 1000, {'eslint', 'tsserver', 'rome'})
     autocmd BufWritePre * %s/\s\+$//e
     autocmd BufEnter,BufWinEnter,TabEnter * :lua require('lsp_extensions').inlay_hints{}
+augroup END
+
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
 augroup END
 
 " Hardmode

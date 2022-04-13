@@ -42,5 +42,5 @@ export PATH="$HOME/phpactor/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
 
 # WSL XServer
-export DISPLAY="$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2; exit;}'):0.0"
-export LIBGL_ALWAYS_INDIRECT=1
+#export DISPLAY="$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2; exit;}'):0.0"
+# export LIBGL_ALWAYS_INDIRECT=1

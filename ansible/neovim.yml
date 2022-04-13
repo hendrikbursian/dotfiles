@@ -15,13 +15,33 @@
          src: /tmp/nvim.appimage
          owner: root
          group: root
-         mode: 755
+         mode: 0755
          dest: /usr/local/bin/nvim
      - name: Remove downloaded file
        file:
          path: /tmp/nvim.appimage
          state: absent
      - name: Installing Neovim plugins
-       command: /usr/local/bin/nvim -E -s -c "source $HOME/.config/nvim/init.vim" -c PlugInstall -c qa
+       command: '/usr/local/bin/nvim -E -s -c "source $HOME/.config/nvim/init.vim" -c PlugInstall -c qa'
+       ignore_errors: yes
+       become: no
+         #     TODO: Add language servers
+         #     - name: Installing Neovim LSPs
+         #       command: /usr/local/bin/nvim -E -c "source $HOME/.config/nvim/init.vim" -c "LSPInstall eslint" -c qa
+         #       become: no
+
+     - name: Cloning telescope-dap
+       become: no
+       git:
+         repo: https://github.com/hendrikbursian/telescope-dap.nvim
+         dest: $HOME/workspace/personal/telescope-dap.nvim
+         bare: yes
+     - name: Checkout master branch
+       command: git --git-dir $HOME/workspace/personal/telescope-dap.nvim worktree add $HOME/workspace/personal/telescope-dap.nvim/master master
+       ignore_errors: yes
        become: no
 
+     - name: Installing Neovim treesitter grammars
+       command: /usr/local/bin/nvim -E -c "source $HOME/.config/nvim/init.vim" -c "TSInstallSync all" -c qa
+       ignore_errors: yes
+       become: no

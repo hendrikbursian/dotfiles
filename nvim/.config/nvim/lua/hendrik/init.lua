@@ -17,6 +17,8 @@ require("hendrik.git")
 require("hendrik.tree")
 require("hendrik.debug")
 require("hendrik.cmp")
+require("hendrik.harpoon")
+require("hendrik.refactor")
 
 if pcall(require, "plenary") then
 	RELOAD = require("plenary.reload").reload_module

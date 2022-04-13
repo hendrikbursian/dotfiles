@@ -31,6 +31,10 @@
   - name: Update apt cache
     apt:
       update_cache: true
+      upgrade: "dist"
+  - name: Update apt cache
+    apt:
+      update_cache: true
 
   tasks:
   - name: Install packages
