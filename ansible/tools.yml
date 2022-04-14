@@ -12,6 +12,7 @@
       - dash
       - fd-find
       - fzf
+      - gcc
       - git
       - gpg
       - jq
