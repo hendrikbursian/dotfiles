@@ -22,11 +22,10 @@
          path: /tmp/nvim.appimage
          state: absent
      - name: Installing Neovim plugins
-       command: '/usr/local/bin/nvim -E -s -c "source $HOME/.config/nvim/init.vim" -c PlugInstall -c qa'
+       shell: |
+         /usr/local/bin/nvim -E -s -c source $HOME/.dotfiles/nvim/.config/nvim/init.vim -c PlugInstall -c qa
+         /usr/local/bin/nvim -E -c source $HOME/.dotfiles/nvim/.config/nvim/init.vim -c LSPInstall eslint sumneko_lua bashls dockerls gopls jedi_language_server tailwindcss html vimls yamlls ansiblels graphql cssls lemminx eslint prismals spectral sqlls taplo tsserver volar zk rome intelephense -c qa
        ignore_errors: yes
-       become: no
-     - name: Installing Neovim LSPs
-       command: /usr/local/bin/nvim -E -c "source $HOME/.config/nvim/init.vim" -c "LSPInstall eslint sumneko_lua bashls dockerls gopls jedi_language_server tailwindcss html vimls yamlls ansiblels graphql cssls lemminx eslint prismals spectral sqlls taplo tsserver volar zk rome intelephense" -c qa
        become: no
      - name: Cloning telescope-dap
        become: no
@@ -40,6 +39,6 @@
        become: no
 
      - name: Installing Neovim treesitter grammars
-       command: /usr/local/bin/nvim -E -c "source $HOME/.config/nvim/init.vim" -c "TSInstallSync all" -c qa
+       command: /usr/local/bin/nvim -E -c "source $HOME/.dotfiles/nvim/.config/nvim/init.vim" -c "TSInstallSync all" -c qa
        ignore_errors: yes
        become: no

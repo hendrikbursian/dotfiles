@@ -28,4 +28,6 @@
        file:
          path: $HOME/.zshrc
          state: absent
-
+     - name: Make ZSH default shell
+       shell: chsh $USER --shell /usr/bin/zsh
+       become: true
