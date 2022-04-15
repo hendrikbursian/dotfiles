@@ -1,0 +1,18 @@
+- name: Install keymap
+  hosts: 127.0.0.1
+  
+  tasks:
+    - name: Copy keymap
+      copy:
+        src: "{{ lookup('env', 'HOME') }}/.dotfiles/xkb/symbols/pc"
+        dest: /usr/share/X11/xkb/symbols/pc
+        owner: root
+        group: root
+        mode: 0664
+      become: true
+    - name: Remove xkb cache
+      file:
+        path: /var/lib/xkb/*
+        state: absent
+  
+

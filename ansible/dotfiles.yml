@@ -2,5 +2,8 @@
   hosts: 127.0.0.1
   tasks:
     - name: Stow dotfiles
-      command: $HOME/.dotfiles/ubuntu
+      command: "{{ lookup('env', 'HOME') }}/.dotfiles/ubuntu"
+    - name: Change Shell
+      command: "chsh {{ lookup('env', 'USER') }} --shell /usr/bin/zsh"
+      become: true
 

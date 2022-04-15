@@ -4,6 +4,8 @@
 
 - import_playbook: ssh.yml
 - import_playbook: tools.yml
+- import_playbook: brave.yml
+- import_playbook: regolith.yml
 - import_playbook: oh-my-zsh.yml
 - import_playbook: dotfiles.yml
 - import_playbook: neovim.yml

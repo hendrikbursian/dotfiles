@@ -22,9 +22,9 @@
          path: /tmp/nvim.appimage
          state: absent
      - name: Installing Neovim plugins
-       shell: |
-         /usr/local/bin/nvim -E -s -c source $HOME/.dotfiles/nvim/.config/nvim/init.vim -c PlugInstall -c qa
-         /usr/local/bin/nvim -E -c source $HOME/.dotfiles/nvim/.config/nvim/init.vim -c LSPInstall eslint sumneko_lua bashls dockerls gopls jedi_language_server tailwindcss html vimls yamlls ansiblels graphql cssls lemminx eslint prismals spectral sqlls taplo tsserver volar zk rome intelephense -c qa
+       shell: /usr/local/bin/nvim -E -s -c PlugInstall -c qa!
+       args:
+         executable: /usr/bin/zsh
        ignore_errors: yes
        become: no
      - name: Cloning telescope-dap
@@ -39,6 +39,8 @@
        become: no
 
      - name: Installing Neovim treesitter grammars
-       command: /usr/local/bin/nvim -E -c "source $HOME/.dotfiles/nvim/.config/nvim/init.vim" -c "TSInstallSync all" -c qa
+       shell: /usr/local/bin/nvim -E -s -c "TSInstallSync all" -c qa!
+       args:
+         executable: /usr/bin/zsh
        ignore_errors: yes
        become: no

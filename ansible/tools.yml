@@ -31,15 +31,12 @@
       - zlib1g-dev
       - zsh
 
-    packagesWithDependencies:
-      - brave-browser-nightly
-
   pre_tasks:
   - name: Update apt cache
     apt:
       update_cache: true
       upgrade: "dist"
-  - name: Update apt cache
+  - name: Update dist
     apt:
       update_cache: true
 
@@ -49,18 +46,4 @@
       name: "{{ item }}"
       state: latest
     loop: "{{ packages }}"
-  - name: Add brave browser sources
-    become: true
-    shell: |
-      curl -fsSLo /usr/share/keyrings/brave-browser-nightly-archive-keyring.gpg https://brave-browser-apt-nightly.s3.brave.com/brave-browser-nightly-archive-keyring.gpg
-      echo "deb [signed-by=/usr/share/keyrings/brave-browser-nightly-archive-keyring.gpg arch=amd64] https://brave-browser-apt-nightly.s3.brave.com/ stable main"| tee /etc/apt/sources.list.d/brave-browser-nightly.list
-    become: true
-  - name: Update apt cache
-    apt:
-      update_cache: true
-  - name: Install packages with dependencies
-    apt:
-      name: "{{ item }}"
-      state: latest
-    loop: "{{ packagesWithDependencies }}"
 
