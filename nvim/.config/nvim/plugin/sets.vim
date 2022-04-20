@@ -2,7 +2,7 @@ set encoding=utf8
 
 set path+=**
 
-set guicursor=
+set guicursor=n-v-c-sm:block,i-ci-ve:block,r-cr-o:hor20
 
 " Source successive config files for overriding
 set exrc

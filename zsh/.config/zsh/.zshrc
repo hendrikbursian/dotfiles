@@ -45,6 +45,7 @@ echo -ne '\e[5 q'
 precmd() {
     echo -ne '\e[5 q'
 }
+precmd_functions+=(_fix_cursor)
 
 # Completion
 _comp_options+=(globdots) # complete dotfiles
