@@ -13,10 +13,10 @@ local function map_keys()
     Nnoremap("<leader>.", ":lua vim.lsp.buf.code_action()<CR>")
 --  Nnoremap("<leader>vrr", ":lua vim.lsp.buf.references()<CR>")
     Nnoremap("<leader>vrn", ":lua vim.lsp.buf.rename()<CR>")
-    Nnoremap("<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+    Nnoremap("<C-h>", ":lua vim.lsp.buf.signature_help()<CR>")
     -- N- TODO: use Range where applicable
     -- N- vim.lsp.buf.range_formatting()
-    Nnoremap("<leader>vf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+    Nnoremap("<leader>vf", ":lua vim.lsp.buf.formatting()<CR>")
 end
 
 -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished

@@ -17,7 +17,11 @@ export ENABLE_CORRECTION="false"
 export DISABLE_MAGIC_FUNCTIONS="true"
 export COMPLETION_WAITING_DOTS="false"
 export DISABLE_UNTRACKED_FILES_DIRTY="true"
+export HISTSIZE=10000
+export SAVEHIST=10000
+export HISTFILE=$XDG_CACHE_HOME/zsh/history
 export HIST_STAMPS="yyyy-mm-dd"
+
 export PROMPT='$(_user_host)${_current_dir} $(git_prompt_info)
 %{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
 export _Z_DATA="$XDG_DATA_HOME/z/z"
@@ -30,12 +34,14 @@ export VISUAL="nvim"
 export COMPOSER_HOME="$XDG_CONFIG_HOME/composer"
 export ASDF_NPM_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/.default-npm-packages"
 export ASDF_PYTHON_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/.default-python-packages"
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 
 # Path
 export PATH="$HOME/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$COMPOSER_HOME/vendor/bin:$PATH"
+export PATH="$PNPM_HOME:$PATH"
 export PATH="$HOME/.phpenv/bin:$PATH"
 export PATH="$HOME/neovim/bin:$PATH"
 export PATH="$HOME/phpactor/bin:$PATH"
