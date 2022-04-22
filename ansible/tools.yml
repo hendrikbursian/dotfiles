@@ -46,4 +46,5 @@
       name: "{{ item }}"
       state: latest
     loop: "{{ packages }}"
-
+  - name: Install pnpm
+    command: curl -fsSL https://get.pnpm.io/install.sh | PNPM_VERSION=7.0.0-rc.3 sh -
