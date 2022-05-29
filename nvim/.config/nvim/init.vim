@@ -8,6 +8,7 @@ call plug#begin()
 Plug 'nvim-lua/plenary.nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'simrat39/symbols-outline.nvim'
 
 " Navigation
 Plug 'ThePrimeagen/harpoon'
@@ -131,6 +132,8 @@ inoremap {{ {}<Esc>i
 inoremap "" ""<Esc>i
 inoremap '' ''<Esc>i
 inoremap `` ``<Esc>i
+
+nnoremap <leader>o :SymbolsOutline<cr>
 
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
