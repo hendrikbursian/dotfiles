@@ -9,6 +9,11 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# FZF
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
+
+export GOROOT="$(asdf where golang)/go"
 export ZSH_COMPDUMP="$XDG_DATA_HOME/zsh/zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 
 # TODO:Find better way for this

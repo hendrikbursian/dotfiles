@@ -8,6 +8,7 @@ call plug#begin()
 Plug 'nvim-lua/plenary.nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'simrat39/symbols-outline.nvim'
 
 " Navigation
 Plug 'ThePrimeagen/harpoon'
@@ -108,6 +109,7 @@ nnoremap <leader>s :so %<cr>
 " Reload config
 nnoremap <leader><cr> :so $XDG_CONFIG_HOME/nvim/init.vim<cr>
 nnoremap <leader>r <cmd>:lua require('plenary.reload').reload_module('hendrik', true)<cr>
+nnoremap <leader>o :SymbolsOutline<cr>
 
 nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<cr>
 

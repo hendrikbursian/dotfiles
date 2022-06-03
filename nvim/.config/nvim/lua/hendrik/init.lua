@@ -19,6 +19,7 @@ require("hendrik.debug")
 require("hendrik.cmp")
 require("hendrik.harpoon")
 require("hendrik.refactor")
+require("hendrik.symbols-outline")
 
 if pcall(require, "plenary") then
 	RELOAD = require("plenary.reload").reload_module

@@ -49,4 +49,5 @@ export PATH="$PNPM_HOME:$PATH"
 
 # WSL XServer
 #export DISPLAY="$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2; exit;}'):0.0"
-# export LIBGL_ALWAYS_INDIRECT=1
+export DISPLAY=$(/sbin/ip route | awk '/default/ { print $3 }'):0
+export LIBGL_ALWAYS_INDIRECT=1
