@@ -7,5 +7,7 @@ xft.dpi: 192
 i3-wm.workspace.01.name: 1Browser
 i3-wm.workspace.02.name: 2Terminal
 i3-wm.workspace.03.name: 3WorkBrowser
+i3-wm.workspace.04.name: 4Notes
+i3-wm.workspace.05.name: 5Chat
 
 i3xrocks.date.format2: %a %d/%m %H:%M
