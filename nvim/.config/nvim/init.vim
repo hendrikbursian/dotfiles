@@ -113,6 +113,11 @@ nnoremap <leader>o :SymbolsOutline<cr>
 
 nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<cr>
 
+" next greatest remap ever : asbjornHaland
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nmap <leader>Y "+Y
+
 " Autocompletion
 " inoremap <C-S> <cmd>lua require('cmp').complete()<cr>
 
@@ -133,6 +138,30 @@ inoremap {{ {}<Esc>i
 inoremap "" ""<Esc>i
 inoremap '' ''<Esc>i
 inoremap `` ``<Esc>i
+
+" Remapping navigation to be friendlier with Dvorak
+" nnoremap d h
+" nnoremap h j
+" nnoremap t k
+" nnoremap n l
+" nnoremap ee dd
+" nnoremap y t
+" nnoremap Y T
+" nnoremap e d
+
+" Remapping b --> n in normal mode (for navigation in search)
+" nnoremap b n
+" nnoremap B N
+
+" Remapping window navigation
+" nnoremap <S-Right> <C-W>l
+" nnoremap <S-Left> <C-W>h
+" nnoremap <S-Down> <C-W>j
+" nnoremap <S-Up> <C-W>k
+
+" Easier command typing for Dvorak
+" nnoremap ; :
+" nnoremap : ;
 
 nnoremap <leader>o :SymbolsOutline<cr>
 
