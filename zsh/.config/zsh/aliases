@@ -6,7 +6,7 @@ alias v="vim"
 alias dc="docker-compose"
 alias gcf="git commit --fixup"
 alias gwt="git worktree"
-alias gwtf="git fetch origin '+refs/heads/*:refs/remotes/origin/*'"
+alias gwtf="git-make-worktree"
 alias ssl='openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout ssl.key -out ssl.cert -subj "/CN=127.0.0.1/"'
 alias dot="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias vim="nvim"

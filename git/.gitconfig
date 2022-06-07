@@ -1,0 +1,8 @@
+[rebase]
+	autoSquash = true
+
+[worktree]
+    guessRemote = true
+
+[push]
+	default = current
