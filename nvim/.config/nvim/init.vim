@@ -44,7 +44,7 @@ Plug 'ThePrimeagen/git-worktree.nvim'
 
 " Debugging
 Plug 'mfussenegger/nvim-dap'
-Plug 'Pocco81/DAPInstall.nvim'
+Plug 'Pocco81/dap-buddy.nvim', { 'commit': '24923c3' }
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug '~/workspace/personal/telescope-dap.nvim/master'
 

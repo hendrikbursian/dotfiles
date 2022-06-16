@@ -6,3 +6,6 @@
 
 [push]
 	default = current
+
+[alias]
+    undo = reset --soft @~1
