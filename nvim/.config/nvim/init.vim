@@ -71,7 +71,13 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'rafamadriz/friendly-snippets'
 
 Plug 'gruvbox-community/gruvbox'
+Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
+
+" Colorscheme
+set termguicolors
+set background=dark
+colorscheme gruvbox
 
 let mapleader = " "
 
