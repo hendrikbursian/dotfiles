@@ -17,6 +17,9 @@ require("telescope").setup{
                 ["<C-x>"] = false,
                 ["<C-q>"] = actions.send_to_qflist,
             },
+            n = {
+                ["<C-q>"] = actions.send_selected_to_qflist,
+            },
         },
     },
 
@@ -54,6 +57,12 @@ M.search_dotfiles = function()
 		cwd = vim.env.DOTFILES,
 		hidden = true,
 	})
+end
+
+M.live_grep_cwd = function(opts)
+    opts.prompt_title = "< live_grep (cwd) >"
+
+	require("telescope.builtin").live_grep(opts)
 end
 
 return M

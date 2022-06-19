@@ -34,18 +34,7 @@ lsp_installer.on_server_ready(function(server)
     --     opts.root_dir = function() ... end
     -- end
 
-    if server.name == "eslint" then
-        opts.on_attach = function (client, bufnr)
-            map_keys()
-
-            -- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
-            -- the resolved capabilities of the eslint server ourselves!
-            client.resolved_capabilities.document_formatting = true
-        end
-        opts.settings = {
-            format = { enable = true }, -- this will enable formatting
-        }
-    elseif server.name == "intelephense" then
+    if server.name == "intelephense" then
         local licence_path = vim.env.HOME .. "/intelephense/licence.txt"
 
         if(not file_exists(licence_path)) then

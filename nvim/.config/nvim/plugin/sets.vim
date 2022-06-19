@@ -39,6 +39,8 @@ set scrolloff=8
 set signcolumn=yes
 set colorcolumn=80
 set updatetime=50
+" Add when https://github.com/neovim/neovim/pull/18961 is fixed
+" set cmdheight=0
 
 " Nice menu when typing `:find *.py`
 set wildmode=longest,list,full
