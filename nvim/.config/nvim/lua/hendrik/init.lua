@@ -16,10 +16,22 @@ require("hendrik.status")
 require("hendrik.git")
 require("hendrik.tree")
 require("hendrik.debug")
-require("hendrik.cmp")
 require("hendrik.harpoon")
 require("hendrik.refactor")
 require("hendrik.symbols-outline")
+
+require('litee.lib').setup({
+    tree = {
+        icon_set = "codicons"
+    },
+    panel = {
+        orientation = "left",
+        panel_size  = 30
+    }
+})
+
+require('litee.calltree').setup({})
+require("hendrik.cmp")
 
 if pcall(require, "plenary") then
 	RELOAD = require("plenary.reload").reload_module

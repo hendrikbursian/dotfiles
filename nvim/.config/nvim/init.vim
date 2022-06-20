@@ -23,21 +23,26 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
 
+" Call hierarchy
+Plug 'ldelossa/litee.nvim'
+Plug 'ldelossa/litee-calltree.nvim'
+
 " Learning motions
 " Plug 'wikitopian/hardmode'
 Plug 'tpope/vim-surround'
 
 " Autocompletion
-Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
+Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-calc'
+Plug 'hrsh7th/cmp-copilot'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
-Plug 'onsails/lspkind-nvim'
+Plug 'github/copilot.vim'
 Plug 'nvim-lua/lsp_extensions.nvim'
 
 " Git
@@ -70,8 +75,11 @@ Plug 'saadparwaiz1/cmp_luasnip'
 
 Plug 'rafamadriz/friendly-snippets'
 
+" UI
+Plug 'RRethy/vim-illuminate'
 Plug 'gruvbox-community/gruvbox'
 Plug 'NLKNguyen/papercolor-theme'
+
 call plug#end()
 
 " Colorscheme
