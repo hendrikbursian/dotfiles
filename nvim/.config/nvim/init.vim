@@ -4,8 +4,14 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 
+" TODO
+" https://github.com/tpope/vim-commentary
+
 call plug#begin()
 Plug 'nvim-lua/plenary.nvim'
+
+" Clipboard
+Plug 'svermeulen/vim-yoink'
 
 " Outline
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -22,10 +28,6 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " File tree
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
-
-" Call hierarchy
-Plug 'ldelossa/litee.nvim'
-Plug 'ldelossa/litee-calltree.nvim'
 
 " Learning motions
 " Plug 'wikitopian/hardmode'

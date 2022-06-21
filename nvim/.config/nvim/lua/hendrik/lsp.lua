@@ -10,8 +10,8 @@ local function on_attach(client, bufnr)
     Nnoremap("K", ":lua vim.lsp.buf.hover()<CR>")
     Nnoremap("<leader>vws", ":lua vim.lsp.buf.workspace_symbol()<CR>")
     Nnoremap("<leader>vd", ":lua vim.diagnostic.open_float()<CR>")
-    Nnoremap("[d", ":lua vim.lsp.diagnostic.goto_next()<CR>")
-    Nnoremap("]d", ":lua vim.lsp.diagnostic.goto_prev()<CR>")
+    Nnoremap("[d", ":lua vim.diagnostic.goto_next()<CR>")
+    Nnoremap("]d", ":lua vim.diagnostic.goto_prev()<CR>")
     Nnoremap("<leader>vca", ":lua vim.lsp.buf.code_action()<CR>")
     Nnoremap("<leader>.", ":lua vim.lsp.buf.code_action()<CR>")
     --  Nnoremap("<leader>vrr", ":lua vim.lsp.buf.references()<CR>")
@@ -21,11 +21,8 @@ local function on_attach(client, bufnr)
     -- N- vim.lsp.buf.range_formatting()
     Nnoremap("<leader>vf", ":lua vim.lsp.buf.format({ async = true })<CR>")
 
-    if client.supports_method('textDocument/prepareCallHierarchy') then
-        print("supports call hierarchy")
-
-        Nnoremap("<leader>ct", ":lua vim.lsp.buf.incoming_calls()<CR>")
-    end
+    -- Nnoremap("<leader>ct", ":lua vim.lsp.buf.incoming_calls()<CR>")
+    Nnoremap("<leader>ct", ":IncomingCalls<CR>")
 
     -- Illuminate
     Nnoremap('<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>')
@@ -37,13 +34,35 @@ end
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local servers = {
+    'ansiblels',
+    'awk_ls',
+    'cssls',
+    'cssmodules_ls',
+    'cucumber_language_server',
+    'dotls',
+    'eslint',
+    'golangci_lint_ls',
+    'graphql',
+    'html',
+    'jedi_language_server',
+    'jsonls',
+    'jsonnet_ls',
+    'lemminx',
+    'marksman',
+    'prismals',
+    'prosemd_lsp',
+    'quick_lint_js',
+    'remark_ls',
+    'rome',
+    'sqlls',
+    'sqls',
+    'stylelint_lsp',
     'sumneko_lua',
-    -- 'tailwindcss',
-    -- 'volar',
-    -- 'rome',
-    -- 'eslint',
+    'tailwindcss',
+    'taplo',
     'tsserver',
-    -- 'intelephense',
+    'volar',
+    'zk',
 }
 
 local server_options = {
@@ -65,10 +84,9 @@ local server_options = {
         }
     },
     tsserver = {
-        on_attach = function (client, bufnr)
+        on_attach = function(client, bufnr)
             client.server_capabilities.document_formatting = false
             client.server_capabilities.document_range_formatting = false
-            client.server_capabilities.document_ca = false
 
             on_attach(client, bufnr)
         end,
@@ -219,7 +237,12 @@ for _, server_name in pairs(servers) do
     end
 
     if server_name == 'tsserver' then
---        print_table(options)
+        --        print_table(options)
+        options.on_new_config = function(new_config, new_root_dir)
+            new_config.languageFeatures = {
+                callHierarchy = true,
+            }
+        end
     end
 
     if server_options[server_name] then

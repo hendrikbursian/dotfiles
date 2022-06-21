@@ -2,7 +2,7 @@
 
 local actions = require("telescope.actions")
 
-require("telescope").setup{
+require("telescope").setup {
     defaults = {
         file_sorter = require("telescope.sorters").get_fzy_sorter,
         prompt_prefix = " >",
@@ -11,6 +11,19 @@ require("telescope").setup{
         file_previewer = require("telescope.previewers").vim_buffer_cat.new,
         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
         qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+
+        vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--trim",
+            "--no-ignore",
+            "--hidden",
+        },
 
         mappings = {
             i = {
@@ -38,32 +51,30 @@ local M = {}
 
 -- 'git_files' if repo 'find_files' otherwise
 function M.project_files()
-    local opts = { hidden = true }
+    local opts = {
+        hidden = true,
+        no_ignore = true,
+    }
     local ok = pcall(require("telescope.builtin").git_files, opts)
     if not ok then require("telescope.builtin").find_files(opts) end
 end
 
 M.search_naturallife = function()
-	require("telescope.builtin").git_files({
-		prompt_title = "< Naturallife Plugin >",
-		cwd = "/home/hendrik/workspace/naturallife.gmbh/app/public/wp-content/plugins/naturallife",
-		hidden = true,
-	})
+    require("telescope.builtin").git_files({
+        prompt_title = "< Naturallife Plugin >",
+        cwd = "/home/hendrik/workspace/naturallife.gmbh/app/public/wp-content/plugins/naturallife",
+        hidden = true,
+        no_ignore = true,
+    })
 end
 
 M.search_dotfiles = function()
-	require("telescope.builtin").git_files({
-		prompt_title = "< Dotfiles >",
-		cwd = vim.env.DOTFILES,
-		hidden = true,
-	})
-end
-
-M.live_grep_cwd = function(opts)
-    opts.prompt_title = "< live_grep (cwd) >"
-
-	require("telescope.builtin").live_grep(opts)
+    require("telescope.builtin").git_files({
+        prompt_title = "< Dotfiles >",
+        cwd = vim.env.DOTFILES,
+        hidden = true,
+        no_ignore = true,
+    })
 end
 
 return M
-
