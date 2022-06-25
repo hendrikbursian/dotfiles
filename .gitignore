@@ -1,4 +1,6 @@
+swap/
 undo/
+backup/
 .zcompdump*
 fonts/in/
 fonts/*.zip

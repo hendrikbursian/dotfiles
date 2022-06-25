@@ -15,3 +15,5 @@ alias vim="nvim"
 alias x="chmod +x"
 alias f="fzf --preview 'cat {}'"
 alias copy="xclip -sel clip"
+
+alias go-reshim='asdf reshim golang && export GOROOT="$(asdf where golang)/go/"'

@@ -77,4 +77,16 @@ M.search_dotfiles = function()
     })
 end
 
+local function open_telescope_oldfiles()
+    -- Check for file
+    if next(vim.fn.argv()) == nil then
+        require("telescope.builtin").oldfiles({ only_cwd = true })
+    end
+end
+
+vim.api.nvim_create_autocmd({"VimEnter"}, {
+    callback = open_telescope_oldfiles
+})
+
 return M
+

@@ -9,17 +9,11 @@ Nnoremap = CreateNoremap("n", { noremap = true })
 Inoremap = CreateNoremap("i", { noremap = true })
 
 require("hendrik.utils")
-require("hendrik.telescope")
-require("hendrik.lsp")
-require("hendrik.luasnip")
-require("hendrik.status")
-require("hendrik.git")
-require("hendrik.tree")
-require("hendrik.debug")
-require("hendrik.harpoon")
-require("hendrik.refactor")
-require("hendrik.symbols-outline")
-require("hendrik.cmp")
+require("hendrik.sets")
+
+P = function(value)
+    print(vim.inspect(value))
+end
 
 if pcall(require, "plenary") then
 	RELOAD = require("plenary.reload").reload_module

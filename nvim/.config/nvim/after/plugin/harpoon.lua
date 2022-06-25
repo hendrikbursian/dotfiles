@@ -4,10 +4,9 @@ require("harpoon").setup({
     --    ["/home/hendrik/workspace/quokka-backend"] = {
     --        term = {
     --            cmds = {
-    --                "echo 'Hey from terminal harpoon?'",
+    --                " from terminal harpoon?'",
     --            }
     --        }
     --    }
     --}
 })
-

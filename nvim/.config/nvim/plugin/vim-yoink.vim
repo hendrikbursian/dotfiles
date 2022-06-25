@@ -1,5 +1,5 @@
-nmap <c-n> <plug>(YoinkPostPasteSwapBack)
-nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+nnoremap <leader>n <plug>(YoinkPostPasteSwapBack)
+nnoremap <leader>p <plug>(YoinkPostPasteSwapForward)
 
 nmap p <plug>(YoinkPaste_p)
 nmap P <plug>(YoinkPaste_P)
@@ -16,6 +16,7 @@ nmap <c-=> <plug>(YoinkPostPasteToggleFormat)
 
 let g:yoinkSavePersistently = 1
 let g:yoinkSyncSystemClipboardOnFocus = 1
+let g:yoinkIncludeDeleteOperations = 1
 
-set clipboard = unnamedplus
+" set clipboard=unnamed
 

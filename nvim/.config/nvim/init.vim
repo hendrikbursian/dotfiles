@@ -29,9 +29,8 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
 
-" Learning motions
-" Plug 'wikitopian/hardmode'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 
 " Autocompletion
 Plug 'williamboman/nvim-lsp-installer'
@@ -41,10 +40,10 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-calc'
-Plug 'hrsh7th/cmp-copilot'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
-Plug 'github/copilot.vim'
+" Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+" Plug 'github/copilot.vim'
+" Plug 'hrsh7th/cmp-copilot'
 Plug 'nvim-lua/lsp_extensions.nvim'
 
 " Git
@@ -56,7 +55,6 @@ Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'Pocco81/dap-buddy.nvim', { 'commit': '24923c3' }
 Plug 'theHamsta/nvim-dap-virtual-text'
-Plug '~/workspace/personal/telescope-dap.nvim/master'
 
 " Testing
 Plug 'vim-test/vim-test'
@@ -67,6 +65,10 @@ Plug 'tpope/vim-dispatch'
 
 " Formatting
 Plug 'gpanders/editorconfig.nvim'
+Plug 'sbdchd/neoformat'
+
+" Linting
+Plug 'mfussenegger/nvim-lint'
 
 " Statusline
 Plug 'nvim-lualine/lualine.nvim'
@@ -82,12 +84,17 @@ Plug 'RRethy/vim-illuminate'
 Plug 'gruvbox-community/gruvbox'
 Plug 'NLKNguyen/papercolor-theme'
 
+" Plugins
+Plug '/home/hendrik/plugins/nvim-eslint'
+Plug '/home/hendrik/plugins/telescope-dap.nvim/master'
+
 call plug#end()
 
 " Colorscheme
 set termguicolors
 set background=dark
 colorscheme gruvbox
+"colorscheme PaperColor
 
 let mapleader = " "
 
@@ -195,7 +202,10 @@ augroup HENDRIK
     autocmd BufWritePre *.go :lua vim.lsp.buf.formatting()
     " autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_seq_sync({}, 1000, {'eslint', 'tsserver', 'rome'})
     autocmd BufWritePre * %s/\s\+$//e
-    autocmd BufEnter,BufWinEnter,TabEnter * :lua require('lsp_extensions').inlay_hints{}
+    autocmd BufWritePre *.ts Neoformat
+    autocmd BufWritePre *.js Neoformat
+
+    " autocmd BufEnter,BufWinEnter,TabEnter * :lua require('lsp_extensions').inlay_hints{}
 augroup END
 
 augroup highlight_yank
@@ -203,5 +213,3 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
 augroup END
 
-" Hardmode
-" autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
