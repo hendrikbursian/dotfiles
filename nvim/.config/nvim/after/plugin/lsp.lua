@@ -4,34 +4,34 @@ require("nvim-lsp-installer").setup({
 
 local lspconfig = require("lspconfig")
 
-local file_exists = require("hendrik.utils").file_exists
 local illuminate_on_attach = require("illuminate").on_attach
 
 local function on_attach(client, bufnr)
-    Nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-    Nnoremap("K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-    Nnoremap("<leader>vws", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>")
-    Nnoremap("<leader>vd", "<cmd>lua vim.diagnostic.open_float()<CR>")
-    Nnoremap("[d", "<cmd>lua vim.diagnostic.goto_next()<CR>")
-    Nnoremap("]d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
-    Nnoremap("<leader>vca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-    Nnoremap("<leader>.", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-    --  Nnoremap("<leader>vrr", "<cmd>lua vim.lsp.buf.references()<CR>")
-    Nnoremap("<leader>vrn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-    Nnoremap("<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+    vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+    vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
+    vim.keymap.set("n", "<leader>vws", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>")
+    vim.keymap.set("n", "<leader>vd", "<cmd>lua vim.diagnostic.open_float()<CR>")
+    vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_next()<CR>")
+    vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+    vim.keymap.set("n", "<leader>vca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+    vim.keymap.set("n", "<leader>.", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+    --  vim.keymap.set("n", "<leader>vrr", "<cmd>lua vim.lsp.buf.references()<CR>")
+    vim.keymap.set("n", "<leader>vrn", "<cmd>lua vim.lsp.buf.rename()<CR>")
+    vim.keymap.set("n", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
     -- N- TODO: use Range where applicable
     -- N- vim.lsp.buf.range_formatting()
-    -- Nnoremap("<leader>vf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>")
 
-    -- Nnoremap("<leader>ct", "<cmd>lua vim.lsp.buf.incoming_calls()<CR>")
-    Nnoremap("<leader>ct", "<cmd>IncomingCalls<CR>")
+    -- vim.keymap.set("n", "<leader>ct", "<cmd>lua vim.lsp.buf.incoming_calls()<CR>")
+    vim.keymap.set("n", "<leader>ct", "<cmd>IncomingCalls<CR>")
 
-    Nnoremap("<leader>vf", "<cmd>Neoformat<CR>")
+    -- TODO
+    vim.keymap.set("n", "<leader>vf", "<cmd>Neoformat<CR>")
+    vim.keymap.set("n", "<leader>vf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>")
 
     -- Illuminate
     -- Check these
-    Nnoremap('<A-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>')
-    Nnoremap('<A-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>')
+    vim.keymap.set("n", "<a-n>", "<cmd>lua require('illuminate').next_reference({wrap=true})<cr>")
+    vim.keymap.set("n", "<a-p>", "<cmd>lua require('illuminate').next_reference({reverse=true,wrap=true})<cr>")
 
     illuminate_on_attach(client)
 end
@@ -190,8 +190,9 @@ for server_name, server_options in pairs(servers) do
     }
 
     if server_name == 'intelephense' then
-        local intelephense_licence_path = vim.env.HOME .. "/intelephense/licence.txt"
-        if (not file_exists(intelephense_licence_path)) then
+        local intelephense_licence_path = vim.fn.glob(vim.env.HOME .. "/intelephense/licence.txt")
+
+        if (intelephense_licence_path == "") then
             print("Intelephense License missing!")
         end
     end

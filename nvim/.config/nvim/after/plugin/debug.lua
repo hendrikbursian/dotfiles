@@ -1,6 +1,12 @@
-local dap_install = require("dap-install")
+-- TODO: check dap-install
+local ok, dap_install = pcall(require, "dap-install")
+if not ok then
+  print("dap-install missing!")
+  return
+end
+
 dap_install.setup({
-    installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
+   installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
 })
 dap_install.config("jsnode", {})
 

@@ -70,7 +70,15 @@ local options = {
                 end
             end
         }),
-    })
+    }),
+
+    experimental = {
+        -- I like the new menu better! Nice work hrsh7th
+        native_menu = false,
+
+        -- Let's play with this for a day or two
+        ghost_text = false,
+    },
 }
 
 -- Sorting

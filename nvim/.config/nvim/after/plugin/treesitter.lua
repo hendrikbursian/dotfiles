@@ -1,4 +1,4 @@
-require'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup {
     ensure_installed = "all",
 
     incremental_selection = {
@@ -13,5 +13,12 @@ require'nvim-treesitter.configs'.setup {
 
     indent = {
         enable = true,
+    },
+
+    highlight = {
+	enable = true
+    },
+    textobjects = {
+	enable = true
     },
 }

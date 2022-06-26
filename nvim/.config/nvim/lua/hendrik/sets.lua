@@ -1,3 +1,5 @@
+print("Loading sets")
+
 vim.opt.encoding = 'utf8'
 
 table.insert(vim.opt.path, '**')
@@ -7,7 +9,7 @@ vim.opt.guicursor = { 'n-v-c-sm:block', 'i-ci-ve:block', 'r-cr-o:hor20' }
 vim.opt.exrc = true
 
 -- Disable notifications
-vim.opt.belloff = 'all'
+vim.opt.belloff = "all"
 
 -- Formatting
 vim.opt.tabstop = 4
@@ -52,3 +54,8 @@ vim.opt.wildmenu = true
 vim.opt.wildignore = { '*.pyc', '*_build/*', '**/coverage/*', '**/node_modules/*', '**/android/*', '**/ios/*', '**/.git/*' }
 
 vim.g.neoformat_try_node_exe = true
+
+
+-- LSP
+vim.opt.completeopt= { "menu", "menuone", "noselect"}
+vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy" }

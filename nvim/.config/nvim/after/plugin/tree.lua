@@ -3,6 +3,20 @@ local find_file = require "nvim-tree".find_file
 local open = require "nvim-tree".open
 
 require("nvim-tree").setup({
+    create_in_closed_folder = true,
+    renderer = {
+        special_files = {
+            'README.md',
+            'Makefile',
+            'MAKEFILE',
+        },
+        highlight_opened_files = "all",
+        icons = {
+            show = {
+                file = false
+            }
+        },
+    },
     view = {
         width = '33%'
     },
@@ -18,20 +32,4 @@ require("nvim-tree").setup({
         enable = true,
     },
 })
-
-local M = {}
-
-M.toggle_focused_file = function()
-    if view.is_visible() then
-        view.close()
-    else
-        local previous_buf = vim.api.nvim_get_current_buf()
-        find_file(false, previous_buf)
-
-        local file_path = vim.fn.expand("%:h")
-        open(file_path)
-    end
-end
-
-return M
 

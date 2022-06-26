@@ -1,3 +1,6 @@
+local Remap = require("hendrik.keymap")
+local nnoremap = Remap.nnoremap
+
 require("git-worktree").setup({
 --    change_directory_command = <str> -- default: "cd",
 --    update_on_change = <boolean> -- default: true,
@@ -6,5 +9,10 @@ require("git-worktree").setup({
 --    autopush = <boolean> -- default: false,
 })
 
-Nnoremap("<leader>gw", ":lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
-Nnoremap("<leader>gm", ":lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>")
+nnoremap("<leader>gw", function()
+    require("telescope").extensions.git_worktree.git_worktrees()
+end)
+
+nnoremap("<leader>gm", function()
+    require("telescope").extensions.git_worktree.create_git_worktree()
+end)
