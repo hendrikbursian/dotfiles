@@ -1,5 +1,3 @@
-print("Loading defaults")
-
 local Remap = require("hendrik.keymap")
 local nnoremap = Remap.nnoremap
 local inoremap = Remap.inoremap
@@ -10,12 +8,13 @@ local nmap = Remap.nmap
 -- command! W w
 
 -- Auto brackets
-inoremap('((', '()<Esc>')
-inoremap('[[', '[]<Esc>')
-inoremap('{{', '{}<Esc>')
-inoremap('""', '""<Esc>')
-inoremap("''", "''<Esc>")
-inoremap('``', '``<Esc>')
+inoremap('<<', '<><ESC>i')
+inoremap('((', '()<ESC>i')
+inoremap('[[', '[]<ESC>i')
+inoremap('{{', '{}<ESC>i')
+inoremap('""', '""<ESC>i')
+inoremap("''", "''<ESC>i")
+inoremap('``', '``<ESC>i')
 
 -- Break habits
 inoremap("<Up>", '<C-o>:echom "--> k <-- "<CR>')
@@ -23,9 +22,9 @@ inoremap("<Down>", '<C-o>:echom "--> j <-- "<CR>')
 inoremap("<Right>", '<C-o>:echom "--> l <-- "<CR>')
 inoremap("<Left>", '<C-o>:echom "--> h <-- "<CR>')
 
-vim.api.nvim_command("cabbrev wq echo 'Use ZZ'")
-vim.api.nvim_command("cabbrev q echo 'Use ZQ'")
-vim.api.nvim_command("cabbrev x echo 'Use ZZ'")
+-- vim.api.nvim_command("cabbrev wq echo 'Use ZZ'")
+-- vim.api.nvim_command("cabbrev q echo 'Use ZQ'")
+-- vim.api.nvim_command("cabbrev x echo 'Use ZZ'")
 -- TODO: what does <C-x> do?
 
 -- Save
@@ -66,8 +65,8 @@ vim.api.nvim_command("cabbrev x echo 'Use ZZ'")
 -- nnoremap("<","-Up> <C-W>k")
 
 -- Easier command typing for Dvorak
-nnoremap(";", ":")
-nnoremap(":", ";")
+-- nnoremap(";", ":")
+-- nnoremap(":", ";")
 
 -- Tame Yank!
 nnoremap("Y", "yg$")
@@ -75,7 +74,9 @@ nnoremap("Y", "yg$")
 -- Center everything
 nnoremap("n", "nzzzv")
 nnoremap("N", "Nzzzv")
-nnoremap("J", "mzJ`z")
+nnoremap("]n", "<Plug>(unimpaired-context-next)zz")
+nnoremap("[n", "<Plug>(unimpaired-context-previous)zz")
+--nnoremap("J", "mzJ`z")
 
 -- Source file
 nnoremap("<leader>s", ":so %<CR>")
@@ -87,7 +88,7 @@ nnoremap("<leader>r", function()
 end)
 nnoremap("<leader>o", ":SymbolsOutline<CR>")
 
-nnoremap("<silent>", "<C-f> :silent !tmux neww tmux-sessionizer<CR>")
+nnoremap("<C-f>", ":silent !tmux neww tmux-sessionizer<CR>")
 
 -- Next greatest remap ever : asbjornHaland
 nnoremap("<leader>y", "+y")
@@ -114,7 +115,6 @@ nnoremap("<leader>fb", function()
 end)
 
 nnoremap("<leader>fh", function()
-    print("test")
     return require("telescope.builtin").help_tags()
 end)
 
@@ -126,11 +126,16 @@ nnoremap("<leader>ds", function()
     return require("telescope.builtin").lsp_document_symbols()
 end)
 
-nnoremap("<leader>vrr", function()
-    return require("telescope.builtin").lsp_references()
+-- Telescope: git_worktree
+nnoremap("<leader>gw", function()
+    return require("telescope").extensions.git_worktree.git_worktrees()
 end)
 
+nnoremap("<leader>gm", function()
+    return require("telescope").extensions.git_worktree.create_git_worktree()
+end)
 
+-- Telescope: custom
 nnoremap("<leader>dot", function()
     return require('hendrik.telescope').search_dotfiles()
 end)
@@ -139,14 +144,19 @@ nnoremap("<C-p>", function()
     return require('hendrik.telescope').project_files()
 end)
 
+nnoremap("<leader>gh", function()
+    return require("telescope.builtin").git_bcommits()
+end)
+
+-- Nvim-tree
 nnoremap("<C-b>", function()
     return require('hendrik.nvim-tree').toggle_focused_file()
 end)
 
-
--- Outline
+-- SymbolsOutline
 nnoremap("<leader>o", ":SymbolsOutline<cr>")
 
+-- Harpoon
 nnoremap("<leader>a", function()
     require("harpoon.mark").add_file()
 end)
@@ -155,7 +165,6 @@ nnoremap("<C-e>", function()
     require("harpoon.ui").toggle_quick_menu()
 end)
 
--- Harpoon
 nnoremap("<C-j>", function()
     require("harpoon.ui").nav_file(1)
 end)

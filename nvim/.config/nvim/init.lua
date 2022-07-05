@@ -1,5 +1,3 @@
-print("Loading init")
-
 vim.g.mapleader = " "
 
 require('hendrik')
@@ -8,24 +6,21 @@ local hendrik = vim.api.nvim_create_augroup("hendrik", {})
 
 vim.api.nvim_create_autocmd("BufWritePre", {
     group = hendrik,
-    pattern = { "*.lua", ".go" },
-    callback = function()
-        vim.lsp.buf.formatting({ async = true })
-    end
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-    group = hendrik,
-    pattern = { "*.js", "*.ts" },
-    command = "Neoformat"
-})
-
--- autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_seq_sync({}, 1000, {'eslint', 'tsserver', 'rome'})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-    group = hendrik,
     pattern = "*",
     command = '%s/\\s\\+$//e'
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    group = hendrik,
+    pattern = {
+        "*.lua",
+        "*.go",
+        "*.ts",
+        "*.js"
+    },
+    callback = function()
+       vim.lsp.buf.format({ async = false })
+    end
 })
 
 -- autocmd BufEnter,BufWinEnter,TabEnter * :lua require('lsp_extensions').inlay_hints{}

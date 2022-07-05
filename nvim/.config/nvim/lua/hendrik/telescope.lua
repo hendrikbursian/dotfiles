@@ -6,7 +6,6 @@ local M = {}
 function M.project_files()
     local opts = {
         hidden = true,
-        no_ignore = true,
     }
     local ok = pcall(require("telescope.builtin").git_files, opts)
     if not ok then require("telescope.builtin").find_files(opts) end
@@ -37,9 +36,8 @@ local function open_telescope_oldfiles()
     end
 end
 
-vim.api.nvim_create_autocmd({"VimEnter"}, {
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
     callback = open_telescope_oldfiles
 })
 
 return M
-

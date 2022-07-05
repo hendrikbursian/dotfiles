@@ -8,10 +8,19 @@ function git-make-worktree() {
 function update_neovim() {
     tmp_path=/tmp/nvim.appimage
 
+    nvim -v
+
+    echo ""
+    echo ""
     echo "Downloading Neovim Appimage..."
-    curl -Lo $tmp_path https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+
+    curl -Lo $tmp_path https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
     chmod u+x $tmp_path
     sudo mv $tmp_path /usr/local/bin/nvim
 
     echo "Neovim updated!"
+    echo ""
+    echo ""
+
+    nvim -v
 }

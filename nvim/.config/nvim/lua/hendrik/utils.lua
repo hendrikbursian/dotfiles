@@ -1,5 +1,3 @@
-print("Loading utils")
-
 M = {}
 
 M.print_table = function(node)

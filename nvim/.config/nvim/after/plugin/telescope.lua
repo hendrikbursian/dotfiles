@@ -21,7 +21,6 @@ require("telescope").setup {
             "--column",
             "--smart-case",
             "--trim",
-            "--no-ignore",
             "--hidden",
         },
 
@@ -46,4 +45,3 @@ require("telescope").setup {
 require("telescope").load_extension("fzy_native")
 require("telescope").load_extension("git_worktree")
 require("telescope").load_extension("dap")
-

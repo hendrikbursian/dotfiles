@@ -3,17 +3,23 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- TODO
-    -- https://github.com/tpope/vim-commentary
-    -- Start screen
-
-    use 'rstacruz/vim-closer'
-    use { 'andymass/vim-matchup', event = 'VimEnter' }
+    -- [ ] Start screen
+    -- use 'rstacruz/vim-closer'
+    --use { 'andymass/vim-matchup', event = 'VimEnter' }
 
     -- My plugins start here!!
     -- =======================================================================
 
-    -- Utils =================================================================
+    -- Utility ===============================================================
     use 'nvim-lua/plenary.nvim'
+    --use 'tpope/vim-endwise'
+    use 'tpope/vim-surround'
+    use 'tpope/vim-unimpaired'
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
+    use { 'tpope/vim-commentary' }
 
     -- Clipboard =============================================================
     use 'svermeulen/vim-yoink'
@@ -26,7 +32,8 @@ return require('packer').startup(function(use)
 
     -- Navigation ============================================================
     use 'ThePrimeagen/harpoon'
-    use { 'nvim-telescope/telescope.nvim',
+    use {
+        'nvim-telescope/telescope.nvim',
         requires = { 'nvim-telescope/telescope-fzy-native.nvim' }
     }
 
@@ -36,13 +43,20 @@ return require('packer').startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons', },
     }
 
-    use 'tpope/vim-surround'
-    use 'tpope/vim-unimpaired'
-
     -- LSP ===================================================================
     use 'williamboman/nvim-lsp-installer'
     use 'neovim/nvim-lspconfig'
-    use 'ThePrimeagen/refactoring.nvim'
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        requires = {
+            "ThePrimeagen/refactoring.nvim",
+            requires = {
+                { "nvim-lua/plenary.nvim" },
+                { "nvim-treesitter/nvim-treesitter" }
+            } }
+    }
+
+    use 'jose-elias-alvarez/typescript.nvim'
 
     -- Autocompletion ========================================================
     use 'hrsh7th/cmp-nvim-lsp'
@@ -93,6 +107,7 @@ return require('packer').startup(function(use)
     use 'RRethy/vim-illuminate'
     use 'gruvbox-community/gruvbox'
     use 'NLKNguyen/papercolor-theme'
+    use 'arcticicestudio/nord-vim'
 
     -- Statusline ============================================================
     use 'nvim-lualine/lualine.nvim'
