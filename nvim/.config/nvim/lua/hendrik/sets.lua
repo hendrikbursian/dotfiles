@@ -4,6 +4,9 @@ table.insert(vim.opt.path, '**')
 vim.opt.guicursor = { 'n-v-c-sm:block', 'i-ci-ve:block', 'r-cr-o:hor20' }
 -- vim.opt.shortmess:append({ A = true })
 vim.opt.mouse = "a"
+vim.opt.virtualedit = "all"
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "line"
 
 -- Disable notifications
 vim.opt.belloff = "all"

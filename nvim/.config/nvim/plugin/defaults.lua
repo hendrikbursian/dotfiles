@@ -140,6 +140,8 @@ nnoremap("<leader>dot", function()
     return require('hendrik.telescope').search_dotfiles()
 end)
 
+nnoremap("<leader>lsp", ":e $DOTFILES/nvim/.config/nvim/after/plugin/lsp.lua<CR>")
+
 nnoremap("<C-p>", function()
     return require('hendrik.telescope').project_files()
 end)

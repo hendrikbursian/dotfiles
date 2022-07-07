@@ -16,10 +16,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         "*.lua",
         "*.go",
         "*.ts",
-        "*.js"
+        "*.js",
+        "*.vue",
     },
     callback = function()
-       vim.lsp.buf.format({ async = false })
+        vim.lsp.buf.format({ async = false })
     end
 })
 

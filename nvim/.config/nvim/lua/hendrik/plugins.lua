@@ -69,6 +69,7 @@ return require('packer').startup(function(use)
     --     use 'github/copilot.vim'
     --     use 'hrsh7th/cmp-copilot'
     use 'nvim-lua/lsp_extensions.nvim'
+    use 'b0o/schemastore.nvim'
 
     -- Git ===================================================================
     use { 'lewis6991/gitsigns.nvim',

@@ -29,8 +29,8 @@ local function on_attach(client, bufnr)
 
     vnoremap("<leader>.", function() vim.lsp.buf.range_code_action({}) end, { buffer = bufnr })
 
-    nnoremap("<leader>vf", function() vim.lsp.buf.format({ async = true }) end, { buffer = bufnr })
-    vnoremap("<leader>vf", function() vim.lsp.buf.range_formatting({ async = true }) end, { buffer = bufnr })
+    nnoremap("<leader>vf", function() return vim.lsp.buf.format({ async = true }) end, { buffer = bufnr })
+    vnoremap("<leader>vf", function() return vim.lsp.buf.range_formatting({ async = true }) end, { buffer = bufnr })
 
     -- Telescope
     nnoremap("<leader>vrr", function() require("telescope.builtin").lsp_references() end, { buffer = bufnr })
@@ -72,52 +72,10 @@ local servers = {
     cssls = {},
     cucumber_language_server = {},
     dotls = {},
+    -- eslint = {},
     golangci_lint_ls = {},
     graphql = {},
     html = {},
-    jsonls = {},
-    jsonnet_ls = {},
-    lemminx = {},
-    prismals = {},
-    quick_lint_js = {},
-    sqlls = {},
-    sumneko_lua = {
-        settings = {
-            Lua = {
-                diagnostics = {
-                    globals = { 'vim' },
-                },
-                workspace = {
-                    library = vim.api.nvim_get_runtime_file("", true),
-                },
-                telemetry = {
-                    enable = false,
-                },
-            },
-        },
-    },
-    -- tailwindcss = {},
-    volar = {},
-    yamlls = {},
-    -- eslint = {},
-
-    -- rome = {
-    --     settings = {
-    --         analysis = {
-    --             enableCodeActions = true,
-    --             enableDiagnostics = true,
-    --         },
-    --         formatter = {
-    --             formatWithSyntaxErrors = true,
-    --             indentStyle            = "Spaces",
-    --             lineWidth              = 120,
-    --             quoteStyle             = "Single",
-    --             spaceQuantity          = 2,
-    --         },
-    --         lspBin = null,
-    --         unstable = false,
-    --     }
-    -- },
 
     intelephense = {
         settings = {
@@ -142,6 +100,60 @@ local servers = {
             }
         }
     },
+
+    jsonls = {
+        settings = {
+            json = {
+                schemas = require('schemastore').json.schemas(),
+                validate = { enable = true },
+            },
+        },
+    },
+    jsonnet_ls = {},
+    lemminx = {},
+    prismals = {},
+    quick_lint_js = {},
+
+    -- rome = {
+    --     settings = {
+    --         analysis = {
+    --             enableCodeActions = true,
+    --             enableDiagnostics = true,
+    --         },
+    --         formatter = {
+    --             formatWithSyntaxErrors = true,
+    --             indentStyle            = "Spaces",
+    --             lineWidth              = 120,
+    --             quoteStyle             = "Single",
+    --             spaceQuantity          = 2,
+    --         },
+    --         lspBin = null,
+    --         unstable = false,
+    --     }
+    -- },
+
+    sqlls = {},
+
+    sumneko_lua = {
+        settings = {
+            Lua = {
+                diagnostics = {
+                    globals = { 'vim' },
+                },
+                workspace = {
+                    library = vim.api.nvim_get_runtime_file("", true),
+                },
+                telemetry = {
+                    enable = false,
+                },
+            },
+        },
+    },
+
+    -- tailwindcss = {},
+    vimls = {},
+    volar = {},
+    yamlls = {},
 }
 
 local options = {
