@@ -1,7 +1,8 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+        install_path })
 end
 
 return require('packer').startup(function(use)
@@ -18,7 +19,6 @@ return require('packer').startup(function(use)
 
     -- Utility ===============================================================
     use 'nvim-lua/plenary.nvim'
-    --use 'tpope/vim-endwise'
     use 'tpope/vim-surround'
     use 'tpope/vim-unimpaired'
     use({
@@ -26,6 +26,16 @@ return require('packer').startup(function(use)
         run = function() vim.fn["mkdp#util#install"]() end,
     })
     use { 'tpope/vim-commentary' }
+
+    use {
+        'numToStr/Comment.nvim',
+        config = function() require('Comment').setup(
+                {
+                    ignore = "^$"
+                }
+            )
+        end
+    }
 
     -- Clipboard =============================================================
     use 'svermeulen/vim-yoink'
