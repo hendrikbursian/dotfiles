@@ -22,8 +22,8 @@ return require('packer').startup(function(use)
     use 'tpope/vim-surround'
     use 'tpope/vim-unimpaired'
     use({
-        "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
+        'iamcco/markdown-preview.nvim',
+        run = function() vim.fn['mkdp#util#install']() end,
     })
     use { 'tpope/vim-commentary' }
 
@@ -31,7 +31,7 @@ return require('packer').startup(function(use)
         'numToStr/Comment.nvim',
         config = function() require('Comment').setup(
                 {
-                    ignore = "^$"
+                    ignore = '^$'
                 }
             )
         end
@@ -65,10 +65,10 @@ return require('packer').startup(function(use)
     use {
         'jose-elias-alvarez/null-ls.nvim',
         requires = {
-            "ThePrimeagen/refactoring.nvim",
+            'ThePrimeagen/refactoring.nvim',
             requires = {
-                { "nvim-lua/plenary.nvim" },
-                { "nvim-treesitter/nvim-treesitter" }
+                { 'nvim-lua/plenary.nvim' },
+                { 'nvim-treesitter/nvim-treesitter' }
             } }
     }
 
