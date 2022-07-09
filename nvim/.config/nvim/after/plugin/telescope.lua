@@ -1,4 +1,8 @@
 -- Inspiration: https://github.com/ThePrimeagen/.dotfiles
+local ok,_ = pcall(require, "telescope")
+if not ok then
+    return
+end
 
 local actions = require("telescope.actions")
 
