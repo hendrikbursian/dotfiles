@@ -1,6 +1,6 @@
 vim.opt.encoding = 'utf8'
 
-table.insert(vim.opt.path, '**')
+vim.opt.path:append({ '**' })
 vim.opt.guicursor = { 'n-v-c-sm:block', 'i-ci-ve:block', 'r-cr-o:hor20' }
 -- vim.opt.shortmess:append({ A = true })
 vim.opt.mouse = "a"
@@ -49,7 +49,6 @@ vim.opt.signcolumn = 'yes'
 vim.opt.colorcolumn = { 80, 120 }
 vim.opt.updatetime = 50
 
--- TODO: Add when https://github.com/neovim/neovim/pull/18961 is fixed
 vim.opt.cmdheight = 0
 
 -- Nice menu when typing `:find *.py`

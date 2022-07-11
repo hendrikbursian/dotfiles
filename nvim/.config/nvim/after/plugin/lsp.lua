@@ -64,7 +64,7 @@ local function get_typescript_server_path(root_dir)
     end
 end
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local schemas = require('schemastore').json.schemas()
 
 local servers = {
     ansiblels = {},
@@ -104,7 +104,7 @@ local servers = {
     jsonls = {
         settings = {
             json = {
-                schemas = require('schemastore').json.schemas(),
+                schemas = schemas,
                 validate = { enable = true },
             },
         },
@@ -155,6 +155,8 @@ local servers = {
     volar = {},
     yamlls = {},
 }
+
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local options = {
     on_attach = on_attach,
