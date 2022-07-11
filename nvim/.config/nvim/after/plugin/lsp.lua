@@ -201,7 +201,7 @@ local tsserver_options = vim.tbl_deep_extend("force", options, {
 
 require("typescript").setup({
     disable_commands = false, -- prevent the plugin from creating Vim commands
-    debug = true, -- enable debug logging for commands
+    debug = false, -- enable debug logging for commands
     server = tsserver_options,
 })
 
