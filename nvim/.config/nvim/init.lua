@@ -18,6 +18,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         "*.ts",
         "*.js",
         "*.vue",
+        "*.php",
+        "*.css",
     },
     callback = function()
         vim.lsp.buf.format({ async = false })

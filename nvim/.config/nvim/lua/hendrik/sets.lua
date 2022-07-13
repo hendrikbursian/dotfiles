@@ -8,9 +8,6 @@ vim.opt.virtualedit = "all"
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "line"
 
--- Disable notifications
-vim.opt.belloff = "all"
-
 -- Formatting
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4

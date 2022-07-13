@@ -1,6 +1,4 @@
 " Jump qlist
-nnoremap <C-z> :cnext<CR>zz
-nnoremap <C-x> :cprev<CR>zz
 nnoremap <leader>k :lnext<CR>zz
 nnoremap <leader>j :lprev<CR>zz
 

@@ -1,5 +1,4 @@
 local cmp = require("cmp")
-local luasnip = require("luasnip")
 
 local options = {
     snippet = {
@@ -8,44 +7,34 @@ local options = {
         end,
     },
 
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
+
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping(function()
+
+        ['<C-Space>'] = cmp.mapping(function(fallback)
             if (cmp.visible()) then
                 cmp.select_next_item()
             else
-                cmp.complete();
+                fallback()
             end
-        end, { "i", "s" }),
+        end, { 'i', 's' }),
 
-        ["<CR>"] = cmp.mapping.confirm {
+        ['<CR>'] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
         },
 
-        ["<Tab>"] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Insert,
-            select = true,
-        }),
+        -- ['<Tab>'] = cmp.mapping.confirm({
+        --     behavior = cmp.ConfirmBehavior.Insert,
+        --     select = true,
+        -- }),
 
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
-            else
-                fallback()
-            end
-        end, { "i", "s" }),
         ['<C-n>'] = cmp.mapping({
-            c = function()
-                if cmp.visible() then
-                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-                else
-                    cmp.select_next_item()
-                end
-            end,
             i = function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
@@ -54,6 +43,7 @@ local options = {
                 end
             end
         }),
+
         ['<C-p>'] = cmp.mapping({
             c = function()
                 if cmp.visible() then
@@ -73,11 +63,7 @@ local options = {
     }),
 
     experimental = {
-        -- I like the new menu better! Nice work hrsh7th
-        native_menu = false,
-
-        -- Let's play with this for a day or two
-        ghost_text = false,
+        ghost_text = true,
     },
 }
 
@@ -99,7 +85,7 @@ options.sorting = {
 
 local hastabnine, tabnine = pcall(require, "cmp_tabnine.config")
 if hastabnine then
-        print("Using tabnine")
+    print("Using tabnine")
     tabnine:setup({
         max_lines = 1000,
         max_num_results = 20,
@@ -190,15 +176,15 @@ options.formatting = {
 -- Sources
 options.sources = {
     { name = 'path' },
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
     { name = 'calc' },
-    { name = 'buffer' },
+    { name = 'luasnip' },
     { name = 'copilot' },
+    { name = 'nvim_lsp' },
+    { name = 'buffer', keyword_length = 4, max_item_count = 7 },
 }
 
 if hastabnine then
-    table.insert(options.sources, 1, { name = "cmp_tabnine" })
+    table.insert(options.sources, 6, { name = "cmp_tabnine" })
 end
 
 cmp.setup(options)
@@ -206,7 +192,7 @@ cmp.setup(options)
 cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
-        { name = 'buffer' },
+        { name = 'buffer', keyword_length = 4 },
     },
 })
 
@@ -229,7 +215,8 @@ local snippets_paths = function()
         if vim.fn.isdirectory(path) ~= 0 then
             table.insert(paths, path)
         end
-    end return paths
+    end
+    return paths
 end
 
 require("luasnip.loaders.from_vscode").lazy_load({

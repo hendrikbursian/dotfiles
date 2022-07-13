@@ -15,6 +15,7 @@
       - gcc
       - git
       - gpg
+      - iputils-ping
       - jq
       - llvm
       - lynx
@@ -36,9 +37,11 @@
     apt:
       update_cache: true
       upgrade: "dist"
+    ignore_errors: true
   - name: Update dist
     apt:
       update_cache: true
+    ignore_errors: true
 
   tasks:
   - name: Install packages
@@ -47,4 +50,5 @@
       state: latest
     loop: "{{ packages }}"
   - name: Install pnpm
-    command: curl -fsSL https://get.pnpm.io/install.sh | PNPM_VERSION=7.0.0-rc.3 sh -
+    command: curl -fsSL https://get.pnpm.io/install.sh | sh -
+  ignore_errors: true
