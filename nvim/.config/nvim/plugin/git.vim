@@ -1,8 +1,8 @@
-nnoremap <leader>gco :Git commit<CR>
 nnoremap <leader>gg :Git<CR>
 nnoremap <leader>gl :Git pull<CR>
-nnoremap <leader>gm :Git mergetool<CR>
-nnoremap <leader>gp :Git push --force<CR>
+nnoremap <leader>gt :Git mergetool<CR>
+nnoremap <leader>gpp :Git push<CR>
+nnoremap <leader>gpf :Git push --force<CR>
 
 vnoremap <leader>gh :GcLog<CR>
 
