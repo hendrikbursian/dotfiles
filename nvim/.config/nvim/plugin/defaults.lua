@@ -86,8 +86,11 @@ nnoremap("<leader><CR>", ":so $XDG_CONFIG_HOME/nvim/init.vim<CR>")
 nnoremap("<leader>r", function()
     return require('plenary.reload').reload_module('hendrik', true)
 end)
-nnoremap("<leader>o", ":SymbolsOutline<CR>")
 
+-- Timesheet
+nnoremap("<Leader>t", ":e $HOME/Documents/Freelancing/timesheet.txt<CR>")
+
+-- Sezzzionizezzer
 nnoremap("<C-f>", ":silent !tmux neww tmux-sessionizer<CR>")
 
 -- Next greatest remap ever : asbjornHaland
