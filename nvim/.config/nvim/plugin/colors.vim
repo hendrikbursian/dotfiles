@@ -1,8 +1,8 @@
-"
 " Colorscheme
 set termguicolors
 set background=dark
-colorscheme gruvbox
+colorscheme nord
+"colorscheme gruvbox
 "colorscheme PaperColor
 
 let g:gruvbox_italic=1
