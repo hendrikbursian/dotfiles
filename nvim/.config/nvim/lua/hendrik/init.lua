@@ -2,6 +2,7 @@ require("hendrik.globals")
 require("hendrik.utils")
 require("hendrik.sets")
 require("hendrik.plugins")
+require("hendrik.colors")
 
 -- Fix volar
 vim.lsp.util.apply_text_document_edit = function(text_document_edit, index, offset_encoding)

@@ -1,12 +1,12 @@
 vim.opt.encoding = 'utf8'
 
 vim.opt.path:append({ '**' })
-vim.opt.guicursor = { 'n-v-c-sm:block', 'i-ci-ve:block', 'r-cr-o:hor20' }
 -- vim.opt.shortmess:append({ A = true })
 vim.opt.mouse = "a"
 vim.opt.virtualedit = "all"
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "line"
+vim.opt.synmaxcol = 2000
 
 -- Formatting
 vim.opt.tabstop = 4

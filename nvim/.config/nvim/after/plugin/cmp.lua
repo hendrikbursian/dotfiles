@@ -180,7 +180,7 @@ options.sources = {
     { name = 'luasnip' },
     { name = 'copilot' },
     { name = 'nvim_lsp' },
-    { name = 'buffer', keyword_length = 4, max_item_count = 7 },
+    { name = 'buffer', keyword_length = 2, max_item_count = 7 },
 }
 
 if hastabnine then
