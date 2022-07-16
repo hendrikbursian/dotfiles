@@ -26,7 +26,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
 })
 
--- autocmd BufEnter,BufWinEnter,TabEnter * :lua require('lsp_extensions').inlay_hints{}
+vim.api.nvim_create_autocmd('TermOpen', {
+    group = hendrik,
+    pattern = '*',
+    callback = function()
+        vim.opt_local.number = false
+        vim.opt_local.relativenumber = false
+        vim.cmd('startinsert')
+    end
+})
 
 local highlight_yank = vim.api.nvim_create_augroup("highlight_yank", {})
 
