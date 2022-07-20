@@ -1,4 +1,9 @@
-local cmp = require("cmp")
+local ok, cmp = pcall(require, "cmp")
+
+if not ok or cmp == nil then
+    return
+end
+
 
 local options = {
     snippet = {
