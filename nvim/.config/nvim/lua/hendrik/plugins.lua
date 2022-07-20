@@ -91,6 +91,9 @@ return require('packer').startup((function(use)
     --     use 'github/copilot.vim'
     --     use 'hrsh7th/cmp-copilot'
     use 'b0o/schemastore.nvim'
+    use { 'lttr/cmp-jira', config = function()
+        require("cmp_jira").setup()
+    end }
 
     -- Git ===================================================================
     use { 'lewis6991/gitsigns.nvim',
