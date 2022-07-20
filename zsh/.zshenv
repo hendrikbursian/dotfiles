@@ -47,3 +47,7 @@ export PATH="$HOME/.phpenv/bin:$PATH"
 export PATH="$HOME/neovim/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PNPM_HOME:$PATH"
+
+LOCAL_MYSQL_PATH=/opt/Local/resources/extraResources/lightning-services/mysql-8.0.16+6/bin/linux/bin
+
+[ -d $LOCAL_MYSQL_PATH ] && export PATH="$PATH:$LOCAL_MYSQL_PATH"
