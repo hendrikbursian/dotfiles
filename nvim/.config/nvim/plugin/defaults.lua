@@ -7,14 +7,14 @@ local nmap = Remap.nmap
 -- Save on typo
 -- command! W w
 
--- Auto brackets
-inoremap('<<', '<><ESC>i')
-inoremap('((', '()<ESC>i')
-inoremap('[[', '[]<ESC>i')
-inoremap('{{', '{}<ESC>i')
-inoremap('""', '""<ESC>i')
-inoremap("''", "''<ESC>i")
-inoremap('``', '``<ESC>i')
+-- -- Auto brackets
+-- inoremap('<<', '<><ESC>i')
+-- inoremap('((', '()<ESC>i')
+-- inoremap('[[', '[]<ESC>i')
+-- inoremap('{{', '{}<ESC>i')
+-- inoremap('""', '""<ESC>i')
+-- inoremap("''", "''<ESC>i")
+-- inoremap('``', '``<ESC>i')
 
 -- Break habits
 inoremap("<Up>", '<C-o>:echom "--> k <-- "<CR>')

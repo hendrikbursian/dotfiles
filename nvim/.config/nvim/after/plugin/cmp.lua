@@ -20,7 +20,7 @@ local options = {
             if (cmp.visible()) then
                 cmp.select_next_item()
             else
-                fallback()
+                cmp.complete()
             end
         end, { 'i', 's' }),
 
@@ -205,6 +205,12 @@ cmp.setup.cmdline(':', {
     })
 })
 
+
+-- Autocomplete brackets for method
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+
+-- Snippets
 local snippets_paths = function()
     local plugins = { "friendly-snippets" }
     local paths = {}

@@ -1,38 +1,45 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+    Packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
         install_path })
 end
 
-return require('packer').startup(function(use)
+return require('packer').startup((function(use)
     -- Packer can manage itself ==============================================
     use 'wbthomason/packer.nvim'
 
     -- TODO
     -- [ ] Start screen
-    -- use 'rstacruz/vim-closer'
-    --use { 'andymass/vim-matchup', event = 'VimEnter' }
 
     -- My plugins start here!!
     -- =======================================================================
 
     -- Utility ===============================================================
     use 'nvim-lua/plenary.nvim'
-    use 'tpope/vim-surround'
     use 'tpope/vim-unimpaired'
-    use({
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {
+                fast_wrap = {},
+            }
+        end
+    }
+    use {
+        "kylechui/nvim-surround",
+        config = function() require("nvim-surround").setup() end
+    }
+    use {
         'iamcco/markdown-preview.nvim',
         run = function() vim.fn['mkdp#util#install']() end,
-    })
+    }
 
     use {
         'numToStr/Comment.nvim',
-        config = function() require('Comment').setup(
-                {
-                    ignore = '^$'
-                }
-            )
+        config = function() require('Comment').setup {
+                ignore = '^$'
+            }
+
         end
     }
 
@@ -83,7 +90,6 @@ return require('packer').startup(function(use)
     --     use 'tzachar/cmp-tabnine', { 'do' = './install.sh' }
     --     use 'github/copilot.vim'
     --     use 'hrsh7th/cmp-copilot'
-    use 'nvim-lua/lsp_extensions.nvim'
     use 'b0o/schemastore.nvim'
 
     -- Git ===================================================================
@@ -132,7 +138,7 @@ return require('packer').startup(function(use)
     use '/home/hendrik/plugins/nvim-eslint'
     use '/home/hendrik/plugins/telescope-dap.nvim/master'
 
-    if packer_bootstrap then
+    if Packer_bootstrap then
         require('packer').sync()
     end
-end)
+end))
