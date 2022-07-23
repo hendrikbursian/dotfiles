@@ -181,3 +181,29 @@ end)
 nnoremap("<C-l>", function()
     require("harpoon.ui").nav_file(3)
 end)
+
+-- Neotest
+nnoremap('<leader>tt', function()
+    require('neotest').run.run()
+end)
+
+nnoremap('<leader>tf', function()
+    require('neotest').run.run(vim.api.nvim_buf_get_name(0))
+end)
+
+-- Mnemonic: [t]est [e]xplorer
+nnoremap('<leader>te', function()
+    require('neotest').summary.toggle()
+end)
+
+-- nnoremap('<leader>ta', function()
+--     require('neotest').run.run()
+-- end)
+
+-- nnoremap('<leader>tl', function()
+--     require('neotest').run.run()
+-- end)
+
+-- nnoremap('<leader>tv', function()
+--     require('neotest').run.run()
+-- end)

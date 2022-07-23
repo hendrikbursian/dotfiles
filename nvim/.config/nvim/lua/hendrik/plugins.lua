@@ -17,17 +17,18 @@ return require('packer').startup((function(use)
 
     -- Utility ===============================================================
     use 'nvim-lua/plenary.nvim'
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'tpope/vim-unimpaired'
     use {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {
+        'windwp/nvim-autopairs',
+        config = function() require('nvim-autopairs').setup {
                 fast_wrap = {},
             }
         end
     }
     use {
-        "kylechui/nvim-surround",
-        config = function() require("nvim-surround").setup() end
+        'kylechui/nvim-surround',
+        config = function() require('nvim-surround').setup() end
     }
     use {
         'iamcco/markdown-preview.nvim',
@@ -47,7 +48,6 @@ return require('packer').startup((function(use)
     use 'svermeulen/vim-yoink'
 
     -- Outline ===============================================================
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'simrat39/symbols-outline.nvim'
 
     use { 'mg979/vim-visual-multi', branch = 'master' }
@@ -70,12 +70,7 @@ return require('packer').startup((function(use)
     use 'neovim/nvim-lspconfig'
     use {
         'jose-elias-alvarez/null-ls.nvim',
-        requires = {
-            'ThePrimeagen/refactoring.nvim',
-            requires = {
-                { 'nvim-lua/plenary.nvim' },
-                { 'nvim-treesitter/nvim-treesitter' }
-            } }
+        requires = { 'ThePrimeagen/refactoring.nvim', }
     }
 
     use 'jose-elias-alvarez/typescript.nvim'
@@ -94,7 +89,6 @@ return require('packer').startup((function(use)
 
     -- Git ===================================================================
     use { 'lewis6991/gitsigns.nvim',
-        requires = { 'nvim-lua/plenary.nvim' },
         config = function()
             require('gitsigns').setup()
         end
@@ -110,7 +104,20 @@ return require('packer').startup((function(use)
     use 'theHamsta/nvim-dap-virtual-text'
 
     -- Testing ===============================================================
-    use 'vim-test/vim-test'
+    use {
+        'nvim-neotest/neotest',
+        requires = {
+            'antoinemadec/FixCursorHold.nvim',
+            'olimorris/neotest-phpunit',
+        },
+        config = function()
+            require('neotest').setup({
+                adapters = {
+                    require('neotest-phpunit')
+                }
+            })
+        end
+    }
     use 'tpope/vim-dispatch'
 
     -- Formatting ============================================================
@@ -135,8 +142,8 @@ return require('packer').startup((function(use)
     use 'nvim-lualine/lualine.nvim'
 
     -- Own Plugins ===========================================================
-    use '/home/hendrik/plugins/nvim-eslint'
-    use '/home/hendrik/plugins/telescope-dap.nvim/master'
+    use '~/plugins/nvim-eslint'
+    use '~/plugins/telescope-dap.nvim/master'
 
     if Packer_bootstrap then
         require('packer').sync()
