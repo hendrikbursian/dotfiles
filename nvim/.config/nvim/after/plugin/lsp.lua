@@ -71,6 +71,7 @@ local servers = {
     awk_ls = {},
     cssls = {},
     cucumber_language_server = {},
+    dockerls = {},
     dotls = {},
     -- eslint = {},
     golangci_lint_ls = {},
