@@ -100,6 +100,12 @@ _G.packer_plugins = {
     path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/cmp-cmdline",
     url = "https://github.com/hrsh7th/cmp-cmdline"
   },
+  ["cmp-jira"] = {
+    config = { "\27LJ\2\nÏ\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\tjira\1\0\0\1\0\3\burl.https://ddd.jaas.service.deutschebahn.com\bjql&status+not+in+(\"Erledigt+(Done)\")\nemail,hendrik.bursian-extern@deutschebahn.com\nsetup\rcmp_jira\frequire\0" },
+    loaded = true,
+    path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/cmp-jira",
+    url = "https://github.com/lttr/cmp-jira"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -332,22 +338,26 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: neotest
-time([[Config for neotest]], true)
-try_loadstring("\27LJ\2\ns\0\0\a\0\6\1\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0004\3\3\0006\4\0\0'\6\3\0B\4\2\0?\4\0\0=\3\5\2B\0\2\1K\0\1\0\radapters\1\0\0\20neotest-phpunit\nsetup\fneotest\frequire\3€€À™\4\0", "config", "neotest")
-time([[Config for neotest]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
-time([[Config for gitsigns.nvim]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-try_loadstring("\27LJ\2\nU\0\0\4\0\5\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0004\3\0\0=\3\4\2B\0\2\1K\0\1\0\14fast_wrap\1\0\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
-time([[Config for nvim-autopairs]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\nF\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\vignore\a^$\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
+-- Config for: cmp-jira
+time([[Config for cmp-jira]], true)
+try_loadstring("\27LJ\2\nÏ\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\tjira\1\0\0\1\0\3\burl.https://ddd.jaas.service.deutschebahn.com\bjql&status+not+in+(\"Erledigt+(Done)\")\nemail,hendrik.bursian-extern@deutschebahn.com\nsetup\rcmp_jira\frequire\0", "config", "cmp-jira")
+time([[Config for cmp-jira]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
+time([[Config for gitsigns.nvim]], false)
+-- Config for: neotest
+time([[Config for neotest]], true)
+try_loadstring("\27LJ\2\ns\0\0\a\0\6\1\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0004\3\3\0006\4\0\0'\6\3\0B\4\2\0?\4\0\0=\3\5\2B\0\2\1K\0\1\0\radapters\1\0\0\20neotest-phpunit\nsetup\fneotest\frequire\3€€À™\4\0", "config", "neotest")
+time([[Config for neotest]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+try_loadstring("\27LJ\2\nU\0\0\4\0\5\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0004\3\0\0=\3\4\2B\0\2\1K\0\1\0\14fast_wrap\1\0\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
+time([[Config for nvim-autopairs]], false)
 -- Config for: nvim-surround
 time([[Config for nvim-surround]], true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")

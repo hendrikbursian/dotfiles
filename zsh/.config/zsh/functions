@@ -5,6 +5,11 @@ function git-make-worktree() {
     git fetch
 }
 
+function git-add-worktree() {
+    git worktree add $1
+    cd $1
+}
+
 function update_neovim() {
     tmp_path=/tmp/nvim.appimage
 

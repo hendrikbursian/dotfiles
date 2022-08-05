@@ -22,6 +22,9 @@ require("nvim-tree").setup({
     },
     actions = {
         open_file = {
+            window_picker = {
+                enable = false,
+            },
             quit_on_open = true,
         }
     },
@@ -32,4 +35,3 @@ require("nvim-tree").setup({
         enable = true,
     },
 })
-
