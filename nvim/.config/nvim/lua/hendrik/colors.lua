@@ -1,10 +1,10 @@
 -- Colorscheme
 vim.opt.termguicolors = true
-vim.opt.background = 'dark'
+vim.opt.background = 'light'
 
-vim.cmd('colorscheme nord')
+-- vim.cmd('colorscheme nord')
 -- vim.cmd('colorscheme gruvbox')
--- vim.cmd('colorscheme PaperColor')
+vim.cmd('colorscheme PaperColor')
 
 vim.g.gruvbox_italic = 1
 vim.g.gruvbox_contrast_dark = 'hard'
@@ -13,31 +13,31 @@ vim.g.gruvbox_contrast_light = 'soft'
 -- Completion
 
 -- Grey
-vim.highlight.create('CmpItemAbbrDeprecated', { guibg = 'NONE', gui = 'strikethrough', guifg = '#808080' }, true)
+vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated', { bg = 'NONE', strikethrough = true, fg = '#808080' })
 
 -- Blue
-vim.highlight.create('CmpItemAbbrMatch', { guibg = 'NONE', guifg = '#569CD6' }, true)
-vim.highlight.create('CmpItemAbbrMatchFuzzy', { guibg = 'NONE', guifg = '#569CD6' }, true)
+vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', { bg = 'NONE', fg = '#569CD6' })
+vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy', { bg = 'NONE', fg = '#569CD6' })
 
 -- Light blue
-vim.highlight.create('CmpItemKindVariable', { guibg = 'NONE', guifg = '#9CDCFE' }, true)
-vim.highlight.create('CmpItemKindInterface', { guibg = 'NONE', guifg = '#9CDCFE' }, true)
-vim.highlight.create('CmpItemKindText', { guibg = 'NONE', guifg = '#9CDCFE' }, true)
+vim.api.nvim_set_hl(0, 'CmpItemKindVariable', { bg = 'NONE', fg = '#9CDCFE' })
+vim.api.nvim_set_hl(0, 'CmpItemKindInterface', { bg = 'NONE', fg = '#9CDCFE' })
+vim.api.nvim_set_hl(0, 'CmpItemKindText', { bg = 'NONE', fg = '#9CDCFE' })
 
 -- Pink
-vim.highlight.create('CmpItemKindFunction', { guibg = 'NONE', guifg = '#C586C0' }, true)
-vim.highlight.create('CmpItemKindMethod', { guibg = 'NONE', guifg = '#C586C0' }, true)
+vim.api.nvim_set_hl(0, 'CmpItemKindFunction', { bg = 'NONE', fg = '#C586C0' })
+vim.api.nvim_set_hl(0, 'CmpItemKindMethod', { bg = 'NONE', fg = '#C586C0' })
 
 -- Front
-vim.highlight.create('CmpItemKindKeyword', { guibg = 'NONE', guifg = '#D4D4D4' }, true)
-vim.highlight.create('CmpItemKindProperty', { guibg = 'NONE', guifg = '#D4D4D4' }, true)
-vim.highlight.create('CmpItemKindUnit', { guibg = 'NONE', guifg = '#D4D4D4' }, true)
+vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { bg = 'NONE', fg = '#D4D4D4' })
+vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { bg = 'NONE', fg = '#D4D4D4' })
+vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { bg = 'NONE', fg = '#D4D4D4' })
 
 
 -- Cursor
-vim.highlight.create('Cursor', { guifg = 'white', guibg = 'red' }, false)
-vim.highlight.create('iCursor', { guifg = 'white', guibg = 'red' }, false)
+vim.api.nvim_set_hl(0, 'Cursor', { fg = 'white', bg = 'red' })
+vim.api.nvim_set_hl(0, 'iCursor', { fg = 'white', bg = 'red' })
 vim.opt.guicursor = { 'n-v-c-sm:block-Cursor', 'i-ci-ve:block-Cursor', 'r-cr-o:hor20' }
 
 -- Column indicators
--- vim.highlight.create('ColorColumn', { ctermbg = 0, guibg = 'red' }, false)
+-- vim.api.nvim_set_hl('ColorColumn', { ctermbg = 0, bg = 'red' }, false)
