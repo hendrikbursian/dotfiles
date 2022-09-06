@@ -182,9 +182,9 @@ options.formatting = {
 options.sources = {
     { name = 'path' },
     { name = 'calc' },
-    { name = 'luasnip' },
     { name = 'copilot' },
     { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     { name = 'buffer', keyword_length = 2, max_item_count = 7 },
 }
 
