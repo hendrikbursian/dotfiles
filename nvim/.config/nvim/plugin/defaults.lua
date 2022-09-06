@@ -71,6 +71,9 @@ inoremap("<Left>", '<C-o>:echom "--> h <-- "<CR>')
 -- Tame Yank!
 nnoremap("Y", "yg$")
 
+-- Make yank work with cursor=virtual
+nnoremap("yy", "my0yy`y<CMD>delmark y<CR>")
+
 -- Center everything
 nnoremap("n", "nzzzv")
 nnoremap("N", "Nzzzv")
