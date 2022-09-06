@@ -22,7 +22,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         "*.css",
     },
     callback = function()
-        vim.lsp.buf.format({ async = false })
+        -- vim.lsp.buf.format({ async = false })
+        vim.api.nvim_command('Neoformat')
     end
 })
 
