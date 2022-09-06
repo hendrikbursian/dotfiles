@@ -18,6 +18,7 @@ return require('packer').startup((function(use)
     -- Utility ===============================================================
     use 'nvim-lua/plenary.nvim'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use 'romgrk/nvim-treesitter-context'
     use 'tpope/vim-unimpaired'
     use {
         'windwp/nvim-autopairs',
@@ -40,7 +41,6 @@ return require('packer').startup((function(use)
         config = function() require('Comment').setup {
                 ignore = '^$'
             }
-
         end
     }
 
@@ -152,3 +152,4 @@ return require('packer').startup((function(use)
         require('packer').sync()
     end
 end))
+
