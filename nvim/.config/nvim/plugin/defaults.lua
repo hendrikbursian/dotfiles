@@ -75,6 +75,8 @@ nnoremap("Y", "yg$")
 nnoremap("yy", "my0yy`y<CMD>delmark y<CR>")
 
 -- Center everything
+nnoremap("{", "{zz")
+nnoremap("}", "}zz")
 nnoremap("n", "nzzzv")
 nnoremap("N", "Nzzzv")
 nnoremap("]n", "<Plug>(unimpaired-context-next)zz")
