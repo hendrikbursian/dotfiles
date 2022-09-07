@@ -5,6 +5,7 @@ nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gf :Git push --force<CR>
 nnoremap <leader>ga :Git add %<CR>
 nnoremap <leader>gaa :Git add .<CR>
+nnoremap <leader>go :Git log<CR>
 
 vnoremap <leader>gh :GcLog<CR>
 
