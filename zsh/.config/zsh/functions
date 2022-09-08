@@ -1,13 +1,12 @@
 #!/usr/bin/env zsh
 
-function git-make-worktree() {
+function git-fetch-worktree() {
     git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
     git fetch
 }
 
-function git-add-worktree() {
-    git worktree add $1
-    cd $1
+function git-rebase-interactive-branch-root() {
+    git rebase --interactive $(git log $(git remote show origin | sed -n '/HEAD branch/s/.*: //p')..$(git branch --show-current) --oneline | tail -1 | awk '{ print $1 }')~1
 }
 
 function update_neovim() {

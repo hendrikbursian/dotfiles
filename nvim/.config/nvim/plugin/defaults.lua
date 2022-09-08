@@ -73,6 +73,7 @@ nnoremap("Y", "yg$")
 
 -- Make yank work with cursor=virtual
 nnoremap("yy", "my0yy`y<CMD>delmark y<CR>")
+vnoremap("y", "my0y`y<CMD>delmark y<CR>")
 
 -- Center everything
 nnoremap("{", "{zz")
