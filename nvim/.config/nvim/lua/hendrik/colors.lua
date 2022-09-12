@@ -6,12 +6,26 @@ vim.g.gruvbox_italic = 1
 vim.g.gruvbox_contrast_dark = 'hard'
 vim.g.gruvbox_contrast_light = 'soft'
 
-if (os.date("*t").hour >= 20) then
-    print('Good evening!')
+local hour = os.date("*t").hour
+
+if (hour <= 4 or hour > 22) then
+    print('Good night!')
     vim.cmd('colorscheme nord')
     vim.opt.background = 'dark'
-else
+elseif (hour <= 6) then
+    print('Good morning!')
+    vim.cmd('colorscheme nord')
+    vim.opt.background = 'dark'
+elseif (hour <= 12) then
     print('Good day!')
+    vim.cmd('colorscheme PaperColor')
+    vim.opt.background = 'light'
+elseif (hour <= 18) then
+    print('Good afternoon!')
+    vim.cmd('colorscheme PaperColor')
+    vim.opt.background = 'light'
+elseif (hour <= 22) then
+    print('Good evening!')
     vim.cmd('colorscheme PaperColor')
     vim.opt.background = 'light'
 end
