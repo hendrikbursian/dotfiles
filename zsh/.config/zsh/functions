@@ -6,8 +6,8 @@ function git-fetch-worktree() {
 }
 
 function git-add-worktree() {
-    git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
-    git fetch
+    git worktree add $1
+    cd $1
 }
 
 function git-rebase-interactive-branch-root() {
