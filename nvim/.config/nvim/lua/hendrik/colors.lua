@@ -26,8 +26,8 @@ elseif (hour <= 18) then
     vim.opt.background = 'light'
 elseif (hour <= 22) then
     print('Good evening!')
-    vim.cmd('colorscheme PaperColor')
-    vim.opt.background = 'light'
+    vim.cmd('colorscheme nord')
+    vim.opt.background = 'dark'
 end
 
 -- Completion
