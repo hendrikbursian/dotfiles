@@ -10,13 +10,18 @@ if [[ -z $selected ]]; then
     exit
 fi
 
-selected_name=$(basename "$selected" | tr . _)
+# Get two last parts of selected path
+dir1=$(dirname "$selected")
+selected_name=$(basename "$dir1")/$(basename "$selected")
+selected_name=$(echo "$selected_name" | tr . _)
+
 tmux_running=$(pgrep tmux)
 
 if [[ ! $tmux_running ]]; then
     tmux new-session -s "$selected_name" -c "$selected"
     exit 0
 fi
+
 
 # If there is at least a tmux server running
 # And if you're not inside tmux, then either attach to the session or create it:
