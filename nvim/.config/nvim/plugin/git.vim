@@ -3,8 +3,8 @@ nnoremap <leader>gl :Git pull<CR>
 nnoremap <leader>gt :Git mergetool<CR>
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gf :Git push --force<CR>
-nnoremap <leader>ga <CMD>Git add %<CR>
-nnoremap <leader>gaa :Git add .<CR>
+nnoremap <silent> <leader>ga <CMD>Git add %<CR>
+nnoremap <silent> <leader>gaa <CMD>Git add .<CR>
 nnoremap <leader>go :Git log<CR>
 
 vnoremap <leader>gh :GcLog<CR>
