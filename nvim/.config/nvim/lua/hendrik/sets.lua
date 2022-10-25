@@ -1,5 +1,3 @@
-vim.opt.encoding = 'utf8'
-
 vim.opt.path:append({ '**' })
 -- vim.opt.shortmess:append({ A = true })
 vim.opt.mouse = "a"
@@ -7,6 +5,11 @@ vim.opt.virtualedit = "all"
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "line"
 vim.opt.synmaxcol = 2000
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+vim.opt.foldlevelstart = 1
+vim.opt.foldmethod = 'indent'
 
 -- Formatting
 vim.opt.tabstop = 4
@@ -32,7 +35,7 @@ vim.opt.undodir = os.getenv('XDG_CONFIG_HOME') .. '/nvim/undo//'
 -- Seaching
 vim.opt.hlsearch = false
 vim.opt.ignorecase = true
--- vim.opt.smartcase = true
+vim.opt.smartcase = true
 vim.opt.incsearch = true
 
 -- Misc
@@ -46,7 +49,7 @@ vim.opt.signcolumn = 'yes'
 vim.opt.colorcolumn = { 80, 120 }
 vim.opt.updatetime = 50
 
-vim.opt.cmdheight = 0
+-- vim.opt.cmdheight = 0
 
 -- Nice menu when typing `:find *.py`
 vim.opt.wildmode = { 'longest', 'list', 'full' }
