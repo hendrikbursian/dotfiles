@@ -1,7 +1,3 @@
-require("nvim-lsp-installer").setup({
-    automatic_installation = true,
-})
-
 local Remap = require("hendrik.keymap")
 local nnoremap = Remap.nnoremap
 local vnoremap = Remap.vnoremap
@@ -72,8 +68,8 @@ local servers = {
     cssls = {},
     cucumber_language_server = {},
     dockerls = {},
-    dotls = {},
     -- eslint = {},
+    gopls = {},
     golangci_lint_ls = {},
     graphql = {},
     html = {},
@@ -157,7 +153,7 @@ local servers = {
     yamlls = {},
 }
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local options = {
     on_attach = on_attach,
@@ -208,15 +204,15 @@ require("typescript").setup({
     server = tsserver_options,
 })
 
-require("null-ls").setup({
-    sources = {
-        require("null-ls").builtins.completion.spell,
+-- require("null-ls").setup({
+--     sources = {
+--         require("null-ls").builtins.completion.spell,
 
-        -- ESlint
-        require("null-ls").builtins.diagnostics.eslint_d,
-        require("null-ls").builtins.code_actions.eslint_d,
-        -- require("null-ls").builtins.formatting.eslint_d,
+--         -- ESlint
+--         require("null-ls").builtins.diagnostics.eslint_d,
+--         require("null-ls").builtins.code_actions.eslint_d,
+--         -- require("null-ls").builtins.formatting.eslint_d,
 
-        -- require("null-ls").builtins.formatting.prettier_d_slim,
-    },
-})
+--         -- require("null-ls").builtins.formatting.prettier_d_slim,
+--     },
+-- })
