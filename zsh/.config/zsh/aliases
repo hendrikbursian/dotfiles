@@ -11,6 +11,7 @@ alias gwt="git worktree"
 alias gwtf="git-fetch-worktree"
 alias gwtl="git worktree list"
 alias gwtr="git worktree remove"
+alias gwtm="git worktree remove"
 alias gwta="git-add-worktree"
 alias grbid="git-rebase-interactive-branch-root"
 alias ssl='openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout ssl.key -out ssl.cert -subj "/CN=127.0.0.1/"'
