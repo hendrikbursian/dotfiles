@@ -26,5 +26,6 @@ alias copy="xclip -sel clip"
 alias gcl="gitlab-ci-local"
 alias pd="popd"
 alias pud="pushd"
+alias t="trans"
 
 alias go-reshim='asdf reshim golang && export GOROOT="$(asdf where golang)/go/"'
