@@ -1,13 +1,14 @@
 -- Inspiration: https://github.com/ThePrimeagen/.dotfiles
-local ok,_ = pcall(require, "telescope")
+local ok, _ = pcall(require, "telescope")
 if not ok then
     return
 end
 
 local actions = require("telescope.actions")
+local themes = require("telescope.themes")
 
 require("telescope").setup {
-    defaults = {
+    defaults = themes.get_ivy({
         file_sorter = require("telescope.sorters").get_fzy_sorter,
         prompt_prefix = " >",
         color_devicons = true,
@@ -28,6 +29,10 @@ require("telescope").setup {
             "--hidden",
         },
 
+        layout_config = {
+            height = 0.56,
+        },
+
         mappings = {
             i = {
                 ["<C-x>"] = false,
@@ -37,7 +42,7 @@ require("telescope").setup {
                 ["<C-q>"] = actions.send_selected_to_qflist,
             },
         },
-    },
+    }),
 
     extensions = {
         fzy_native = {
