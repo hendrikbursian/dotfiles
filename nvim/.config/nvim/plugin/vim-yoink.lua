@@ -25,20 +25,3 @@ vim.g.yoinkMaxItems = 30
 
 vim.opt.clipboard = 'unnamedplus'
 
--- if vim.fn.has('wsl') then
---     local path = vim.fn.expand('<sfile>:p:h')
---     local yank_exe = path .. '/win32yank/win32yank.exe'
-
---     vim.g.clipboard = {
---         name = 'wslclipboard',
---         cache_enabled = true,
---         copy = {
---             ["+"] = yank_exe .. ' -i --crlf',
---             ["*"] = yank_exe .. ' -i --crlf',
---         },
---         paste = {
---             ["+"] = yank_exe .. ' -o --lf',
---             ["*"] = yank_exe .. ' -o --lf',
---         },
---     }
--- end
