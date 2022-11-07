@@ -140,6 +140,7 @@ return require('packer').startup((function(use)
     use 'gruvbox-community/gruvbox'
     use 'NLKNguyen/papercolor-theme'
     use 'arcticicestudio/nord-vim'
+    use 'mhinz/vim-startify'
 
     -- Statusline ============================================================
     use 'nvim-lualine/lualine.nvim'
