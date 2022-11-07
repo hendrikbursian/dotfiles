@@ -12,17 +12,18 @@ local function on_attach(client, bufnr)
     -- local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
 
     nnoremap("gd", vim.lsp.buf.definition, { buffer = bufnr })
+    nnoremap("gi", vim.lsp.buf.implementation, { buffer = bufnr })
+
     nnoremap("K", vim.lsp.buf.hover, { buffer = bufnr })
     nnoremap("<leader>vd", vim.diagnostic.open_float, { buffer = bufnr })
     nnoremap("[d", vim.diagnostic.goto_next, { buffer = bufnr })
     nnoremap("]d", vim.diagnostic.goto_prev, { buffer = bufnr })
-    nnoremap("<leader>vca", vim.lsp.buf.code_action, { buffer = bufnr })
-    nnoremap("<leader>.", vim.lsp.buf.code_action, { buffer = bufnr })
     vnoremap("<leader>rr", require("refactoring").select_refactor, { buffer = bufnr })
     nnoremap("<leader>vrn", vim.lsp.buf.rename, { buffer = bufnr })
     nnoremap("<C-h>", vim.lsp.buf.signature_help, { buffer = bufnr })
     nnoremap("<leader>ct", vim.lsp.buf.incoming_calls, { buffer = bufnr })
 
+    nnoremap("<leader>.", vim.lsp.buf.code_action, { buffer = bufnr })
     vnoremap("<leader>.", function() vim.lsp.buf.range_code_action({}) end, { buffer = bufnr })
 
     nnoremap("<leader>vf", function() return vim.lsp.buf.format({ async = true }) end, { buffer = bufnr })
@@ -34,30 +35,7 @@ local function on_attach(client, bufnr)
         { buffer = bufnr })
 
     -- Illuminate
-    -- Check these
-    nnoremap("<a-n>", function() require('illuminate').next_reference({ wrap = true }) end, { buffer = bufnr })
-    nnoremap("<a-p>", function() require('illuminate').next_reference({ reverse = true, wrap = true }) end,
-        { buffer = bufnr })
-
     illuminate_on_attach(client)
-end
-
-local util = require 'lspconfig.util'
-local function get_typescript_server_path(root_dir)
-    local global_ts = '/home/hendrik/.asdf/shims/tsserver'
-    local found_ts = ''
-    local function check_dir(path)
-        found_ts = util.path.join(path, 'node_modules', 'typescript', 'lib', 'tsserverlibrary.js')
-        if util.path.exists(found_ts) then
-            return path
-        end
-    end
-
-    if util.search_ancestors(root_dir, check_dir) then
-        return found_ts
-    else
-        return global_ts
-    end
 end
 
 local schemas = require('schemastore').json.schemas()
