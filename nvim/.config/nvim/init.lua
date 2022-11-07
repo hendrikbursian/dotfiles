@@ -4,6 +4,8 @@ require('hendrik')
 
 local hendrik = vim.api.nvim_create_augroup("hendrik", {})
 
+print('Progress, not perfection.')
+
 vim.api.nvim_create_autocmd("BufWritePre", {
     group = hendrik,
     pattern = "*",
@@ -20,6 +22,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         "*.vue",
         "*.php",
         "*.css",
+        "*.yaml",
+        "*.yml",
     },
     callback = function()
         -- vim.lsp.buf.format({ async = false })
@@ -55,3 +59,4 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = "plugins.lua",
     command = "source <afile> | PackerCompile"
 })
+
