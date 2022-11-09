@@ -63,3 +63,5 @@ vim.g.neoformat_try_node_exe = true
 -- LSP
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy" }
+
+vim.opt.synmaxcol = 200
