@@ -29,8 +29,14 @@ require("telescope").setup {
             "--hidden",
         },
 
+        path_display = {
+            'smart',
+            'truncate',
+            shorten = 3,
+        },
+
         layout_config = {
-            height = 0.56,
+            height = 0.5,
         },
 
         mappings = {
