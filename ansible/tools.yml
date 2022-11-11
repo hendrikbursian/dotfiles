@@ -23,6 +23,7 @@
       - net-tools
       - ripgrep
       - rsync
+      - socat
       - stow
       - tmux
       - tree
@@ -33,22 +34,22 @@
       - zsh
 
   pre_tasks:
-  - name: Update apt cache
-    apt:
-      update_cache: true
-      upgrade: "dist"
-    ignore_errors: true
-  - name: Update dist
-    apt:
-      update_cache: true
-    ignore_errors: true
+    - name: Update apt cache
+      apt:
+        update_cache: true
+        upgrade: "dist"
+      ignore_errors: true
+    - name: Update dist
+      apt:
+        update_cache: true
+      ignore_errors: true
 
   tasks:
-  - name: Install packages
-    apt:
-      name: "{{ item }}"
-      state: latest
-    loop: "{{ packages }}"
-  - name: Install pnpm
-    command: curl -fsSL https://get.pnpm.io/install.sh | sh -
+    - name: Install packages
+      apt:
+        name: "{{ item }}"
+        state: latest
+      loop: "{{ packages }}"
+    - name: Install pnpm
+      command: curl -fsSL https://get.pnpm.io/install.sh | sh -
   ignore_errors: true
