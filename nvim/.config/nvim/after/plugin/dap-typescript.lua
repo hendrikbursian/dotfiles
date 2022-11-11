@@ -1,11 +1,18 @@
+local adapters ={ 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }
+
 require("dap-vscode-js").setup({
     -- node_path = "node", -- Path of node executable. Defaults to $NODE_PATH, and then "node"
     -- debugger_path = "(runtimedir)/site/pack/packer/opt/vscode-js-debug", -- Path to vscode-js-debug installation.
     -- debugger_cmd = { "js-debug-adapter" }, -- Command to use to launch the debug server. Takes precedence over `node_path` and `debugger_path`.
-    adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }, -- which adapters to register in nvim-dap
+    adapters, -- which adapters to register in nvim-dap
 })
 
-require('dap.ext.vscode').load_launchjs(nil, { ['pwa-node'] = { 'typescript' } })
+local file_type_mapping = {}
+for _, adapter in pairs(adapters) do
+    file_type_mapping[adapter] = { 'typescript', 'javascript' }
+end
+
+require('dap.ext.vscode').load_launchjs(nil, file_type_mapping)
 
 if require('dap').configurations.typescript == nil then
     for _, language in ipairs({ "typescript", "javascript" }) do
@@ -27,6 +34,5 @@ if require('dap').configurations.typescript == nil then
         }
     end
 end
-
 
 require('dap').set_log_level('TRACE')
