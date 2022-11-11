@@ -1,4 +1,6 @@
+local util = require('lspconfig.util')
 local fn = vim.fn
+
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
     Packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
@@ -20,6 +22,8 @@ return require('packer').startup((function(use)
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'romgrk/nvim-treesitter-context'
     use 'tpope/vim-unimpaired'
+    -- use 'tpope/vim-obsession'
+    use 'tpope/vim-abolish'
     use {
         'windwp/nvim-autopairs',
         config = function() require('nvim-autopairs').setup {
@@ -41,6 +45,21 @@ return require('packer').startup((function(use)
         config = function() require('Comment').setup {
                 ignore = '^$'
             }
+        end
+    }
+
+    -- Installer
+    use {
+        'williamboman/mason.nvim',
+        requires = {
+            'williamboman/mason-lspconfig.nvim',
+        },
+
+        config = function()
+            require('mason').setup()
+            require('mason-lspconfig').setup({
+                automatic_installation = true,
+            })
         end
     }
 
@@ -66,7 +85,6 @@ return require('packer').startup((function(use)
     }
 
     -- LSP ===================================================================
-    use 'williamboman/nvim-lsp-installer'
     use 'neovim/nvim-lspconfig'
     use {
         'jose-elias-alvarez/null-ls.nvim',
@@ -100,23 +118,39 @@ return require('packer').startup((function(use)
     use 'ThePrimeagen/git-worktree.nvim'
 
     -- Debugging =============================================================
-    -- TODO: Check this
-    -- use 'vim-vdebug/vdebug'
     use 'mfussenegger/nvim-dap'
-    use { 'Pocco81/dap-buddy.nvim', commit = '24923c3' }
-    use 'theHamsta/nvim-dap-virtual-text'
+    use {
+        'microsoft/vscode-js-debug',
+        opt = true,
+        run = 'npm install --legacy-peer-deps && npm run compile'
+    }
+    use 'mxsdev/nvim-dap-vscode-js'
+    use { 'leoluz/nvim-dap-go',
+        config = function()
+            require('dap-go').setup({})
+        end
+    }
+    use { 'theHamsta/nvim-dap-virtual-text',
+        config = function()
+            require('nvim-dap-virtual-text').setup({})
+        end
+    }
+    use 'rcarriga/nvim-dap-ui'
 
     -- Testing ===============================================================
     use {
         'nvim-neotest/neotest',
         requires = {
-            'antoinemadec/FixCursorHold.nvim',
+            'nvim-lua/plenary.nvim',
+            'nvim-treesitter/nvim-treesitter',
             'olimorris/neotest-phpunit',
+            'haydenmeade/neotest-jest',
         },
         config = function()
             require('neotest').setup({
                 adapters = {
-                    require('neotest-phpunit')
+                    require('neotest-phpunit'),
+                    require('neotest-jest')({}),
                 }
             })
         end
@@ -153,4 +187,3 @@ return require('packer').startup((function(use)
         require('packer').sync()
     end
 end))
-
