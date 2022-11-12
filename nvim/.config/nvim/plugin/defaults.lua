@@ -2,6 +2,7 @@ local Remap = require("hendrik.keymap")
 local nnoremap = Remap.nnoremap
 local inoremap = Remap.inoremap
 local vnoremap = Remap.vnoremap
+local xnoremap = Remap.xnoremap
 local nmap = Remap.nmap
 
 -- Save on typo
@@ -99,10 +100,13 @@ nnoremap("<Leader>t", ":e $HOME/Documents/Freelancing/timesheet.txt<CR>")
 -- Sezzzionizezzer
 nnoremap("<C-f>", ":silent !tmux neww tmux-sessionizer<CR>")
 
+-- Delete without copying!
+nnoremap("<leader>d", "\"_d")
+
 -- Next greatest remap ever : asbjornHaland
-nnoremap("<leader>y", "+y")
-vnoremap("<leader>y", "+y")
-nmap("<leader>Y", "+Y")
+-- nnoremap("<leader>y", "+y")
+-- vnoremap("<leader>y", "+y")
+-- nmap("<leader>Y", "+Y")
 
 -- Turn hlsearch off after search
 nnoremap("<expr>", '<CR> {-> v:hlsearch ? ":nohl\\<CR>" : "\\<CR>"}()')
@@ -197,6 +201,10 @@ nnoremap('<leader>tf', function()
     require('neotest').run.run(vim.api.nvim_buf_get_name(0))
 end)
 
+nnoremap('<leader>td', function()
+    require('neotest').run.run({ strategy = 'dap' })
+end)
+
 -- Mnemonic: [t]est [e]xplorer
 nnoremap('<leader>te', function()
     require('neotest').summary.toggle()
@@ -213,3 +221,15 @@ end)
 -- nnoremap('<leader>tv', function()
 --     require('neotest').run.run()
 -- end)
+
+nnoremap('<leader>bb', function()
+    require('persistent-breakpoints.api').toggle_breakpoint()
+end)
+
+nnoremap('<leader>bc', function()
+    require('persistent-breakpoints.api').set_conditional_breakpoint()
+end)
+
+nnoremap('<leader>bX', function()
+    require('persistent-breakpoints.api').set_conditional_breakpoint()
+end)

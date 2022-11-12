@@ -104,9 +104,6 @@ return require('packer').startup((function(use)
     --     use 'github/copilot.vim'
     --     use 'hrsh7th/cmp-copilot'
     use 'b0o/schemastore.nvim'
-    use { 'lttr/cmp-jira', config = function()
-        require("cmp_jira").setup()
-    end }
 
     -- Git ===================================================================
     use { 'lewis6991/gitsigns.nvim',
@@ -136,6 +133,13 @@ return require('packer').startup((function(use)
         end
     }
     use 'rcarriga/nvim-dap-ui'
+    use { 'Weissle/persistent-breakpoints.nvim',
+        config = function()
+            require('persistent-breakpoints').setup {
+                load_breakpoints_event = { "BufReadPost" }
+            }
+        end
+    }
 
     -- Testing ===============================================================
     use {
