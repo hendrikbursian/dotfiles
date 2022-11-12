@@ -231,5 +231,5 @@ nnoremap('<leader>bc', function()
 end)
 
 nnoremap('<leader>bX', function()
-    require('persistent-breakpoints.api').set_conditional_breakpoint()
+    require('persistent-breakpoints.api').clear_all_breakpoints()
 end)
