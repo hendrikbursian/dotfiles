@@ -30,7 +30,7 @@ local function on_attach(client, bufnr)
     vnoremap("<leader>vf", function() return vim.lsp.buf.range_formatting({ async = true }) end, { buffer = bufnr })
 
     -- Telescope
-    nnoremap("<leader>vrr", function() require("telescope.builtin").lsp_references({ fname_width = 50 }) end,
+    nnoremap("<leader>vrr", function() require("telescope.builtin").lsp_references({ fname_width = 60 }) end,
         { buffer = bufnr })
     nnoremap("<leader>vws", function() require("telescope.builtin").lsp_dynamic_workspace_symbols() end,
         { buffer = bufnr })
