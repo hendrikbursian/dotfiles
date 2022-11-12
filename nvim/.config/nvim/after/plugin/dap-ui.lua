@@ -3,7 +3,7 @@ local dapui = require('dapui')
 
 dapui.setup()
 
-dap.listeners.after.event_initialized['dapui_config'] = function()
+dap.listeners.after.event_breakpoint['dapui_config'] = function()
     dapui.open({})
 end
 
