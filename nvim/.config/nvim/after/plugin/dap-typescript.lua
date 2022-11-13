@@ -1,4 +1,6 @@
-local adapters ={ 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }
+local dap = require('dap')
+
+local adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }
 
 require("dap-vscode-js").setup({
     -- node_path = "node", -- Path of node executable. Defaults to $NODE_PATH, and then "node"
@@ -14,9 +16,10 @@ end
 
 require('dap.ext.vscode').load_launchjs(nil, file_type_mapping)
 
-if require('dap').configurations.typescript == nil then
-    for _, language in ipairs({ "typescript", "javascript" }) do
-        require("dap").configurations[language] = {
+for _, language in ipairs({ "typescript", "javascript" }) do
+    -- Add default configurations if no other configurations were found
+    if dap.configurations[language] == nil then
+        dap.configurations[language] = {
             {
                 type = "pwa-node",
                 request = "launch",
@@ -32,7 +35,14 @@ if require('dap').configurations.typescript == nil then
                 cwd = "${workspaceFolder}",
             }
         }
+    else
+        -- Add process picker for "attach" configurations loaded from "launch.json" files
+        for i, _ in ipairs(dap.configurations[language]) do
+            if dap.configurations[language][i].request == 'attach' and
+                dap.configurations[language][i].processId == nil
+            then
+                dap.configurations[language][i].processId = require 'dap.utils'.pick_process
+            end
+        end
     end
 end
-
-require('dap').set_log_level('TRACE')
