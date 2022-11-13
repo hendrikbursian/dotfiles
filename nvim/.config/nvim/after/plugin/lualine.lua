@@ -2,15 +2,21 @@ require('lualine').setup {
     options = {
         icons_enabled = true,
         -- theme = 'PaperColor',
-        component_separators = { left = '', right = ''},
-        section_separators = { left = '', right = ''},
-        disabled_filetypes = {},
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+        disabled_filetypes = {
+            'dapui_scopes',
+            'dapui_breakpoints',
+            'dapui_stacks',
+            'dapui_watches',
+            'dapui_console',
+        },
         always_divide_middle = true,
         globalstatus = false,
     },
     sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_a = { 'mode' },
+        lualine_b = { 'branch', 'diff', 'diagnostics' },
         lualine_c = {
             {
                 'filename',
@@ -23,15 +29,15 @@ require('lualine').setup {
                 }
             }
         },
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
-        lualine_y = {'progress'},
-        lualine_z = {'location'}
+        lualine_x = { 'encoding', 'fileformat', 'filetype' },
+        lualine_y = { 'progress' },
+        lualine_z = { 'location' }
     },
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {'filename'},
-        lualine_x = {'location'},
+        lualine_c = { 'filename' },
+        lualine_x = { 'location' },
         lualine_y = {},
         lualine_z = {}
     },
@@ -39,7 +45,7 @@ require('lualine').setup {
     extensions = {},
 }
 
-require'nvim-web-devicons'.setup {
+require 'nvim-web-devicons'.setup {
     -- your personnal icons can go here (to override)
     -- you can specify color or cterm_color instead of specifying both of them
     -- DevIcon will be appended to `name`
