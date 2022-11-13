@@ -7,6 +7,40 @@ local lspconfig = require("lspconfig")
 
 local illuminate_on_attach = require("illuminate").on_attach
 
+local dap = require('dap')
+local function nnoremap_dap(lhs, rhs, opts)
+    local keymaps = vim.api.nvim_buf_get_keymap(opts.buffer, 'n')
+    local event_key = 'n_' .. lhs
+
+    local default_keymap
+    for _, keymap in pairs(keymaps) do
+        if keymap.lhs == lhs then
+            default_keymap = {
+                lhs = keymap.lhs,
+                rhs = keymap.callback,
+                opts = {
+                    silent = keymap.silent,
+                    buffer = keymap.buffer,
+                    nowait = keymap.nowait,
+                    script = keymap.script,
+                }
+            }
+        end
+    end
+
+    dap.listeners.after['event_initialized'][event_key] = function()
+        nnoremap(lhs, rhs, opts)
+    end
+
+    dap.listeners.after['event_terminated'][event_key] = function()
+        if default_keymap == nil then
+            vim.keymap.del('n', lhs, opts)
+        else
+            nnoremap(default_keymap.lhs, default_keymap.rhs, default_keymap.opts)
+        end
+    end
+end
+
 local function on_attach(client, bufnr)
     -- Thanks!! Source: https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/tj/lsp/init.lua#L106
     -- local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
@@ -34,6 +68,8 @@ local function on_attach(client, bufnr)
         { buffer = bufnr })
     nnoremap("<leader>vws", function() require("telescope.builtin").lsp_dynamic_workspace_symbols() end,
         { buffer = bufnr })
+
+    nnoremap_dap("K", function() require("dap.ui.widgets").hover() end, { silent = true, buffer = bufnr })
 
     -- Illuminate
     illuminate_on_attach(client)
@@ -182,10 +218,6 @@ require("typescript").setup({
     debug = false, -- enable debug logging for commands
     server = tsserver_options,
 })
-
--- require("null-ls").setup({
---     sources = {
---         require("null-ls").builtins.completion.spell,
 
 --         -- ESlint
 --         require("null-ls").builtins.diagnostics.eslint_d,
