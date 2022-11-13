@@ -2,8 +2,6 @@ local Remap = require("hendrik.keymap")
 local nnoremap = Remap.nnoremap
 local inoremap = Remap.inoremap
 local vnoremap = Remap.vnoremap
-local xnoremap = Remap.xnoremap
-local nmap = Remap.nmap
 
 -- Save on typo
 -- command! W w
