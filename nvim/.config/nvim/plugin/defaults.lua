@@ -203,6 +203,10 @@ nnoremap('<leader>td', function()
     require('neotest').run.run({ strategy = 'dap' })
 end)
 
+nnoremap('<leader>tl', function()
+    require('neotest').run.run_last()
+end)
+
 -- Mnemonic: [t]est [e]xplorer
 nnoremap('<leader>te', function()
     require('neotest').summary.toggle()
