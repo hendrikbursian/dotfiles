@@ -4,41 +4,29 @@ if not ok then
     return
 end
 
-local Job = require("plenary.job")
-
 local actions = require("telescope.actions")
 local themes = require("telescope.themes")
 local sorters = require("telescope.sorters")
-local previewers = require('telescope.previewers')
+local previewers = require("telescope.previewers")
 
-local highlight_max_file_size = 1000 * 1024 -- 1 MB
+local highlight_filesize_limit = 1000 * 1024 -- 1MB
+local bad_files = function(filepath)
+    local stat = vim.loop.fs_stat(filepath)
 
-local preview_maker = function(filepath, bufnr, opts)
-    local mime_type = nil
-
-    Job:new({
-        command = "file",
-        args = { "--mime-type", "-b", filepath },
-        on_exit = function(j)
-            mime_type = vim.split(j:result()[1], "/")[1]
-        end
-    }):sync()
-
-    -- Filter binary files
-    if mime_type ~= "text" then
-        vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "[ BINARY ]" })
-        return
+    if stat.size > highlight_filesize_limit then
+        return true
     end
 
+    return false
+end
+
+local new_maker = function(filepath, bufnr, opts)
     opts = opts or {}
+    if opts.use_ft_detect == nil then opts.use_ft_detect = true end
 
-    if opts.use_ft_detect == nil then
-        opts.use_ft_detect = true
+    if opts.use_ft_detect == true then
+        opts.use_ft_detect = not bad_files(filepath)
     end
-
-    -- Only use syntax highlighting for files <= highlight_max_file_size
-    local stats = vim.loop.fs_stat(filepath)
-    opts.use_ft_detect = opts.use_ft_detect == false and false or stats.size <= highlight_max_file_size
 
     previewers.buffer_previewer_maker(filepath, bufnr, opts)
 end
@@ -46,7 +34,8 @@ end
 require("telescope").setup {
     defaults = themes.get_ivy({
         file_sorter = sorters.get_fzy_sorter,
-        buffer_previewer_maker = preview_maker,
+        buffer_previewer_maker = new_maker,
+
         prompt_prefix = " >",
         color_devicons = true,
 
