@@ -45,8 +45,10 @@ return require('packer').startup((function(use)
         config = function() require('Comment').setup {
                 ignore = '^$'
             }
+    use { 'mbbill/undotree' }
         end
     }
+    use { 'mbbill/undotree' }
 
     -- Installer
     use {
@@ -86,10 +88,7 @@ return require('packer').startup((function(use)
 
     -- LSP ===================================================================
     use 'neovim/nvim-lspconfig'
-    use {
-        'jose-elias-alvarez/null-ls.nvim',
-        requires = { 'ThePrimeagen/refactoring.nvim', }
-    }
+    use 'jose-elias-alvarez/null-ls.nvim'
 
     use 'jose-elias-alvarez/typescript.nvim'
 
