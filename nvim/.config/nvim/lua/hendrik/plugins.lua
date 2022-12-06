@@ -42,12 +42,13 @@ return require('packer').startup((function(use)
 
     use {
         'numToStr/Comment.nvim',
-        config = function() require('Comment').setup {
+        config = function()
+            require('Comment').setup({
                 ignore = '^$'
-            }
-    use { 'mbbill/undotree' }
+            })
         end
     }
+
     use { 'mbbill/undotree' }
 
     -- Installer
