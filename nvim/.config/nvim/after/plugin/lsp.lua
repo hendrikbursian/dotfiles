@@ -52,7 +52,6 @@ local function on_attach(client, bufnr)
     nnoremap("<leader>vd", vim.diagnostic.open_float, { buffer = bufnr })
     nnoremap("[d", vim.diagnostic.goto_next, { buffer = bufnr })
     nnoremap("]d", vim.diagnostic.goto_prev, { buffer = bufnr })
-    vnoremap("<leader>rr", require("refactoring").select_refactor, { buffer = bufnr })
     nnoremap("<leader>vrn", vim.lsp.buf.rename, { buffer = bufnr })
     nnoremap("<C-h>", vim.lsp.buf.signature_help, { buffer = bufnr })
     nnoremap("<leader>ct", vim.lsp.buf.incoming_calls, { buffer = bufnr })
@@ -143,6 +142,8 @@ local servers = {
     --         unstable = false,
     --     }
     -- },
+
+    rust_analyzer = {},
 
     sqlls = {},
 
