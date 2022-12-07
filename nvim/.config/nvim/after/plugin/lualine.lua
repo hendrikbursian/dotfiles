@@ -10,6 +10,7 @@ require('lualine').setup {
             'dapui_stacks',
             'dapui_watches',
             'dapui_console',
+            'dap-repl',
         },
         always_divide_middle = true,
         globalstatus = false,
