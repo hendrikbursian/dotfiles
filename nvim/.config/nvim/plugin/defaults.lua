@@ -72,6 +72,7 @@ nnoremap("Y", "yg$")
 
 -- Make yank work with cursor=virtual
 nnoremap("yy", "my0yy`y<CMD>delmark y<CR>")
+-- TODO: check this
 vnoremap("y", "my0y`y<CMD>delmark y<CR>")
 
 -- Center everything
@@ -81,6 +82,8 @@ nnoremap("n", "nzzzv")
 nnoremap("N", "Nzzzv")
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
+nnoremap("<C-o>", "<C-o>zz")
+nnoremap("<C-i>", "<C-i>zz")
 nnoremap("]n", "<Plug>(unimpaired-context-next)zz")
 nnoremap("[n", "<Plug>(unimpaired-context-previous)zz")
 --nnoremap("J", "mzJ`z")
@@ -122,6 +125,33 @@ end)
 nnoremap("<leader>fg", function()
     return require('telescope.builtin').live_grep()
 end)
+
+nnoremap("<leader>fc", function()
+    return require("hendrik.telescope").grep_clipboard()
+end)
+
+nnoremap("<leader>fs", function()
+    return require('telescope.builtin').grep_string()
+end)
+
+-- TODO: Use selection for grep
+-- vnoremap("<leader>fs", function()
+--     local s = vim.fn.getpos("'<")
+--     local e = vim.fn.getpos("'>")
+
+--     P(s)
+--     local line_start = s[2]
+--     local line_end = e[2]
+--     P(line_start)
+--     P(line_end)
+--     -- local start_col = s[1]
+
+--     -- local end_col = end[1]
+
+--     vim.fn.getline(line_start, line_end)
+
+--     -- return require('telescope.builtin').grep_string()
+-- end)
 
 nnoremap("<leader>fb", function()
     return require('telescope.builtin').buffers()

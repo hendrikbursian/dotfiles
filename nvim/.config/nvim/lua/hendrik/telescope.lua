@@ -27,4 +27,17 @@ M.search_dotfiles = function()
     })
 end
 
+M.grep_clipboard = function ()
+    local search = ""
+
+    local file = io.popen("xsel -b", "r")
+
+    if file then
+        search = file:read("*a")
+        file:close()
+    end
+
+    require('telescope.builtin').grep_string({ search = search })
+end
+
 return M
