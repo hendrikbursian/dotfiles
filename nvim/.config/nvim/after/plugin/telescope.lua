@@ -13,7 +13,7 @@ local highlight_filesize_limit = 1000 * 1024 -- 1MB
 local bad_files = function(filepath)
     local stat = vim.loop.fs_stat(filepath)
 
-    if stat.size > highlight_filesize_limit then
+    if stat ~= nil and stat.size > highlight_filesize_limit then
         return true
     end
 
