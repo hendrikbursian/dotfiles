@@ -26,8 +26,32 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         "*.yml",
     },
     callback = function()
-        -- vim.lsp.buf.format({ async = false })
         vim.api.nvim_command('Neoformat')
+    end
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    group = hendrik,
+    pattern = {
+        "*.rs",
+    },
+    callback = function()
+        vim.lsp.buf.format({ async = false })
+    end
+})
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+    group = hendrik,
+    callback = function()
+        require("lint").try_lint()
+    end,
+})
+
+vim.api.nvim_create_autocmd("VimLeavePre", {
+    group = hendrik,
+    callback = function()
+        os.execute("eslint_d stop")
+        os.execute("prettierd stop")
     end
 })
 

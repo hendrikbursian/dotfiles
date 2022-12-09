@@ -11,9 +11,6 @@ return require('packer').startup((function(use)
     -- Packer can manage itself ==============================================
     use 'wbthomason/packer.nvim'
 
-    -- TODO
-    -- [ ] Start screen
-
     -- My plugins start here!!
     -- =======================================================================
 

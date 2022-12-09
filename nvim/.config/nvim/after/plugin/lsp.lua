@@ -123,7 +123,7 @@ local servers = {
     jsonnet_ls = {},
     lemminx = {},
     prismals = {},
-    quick_lint_js = {},
+    -- quick_lint_js = {},
 
     -- rome = {
     --     settings = {
@@ -220,11 +220,10 @@ require("typescript").setup({
     server = tsserver_options,
 })
 
---         -- ESlint
---         require("null-ls").builtins.diagnostics.eslint_d,
---         require("null-ls").builtins.code_actions.eslint_d,
---         -- require("null-ls").builtins.formatting.eslint_d,
+local null_ls = require("null-ls")
 
---         -- require("null-ls").builtins.formatting.prettier_d_slim,
---     },
--- })
+null_ls.setup({
+    sources = {
+        null_ls.builtins.code_actions.eslint_d,
+    },
+})
