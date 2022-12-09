@@ -28,6 +28,7 @@ source $ZDOTDIR/functions
 bindkey -s ^f "tmux-sessionizer\n"
 bindkey -v
 bindkey -s ^p "nvim -c ':lua require(\"hendrik.telescope\").project_files(); vim.g.startify_disable_at_vimenter = 1'\n"
+bindkey -s ^g "nvim -c ':lua require(\"telescope.builtin\").live_grep(); vim.g.startify_disable_at_vimenter = 1'\n"
 # Remove mode switching delay.
 KEYTIMEOUT=5
 
