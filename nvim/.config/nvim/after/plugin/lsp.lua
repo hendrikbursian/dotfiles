@@ -1,16 +1,22 @@
+local ok, lspconfig = pcall(require, "lspconfig")
+if not ok then
+    return
+end
+
 local Remap = require("hendrik.keymap")
 local nnoremap = Remap.nnoremap
 local vnoremap = Remap.vnoremap
 
-local lspconfig = require("lspconfig")
+local ok_illuminate, illuminate = pcall(require, "illuminate")
+local ok_dap, dap = pcall(require, "dap")
 
-
-local illuminate_on_attach = require("illuminate").on_attach
-
-local dap = require('dap')
 local function nnoremap_dap(lhs, rhs, opts)
-    local keymaps = vim.api.nvim_buf_get_keymap(opts.buffer, 'n')
-    local event_key = 'n_' .. lhs
+    if not ok_dap then
+        return
+    end
+
+    local keymaps = vim.api.nvim_buf_get_keymap(opts.buffer, "n")
+    local event_key = "n_" .. lhs
 
     local default_keymap
     for _, keymap in pairs(keymaps) do
@@ -28,13 +34,13 @@ local function nnoremap_dap(lhs, rhs, opts)
         end
     end
 
-    dap.listeners.after['event_initialized'][event_key] = function()
+    dap.listeners.after["event_initialized"][event_key] = function()
         nnoremap(lhs, rhs, opts)
     end
 
-    dap.listeners.after['event_terminated'][event_key] = function()
+    dap.listeners.after["event_terminated"][event_key] = function()
         if default_keymap == nil then
-            vim.keymap.del('n', lhs, opts)
+            vim.keymap.del("n", lhs, opts)
         else
             nnoremap(default_keymap.lhs, default_keymap.rhs, default_keymap.opts)
         end
@@ -68,13 +74,19 @@ local function on_attach(client, bufnr)
     nnoremap("<leader>vws", function() require("telescope.builtin").lsp_dynamic_workspace_symbols() end,
         { buffer = bufnr })
 
+    -- Dap
     nnoremap_dap("K", function() require("dap.ui.widgets").hover() end, { silent = true, buffer = bufnr })
 
-    -- Illuminate
-    illuminate_on_attach(client)
+    if ok_illuminate then
+        illuminate.on_attach(client)
+    end
 end
 
-local schemas = require('schemastore').json.schemas()
+local ok_schemastore, schemastore = pcall(require, "schemastore")
+local schemas = {}
+if ok_schemastore then
+    schemas = schemastore.json.schemas()
+end
 
 local servers = {
     ansiblels = {},
@@ -120,6 +132,7 @@ local servers = {
             },
         },
     },
+
     jsonnet_ls = {},
     lemminx = {},
     prismals = {},
@@ -151,7 +164,7 @@ local servers = {
         settings = {
             Lua = {
                 diagnostics = {
-                    globals = { 'vim' },
+                    globals = { "vim" },
                 },
                 workspace = {
                     library = vim.api.nvim_get_runtime_file("", true),
@@ -177,10 +190,9 @@ local options = {
 }
 
 for server_name, server_options in pairs(servers) do
-    --print('Configuring server: ' .. server_name)
+    --print("Configuring server: " .. server_name)
 
-
-    if server_name == 'intelephense' then
+    if server_name == "intelephense" then
         local intelephense_licence_path = vim.fn.glob(vim.env.HOME .. "/intelephense/licence.txt")
 
         if (intelephense_licence_path == "") then
@@ -214,16 +226,24 @@ local tsserver_options = vim.tbl_deep_extend("force", options, {
     }
 })
 
-require("typescript").setup({
-    disable_commands = false, -- prevent the plugin from creating Vim commands
-    debug = false, -- enable debug logging for commands
-    server = tsserver_options,
-})
+local ok_typescript, typescript = pcall(require, "typescript")
+if ok_typescript then
 
-local null_ls = require("null-ls")
+    typescript.setup({
+        disable_commands = false, -- prevent the plugin from creating Vim commands
+        debug = false, -- enable debug logging for commands
+        server = tsserver_options,
+    })
 
-null_ls.setup({
-    sources = {
-        null_ls.builtins.code_actions.eslint_d,
-    },
-})
+end
+
+local ok_null_ls, null_ls = pcall(require, "null-ls")
+if ok_null_ls then
+
+    null_ls.setup({
+        sources = {
+            null_ls.builtins.code_actions.eslint_d,
+        },
+    })
+
+end

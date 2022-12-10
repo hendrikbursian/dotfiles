@@ -1,4 +1,9 @@
-require('lualine').setup {
+local ok, lualine = pcall(require, 'lualine')
+if not ok then
+    return
+end
+
+lualine.setup {
     options = {
         icons_enabled = true,
         -- theme = 'PaperColor',
@@ -46,19 +51,23 @@ require('lualine').setup {
     extensions = {},
 }
 
-require 'nvim-web-devicons'.setup {
-    -- your personnal icons can go here (to override)
-    -- you can specify color or cterm_color instead of specifying both of them
-    -- DevIcon will be appended to `name`
-    override = {
-        zsh = {
-            icon = "",
-            color = "#428850",
-            cterm_color = "65",
-            name = "Zsh"
-        }
-    };
-    -- globally enable default icons (default to false)
-    -- will get overriden by `get_icons` option
-    default = true;
-}
+local ok_web_icons, nvim_web_devicons = pcall(require, 'nvim-web-devicons')
+
+if ok_web_icons then
+    nvim_web_devicons.setup({
+        -- your personal icons can go here (to override)
+        -- you can specify color or cterm_color instead of specifying both of them
+        -- DevIcon will be appended to `name`
+        override = {
+            zsh = {
+                icon = "",
+                color = "#428850",
+                cterm_color = "65",
+                name = "Zsh"
+            }
+        };
+        -- globally enable default icons (default to false)
+        -- will get overriden by `get_icons` option
+        default = true;
+    })
+end

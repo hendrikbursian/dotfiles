@@ -15,7 +15,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("BufWritePre", {
     group = hendrik,
     pattern = {
-        "*.lua",
         "*.go",
         "*.ts",
         "*.js",
@@ -33,6 +32,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("BufWritePre", {
     group = hendrik,
     pattern = {
+        "*.lua",
         "*.rs",
     },
     callback = function()
