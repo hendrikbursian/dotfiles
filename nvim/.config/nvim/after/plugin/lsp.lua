@@ -94,7 +94,6 @@ local servers = {
     cssls = {},
     cucumber_language_server = {},
     dockerls = {},
-    -- eslint = {},
     gopls = {},
     golangci_lint_ls = {},
     graphql = {},
@@ -136,7 +135,6 @@ local servers = {
     jsonnet_ls = {},
     lemminx = {},
     prismals = {},
-    -- quick_lint_js = {},
 
     -- rome = {
     --     settings = {
@@ -156,8 +154,6 @@ local servers = {
     --     }
     -- },
 
-    rust_analyzer = {},
-
     sqlls = {},
 
     sumneko_lua = {
@@ -176,7 +172,6 @@ local servers = {
         },
     },
 
-    -- tailwindcss = {},
     vimls = {},
     volar = {},
     yamlls = {},
@@ -205,34 +200,53 @@ for server_name, server_options in pairs(servers) do
     lspconfig[server_name].setup(options)
 end
 
-local tsserver_options = vim.tbl_deep_extend("force", options, {
-    settings = {
-        javascript = {
-            suggest = {
-                enable = false,
-                completeFunctionCalls = false,
-            },
-        },
-        typescript = {
-            enablePromptUseWorkspaceTsdk = true,
-            format = {
-                enable = false,
-            },
-            suggest = {
-                enable = true,
-                completeFunctionCalls = true,
-            },
-        }
-    }
-})
-
 local ok_typescript, typescript = pcall(require, "typescript")
 if ok_typescript then
+    local tsserver_options = vim.tbl_deep_extend("force", options, {
+        settings = {
+            javascript = {
+                suggest = {
+                    enable = false,
+                    completeFunctionCalls = false,
+                },
+            },
+            typescript = {
+                enablePromptUseWorkspaceTsdk = true,
+                format = {
+                    enable = false,
+                },
+                suggest = {
+                    enable = true,
+                    completeFunctionCalls = true,
+                },
+            }
+        }
+    })
+
     typescript.setup({
         disable_commands = false, -- prevent the plugin from creating Vim commands
         debug = false, -- enable debug logging for commands
         server = tsserver_options,
     })
+end
+
+local ok_rust_tools, rust_tools = pcall(require, "rust-tools")
+if ok_rust_tools then
+    rust_tools.setup({
+        tools = {
+            hover_actions = {},
+        },
+
+        server = {
+            on_attach = function(client, bufnr)
+                on_attach(client, bufnr)
+
+                nnoremap("K", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+            end,
+        },
+    })
+
+    rust_tools.inlay_hints.enable()
 end
 
 local ok_null_ls, null_ls = pcall(require, "null-ls")

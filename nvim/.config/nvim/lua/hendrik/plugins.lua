@@ -1,10 +1,15 @@
-local fn = vim.fn
-
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-    Packer_bootstrap = fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim",
-        install_path })
+local ensure_packer = function()
+    local fn = vim.fn
+    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
 end
+
+local packer_bootstrap = ensure_packer()
 
 return require("packer").startup((function(use)
     -- Packer can manage itself ==============================================
@@ -86,6 +91,7 @@ return require("packer").startup((function(use)
     use "neovim/nvim-lspconfig"
     use "jose-elias-alvarez/null-ls.nvim"
     use "jose-elias-alvarez/typescript.nvim"
+    use "simrat39/rust-tools.nvim"
 
     -- Autocompletion ========================================================
     use "hrsh7th/cmp-nvim-lsp"
@@ -182,7 +188,9 @@ return require("packer").startup((function(use)
     use "~/plugins/nvim-eslint"
     use "~/plugins/telescope-dap.nvim/master"
 
-    if Packer_bootstrap then
+    -- Automatically set up your configuration after cloning packer.nvim
+    -- Put this at the end after all plugins
+    if packer_bootstrap then
         require("packer").sync()
     end
 end))
