@@ -10,9 +10,6 @@ return require("packer").startup((function(use)
     -- Packer can manage itself ==============================================
     use "wbthomason/packer.nvim"
 
-    -- My plugins start here!!
-    -- =======================================================================
-
     -- Utility ===============================================================
     use "nvim-lua/plenary.nvim"
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
@@ -89,23 +86,6 @@ return require("packer").startup((function(use)
     use "neovim/nvim-lspconfig"
     use "jose-elias-alvarez/null-ls.nvim"
     use "jose-elias-alvarez/typescript.nvim"
-
-    use({
-        "j-hui/fidget.nvim",
-        config = function()
-            require("fidget").setup({
-                text = {
-                    spinner = "line",
-                },
-                window = {
-                    blend = 28,
-                },
-                fmt = {
-                    max_width = 25
-                },
-            })
-        end
-    })
 
     -- Autocompletion ========================================================
     use "hrsh7th/cmp-nvim-lsp"
@@ -193,6 +173,7 @@ return require("packer").startup((function(use)
     use "NLKNguyen/papercolor-theme"
     use "arcticicestudio/nord-vim"
     use "mhinz/vim-startify"
+    use "j-hui/fidget.nvim"
 
     -- Statusline ============================================================
     use "nvim-lualine/lualine.nvim"

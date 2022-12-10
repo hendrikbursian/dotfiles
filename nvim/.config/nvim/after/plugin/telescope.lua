@@ -1,5 +1,5 @@
 -- Inspiration: https://github.com/ThePrimeagen/.dotfiles
-local ok, _ = pcall(require, "telescope")
+local ok, telescope = pcall(require, "telescope")
 if not ok then
     return
 end
@@ -31,7 +31,7 @@ local new_maker = function(filepath, bufnr, opts)
     previewers.buffer_previewer_maker(filepath, bufnr, opts)
 end
 
-require("telescope").setup {
+telescope.setup {
     defaults = themes.get_ivy({
         file_sorter = sorters.get_fzy_sorter,
         buffer_previewer_maker = new_maker,
@@ -78,6 +78,7 @@ require("telescope").setup {
         },
     },
 }
-require("telescope").load_extension("fzy_native")
-require("telescope").load_extension("git_worktree")
-require("telescope").load_extension("dap")
+
+telescope.load_extension("fzy_native")
+telescope.load_extension("git_worktree")
+telescope.load_extension("dap")

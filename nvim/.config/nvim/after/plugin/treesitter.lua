@@ -1,10 +1,9 @@
-local ok, _ = pcall(require, 'nvim-treesitter')
-
+local ok, _ = pcall(require, "nvim-treesitter")
 if not ok then
     return
 end
 
-require('nvim-treesitter.configs').setup {
+require("nvim-treesitter.configs").setup({
     ensure_installed = "all",
 
     incremental_selection = {
@@ -35,4 +34,4 @@ require('nvim-treesitter.configs').setup {
     textobjects = {
         enable = true
     },
-}
+})

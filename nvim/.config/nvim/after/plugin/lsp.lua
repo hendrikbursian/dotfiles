@@ -228,22 +228,18 @@ local tsserver_options = vim.tbl_deep_extend("force", options, {
 
 local ok_typescript, typescript = pcall(require, "typescript")
 if ok_typescript then
-
     typescript.setup({
         disable_commands = false, -- prevent the plugin from creating Vim commands
         debug = false, -- enable debug logging for commands
         server = tsserver_options,
     })
-
 end
 
 local ok_null_ls, null_ls = pcall(require, "null-ls")
 if ok_null_ls then
-
     null_ls.setup({
         sources = {
             null_ls.builtins.code_actions.eslint_d,
         },
     })
-
 end

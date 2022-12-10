@@ -1,12 +1,17 @@
 local Remap = require("hendrik.keymap")
 local nnoremap = Remap.nnoremap
 
-require("git-worktree").setup({
---    change_directory_command = <str> -- default: "cd",
---    update_on_change = <boolean> -- default: true,
---    update_on_change_command = <str> -- default: "e .",
---    clearjumps_on_change = <boolean> -- default: true,
---    autopush = <boolean> -- default: false,
+local ok, git_worktree = pcall(require, "git-worktree")
+if not ok then
+    return
+end
+
+git_worktree.setup({
+    --    change_directory_command = <str> -- default: "cd",
+    --    update_on_change = <boolean> -- default: true,
+    --    update_on_change_command = <str> -- default: "e .",
+    --    clearjumps_on_change = <boolean> -- default: true,
+    --    autopush = <boolean> -- default: false,
 })
 
 nnoremap("<leader>gw", function()

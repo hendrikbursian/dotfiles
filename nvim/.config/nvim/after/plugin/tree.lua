@@ -1,14 +1,15 @@
-local view = require "nvim-tree.view"
-local find_file = require "nvim-tree".find_file
-local open = require "nvim-tree".open
+local ok, nvim_tree = pcall(require, "nvim-tree")
+if not ok then
+    return
+end
 
-require("nvim-tree").setup({
+nvim_tree.setup({
     create_in_closed_folder = true,
     renderer = {
         special_files = {
-            'README.md',
-            'Makefile',
-            'MAKEFILE',
+            "README.md",
+            "Makefile",
+            "MAKEFILE",
         },
         highlight_opened_files = "all",
         icons = {
@@ -18,7 +19,7 @@ require("nvim-tree").setup({
         },
     },
     view = {
-        width = '33%'
+        width = "33%"
     },
     actions = {
         open_file = {
