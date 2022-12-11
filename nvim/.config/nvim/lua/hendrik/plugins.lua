@@ -56,11 +56,17 @@ return require("packer").startup((function(use)
         "williamboman/mason.nvim",
         requires = {
             "williamboman/mason-lspconfig.nvim",
+            "jayp0521/mason-nvim-dap.nvim",
         },
 
         config = function()
-            require("mason").setup()
+            require("mason").setup({
+                max_concurrent_installers = 1,
+            })
             require("mason-lspconfig").setup({
+                automatic_installation = true,
+            })
+            require("mason-nvim-dap").setup({
                 automatic_installation = true,
             })
         end

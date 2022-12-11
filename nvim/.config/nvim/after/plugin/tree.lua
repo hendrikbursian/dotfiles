@@ -4,7 +4,6 @@ if not ok then
 end
 
 nvim_tree.setup({
-    create_in_closed_folder = true,
     renderer = {
         special_files = {
             "README.md",
