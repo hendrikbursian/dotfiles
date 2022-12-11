@@ -237,6 +237,10 @@ if ok_rust_tools then
             hover_actions = {},
         },
 
+        dap = {
+            adapter = require("mason-nvim-dap.mappings.adapters").codelldb,
+        },
+
         server = {
             on_attach = function(client, bufnr)
                 on_attach(client, bufnr)
