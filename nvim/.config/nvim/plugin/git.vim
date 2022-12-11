@@ -1,4 +1,4 @@
-nnoremap <leader>gg :Git<CR>
+nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gl :Git pull<CR>
 nnoremap <leader>gt :Git mergetool<CR>
 nnoremap <leader>gp :Git push<CR>
