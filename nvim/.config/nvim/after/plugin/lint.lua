@@ -4,6 +4,7 @@ if not ok then
 end
 
 lint.linters_by_ft = {
+    sh = { "shellcheck" },
     typescript = { "eslint_d" },
     vue = { "eslint_d" },
     javascript = { "eslint_d" },

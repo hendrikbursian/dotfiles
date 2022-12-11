@@ -1,67 +1,25 @@
 vim.g.mapleader = " "
 
-require('hendrik')
+require("hendrik")
 
 local hendrik = vim.api.nvim_create_augroup("hendrik", {})
 
-print('Progress, not perfection.')
+print("Progress, not perfection.")
 
-vim.api.nvim_create_autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd("BufWritePost", {
+    group = hendrik,
+    callback = function()
+        vim.api.nvim_command("FormatWrite")
+    end
+})
+
+vim.api.nvim_create_autocmd("TermOpen", {
     group = hendrik,
     pattern = "*",
-    command = '%s/\\s\\+$//e'
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-    group = hendrik,
-    pattern = {
-        "*.go",
-        "*.ts",
-        "*.js",
-        "*.vue",
-        "*.php",
-        "*.css",
-        "*.yaml",
-        "*.yml",
-    },
-    callback = function()
-        vim.api.nvim_command('Neoformat')
-    end
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-    group = hendrik,
-    pattern = {
-        "*.lua",
-        "*.rs",
-    },
-    callback = function()
-        vim.lsp.buf.format({ async = false })
-    end
-})
-
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-    group = hendrik,
-    callback = function()
-        require("lint").try_lint()
-    end,
-})
-
-vim.api.nvim_create_autocmd("VimLeavePre", {
-    group = hendrik,
-    callback = function()
-        os.execute("eslint_d stop")
-        os.execute("prettierd stop")
-    end
-})
-
-vim.api.nvim_create_autocmd('TermOpen', {
-    group = hendrik,
-    pattern = '*',
     callback = function()
         vim.opt_local.number = false
         vim.opt_local.relativenumber = false
-        vim.cmd('startinsert')
+        vim.cmd("startinsert")
     end
 })
 

@@ -68,6 +68,7 @@ return require("packer").startup((function(use)
             })
             require("mason-nvim-dap").setup({
                 automatic_installation = true,
+                ensure_installed = { "codelldb" }
             })
         end
     }
@@ -169,7 +170,7 @@ return require("packer").startup((function(use)
 
     -- Formatting ============================================================
     use "gpanders/editorconfig.nvim"
-    use "sbdchd/neoformat"
+    use "mhartington/formatter.nvim"
 
     -- Linting ===============================================================
     use "mfussenegger/nvim-lint"
