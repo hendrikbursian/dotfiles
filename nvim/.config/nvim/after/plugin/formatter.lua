@@ -23,6 +23,7 @@ formatter.setup {
 
         go = { require("formatter.filetypes.go").gofmt },
         php = { require("formatter.filetypes.php").phpcbf },
+        sh = { require("formatter.filetypes.sh").shfmt },
         yaml = { require("formatter.filetypes.yaml").prettierd },
 
         ["*"] = { require("formatter.filetypes.any").remove_trailing_whitespace }
