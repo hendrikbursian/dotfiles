@@ -54,8 +54,15 @@ vim.opt.updatetime = 50
 -- Nice menu when typing `:find *.py`
 vim.opt.wildmode = { 'longest', 'list', 'full' }
 vim.opt.wildmenu = true
-vim.opt.wildignore = { '*.pyc', '*_build/*', '**/coverage/*', '**/node_modules/*', '**/android/*', '**/ios/*',
-    '**/.git/*' }
+vim.opt.wildignore = {
+    '*.pyc',
+    '*_build/*',
+    '**/coverage/*',
+    '**/node_modules/*',
+    '**/android/*',
+    '**/ios/*',
+    '**/.git/*',
+}
 
 vim.g.neoformat_try_node_exe = true
 
