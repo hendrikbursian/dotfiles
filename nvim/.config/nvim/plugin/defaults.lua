@@ -267,3 +267,9 @@ end)
 nnoremap('<leader>bD', function()
     require('persistent-breakpoints.api').clear_all_breakpoints()
 end)
+
+-- Source: https://github.com/ldelossa/dotfiles/blob/master/config/nvim/lua/configs/buffer-resize.lua
+nnoremap("<Up>", ":resize +5<cr>", { silent = true })
+nnoremap("<Down>", ":resize -5<cr>", { silent = true })
+nnoremap("<Left>", ":vert resize -5<cr>", { silent = true })
+nnoremap("<Right>", ":vert resize +5<cr>", { silent = true })
