@@ -1,4 +1,4 @@
-local Remap = require('hendrik.remap')
+local Remap = require('hendrik.keymap')
 local nnoremap = Remap.nnoremap
 
 nnoremap('<F5>', function() require 'dap'.continue() end)

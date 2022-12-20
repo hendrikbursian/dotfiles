@@ -1,4 +1,4 @@
-local remap = require("hendrik.remap")
+local remap = require("hendrik.keymap")
 
 local nnoremap = remap.nnoremap;
 local vnoremap = remap.vnoremap;

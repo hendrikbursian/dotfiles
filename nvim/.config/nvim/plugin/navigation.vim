@@ -8,9 +8,6 @@ nnoremap <leader>q :call ToggleQFList(0)<CR>zz
 let g:the_primeagen_qf_l = 0
 let g:the_primeagen_qf_g = 0
 
-" nnoremap <silent> <leader>cq :cclose<cr>
-" nnoremap <silent> <leader>cc :copen<cr>
-
 fun! ToggleQFList(global)
     if a:global
         if g:the_primeagen_qf_g == 1
