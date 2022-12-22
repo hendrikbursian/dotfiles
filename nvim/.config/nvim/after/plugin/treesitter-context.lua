@@ -1,6 +1,3 @@
-local nnoremap = require("hendrik.keymap").nnoremap
-
-local ok, treesitter_context = pcall(require, "treesitter-context")
 if not ok then
     return
 end
@@ -40,6 +37,6 @@ function ContextSetup(show_all_context)
     })
 end
 
-nnoremap("<leader>cf", function() ContextSetup(true) end)
-nnoremap("<leader>cp", function() ContextSetup(false) end)
+vim.keymap.set("n","<leader>cf", function() ContextSetup(true) end)
+vim.keymap.set("n","<leader>cp", function() ContextSetup(false) end)
 ContextSetup(false)

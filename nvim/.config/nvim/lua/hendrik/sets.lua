@@ -33,10 +33,10 @@ vim.opt.undofile = true
 vim.opt.undodir = os.getenv('XDG_CONFIG_HOME') .. '/nvim/undo//'
 
 -- Seaching
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.incsearch = true
 
 -- Misc
 vim.opt.wrap = false
@@ -63,9 +63,6 @@ vim.opt.wildignore = {
     '**/ios/*',
     '**/.git/*',
 }
-
-vim.g.neoformat_try_node_exe = true
-
 
 -- LSP
 vim.opt.completeopt = { "menu", "menuone", "noselect" }

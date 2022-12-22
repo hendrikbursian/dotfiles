@@ -1,141 +1,55 @@
-local Remap = require("hendrik.keymap")
-local nnoremap = Remap.nnoremap
-local inoremap = Remap.inoremap
-local vnoremap = Remap.vnoremap
-
--- Save on typo
--- command! W w
-
--- -- Auto brackets
--- inoremap('<<', '<><ESC>i')
--- inoremap('((', '()<ESC>i')
--- inoremap('[[', '[]<ESC>i')
--- inoremap('{{', '{}<ESC>i')
--- inoremap('""', '""<ESC>i')
--- inoremap("''", "''<ESC>i")
--- inoremap('``', '``<ESC>i')
-
--- Break habits
-inoremap("<Up>", '<C-o>:echom "--> k <-- "<CR>')
-inoremap("<Down>", '<C-o>:echom "--> j <-- "<CR>')
-inoremap("<Right>", '<C-o>:echom "--> l <-- "<CR>')
-inoremap("<Left>", '<C-o>:echom "--> h <-- "<CR>')
-
--- vim.api.nvim_command("cabbrev wq echo 'Use ZZ'")
--- vim.api.nvim_command("cabbrev q echo 'Use ZQ'")
--- vim.api.nvim_command("cabbrev x echo 'Use ZZ'")
--- TODO: what does <C-x> do?
-
--- Save
--- nnoremap("<C-s>", ":w<CR>")
-
--- Autocompletion
--- inoremap <C-S> <cmd>lua require('cmp').complete()<cr>
-
--- TODO: Check this! Tab hasn't a function here
--- imap <expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
--- inoremap  <S-Tab> <cmd>lua require'luasnip'.jump(-1)<cr>
---
--- snoremap  <Tab> <cmd>lua require('luasnip').jump(1)<cr>
--- snoremap  <S-Tab> <cmd>lua require('luasnip').jump(-1)<cr>
---
--- imap <expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-e>'
--- smap <expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-e>'
-
-
--- Remapping navigation to be friendlier with Dvorak
--- nnoremap("d","h")
--- nnoremap("h","j")
--- nnoremap("t","k")
--- nnoremap("n","l")
--- nnoremap("ee","dd")
--- nnoremap("y","t")
--- nnoremap("Y","T")
--- nnoremap("e","d")
-
--- Remapping b --> n in normal mode (for navigation in search)
--- nnoremap("b","n")
--- nnoremap("B","N")
-
--- Remapping window navigation
--- nnoremap("<","-Right> <C-W>l")
--- nnoremap("<","-Left> <C-W>h")
--- nnoremap("<","-Down> <C-W>j")
--- nnoremap("<","-Up> <C-W>k")
-
--- Easier command typing for Dvorak
--- nnoremap(";", ":")
--- nnoremap(":", ";")
-
 -- Tame Yank!
-nnoremap("Y", "yg$")
+vim.keymap.set("n", "Y", "yg$")
 
 -- Make yank work with cursor=virtual
-nnoremap("yy", "my0yy`y<CMD>delmark y<CR>")
+vim.keymap.set("n", "yy", "my0yy`y<CMD>delmark y<CR>")
 -- TODO: check this
-vnoremap("y", "my0y`y<CMD>delmark y<CR>")
+vim.keymap.set("v", "y", "my0y`y<CMD>delmark y<CR>")
 
 -- Center everything
-nnoremap("{", "{zz")
-nnoremap("}", "}zz")
-nnoremap("n", "nzzzv")
-nnoremap("N", "Nzzzv")
-nnoremap("<C-d>", "<C-d>zz")
-nnoremap("<C-u>", "<C-u>zz")
-nnoremap("<C-o>", "<C-o>zz")
-nnoremap("<C-i>", "<C-i>zz")
-nnoremap("]n", "<Plug>(unimpaired-context-next)zz")
-nnoremap("[n", "<Plug>(unimpaired-context-previous)zz")
---nnoremap("J", "mzJ`z")
+vim.keymap.set("n", "{", "{zz")
+vim.keymap.set("n", "}", "}zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-o>", "<C-o>zz")
+vim.keymap.set("n", "<C-i>", "<C-i>zz")
+vim.keymap.set("n", "]n", "<Plug>(unimpaired-context-next)zz")
+vim.keymap.set("n", "[n", "<Plug>(unimpaired-context-previous)zz")
+--vim.keymap.set("n","J", "mzJ`z")
 
 -- Source file
-nnoremap("<leader>s", ":so %<CR>")
+vim.keymap.set("n", "<leader>s", ":so %<CR>")
 
 -- Reload config
-nnoremap("<leader><CR>", ":so $XDG_CONFIG_HOME/nvim/init.vim<CR>")
-nnoremap("<leader>r", function()
+vim.keymap.set("n", "<leader>r", function()
     return require('plenary.reload').reload_module('hendrik', true)
 end)
 
 -- Timesheet
-nnoremap("<Leader>t", ":e $HOME/Documents/Freelancing/timesheet.txt<CR>")
+vim.keymap.set("n", "<Leader>t", ":e $HOME/Documents/Freelancing/timesheet.txt<CR>")
 
 -- Sezzzionizezzer
-nnoremap("<C-f>", ":silent !tmux neww tmux-sessionizer<CR>")
+vim.keymap.set("n", "<C-f>", ":silent !tmux neww tmux-sessionizer<CR>")
 
 -- Delete without copying!
-nnoremap("<leader>d", "\"_d")
-
--- Next greatest remap ever : asbjornHaland
--- nnoremap("<leader>y", "+y")
--- vnoremap("<leader>y", "+y")
--- nmap("<leader>Y", "+Y")
-
--- Turn hlsearch off after search
-nnoremap("<expr>", '<CR> {-> v:hlsearch ? ":nohl\\<CR>" : "\\<CR>"}()')
+vim.keymap.set("n", "<leader>d", "\"_d")
 
 -- Delete forwards
-inoremap("<C-s>", "<C-o>de")
+vim.keymap.set("i", "<C-s>", "<C-o>de")
 
 -- Telescope
-nnoremap("<leader>ff", function()
+vim.keymap.set("n", "<leader>ff", function()
     return require('telescope.builtin').find_files({ hidden = true, no_ignore = true })
 end)
 
-nnoremap("<leader>fg", function()
-    return require('telescope.builtin').live_grep()
-end)
-
-nnoremap("<leader>fc", function()
-    return require("hendrik.telescope").grep_clipboard()
-end)
-
-nnoremap("<leader>fs", function()
-    return require('telescope.builtin').grep_string()
-end)
+vim.keymap.set("n", "<leader>fg", require('telescope.builtin').live_grep)
+vim.keymap.set("n", "<leader>fc", require("hendrik.telescope").grep_clipboard)
+vim.keymap.set("n", "<leader>fs", require('telescope.builtin').grep_string)
 
 -- TODO: Use selection for grep
--- vnoremap("<leader>fs", function()
+-- vim.keymap.set("v","<leader>fs", function()
 --     local s = vim.fn.getpos("'<")
 --     local e = vim.fn.getpos("'>")
 
@@ -153,123 +67,131 @@ end)
 --     -- return require('telescope.builtin').grep_string()
 -- end)
 
-nnoremap("<leader>fb", function()
+vim.keymap.set("n", "<leader>fb", function()
     return require('telescope.builtin').buffers()
 end)
 
-nnoremap("<leader>fh", function()
+vim.keymap.set("n", "<leader>fh", function()
     return require("telescope.builtin").help_tags()
 end)
 
-nnoremap("<leader>m", function()
+vim.keymap.set("n", "<leader>m", function()
     return require("telescope.builtin").filetypes()
 end)
 
-nnoremap("<leader>ds", function()
+vim.keymap.set("n", "<leader>ds", function()
     return require("telescope.builtin").lsp_document_symbols()
 end)
 
 -- Telescope: git_worktree
-nnoremap("<leader>gw", function()
+vim.keymap.set("n", "<leader>gw", function()
     return require("telescope").extensions.git_worktree.git_worktrees()
 end)
 
-nnoremap("<leader>gm", function()
+vim.keymap.set("n", "<leader>gm", function()
     return require("telescope").extensions.git_worktree.create_git_worktree()
 end)
 
 -- Telescope: custom
-nnoremap("<leader>dot", function()
+vim.keymap.set("n", "<leader>dot", function()
     return require('hendrik.telescope').search_dotfiles()
 end)
 
-nnoremap("<leader>lsp", ":e $DOTFILES/nvim/.config/nvim/after/plugin/lsp.lua<CR>")
+vim.keymap.set("n", "<leader>lsp", ":e $DOTFILES/nvim/.config/nvim/after/plugin/lsp.lua<CR>")
 
-nnoremap("<C-p>", function()
+vim.keymap.set("n", "<C-p>", function()
     return require('hendrik.telescope').project_files()
 end)
 
-nnoremap("<leader>gh", function()
+vim.keymap.set("n", "<leader>gh", function()
     return require("telescope.builtin").git_bcommits()
 end)
 
 -- Nvim-tree
-nnoremap("<C-b>", function()
+vim.keymap.set("n", "<C-b>", function()
     return require('hendrik.nvim-tree').toggle_focused_file()
 end)
 
 -- SymbolsOutline
-nnoremap("<leader>o", ":SymbolsOutline<cr>")
+vim.keymap.set("n", "<leader>o", ":SymbolsOutline<cr>")
 
 -- Harpoon
-nnoremap("<leader>a", function()
+vim.keymap.set("n", "<leader>a", function()
     require("harpoon.mark").add_file()
 end)
 
-nnoremap("<C-e>", function()
+vim.keymap.set("n", "<C-e>", function()
     require("harpoon.ui").toggle_quick_menu()
 end)
 
-nnoremap("<C-j>", function()
+vim.keymap.set("n", "<C-j>", function()
     require("harpoon.ui").nav_file(1)
 end)
 
-nnoremap("<C-k>", function()
+vim.keymap.set("n", "<C-k>", function()
     require("harpoon.ui").nav_file(2)
 end)
 
-nnoremap("<C-l>", function()
-    require("harpoon.ui").nav_file(3)
-end)
-
 -- Neotest
-nnoremap('<leader>tt', function()
+vim.keymap.set("n", '<leader>tt', function()
     require('neotest').run.run()
 end)
 
-nnoremap('<leader>tf', function()
+vim.keymap.set("n", '<leader>tf', function()
     require('neotest').run.run(vim.api.nvim_buf_get_name(0))
 end)
 
-nnoremap('<leader>td', function()
+vim.keymap.set("n", '<leader>td', function()
     require('neotest').run.run({ strategy = 'dap' })
 end)
 
-nnoremap('<leader>tl', function()
+vim.keymap.set("n", '<leader>tl', function()
     require('neotest').run.run_last()
 end)
 
 -- Mnemonic: [t]est [e]xplorer
-nnoremap('<leader>te', function()
+vim.keymap.set("n", '<leader>te', function()
     require('neotest').summary.toggle()
 end)
 
--- nnoremap('<leader>ta', function()
+-- vim.keymap.set("n",'<leader>ta', function()
 --     require('neotest').run.run()
 -- end)
 
--- nnoremap('<leader>tl', function()
+-- vim.keymap.set("n",'<leader>tl', function()
 --     require('neotest').run.run()
 -- end)
 
--- nnoremap('<leader>tv', function()
+-- vim.keymap.set("n",'<leader>tv', function()
 --     require('neotest').run.run()
 -- end)
 
-nnoremap('<leader>bb', function()
+vim.keymap.set("n", '<leader>bb', function()
     require('persistent-breakpoints.api').toggle_breakpoint()
 end)
 
-nnoremap('<leader>bc', function()
+vim.keymap.set("n", '<leader>bc', function()
     require('persistent-breakpoints.api').set_conditional_breakpoint()
 end)
 
-nnoremap('<leader>bD', function()
-    require('persistent-breakpoints.api').clear_all_breakpoints()
-end)
+vim.keymap.set("n", '<leader>bD', require('persistent-breakpoints.api').clear_all_breakpoints)
+
+vim.keymap.set("n", '<leader>x', '!chmod +x %<CR>', { silent = true })
+vim.keymap.set("n", '<leader>X', '!chmod -x %<CR>', { silent = true })
 
 -- Source: https://github.com/ldelossa/dotfiles/blob/master/config/nvim/lua/configs/buffer-resize.lua
-nnoremap("<Up>", ":resize +5<cr>", { silent = true })
-nnoremap("<Down>", ":resize -5<cr>", { silent = true })
-nnoremap("<Left>", ":vert resize -5<cr>", { silent = true })
-nnoremap("<Right>", ":vert resize +5<cr>", { silent = true })
+vim.keymap.set("n", "<Up>", ":resize +5<cr>", { silent = true })
+vim.keymap.set("n", "<Down>", ":resize -5<cr>", { silent = true })
+vim.keymap.set("n", "<Left>", ":vert resize -5<cr>", { silent = true })
+vim.keymap.set("n", "<Right>", ":vert resize +5<cr>", { silent = true })
+
+-- DAP
+local dap = require("dap")
+
+vim.keymap.set("n", '<F5>', dap.continue)
+vim.keymap.set("n", '<F10>', dap.step_over)
+vim.keymap.set("n", '<F11>', dap.step_into)
+vim.keymap.set("n", '<F12>', dap.repl.toggle)
+
+-- Undotree
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)

@@ -3,9 +3,6 @@ if not ok then
     return
 end
 
-local Remap = require("hendrik.keymap")
-local nnoremap = Remap.nnoremap
-local vnoremap = Remap.vnoremap
 
 local ok_illuminate, illuminate = pcall(require, "illuminate")
 local ok_dap, dap = pcall(require, "dap")
@@ -35,14 +32,14 @@ local function nnoremap_dap(lhs, rhs, opts)
     end
 
     dap.listeners.after["event_initialized"][event_key] = function()
-        nnoremap(lhs, rhs, opts)
+        vim.keymap.set("n", lhs, rhs, opts)
     end
 
     dap.listeners.after["event_terminated"][event_key] = function()
         if default_keymap == nil then
             vim.keymap.del("n", lhs, opts)
         else
-            nnoremap(default_keymap.lhs, default_keymap.rhs, default_keymap.opts)
+            vim.keymap.set("n", default_keymap.lhs, default_keymap.rhs, default_keymap.opts)
         end
     end
 end
@@ -51,28 +48,30 @@ local function on_attach(client, bufnr)
     -- Thanks!! Source: https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/tj/lsp/init.lua#L106
     -- local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
 
-    nnoremap("gd", vim.lsp.buf.definition, { buffer = bufnr })
-    nnoremap("gi", vim.lsp.buf.implementation, { buffer = bufnr })
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr })
 
-    nnoremap("K", vim.lsp.buf.hover, { buffer = bufnr })
-    nnoremap("<leader>vd", vim.diagnostic.open_float, { buffer = bufnr })
-    nnoremap("[d", vim.diagnostic.goto_next, { buffer = bufnr })
-    nnoremap("]d", vim.diagnostic.goto_prev, { buffer = bufnr })
-    nnoremap("<leader>vrn", vim.lsp.buf.rename, { buffer = bufnr })
-    nnoremap("<C-h>", vim.lsp.buf.signature_help, { buffer = bufnr })
-    nnoremap("<leader>ct", vim.lsp.buf.incoming_calls, { buffer = bufnr })
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
+    vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = bufnr })
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_next, { buffer = bufnr })
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, { buffer = bufnr })
+    vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, { buffer = bufnr })
+    vim.keymap.set("n", "<C-h>", vim.lsp.buf.signature_help, { buffer = bufnr })
+    vim.keymap.set("n", "<leader>ct", vim.lsp.buf.incoming_calls, { buffer = bufnr })
 
-    nnoremap("<leader>.", vim.lsp.buf.code_action, { buffer = bufnr })
-    vnoremap("<leader>.", function() vim.lsp.buf.range_code_action({}) end, { buffer = bufnr })
+    vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = bufnr })
 
-    nnoremap("<leader>vf", function() return vim.lsp.buf.format({ async = true }) end, { buffer = bufnr })
-    vnoremap("<leader>vf", function() return vim.lsp.buf.range_formatting({ async = true }) end, { buffer = bufnr })
+    vim.keymap.set("n", "<leader>.", vim.lsp.buf.code_action, { buffer = bufnr })
+    vim.keymap.set("v", "<leader>.", function() vim.lsp.buf.range_code_action({}) end, { buffer = bufnr })
+
+    vim.keymap.set("n", "<leader>vf", function() return vim.lsp.buf.format({ async = true }) end, { buffer = bufnr })
+    vim.keymap.set("v", "<leader>vf", function() return vim.lsp.buf.range_formatting({ async = true }) end,
+        { buffer = bufnr })
 
     -- Telescope
-    nnoremap("<leader>vrr", function() require("telescope.builtin").lsp_references({ fname_width = 60 }) end,
+    vim.keymap.set("n", "<leader>vrr", function() require("telescope.builtin").lsp_references({ fname_width = 60 }) end,
         { buffer = bufnr })
-    nnoremap("<leader>vws", function() require("telescope.builtin").lsp_dynamic_workspace_symbols() end,
-        { buffer = bufnr })
+    vim.keymap.set("n", "<leader>vws", require("telescope.builtin").lsp_dynamic_workspace_symbols, { buffer = bufnr })
 
     -- Dap
     nnoremap_dap("K", function() require("dap.ui.widgets").hover() end, { silent = true, buffer = bufnr })
@@ -90,11 +89,11 @@ end
 
 -- https://github.com/redhat-developer/yaml-language-server#associating-a-schema-to-a-glob-pattern-via-yamlschemas
 local yaml_schemas = {
-    -- Gitlab CI
-    ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = {
-        "**/.gitlab/**/*.yml",
-        "**/.gitlab/**/*.yaml"
-    },
+    -- -- Gitlab CI
+    -- ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = {
+    --     "**/.gitlab/**/*.yml",
+    --     "**/.gitlab/**/*.yaml"
+    -- },
 
     -- Docker Compose
     ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = {
@@ -267,7 +266,7 @@ if ok_rust_tools then
             on_attach = function(client, bufnr)
                 on_attach(client, bufnr)
 
-                nnoremap("K", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+                vim.keymap.set("n", "K", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
             end,
         },
     })
