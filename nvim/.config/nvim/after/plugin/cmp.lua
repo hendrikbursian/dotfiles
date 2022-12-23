@@ -1,5 +1,4 @@
 local ok, cmp = pcall(require, "cmp")
-
 if not ok or cmp == nil then
     return
 end
@@ -11,6 +10,8 @@ local options = {
         expand = function(args)
             if ok_luasnip then
                 luasnip.lsp_expand(args.body)
+            else
+                print("Error loading Luasnip")
             end
         end,
     },
@@ -21,8 +22,8 @@ local options = {
     },
 
     mapping = cmp.mapping.preset.insert({
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-u>"] = cmp.mapping.scroll_docs(4),
 
         ["<C-Space>"] = cmp.mapping(function(fallback)
             if (cmp.visible()) then
@@ -32,42 +33,33 @@ local options = {
             end
         end, { "i", "s" }),
 
-        ["<CR>"] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
+        -- Enter: Insert
+        ["<CR>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Insert,
             select = true,
-        },
-
-        -- ["<Tab>"] = cmp.mapping.confirm({
-        --     behavior = cmp.ConfirmBehavior.Insert,
-        --     select = true,
-        -- }),
-
-        ["<C-n>"] = cmp.mapping({
-            i = function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-                else
-                    fallback()
-                end
-            end
         }),
 
-        ["<C-p>"] = cmp.mapping({
-            c = function()
-                if cmp.visible() then
-                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-                else
-                    cmp.select_prev_item()
-                end
-            end,
-            i = function(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-                else
-                    fallback()
-                end
+        -- TAB: Replace
+        ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.confirm({
+                    behavior = cmp.ConfirmBehavior.Replace,
+                    select = true,
+                })
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            else
+                fallback()
             end
-        }),
+        end, { 'i', 's' }),
+
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
+            if luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
     }),
 
     experimental = {
