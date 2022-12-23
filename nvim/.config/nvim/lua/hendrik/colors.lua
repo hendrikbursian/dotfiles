@@ -1,9 +1,9 @@
 -- Colorscheme
 vim.opt.termguicolors = true
 
-local hour = os.date("*t").hour
+-- local hour = os.date("*t").hour
 
-vim.cmd('colorscheme nord')
+vim.cmd.colorscheme('onedark')
 vim.opt.background = 'dark'
 
 -- if (hour <= 4 or hour > 22) then
@@ -31,6 +31,10 @@ vim.opt.background = 'dark'
 
 -- Completion
 
+
+-- Remove background from floating menu (better visibility)
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
 -- Grey
 vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated', { bg = 'NONE', strikethrough = true, fg = '#808080' })
 
@@ -51,7 +55,6 @@ vim.api.nvim_set_hl(0, 'CmpItemKindMethod', { bg = 'NONE', fg = '#C586C0' })
 vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { bg = 'NONE', fg = '#D4D4D4' })
 vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { bg = 'NONE', fg = '#D4D4D4' })
 vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { bg = 'NONE', fg = '#D4D4D4' })
-
 
 -- Cursor
 vim.api.nvim_set_hl(0, 'Cursor', { fg = 'white', bg = 'red' })
