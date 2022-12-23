@@ -4,11 +4,10 @@ if not ok then
     return
 end
 
-
 local ok_illuminate, illuminate = pcall(require, "illuminate")
 local ok_dap, dap = pcall(require, "dap")
 
-local function nnoremap_dap(lhs, rhs, opts)
+local function nmap_dap(lhs, rhs, opts)
     if not ok_dap then
         return
     end
@@ -46,35 +45,45 @@ local function nnoremap_dap(lhs, rhs, opts)
 end
 
 local function on_attach(client, bufnr)
-    -- Thanks!! Source: https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/tj/lsp/init.lua#L106
-    -- local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
+    -- Thanks!!
+    -- https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/tj/lsp/init.lua
+    -- https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
 
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr })
+    -- In this case, we create a function that lets us more easily define mappings specific
+    -- for LSP related items. It sets the mode, buffer and description for us each time.
+    local nmap = function(keys, func, desc)
+        if desc then
+            desc = "LSP: " .. desc
+        end
 
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
-    vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = bufnr })
-    vim.keymap.set("n", "[d", vim.diagnostic.goto_next, { buffer = bufnr })
-    vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, { buffer = bufnr })
-    vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, { buffer = bufnr })
-    vim.keymap.set("n", "<C-h>", vim.lsp.buf.signature_help, { buffer = bufnr })
-    vim.keymap.set("n", "<leader>ct", vim.lsp.buf.incoming_calls, { buffer = bufnr })
+        vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
+    end
 
-    vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = bufnr })
+    nmap("<leader>vrn", vim.lsp.buf.rename, "[V]im [R]e[n]ame")
+    nmap("<leader>.", vim.lsp.buf.code_action, "Code Action (Habit from VSCode <C-.>)")
 
-    vim.keymap.set("n", "<leader>.", vim.lsp.buf.code_action, { buffer = bufnr })
-    vim.keymap.set("v", "<leader>.", function() vim.lsp.buf.range_code_action({}) end, { buffer = bufnr })
+    nmap("K", vim.lsp.buf.hover, "Hover Documentation")
+    nmap("<C-K>", vim.lsp.buf.signature_help, "Signature Help")
 
-    vim.keymap.set("n", "<leader>vf", function() vim.lsp.buf.format({ async = true }) end, { buffer = bufnr })
-    vim.keymap.set("v", "<leader>vf", function() vim.lsp.buf.range_formatting({ async = true }) end, { buffer = bufnr })
+    nmap("<leader>ct", vim.lsp.buf.incoming_calls, "Incoming [C]alls")
+
+    nmap("<leader>vf", vim.lsp.buf.format, "[V]im [F]ormat")
 
     -- Telescope
-    vim.keymap.set("n", "<leader>vrr", function() require("telescope.builtin").lsp_references({ fname_width = 60 }) end,
-        { buffer = bufnr })
-    vim.keymap.set("n", "<leader>vws", require("telescope.builtin").lsp_dynamic_workspace_symbols, { buffer = bufnr })
+    nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+    nmap("gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+    nmap("gr", require("hendrik.telescope").lsp_references, "[G]oto [R]eferences")
+    nmap("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+    nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+    nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+
+    -- Lesser used LSP functionality
+    nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
+    nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
+    nmap('<leader>wl', function() P(vim.lsp.buf.list_workspace_folders()) end, '[W]orkspace [L]ist Folders')
 
     -- Dap
-    nnoremap_dap("K", function() require("dap.ui.widgets").hover() end, { silent = true, buffer = bufnr })
+    nmap_dap("K", function() require("dap.ui.widgets").hover() end, { silent = true, buffer = bufnr })
 
     if ok_illuminate then
         illuminate.on_attach(client)
@@ -177,11 +186,10 @@ local servers = {
                     globals = { "vim" },
                 },
                 workspace = {
-                    library = vim.api.nvim_get_runtime_file("", true),
+                    -- library = vim.api.nvim_get_runtime_file("", true),
+                    checkThirdParty = false,
                 },
-                telemetry = {
-                    enable = false,
-                },
+                telemetry = { enable = false, },
             },
         },
     },

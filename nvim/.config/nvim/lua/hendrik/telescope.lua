@@ -1,7 +1,7 @@
 local M = {}
 
-M.project_files = function()
-    require('telescope.builtin').git_files({
+M.git_files = function()
+    require("telescope.builtin").git_files({
         hidden = true,
         no_ignore = true,
         show_untracked = true
@@ -28,7 +28,22 @@ M.grep_clipboard = function()
         file:close()
     end
 
-    require('telescope.builtin').grep_string({ search = search })
+    require("telescope.builtin").grep_string({
+        search = search
+    })
+end
+
+M.lsp_references = function()
+    require("telescope.builtin").lsp_references({
+        fname_width = 60
+    })
+end
+
+M.find_files = function()
+    require("telescope.builtin").find_files({
+        hidden = true,
+        no_ignore = true
+    })
 end
 
 -- TODO: Use selection for grep
@@ -49,5 +64,4 @@ end
 
 --     -- return require("telescope.builtin").grep_string()
 -- end)
-
 return M

@@ -20,6 +20,17 @@ vim.keymap.set("n", "[n", "<Plug>(unimpaired-context-previous)zz")
 vim.keymap.set("n", "<Plug>(slash-after)", "zz")
 --vim.keymap.set("n","J", "mzJ`z")
 
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+
+vim.keymap.set("n", "[d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float)
+vim.keymap.set("n", "<leader>vq", vim.diagnostic.setloclist)
+
 -- Source file
 vim.keymap.set("n", "<leader>s", ":so %<CR>")
 
@@ -39,29 +50,26 @@ vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("i", "<C-s>", "<C-o>de")
 
 -- Telescope
-vim.keymap.set("n", "<leader>ff",
-    function() require("telescope.builtin").find_files({ hidden = true, no_ignore = true }) end)
-
-vim.keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep)
+vim.keymap.set("n", "<C-p>", require("hendrik.telescope").git_files)
+vim.keymap.set("n", "<leader>dot", require("hendrik.telescope").search_dotfiles)
+vim.keymap.set("n", "<leader>ff", require("hendrik.telescope").find_files)
 vim.keymap.set("n", "<leader>fc", require("hendrik.telescope").grep_clipboard)
+vim.keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep)
 vim.keymap.set("n", "<leader>fs", require("telescope.builtin").grep_string)
 vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers)
+vim.keymap.set("n", "<leader>fo", require("telescope.builtin").oldfiles)
 vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags)
 vim.keymap.set("n", "<leader>m", require("telescope.builtin").filetypes)
-vim.keymap.set("n", "<leader>ds", require("telescope.builtin").lsp_document_symbols)
-vim.keymap.set("n", "<leader>ds", require("telescope.builtin").lsp_document_symbols)
+vim.keymap.set("n", "<leader>gh", require("telescope.builtin").git_bcommits)
 
 -- Telescope: git_worktree
 vim.keymap.set("n", "<leader>gw", require("telescope").extensions.git_worktree.git_worktrees)
 vim.keymap.set("n", "<leader>gm", require("telescope").extensions.git_worktree.create_git_worktree)
 
--- Telescope: custom
-vim.keymap.set("n", "<leader>dot", require("hendrik.telescope").search_dotfiles)
+-- Shortcuts
 vim.keymap.set("n", "<leader>lsp", ":e $DOTFILES/nvim/.config/nvim/after/plugin/lsp.lua<CR>")
-vim.keymap.set("n", "<C-p>", require("hendrik.telescope").project_files)
-vim.keymap.set("n", "<leader>gh", require("telescope.builtin").git_bcommits)
 
--- Nvim-tree
+-- Nvim tree
 vim.keymap.set("n", "<C-b>", require("hendrik.nvim-tree").toggle_focused_file)
 
 -- SymbolsOutline
