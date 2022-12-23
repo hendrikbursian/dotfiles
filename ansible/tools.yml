@@ -30,6 +30,7 @@
       - unzip
       - vim
       - wget
+      - tldr
       - zlib1g-dev
       - zsh
 
