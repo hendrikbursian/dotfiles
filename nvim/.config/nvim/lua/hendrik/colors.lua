@@ -3,22 +3,25 @@ vim.opt.termguicolors = true
 
 local hour = os.date("*t").hour
 
-if (hour <= 4 or hour > 22) then
-    vim.cmd('colorscheme nord')
-    vim.opt.background = 'dark'
-elseif (hour <= 6) then
-    vim.cmd('colorscheme nord')
-    vim.opt.background = 'dark'
-elseif (hour <= 12) then
-    vim.cmd('colorscheme PaperColor')
-    vim.opt.background = 'light'
-elseif (hour <= 16) then
-    vim.cmd('colorscheme PaperColor')
-    vim.opt.background = 'light'
-elseif (hour <= 22) then
-    vim.cmd('colorscheme nord')
-    vim.opt.background = 'dark'
-end
+vim.cmd('colorscheme nord')
+vim.opt.background = 'dark'
+
+-- if (hour <= 4 or hour > 22) then
+--     vim.cmd('colorscheme nord')
+--     vim.opt.background = 'dark'
+-- elseif (hour <= 6) then
+--     vim.cmd('colorscheme nord')
+--     vim.opt.background = 'dark'
+-- elseif (hour <= 12) then
+--     vim.cmd('colorscheme PaperColor')
+--     vim.opt.background = 'light'
+-- elseif (hour <= 16) then
+--     vim.cmd('colorscheme PaperColor')
+--     vim.opt.background = 'light'
+-- elseif (hour <= 22) then
+--     vim.cmd('colorscheme nord')
+--     vim.opt.background = 'dark'
+-- end
 
 -- vim.cmd('colorscheme gruvbox')
 -- vim.g.gruvbox_italic = 1
