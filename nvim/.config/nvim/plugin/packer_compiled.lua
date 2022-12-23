@@ -177,7 +177,7 @@ _G.packer_plugins = {
     url = "https://github.com/jayp0521/mason-nvim-dap.nvim"
   },
   ["mason.nvim"] = {
-    config = { "\27LJ\2\nF\0\1\4\0\2\0\0066\1\0\0'\3\1\0B\1\2\2\18\3\0\0B\1\2\1K\0\1\0#mason-nvim-dap.automatic_setup\frequireÂ\2\1\0\4\0\f\0\0296\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\0\0'\2\4\0B\0\2\0029\0\2\0005\2\5\0B\0\2\0016\0\0\0'\2\6\0B\0\2\0029\0\2\0005\2\a\0005\3\b\0=\3\t\2B\0\2\0016\0\0\0'\2\6\0B\0\2\0029\0\n\0004\2\3\0003\3\v\0>\3\1\2B\0\2\1K\0\1\0\0\19setup_handlers\21ensure_installed\1\2\0\0\rcodelldb\1\0\2\20automatic_setup\2\27automatic_installation\2\19mason-nvim-dap\1\0\1\27automatic_installation\2\20mason-lspconfig\1\0\1\30max_concurrent_installers\3\1\nsetup\nmason\frequire\0" },
+    config = { "\27LJ\2\nF\0\1\4\0\2\0\0066\1\0\0'\3\1\0B\1\2\2\18\3\0\0B\1\2\1K\0\1\0#mason-nvim-dap.automatic_setup\frequireÂ\2\1\0\4\0\f\0\0296\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\0\0'\2\4\0B\0\2\0029\0\2\0005\2\5\0B\0\2\0016\0\0\0'\2\6\0B\0\2\0029\0\2\0005\2\a\0005\3\b\0=\3\t\2B\0\2\0016\0\0\0'\2\6\0B\0\2\0029\0\n\0004\2\3\0003\3\v\0>\3\1\2B\0\2\1K\0\1\0\0\19setup_handlers\21ensure_installed\1\2\0\0\rcodelldb\1\0\2\27automatic_installation\2\20automatic_setup\2\19mason-nvim-dap\1\0\1\27automatic_installation\2\20mason-lspconfig\1\0\1\30max_concurrent_installers\3\1\nsetup\nmason\frequire\0" },
     loaded = true,
     path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
@@ -267,7 +267,6 @@ _G.packer_plugins = {
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-surround"] = {
-    config = { "\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18nvim-surround\frequire\0" },
     loaded = true,
     path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/nvim-surround",
     url = "https://github.com/kylechui/nvim-surround"
@@ -283,9 +282,18 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-treesitter-context"] = {
+    load_after = {},
     loaded = true,
-    path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
+    needs_bufread = false,
+    path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/opt/nvim-treesitter-context",
     url = "https://github.com/romgrk/nvim-treesitter-context"
+  },
+  ["nvim-treesitter-textobjects"] = {
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/opt/nvim-treesitter-textobjects",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -401,42 +409,44 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
-time([[Config for gitsigns.nvim]], false)
 -- Config for: nvim-dap-go
 time([[Config for nvim-dap-go]], true)
 try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vdap-go\frequire\0", "config", "nvim-dap-go")
 time([[Config for nvim-dap-go]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-try_loadstring("\27LJ\2\nU\0\0\4\0\5\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0004\3\0\0=\3\4\2B\0\2\1K\0\1\0\14fast_wrap\1\0\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
-time([[Config for nvim-autopairs]], false)
--- Config for: mason.nvim
-time([[Config for mason.nvim]], true)
-try_loadstring("\27LJ\2\nF\0\1\4\0\2\0\0066\1\0\0'\3\1\0B\1\2\2\18\3\0\0B\1\2\1K\0\1\0#mason-nvim-dap.automatic_setup\frequireÂ\2\1\0\4\0\f\0\0296\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\0\0'\2\4\0B\0\2\0029\0\2\0005\2\5\0B\0\2\0016\0\0\0'\2\6\0B\0\2\0029\0\2\0005\2\a\0005\3\b\0=\3\t\2B\0\2\0016\0\0\0'\2\6\0B\0\2\0029\0\n\0004\2\3\0003\3\v\0>\3\1\2B\0\2\1K\0\1\0\0\19setup_handlers\21ensure_installed\1\2\0\0\rcodelldb\1\0\2\20automatic_setup\2\27automatic_installation\2\19mason-nvim-dap\1\0\1\27automatic_installation\2\20mason-lspconfig\1\0\1\30max_concurrent_installers\3\1\nsetup\nmason\frequire\0", "config", "mason.nvim")
-time([[Config for mason.nvim]], false)
--- Config for: neotest
-time([[Config for neotest]], true)
-try_loadstring("\27LJ\2\n˜\1\0\0\a\0\a\1\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\5\0004\3\3\0006\4\0\0'\6\3\0B\4\2\2>\4\1\0036\4\0\0'\6\4\0B\4\2\0024\6\0\0B\4\2\0?\4\0\0=\3\6\2B\0\2\1K\0\1\0\radapters\1\0\0\17neotest-jest\20neotest-phpunit\nsetup\fneotest\frequire\5€€À™\4\0", "config", "neotest")
-time([[Config for neotest]], false)
--- Config for: nvim-surround
-time([[Config for nvim-surround]], true)
-try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
-time([[Config for nvim-surround]], false)
--- Config for: persistent-breakpoints.nvim
-time([[Config for persistent-breakpoints.nvim]], true)
-try_loadstring("\27LJ\2\nz\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\27load_breakpoints_event\1\0\0\1\2\0\0\16BufReadPost\nsetup\27persistent-breakpoints\frequire\0", "config", "persistent-breakpoints.nvim")
-time([[Config for persistent-breakpoints.nvim]], false)
 -- Config for: nvim-dap-virtual-text
 time([[Config for nvim-dap-virtual-text]], true)
 try_loadstring("\27LJ\2\nG\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\26nvim-dap-virtual-text\frequire\0", "config", "nvim-dap-virtual-text")
 time([[Config for nvim-dap-virtual-text]], false)
+-- Config for: neotest
+time([[Config for neotest]], true)
+try_loadstring("\27LJ\2\n˜\1\0\0\a\0\a\1\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\5\0004\3\3\0006\4\0\0'\6\3\0B\4\2\2>\4\1\0036\4\0\0'\6\4\0B\4\2\0024\6\0\0B\4\2\0?\4\0\0=\3\6\2B\0\2\1K\0\1\0\radapters\1\0\0\17neotest-jest\20neotest-phpunit\nsetup\fneotest\frequire\5€€À™\4\0", "config", "neotest")
+time([[Config for neotest]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\nF\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\vignore\a^$\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
+-- Config for: mason.nvim
+time([[Config for mason.nvim]], true)
+try_loadstring("\27LJ\2\nF\0\1\4\0\2\0\0066\1\0\0'\3\1\0B\1\2\2\18\3\0\0B\1\2\1K\0\1\0#mason-nvim-dap.automatic_setup\frequireÂ\2\1\0\4\0\f\0\0296\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\0\0'\2\4\0B\0\2\0029\0\2\0005\2\5\0B\0\2\0016\0\0\0'\2\6\0B\0\2\0029\0\2\0005\2\a\0005\3\b\0=\3\t\2B\0\2\0016\0\0\0'\2\6\0B\0\2\0029\0\n\0004\2\3\0003\3\v\0>\3\1\2B\0\2\1K\0\1\0\0\19setup_handlers\21ensure_installed\1\2\0\0\rcodelldb\1\0\2\27automatic_installation\2\20automatic_setup\2\19mason-nvim-dap\1\0\1\27automatic_installation\2\20mason-lspconfig\1\0\1\30max_concurrent_installers\3\1\nsetup\nmason\frequire\0", "config", "mason.nvim")
+time([[Config for mason.nvim]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+try_loadstring("\27LJ\2\nU\0\0\4\0\5\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0004\3\0\0=\3\4\2B\0\2\1K\0\1\0\14fast_wrap\1\0\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
+time([[Config for nvim-autopairs]], false)
+-- Config for: persistent-breakpoints.nvim
+time([[Config for persistent-breakpoints.nvim]], true)
+try_loadstring("\27LJ\2\nz\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\27load_breakpoints_event\1\0\0\1\2\0\0\16BufReadPost\nsetup\27persistent-breakpoints\frequire\0", "config", "persistent-breakpoints.nvim")
+time([[Config for persistent-breakpoints.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
+time([[Config for gitsigns.nvim]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-treesitter ]]
+vim.cmd [[ packadd nvim-treesitter-context ]]
+vim.cmd [[ packadd nvim-treesitter-textobjects ]]
+time([[Sequenced loading]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

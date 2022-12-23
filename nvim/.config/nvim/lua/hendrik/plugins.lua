@@ -17,8 +17,22 @@ return require("packer").startup((function(use)
 
     -- Utility ===============================================================
     use "nvim-lua/plenary.nvim"
-    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
-    use "romgrk/nvim-treesitter-context"
+
+    -- Treesitter
+    use { -- Highlight, edit, and navigate code
+        "nvim-treesitter/nvim-treesitter",
+        run = function()
+            pcall(require("nvim-treesitter.install").update { with_sync = true })
+        end,
+    }
+    use { -- Additional text objects via treesitter
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+    }
+    use { -- Context lines
+        "romgrk/nvim-treesitter-context",
+        after = "nvim-treesitter",
+    }
 
     -- Better search hightlights
     use "junegunn/vim-slash"
@@ -28,9 +42,8 @@ return require("packer").startup((function(use)
     use "tpope/vim-abolish"
     use {
         "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {
-                fast_wrap = {},
-            }
+        config = function()
+            require("nvim-autopairs").setup { fast_wrap = {}, }
         end
     }
     use {
