@@ -1,5 +1,3 @@
-require("hendrik.globals")
-require("hendrik.utils")
 require("hendrik.sets")
 require("hendrik.plugins")
 require("hendrik.colors")

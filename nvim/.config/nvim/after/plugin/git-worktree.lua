@@ -27,9 +27,9 @@ local Worktree = require("git-worktree")
 
 Worktree.on_tree_change(function(op, metadata)
 
-    -- P(op)
-    -- P(metadata)
-    -- P("----------------------------")
+    -- vim.pretty_print(op)
+    -- vim.pretty_print(metadata)
+    -- vim.pretty_print("----------------------------")
 
     if op == Worktree.Operations.Switch then
         print("Switched from " .. metadata.prev_path .. " to " .. metadata.path)

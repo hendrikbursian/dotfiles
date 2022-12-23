@@ -1,6 +1,6 @@
 " Jump qlist
-nnoremap <leader>k :lnext<CR>zz
-nnoremap <leader>j :lprev<CR>zz
+" nnoremap <leader>k :lnext<CR>zz
+" nnoremap <leader>j :lprev<CR>zz
 
 nnoremap <C-q> :call ToggleQFList(1)<CR>zz
 nnoremap <leader>q :call ToggleQFList(0)<CR>zz

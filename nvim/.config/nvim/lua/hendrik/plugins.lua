@@ -11,7 +11,7 @@ end
 
 local packer_bootstrap = ensure_packer()
 
-return require("packer").startup((function(use)
+require("packer").startup((function(use)
     -- Packer can manage itself ==============================================
     use "wbthomason/packer.nvim"
 
@@ -65,38 +65,8 @@ return require("packer").startup((function(use)
 
     use "ThePrimeagen/vim-be-good"
 
-    use { "mbbill/undotree" }
+    use "mbbill/undotree"
 
-    -- Installer
-    use {
-        "williamboman/mason.nvim",
-        requires = {
-            "williamboman/mason-lspconfig.nvim",
-            "jayp0521/mason-nvim-dap.nvim",
-        },
-
-        config = function()
-            require("mason").setup({
-                max_concurrent_installers = 1,
-            })
-            require("mason-lspconfig").setup({
-                automatic_installation = true,
-            })
-            require("mason-nvim-dap").setup({
-                automatic_installation = true,
-                ensure_installed = { "codelldb" },
-                automatic_setup = true,
-            })
-            require("mason-nvim-dap").setup_handlers({
-                function(source_name)
-                    -- all sources with no handler get passed here
-
-                    -- Keep original functionality of `automatic_setup = true`
-                    require("mason-nvim-dap.automatic_setup")(source_name)
-                end,
-            })
-        end
-    }
 
     -- Clipboard =============================================================
     use "svermeulen/vim-yoink"
@@ -120,58 +90,100 @@ return require("packer").startup((function(use)
     }
 
     -- LSP ===================================================================
-    use "neovim/nvim-lspconfig"
-    use "jose-elias-alvarez/null-ls.nvim"
-    use "jose-elias-alvarez/typescript.nvim"
-    use "simrat39/rust-tools.nvim"
+    use {
+        "neovim/nvim-lspconfig",
+        requires = {
+            -- Automatically install LSPs to stdpath for neovim
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
 
-    -- Autocompletion ========================================================
-    use "hrsh7th/cmp-nvim-lsp"
-    use "hrsh7th/cmp-buffer"
-    use "hrsh7th/cmp-path"
-    use "hrsh7th/cmp-cmdline"
-    use "hrsh7th/cmp-calc"
-    use "hrsh7th/nvim-cmp"
-    --     use "tzachar/cmp-tabnine", { "do" = "./install.sh" }
-    --     use "github/copilot.vim"
-    --     use "hrsh7th/cmp-copilot"
-    use "b0o/schemastore.nvim"
+            -- Useful status updates for LSP
+            "j-hui/fidget.nvim",
 
-    -- Git ===================================================================
-    use { "lewis6991/gitsigns.nvim",
-        config = function()
-            require("gitsigns").setup()
-        end
+            -- Additional lua configuration, makes nvim stuff amazing
+            "folke/neodev.nvim",
+
+            -- Usage for Linting Actions
+            "jose-elias-alvarez/null-ls.nvim",
+
+            -- Extended Typescript Tools
+            "jose-elias-alvarez/typescript.nvim",
+
+            -- Extended Rust Tools
+            "simrat39/rust-tools.nvim",
+
+            -- Autocompletion for jsonls/yamls
+            "b0o/schemastore.nvim"
+        },
     }
-    use "tpope/vim-fugitive"
-    use "ThePrimeagen/git-worktree.nvim"
 
     -- Debugging =============================================================
-    use "mfussenegger/nvim-dap"
-    -- use {
-    --     "microsoft/vscode-js-debug",
-    --     opt = true,
-    --     run = "npm install --legacy-peer-deps && npm run compile"
-    -- }
-    use "mxsdev/nvim-dap-vscode-js"
-    use { "leoluz/nvim-dap-go",
-        config = function()
-            require("dap-go").setup()
-        end
+
+    use {
+        "mfussenegger/nvim-dap",
+        requires = {
+            -- Automatic Dap Configuration
+            "jayp0521/mason-nvim-dap.nvim",
+            "rcarriga/nvim-dap-ui",
+            {
+                "theHamsta/nvim-dap-virtual-text",
+                config = function()
+                    require("nvim-dap-virtual-text").setup({})
+                end
+            },
+
+            {
+                "Weissle/persistent-breakpoints.nvim",
+                config = function()
+                    require("persistent-breakpoints").setup {
+                        load_breakpoints_event = { "BufReadPost" }
+                    }
+                end
+            },
+
+            "mxsdev/nvim-dap-vscode-js",
+
+            {
+                "leoluz/nvim-dap-go",
+                config = function()
+                    require("dap-go").setup()
+                end
+            },
+
+            -- {
+            --     "microsoft/vscode-js-debug",
+            --     opt = true,
+            --     run = "npm install --legacy-peer-deps && npm run compile"
+            -- }
+        }
     }
-    use { "theHamsta/nvim-dap-virtual-text",
-        config = function()
-            require("nvim-dap-virtual-text").setup({})
-        end
+
+    -- Autocompletion ========================================================
+
+    use {
+        "hrsh7th/nvim-cmp",
+        requires = {
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-calc",
+
+            -- AI
+            -- { "tzachar/cmp-tabnine",  run = "./install.sh"  },
+            -- { "hrsh7th/cmp-copilot", requires = { "github/copilot.vim" } },
+
+            -- Snippets
+            "L3MON4D3/LuaSnip",
+            "saadparwaiz1/cmp_luasnip",
+            "rafamadriz/friendly-snippets",
+        },
     }
-    use "rcarriga/nvim-dap-ui"
-    use { "Weissle/persistent-breakpoints.nvim",
-        config = function()
-            require("persistent-breakpoints").setup {
-                load_breakpoints_event = { "BufReadPost" }
-            }
-        end
-    }
+
+    -- Git ===================================================================
+    use "tpope/vim-fugitive"
+    use "lewis6991/gitsigns.nvim"
+    use "ThePrimeagen/git-worktree.nvim"
 
     -- Testing ===============================================================
     use {
@@ -200,18 +212,12 @@ return require("packer").startup((function(use)
     -- Linting ===============================================================
     use "mfussenegger/nvim-lint"
 
-    -- Snippets ==============================================================
-    use "L3MON4D3/LuaSnip"
-    use "saadparwaiz1/cmp_luasnip"
-    use "rafamadriz/friendly-snippets"
-
     -- UI ====================================================================
     use "RRethy/vim-illuminate"
     use "gruvbox-community/gruvbox"
     use "NLKNguyen/papercolor-theme"
     use "arcticicestudio/nord-vim"
     use "mhinz/vim-startify"
-    use "j-hui/fidget.nvim"
 
     -- Statusline ============================================================
     use "nvim-lualine/lualine.nvim"
@@ -226,3 +232,16 @@ return require("packer").startup((function(use)
         require("packer").sync()
     end
 end))
+
+-- When we are bootstrapping a configuration, it doesn"t
+-- make sense to execute the rest of the init.lua.
+--
+-- You"ll need to restart nvim, and then it will work.
+if packer_bootstrap then
+    print "=================================="
+    print "    Plugins are being installed"
+    print "    Wait until Packer completes,"
+    print "       then restart nvim"
+    print "=================================="
+    return
+end

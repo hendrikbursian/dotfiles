@@ -1,10 +1,17 @@
 -- Tame Yank!
 vim.keymap.set("n", "Y", "yg$")
 
+-- Disable <leader> only
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+
 -- Make yank work with cursor=virtual
 vim.keymap.set("n", "yy", "my0yy`y<CMD>delmark y<CR>")
 -- TODO: check this
 vim.keymap.set("v", "y", "my0y`y<CMD>delmark y<CR>")
+
+-- Remap for dealing with word wrap
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Center everything
 vim.keymap.set("n", "{", "{zz")
@@ -21,13 +28,8 @@ vim.keymap.set("n", "<Plug>(slash-after)", "zz")
 --vim.keymap.set("n","J", "mzJ`z")
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
-
-vim.keymap.set("n", "[d", vim.diagnostic.goto_next)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float)
 vim.keymap.set("n", "<leader>vq", vim.diagnostic.setloclist)
 
@@ -56,11 +58,20 @@ vim.keymap.set("n", "<leader>ff", require("hendrik.telescope").find_files)
 vim.keymap.set("n", "<leader>fc", require("hendrik.telescope").grep_clipboard)
 vim.keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep)
 vim.keymap.set("n", "<leader>fs", require("telescope.builtin").grep_string)
-vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers)
-vim.keymap.set("n", "<leader>fo", require("telescope.builtin").oldfiles)
+vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers)
+vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles)
 vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags)
 vim.keymap.set("n", "<leader>m", require("telescope.builtin").filetypes)
 vim.keymap.set("n", "<leader>gh", require("telescope.builtin").git_bcommits)
+vim.keymap.set("n", "<leader>fd", require("telescope.builtin").diagnostics)
+
+vim.keymap.set("n", "<leader>/", function()
+    -- You can pass additional configuration to telescope to change theme, layout, etc.
+    require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
+        winblend = 10,
+        previewer = false,
+    })
+end)
 
 -- Telescope: git_worktree
 vim.keymap.set("n", "<leader>gw", require("telescope").extensions.git_worktree.git_worktrees)

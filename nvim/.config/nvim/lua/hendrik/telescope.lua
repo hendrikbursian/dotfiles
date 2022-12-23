@@ -51,11 +51,11 @@ end
 --     local s = vim.fn.getpos(""<")
 --     local e = vim.fn.getpos("">")
 
---     P(s)
+--     vim.pretty_print(s)
 --     local line_start = s[2]
 --     local line_end = e[2]
---     P(line_start)
---     P(line_end)
+--     vim.pretty_print(line_start)
+--     vim.pretty_print(line_end)
 --     -- local start_col = s[1]
 
 --     -- local end_col = end[1]
