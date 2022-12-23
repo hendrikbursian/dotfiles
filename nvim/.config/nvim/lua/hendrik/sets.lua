@@ -24,7 +24,7 @@ vim.opt.number = true
 
 -- Backups
 vim.opt.hidden = true
-vim.opt.swapfile = true
+vim.opt.swapfile = false
 vim.opt.directory = os.getenv('XDG_CONFIG_HOME') .. '/nvim/swap//'
 vim.opt.backup = true
 vim.opt.writebackup = true
