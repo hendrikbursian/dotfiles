@@ -36,7 +36,6 @@ telescope.setup {
         file_sorter = sorters.get_fzy_sorter,
         buffer_previewer_maker = new_maker,
 
-        prompt_prefix = " >",
         color_devicons = true,
 
         vimgrep_arguments = {
@@ -62,7 +61,6 @@ telescope.setup {
 
         mappings = {
             i = {
-                ["<C-x>"] = false,
                 ["<C-q>"] = actions.send_to_qflist,
             },
             n = {

@@ -64,9 +64,8 @@ local function on_attach(client, bufnr)
     vim.keymap.set("n", "<leader>.", vim.lsp.buf.code_action, { buffer = bufnr })
     vim.keymap.set("v", "<leader>.", function() vim.lsp.buf.range_code_action({}) end, { buffer = bufnr })
 
-    vim.keymap.set("n", "<leader>vf", function() return vim.lsp.buf.format({ async = true }) end, { buffer = bufnr })
-    vim.keymap.set("v", "<leader>vf", function() return vim.lsp.buf.range_formatting({ async = true }) end,
-        { buffer = bufnr })
+    vim.keymap.set("n", "<leader>vf", function() vim.lsp.buf.format({ async = true }) end, { buffer = bufnr })
+    vim.keymap.set("v", "<leader>vf", function() vim.lsp.buf.range_formatting({ async = true }) end, { buffer = bufnr })
 
     -- Telescope
     vim.keymap.set("n", "<leader>vrr", function() require("telescope.builtin").lsp_references({ fname_width = 60 }) end,

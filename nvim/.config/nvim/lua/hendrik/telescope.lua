@@ -1,20 +1,11 @@
 local M = {}
 
 M.project_files = function()
-    local opts = {
+    require('telescope.builtin').git_files({
         hidden = true,
         no_ignore = true,
-        show_untracked = true,
-    }
-
-    -- naturallife plugin folder
-    local path = vim.fn.getcwd()
-    if string.find(path, "naturallife") then
-        opts.cwd = '/home/hendrik/workspace/naturallifegmbh/app/public/wp-content/plugins/naturallife'
-    end
-
-    local ok = pcall(require("telescope.builtin").git_files, opts)
-    if not ok then require("telescope.builtin").find_files(opts) end
+        show_untracked = true
+    })
 end
 
 M.search_dotfiles = function()
@@ -27,7 +18,7 @@ M.search_dotfiles = function()
     })
 end
 
-M.grep_clipboard = function ()
+M.grep_clipboard = function()
     local search = ""
 
     local file = io.popen("xsel -b", "r")
@@ -39,5 +30,24 @@ M.grep_clipboard = function ()
 
     require('telescope.builtin').grep_string({ search = search })
 end
+
+-- TODO: Use selection for grep
+-- vim.keymap.set("v","<leader>fs", function()
+--     local s = vim.fn.getpos(""<")
+--     local e = vim.fn.getpos("">")
+
+--     P(s)
+--     local line_start = s[2]
+--     local line_end = e[2]
+--     P(line_start)
+--     P(line_end)
+--     -- local start_col = s[1]
+
+--     -- local end_col = end[1]
+
+--     vim.fn.getline(line_start, line_end)
+
+--     -- return require("telescope.builtin").grep_string()
+-- end)
 
 return M
