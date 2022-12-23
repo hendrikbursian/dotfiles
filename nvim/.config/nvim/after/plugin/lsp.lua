@@ -1,3 +1,4 @@
+-- TODO: checkout kickstart.nvim configuration
 local ok, lspconfig = pcall(require, "lspconfig")
 if not ok then
     return
@@ -266,6 +267,7 @@ if ok_rust_tools then
                 on_attach(client, bufnr)
 
                 vim.keymap.set("n", "K", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+                vim.keymap.set("n", "<leader>;", function() vim.cmd("RustRun") end, { buffer = bufnr })
             end,
         },
     })
