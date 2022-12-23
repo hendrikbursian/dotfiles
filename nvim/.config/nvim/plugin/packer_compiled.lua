@@ -373,6 +373,11 @@ _G.packer_plugins = {
     path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/vim-illuminate",
     url = "https://github.com/RRethy/vim-illuminate"
   },
+  ["vim-slash"] = {
+    loaded = true,
+    path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/vim-slash",
+    url = "https://github.com/junegunn/vim-slash"
+  },
   ["vim-startify"] = {
     loaded = true,
     path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/vim-startify",

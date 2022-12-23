@@ -19,6 +19,10 @@ return require("packer").startup((function(use)
     use "nvim-lua/plenary.nvim"
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
     use "romgrk/nvim-treesitter-context"
+
+    -- Better search hightlights
+    use "junegunn/vim-slash"
+
     use "tpope/vim-unimpaired"
     -- use "tpope/vim-obsession"
     use "tpope/vim-abolish"

@@ -9,14 +9,15 @@ vim.keymap.set("v", "y", "my0y`y<CMD>delmark y<CR>")
 -- Center everything
 vim.keymap.set("n", "{", "{zz")
 vim.keymap.set("n", "}", "}zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+-- vim.keymap.set("n", "n", "nzzzv")
+-- vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-o>", "<C-o>zz")
 vim.keymap.set("n", "<C-i>", "<C-i>zz")
 vim.keymap.set("n", "]n", "<Plug>(unimpaired-context-next)zz")
 vim.keymap.set("n", "[n", "<Plug>(unimpaired-context-previous)zz")
+vim.keymap.set("n", "<Plug>(slash-after)", "zz")
 --vim.keymap.set("n","J", "mzJ`z")
 
 -- Source file
