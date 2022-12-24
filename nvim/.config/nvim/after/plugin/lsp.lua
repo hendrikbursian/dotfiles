@@ -3,11 +3,11 @@ if not ok then
     return
 end
 
--- Thanks!!
--- https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/tj/lsp/init.lua
--- https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
-
 local function on_attach(client, bufnr)
+    -- Thanks!!
+    -- https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/tj/lsp/init.lua
+    -- https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
+
     local ok_illuminate, illuminate = pcall(require, "illuminate")
     local ok_dap, dap = pcall(require, "dap")
 
@@ -21,17 +21,19 @@ local function on_attach(client, bufnr)
         vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
     end
 
-    local function nmap_dap(lhs, rhs, opts)
+    -- Create buffer mappings on active dap session. Reverts mappings afterwards.
+    local function nmap_dap(keys, func, desc)
         if not ok_dap then
             return
         end
 
-        local keymaps = vim.api.nvim_buf_get_keymap(opts.buffer, "n")
-        local event_key = "n_" .. lhs
+        local keymaps = vim.api.nvim_buf_get_keymap(bufnr, "n")
+        local event_key = "n_" .. keys
 
+        -- TODO: Theres probably a better way to do this
         local default_keymap
         for _, keymap in pairs(keymaps) do
-            if keymap.lhs == lhs then
+            if keymap.lhs == keys then
                 default_keymap = {
                     lhs = keymap.lhs,
                     rhs = keymap.callback,
@@ -45,13 +47,18 @@ local function on_attach(client, bufnr)
             end
         end
 
+        local opts = {
+            buffer = bufnr,
+            desc = desc,
+        }
+
         dap.listeners.after["event_initialized"][event_key] = function()
-            vim.keymap.set("n", lhs, rhs, opts)
+            vim.keymap.set("n", keys, func, opts)
         end
 
         dap.listeners.after["event_terminated"][event_key] = function()
             if default_keymap == nil then
-                vim.keymap.del("n", lhs, opts)
+                vim.keymap.del("n", keys, opts)
             else
                 vim.keymap.set("n", default_keymap.lhs, default_keymap.rhs, default_keymap.opts)
             end
@@ -77,13 +84,13 @@ local function on_attach(client, bufnr)
     nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
     -- Lesser used LSP functionality
-    nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-    nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-    nmap('<leader>wl', function() vim.pretty_print(vim.lsp.buf.list_workspace_folders()) end,
-        '[W]orkspace [L]ist Folders')
+    nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
+    nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
+    nmap("<leader>wl", function() vim.pretty_print(vim.lsp.buf.list_workspace_folders()) end,
+        "[W]orkspace [L]ist Folders")
 
     -- Dap
-    nmap_dap("K", function() require("dap.ui.widgets").hover() end, { silent = true, buffer = bufnr })
+    nmap_dap("K", function() require("dap.ui.widgets").hover() end, "Debug Hover")
 
     if ok_illuminate then
         illuminate.on_attach(client)
@@ -204,16 +211,12 @@ local yaml_schemas = {
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-
--- Setup mason so it can manage external tooling
-require('mason').setup()
-
--- Ensure the servers above are installed
+-- Mason =====================================================================
+require("mason").setup()
 require("mason-lspconfig").setup({
     automatic_installation = true,
     ensure_installed = vim.tbl_keys(servers),
 })
-
 require("mason-lspconfig").setup_handlers({
     function(server_name)
         if server_name == "intelephense" then
@@ -224,7 +227,7 @@ require("mason-lspconfig").setup_handlers({
             end
         end
 
-        require('lspconfig')[server_name].setup({
+        require("lspconfig")[server_name].setup({
             capabilities = capabilities,
             on_attach = on_attach,
             settings = servers[server_name],
@@ -232,12 +235,12 @@ require("mason-lspconfig").setup_handlers({
     end,
 })
 
+-- Mason DAP =================================================================
 require("mason-nvim-dap").setup({
     automatic_installation = true,
     ensure_installed = { "codelldb" },
     automatic_setup = true,
 })
-
 require("mason-nvim-dap").setup_handlers({
     function(source_name)
         -- all sources with no handler get passed here
@@ -246,6 +249,8 @@ require("mason-nvim-dap").setup_handlers({
     end,
 })
 
+-- Extended Tooling ==========================================================
+-- Typescript
 local ok_typescript, typescript = pcall(require, "typescript")
 if ok_typescript then
     typescript.setup({
@@ -277,6 +282,7 @@ if ok_typescript then
     })
 end
 
+-- Rust
 local ok_rust_tools, rust_tools = pcall(require, "rust-tools")
 if ok_rust_tools then
     rust_tools.setup({
@@ -301,6 +307,7 @@ if ok_rust_tools then
     rust_tools.inlay_hints.enable()
 end
 
+-- Eslint Actions (Complements linting from nvim-lint on_save)
 local ok_null_ls, null_ls = pcall(require, "null-ls")
 if ok_null_ls then
     null_ls.setup({
