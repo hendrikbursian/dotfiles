@@ -80,7 +80,10 @@ require("packer").startup((function(use)
     use "ThePrimeagen/harpoon"
     use {
         "nvim-telescope/telescope.nvim",
-        requires = { "nvim-telescope/telescope-fzy-native.nvim" }
+        requires = {
+            "nvim-telescope/telescope-fzy-native.nvim",
+            "debugloop/telescope-undo.nvim",
+        }
     }
 
     -- File tree =============================================================

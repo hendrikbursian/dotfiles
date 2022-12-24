@@ -73,6 +73,9 @@ vim.keymap.set("n", "<leader>/", function()
     })
 end)
 
+-- Telescope: Undotree
+vim.keymap.set("n", "<leader>u", require("telescope").extensions.undo.undo)
+
 -- Telescope: git_worktree
 vim.keymap.set("n", "<leader>gw", require("telescope").extensions.git_worktree.git_worktrees)
 vim.keymap.set("n", "<leader>gm", require("telescope").extensions.git_worktree.create_git_worktree)
@@ -119,6 +122,3 @@ vim.keymap.set("n", "<F5>", function() require("dap").continue() end)
 vim.keymap.set("n", "<F10>", function() require("dap").step_over() end)
 vim.keymap.set("n", "<F11>", function() require("dap").step_into() end)
 vim.keymap.set("n", "<F12>", function() require("dap").repl.toggle() end)
-
--- Undotree
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
