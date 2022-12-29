@@ -108,8 +108,8 @@ vim.keymap.set("n", "<leader>bc", require("persistent-breakpoints.api").set_cond
 vim.keymap.set("n", "<leader>bD", require("persistent-breakpoints.api").clear_all_breakpoints)
 
 -- Make executable
-vim.keymap.set("n", "<leader>x", "!chmod +x %<CR>", { silent = true })
-vim.keymap.set("n", "<leader>X", "!chmod -x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>x", ":!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>X", ":!chmod -x %<CR>", { silent = true })
 
 -- Resizing (Source: https://github.com/ldelossa/dotfiles/blob/master/config/nvim/lua/configs/buffer-resize.lua)
 vim.keymap.set("n", "<Up>", ":resize +5<cr>", { silent = true })
