@@ -94,6 +94,7 @@ vim.keymap.set("n", "<leader>a", require("harpoon.mark").add_file)
 vim.keymap.set("n", "<C-e>", require("harpoon.ui").toggle_quick_menu)
 vim.keymap.set("n", "<C-j>", function() require("harpoon.ui").nav_file(1) end)
 vim.keymap.set("n", "<C-k>", function() require("harpoon.ui").nav_file(2) end)
+vim.keymap.set("n", "<C-l>", function() require("harpoon.ui").nav_file(3) end)
 
 -- Neotest
 vim.keymap.set("n", "<leader>tt", function() require("neotest").run.run() end)
