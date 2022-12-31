@@ -22,8 +22,8 @@ local options = {
     },
 
     mapping = cmp.mapping.preset.insert({
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-u>"] = cmp.mapping.scroll_docs(4),
+        ["<C-d>"] = cmp.mapping.scroll_docs(4),
+        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
 
         ["<C-Space>"] = cmp.mapping(function(fallback)
             if (cmp.visible()) then
