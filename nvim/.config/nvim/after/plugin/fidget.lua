@@ -4,6 +4,7 @@ if not ok then
 end
 
 fidget.setup({
+    strict = true,
     text = {
         spinner = "line",
     },
