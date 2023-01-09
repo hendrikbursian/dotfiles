@@ -74,6 +74,10 @@ telescope.setup {
             override_generic_sorter = false,
             override_file_sorter = true,
         },
+        undo = {
+            -- side_by_side = true,
+            -- use_delta = false,
+        }
     },
 }
 

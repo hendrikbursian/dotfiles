@@ -17,8 +17,8 @@ formatter.setup {
 
         css = { require("formatter.defaults").eslint_d },
         html = { require("formatter.defaults").eslint_d },
-        javascript = { require("formatter.defaults").eslint_d },
-        typescript = { require("formatter.defaults").eslint_d },
+        javascript = { require("formatter.defaults").prettierd, require("formatter.defaults").eslint_d },
+        typescript = { require("formatter.defaults").prettierd, require("formatter.defaults").eslint_d },
         vue = { require("formatter.defaults").eslint_d },
 
         go = { require("formatter.filetypes.go").gofmt },
