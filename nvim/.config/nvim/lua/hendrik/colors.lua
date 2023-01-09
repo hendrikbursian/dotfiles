@@ -3,7 +3,7 @@ vim.opt.termguicolors = true
 
 -- local hour = os.date("*t").hour
 
-vim.cmd.colorscheme('onedark')
+vim.cmd.colorscheme('nord')
 vim.opt.background = 'dark'
 
 -- if (hour <= 4 or hour > 22) then
