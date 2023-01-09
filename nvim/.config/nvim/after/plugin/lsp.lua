@@ -233,7 +233,74 @@ require("mason-lspconfig").setup_handlers({
             settings = servers[server_name],
         })
     end,
+
+
+    ["rust_analyzer"] = function()
+        local ok_rust_tools, rust_tools = pcall(require, "rust-tools")
+        if ok_rust_tools then
+            rust_tools.setup({
+
+                -- dap = {
+                --     adapter = require("mason-nvim-dap.mappings.adapters").codelldb,
+                -- },
+
+                server = {
+                    on_attach = function(client, bufnr)
+                        on_attach(client, bufnr)
+
+                        vim.keymap.set("n", "K", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+                        vim.keymap.set("n", "<leader>s", function() vim.cmd("RustRun") end, { buffer = bufnr })
+                    end,
+                },
+            })
+        end
+    end,
+
+    ["tsserver"] = function()
+        local ok_typescript, typescript = pcall(require, "typescript")
+        if ok_typescript then
+            typescript.setup({
+                disable_commands = false, -- prevent the plugin from creating Vim commands
+                debug = false, -- enable debug logging for commands
+                server = {
+                    capabilities = capabilities,
+                    on_attach = on_attach,
+
+                    settings = {
+                        javascript = {
+                            suggest = {
+                                enable = false,
+                                completeFunctionCalls = false,
+                            },
+                        },
+                        typescript = {
+                            enablePromptUseWorkspaceTsdk = true,
+                            format = {
+                                enable = false,
+                            },
+                            suggest = {
+                                enable = true,
+                                completeFunctionCalls = true,
+                            },
+                        }
+                    }
+                },
+            })
+        end
+    end
 })
+
+-- Extended Tooling ==========================================================
+
+-- Eslint Actions (Complements linting from nvim-lint on_save)
+local ok_null_ls, null_ls = pcall(require, "null-ls")
+if ok_null_ls then
+    null_ls.setup({
+        sources = {
+            null_ls.builtins.code_actions.eslint_d,
+        },
+    })
+end
 
 -- Mason DAP =================================================================
 require("mason-nvim-dap").setup({
@@ -248,71 +315,3 @@ require("mason-nvim-dap").setup_handlers({
         require("mason-nvim-dap.automatic_setup")(source_name)
     end,
 })
-
--- Extended Tooling ==========================================================
--- Typescript
-local ok_typescript, typescript = pcall(require, "typescript")
-if ok_typescript then
-    typescript.setup({
-        disable_commands = false, -- prevent the plugin from creating Vim commands
-        debug = false, -- enable debug logging for commands
-        server = {
-            capabilities = capabilities,
-            on_attach = on_attach,
-
-            settings = {
-                javascript = {
-                    suggest = {
-                        enable = false,
-                        completeFunctionCalls = false,
-                    },
-                },
-                typescript = {
-                    enablePromptUseWorkspaceTsdk = true,
-                    format = {
-                        enable = false,
-                    },
-                    suggest = {
-                        enable = true,
-                        completeFunctionCalls = true,
-                    },
-                }
-            }
-        },
-    })
-end
-
--- Rust
-local ok_rust_tools, rust_tools = pcall(require, "rust-tools")
-if ok_rust_tools then
-    rust_tools.setup({
-        tools = {
-            hover_actions = {},
-        },
-
-        dap = {
-            adapter = require("mason-nvim-dap.mappings.adapters").codelldb,
-        },
-
-        server = {
-            on_attach = function(client, bufnr)
-                on_attach(client, bufnr)
-
-                vim.keymap.set("n", "K", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
-                vim.keymap.set("n", "<leader>rr", function() vim.cmd("RustRun") end, { buffer = bufnr })
-            end,
-        },
-    })
-
-    rust_tools.inlay_hints.enable()
-end
-
--- Eslint Actions (Complements linting from nvim-lint on_save)
-local ok_null_ls, null_ls = pcall(require, "null-ls")
-if ok_null_ls then
-    null_ls.setup({
-        sources = {
-            null_ls.builtins.code_actions.eslint_d,
-        },
-    })
-end
