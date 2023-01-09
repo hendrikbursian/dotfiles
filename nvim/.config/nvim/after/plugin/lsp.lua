@@ -69,7 +69,7 @@ local function on_attach(client, bufnr)
     nmap("<leader>.", vim.lsp.buf.code_action, "Code Action (Habit from VSCode <C-.>)")
 
     nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-    nmap("<C-K>", vim.lsp.buf.signature_help, "Signature Help")
+    nmap("<leader>k", vim.lsp.buf.signature_help, "Signature Help")
 
     nmap("<leader>ct", vim.lsp.buf.incoming_calls, "Incoming [C]alls")
 
