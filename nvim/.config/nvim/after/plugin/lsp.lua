@@ -97,6 +97,28 @@ local function on_attach(client, bufnr)
     end
 end
 
+-- Schemas (json,yaml) =======================================================
+local ok_schemastore, schemastore = pcall(require, "schemastore")
+local json_schemas = {}
+if ok_schemastore then
+    json_schemas = schemastore.json.schemas()
+end
+
+-- https://github.com/redhat-developer/yaml-language-server#associating-a-schema-to-a-glob-pattern-via-yamlschemas
+local yaml_schemas = {
+    -- -- Gitlab CI
+    -- ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = {
+    --     "**/.gitlab/**/*.yml",
+    --     "**/.gitlab/**/*.yaml"
+    -- },
+    -- Docker Compose
+    ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = {
+        "docker-compose.*.yml.template",
+        "docker-compose.*.yaml.template"
+    },
+}
+
+-- Server configurations
 local servers = {
     ansiblels = {},
     awk_ls = {},
@@ -186,28 +208,6 @@ local neodev_ok, neodev = pcall(require, "neodev")
 if neodev_ok then
     neodev.setup({})
 end
-
--- Schemas (json,yaml) =======================================================
-local ok_schemastore, schemastore = pcall(require, "schemastore")
-local json_schemas = {}
-if ok_schemastore then
-    json_schemas = schemastore.json.schemas()
-end
-
--- https://github.com/redhat-developer/yaml-language-server#associating-a-schema-to-a-glob-pattern-via-yamlschemas
-local yaml_schemas = {
-    -- -- Gitlab CI
-    -- ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = {
-    --     "**/.gitlab/**/*.yml",
-    --     "**/.gitlab/**/*.yaml"
-    -- },
-    -- Docker Compose
-    ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = {
-        "docker-compose.*.yml.template",
-        "docker-compose.*.yaml.template"
-    },
-}
-
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
