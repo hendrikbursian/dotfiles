@@ -53,3 +53,4 @@ export PATH="$HOME/.deno/bin:$PATH"
 LOCAL_MYSQL_PATH=/opt/Local/resources/extraResources/lightning-services/mysql-8.0.16+6/bin/linux/bin
 
 [ -d $LOCAL_MYSQL_PATH ] && export PATH="$PATH:$LOCAL_MYSQL_PATH"
+. "$HOME/.cargo/env"
