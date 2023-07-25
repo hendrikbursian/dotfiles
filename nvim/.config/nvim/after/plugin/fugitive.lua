@@ -7,6 +7,7 @@ vim.keymap.set("n", "<leader>ga", ":Git add %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>gaa", ":Git add .<CR>", { silent = true })
 vim.keymap.set("n", "<leader>go", ":Git log<CR>", { silent = true })
 vim.keymap.set("v", "<leader>gh", ":GcLog<CR>", { silent = true })
+vim.keymap.set("v", "<leader>gW", ":Gwrite<CR>", { silent = true })
 
 local group = vim.api.nvim_create_augroup("hendrik_fugitive", {})
 
