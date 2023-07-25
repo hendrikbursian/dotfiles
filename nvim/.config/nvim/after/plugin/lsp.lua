@@ -9,7 +9,7 @@ local function on_attach(client, bufnr)
     -- https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
 
     local ok_illuminate, illuminate = pcall(require, "illuminate")
-    local ok_dap, dap = pcall(require, "dap")
+    -- local ok_dap, dap = pcall(require, "dap")
 
     -- In this case, we create a function that lets us more easily define mappings specific
     -- for LSP related items. It sets the mode, buffer and description for us each time.
@@ -90,7 +90,7 @@ local function on_attach(client, bufnr)
         "[W]orkspace [L]ist Folders")
 
     -- Dap
-    nmap_dap("K", function() require("dap.ui.widgets").hover() end, "Debug Hover")
+    -- nmap_dap("K", function() require("dap.ui.widgets").hover() end, "Debug Hover")
 
     if ok_illuminate then
         illuminate.on_attach(client)
@@ -303,11 +303,11 @@ if ok_null_ls then
 end
 
 -- Mason DAP =================================================================
-require("mason-nvim-dap").setup({
-    automatic_installation = true,
-    ensure_installed = { "codelldb" },
-    automatic_setup = true,
-})
+-- require("mason-nvim-dap").setup({
+--     automatic_installation = true,
+--     ensure_installed = { "codelldb" },
+--     automatic_setup = true,
+-- })
 -- require("mason-nvim-dap").setup_handlers({
 --     function(source_name)
 --         -- all sources with no handler get passed here
