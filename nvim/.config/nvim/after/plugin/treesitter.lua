@@ -6,7 +6,6 @@ end
 require("nvim-treesitter.configs").setup({
     ensure_installed = {
         "bash",
-        "help",
         "javascript",
         "lua",
         "rust",

@@ -4,8 +4,6 @@ require("hendrik")
 
 local hendrik = vim.api.nvim_create_augroup("hendrik", {})
 
-print("Progress, not perfection.")
-
 vim.api.nvim_create_autocmd("BufWritePost", {
     group = hendrik,
     callback = function()

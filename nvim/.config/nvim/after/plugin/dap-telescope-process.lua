@@ -1,3 +1,8 @@
+local ok, dap = pcall(require, "dap")
+if not ok then
+    return
+end
+
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local conf = require("telescope.config").values

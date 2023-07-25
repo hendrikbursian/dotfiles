@@ -104,9 +104,9 @@ vim.keymap.set("n", "<leader>tl", function() require("neotest").run.run_last() e
 vim.keymap.set("n", "<leader>te", function() require("neotest").summary.toggle() end, { desc = "[T]est [E]xplorer" })
 
 -- Breakpoints
-vim.keymap.set("n", "<leader>bb", require("persistent-breakpoints.api").toggle_breakpoint)
-vim.keymap.set("n", "<leader>bc", require("persistent-breakpoints.api").set_conditional_breakpoint)
-vim.keymap.set("n", "<leader>bD", require("persistent-breakpoints.api").clear_all_breakpoints)
+vim.keymap.set("n", "<leader>bb", function() require("persistent-breakpoints.api").toggle_breakpoint() end)
+vim.keymap.set("n", "<leader>bc", function() require("persistent-breakpoints.api").set_conditional_breakpoint() end)
+vim.keymap.set("n", "<leader>bD", function() require("persistent-breakpoints.api").clear_all_breakpoints() end)
 
 -- Make executable
 vim.keymap.set("n", "<leader>x", ":!chmod +x %<CR>", { silent = true })

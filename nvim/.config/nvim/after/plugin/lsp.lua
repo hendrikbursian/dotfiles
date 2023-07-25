@@ -222,9 +222,9 @@ require("mason-lspconfig").setup_handlers({
         if server_name == "intelephense" then
             local intelephense_licence_path = vim.fn.glob(vim.env.HOME .. "/intelephense/licence.txt")
 
-            if (intelephense_licence_path == "") then
-                print("Intelephense License missing!")
-            end
+            -- if (intelephense_licence_path == "") then
+            --     print("Intelephense License missing!")
+            -- end
         end
 
         require("lspconfig")[server_name].setup({
