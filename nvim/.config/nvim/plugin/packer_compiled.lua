@@ -170,20 +170,10 @@ _G.packer_plugins = {
     path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
   },
-  ["mason-nvim-dap.nvim"] = {
-    loaded = true,
-    path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/mason-nvim-dap.nvim",
-    url = "https://github.com/jayp0521/mason-nvim-dap.nvim"
-  },
   ["mason.nvim"] = {
     loaded = true,
     path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
-  },
-  master = {
-    loaded = true,
-    path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/master",
-    url = "/home/hendrik/plugins/telescope-dap.nvim/master"
   },
   ["neodev.nvim"] = {
     loaded = true,
@@ -226,38 +216,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
-  },
-  ["nvim-dap"] = {
-    loaded = true,
-    path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/nvim-dap",
-    url = "https://github.com/mfussenegger/nvim-dap"
-  },
-  ["nvim-dap-go"] = {
-    config = { "\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vdap-go\frequire\0" },
-    loaded = true,
-    path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/nvim-dap-go",
-    url = "https://github.com/leoluz/nvim-dap-go"
-  },
-  ["nvim-dap-ui"] = {
-    loaded = true,
-    path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/nvim-dap-ui",
-    url = "https://github.com/rcarriga/nvim-dap-ui"
-  },
-  ["nvim-dap-virtual-text"] = {
-    config = { "\27LJ\2\nG\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\26nvim-dap-virtual-text\frequire\0" },
-    loaded = true,
-    path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text",
-    url = "https://github.com/theHamsta/nvim-dap-virtual-text"
-  },
-  ["nvim-dap-vscode-js"] = {
-    loaded = true,
-    path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/nvim-dap-vscode-js",
-    url = "https://github.com/mxsdev/nvim-dap-vscode-js"
-  },
-  ["nvim-eslint"] = {
-    loaded = true,
-    path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/nvim-eslint",
-    url = "/home/hendrik/plugins/nvim-eslint"
   },
   ["nvim-lint"] = {
     loaded = true,
@@ -317,12 +275,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/papercolor-theme",
     url = "https://github.com/NLKNguyen/papercolor-theme"
-  },
-  ["persistent-breakpoints.nvim"] = {
-    config = { "\27LJ\2\nz\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\27load_breakpoints_event\1\0\0\1\2\0\0\16BufReadPost\nsetup\27persistent-breakpoints\frequire\0" },
-    loaded = true,
-    path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/persistent-breakpoints.nvim",
-    url = "https://github.com/Weissle/persistent-breakpoints.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -422,30 +374,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: neotest
-time([[Config for neotest]], true)
-try_loadstring("\27LJ\2\n˜\1\0\0\a\0\a\1\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\5\0004\3\3\0006\4\0\0'\6\3\0B\4\2\2>\4\1\0036\4\0\0'\6\4\0B\4\2\0024\6\0\0B\4\2\0?\4\0\0=\3\6\2B\0\2\1K\0\1\0\radapters\1\0\0\17neotest-jest\20neotest-phpunit\nsetup\fneotest\frequire\5€€À™\4\0", "config", "neotest")
-time([[Config for neotest]], false)
--- Config for: nvim-dap-virtual-text
-time([[Config for nvim-dap-virtual-text]], true)
-try_loadstring("\27LJ\2\nG\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\26nvim-dap-virtual-text\frequire\0", "config", "nvim-dap-virtual-text")
-time([[Config for nvim-dap-virtual-text]], false)
--- Config for: persistent-breakpoints.nvim
-time([[Config for persistent-breakpoints.nvim]], true)
-try_loadstring("\27LJ\2\nz\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\27load_breakpoints_event\1\0\0\1\2\0\0\16BufReadPost\nsetup\27persistent-breakpoints\frequire\0", "config", "persistent-breakpoints.nvim")
-time([[Config for persistent-breakpoints.nvim]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-try_loadstring("\27LJ\2\nU\0\0\4\0\5\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0004\3\0\0=\3\4\2B\0\2\1K\0\1\0\14fast_wrap\1\0\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
-time([[Config for nvim-autopairs]], false)
--- Config for: nvim-dap-go
-time([[Config for nvim-dap-go]], true)
-try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vdap-go\frequire\0", "config", "nvim-dap-go")
-time([[Config for nvim-dap-go]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\nF\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\vignore\a^$\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
+-- Config for: neotest
+time([[Config for neotest]], true)
+try_loadstring("\27LJ\2\n˜\1\0\0\a\0\a\1\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\5\0004\3\3\0006\4\0\0'\6\3\0B\4\2\2>\4\1\0036\4\0\0'\6\4\0B\4\2\0024\6\0\0B\4\2\0?\4\0\0=\3\6\2B\0\2\1K\0\1\0\radapters\1\0\0\17neotest-jest\20neotest-phpunit\nsetup\fneotest\frequire\5€€À™\4\0", "config", "neotest")
+time([[Config for neotest]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+try_loadstring("\27LJ\2\nU\0\0\4\0\5\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0004\3\0\0=\3\4\2B\0\2\1K\0\1\0\14fast_wrap\1\0\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
+time([[Config for nvim-autopairs]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]

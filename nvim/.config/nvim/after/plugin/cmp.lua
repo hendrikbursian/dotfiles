@@ -180,7 +180,7 @@ options.sources = {
     { name = "copilot" },
     { name = "nvim_lsp" },
     { name = "luasnip" },
-    { name = "buffer", keyword_length = 2, max_item_count = 7 },
+    { name = "buffer",  keyword_length = 2, max_item_count = 7 },
 }
 
 if ok_tabnine then
@@ -189,7 +189,7 @@ end
 
 cmp.setup(options)
 
-cmp.setup.cmdline("/", {
+cmp.setup.cmdline({ "/", "?" }, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
         { name = "buffer", keyword_length = 4 },
@@ -197,10 +197,10 @@ cmp.setup.cmdline("/", {
 })
 
 cmp.setup.cmdline(":", {
-    completion = { autocomplete = true },
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
         { name = "path" },
+    }, {
         { name = "cmdline" },
     })
 })

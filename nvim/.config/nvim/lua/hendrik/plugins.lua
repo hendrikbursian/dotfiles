@@ -122,44 +122,44 @@ require("packer").startup((function(use)
 
     -- Debugging =============================================================
 
-    use {
-        "mfussenegger/nvim-dap",
-        requires = {
-            -- Automatic Dap Configuration
-            "jayp0521/mason-nvim-dap.nvim",
-            "rcarriga/nvim-dap-ui",
-            {
-                "theHamsta/nvim-dap-virtual-text",
-                config = function()
-                    require("nvim-dap-virtual-text").setup({})
-                end
-            },
+    -- use {
+    --     "mfussenegger/nvim-dap",
+    --     requires = {
+    --         -- Automatic Dap Configuration
+    --         "jayp0521/mason-nvim-dap.nvim",
+    --         "rcarriga/nvim-dap-ui",
+    --         {
+    --             "theHamsta/nvim-dap-virtual-text",
+    --             config = function()
+    --                 require("nvim-dap-virtual-text").setup({})
+    --             end
+    --         },
 
-            {
-                "Weissle/persistent-breakpoints.nvim",
-                config = function()
-                    require("persistent-breakpoints").setup {
-                        load_breakpoints_event = { "BufReadPost" }
-                    }
-                end
-            },
+    --         {
+    --             "Weissle/persistent-breakpoints.nvim",
+    --             config = function()
+    --                 require("persistent-breakpoints").setup {
+    --                     load_breakpoints_event = { "BufReadPost" }
+    --                 }
+    --             end
+    --         },
 
-            "mxsdev/nvim-dap-vscode-js",
+    --         "mxsdev/nvim-dap-vscode-js",
 
-            {
-                "leoluz/nvim-dap-go",
-                config = function()
-                    require("dap-go").setup()
-                end
-            },
+    --         {
+    --             "leoluz/nvim-dap-go",
+    --             config = function()
+    --                 require("dap-go").setup()
+    --             end
+    --         },
 
-            -- {
-            --     "microsoft/vscode-js-debug",
-            --     opt = true,
-            --     run = "npm install --legacy-peer-deps && npm run compile"
-            -- }
-        }
-    }
+    --         -- {
+    --         --     "microsoft/vscode-js-debug",
+    --         --     opt = true,
+    --         --     run = "npm install --legacy-peer-deps && npm run compile"
+    --         -- }
+    --     }
+    -- }
 
     -- Autocompletion ========================================================
 
@@ -227,8 +227,8 @@ require("packer").startup((function(use)
     use "nvim-lualine/lualine.nvim"
 
     -- Own Plugins ===========================================================
-    use "~/plugins/nvim-eslint"
-    use "~/plugins/telescope-dap.nvim/master"
+    -- use "~/plugins/nvim-eslint"
+    -- use "~/plugins/telescope-dap.nvim/master"
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

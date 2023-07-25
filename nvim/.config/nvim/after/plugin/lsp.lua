@@ -146,7 +146,7 @@ local servers = {
                 "wordpress-globals", "wp-cli", "genesis", "polylang"
             },
             files = {
-                maxSize = 5000000;
+                maxSize = 5000000,
             },
         }
     },
@@ -180,7 +180,7 @@ local servers = {
 
     sqlls = {},
 
-    sumneko_lua = {
+    lua_ls = {
         Lua = {
             diagnostics = {
                 globals = { "vim" },
@@ -261,7 +261,7 @@ require("mason-lspconfig").setup_handlers({
         if ok_typescript then
             typescript.setup({
                 disable_commands = false, -- prevent the plugin from creating Vim commands
-                debug = false, -- enable debug logging for commands
+                debug = false,            -- enable debug logging for commands
                 server = {
                     capabilities = capabilities,
                     on_attach = on_attach,
@@ -308,10 +308,10 @@ require("mason-nvim-dap").setup({
     ensure_installed = { "codelldb" },
     automatic_setup = true,
 })
-require("mason-nvim-dap").setup_handlers({
-    function(source_name)
-        -- all sources with no handler get passed here
-        -- Keep original functionality of `automatic_setup = true`
-        require("mason-nvim-dap.automatic_setup")(source_name)
-    end,
-})
+-- require("mason-nvim-dap").setup_handlers({
+--     function(source_name)
+--         -- all sources with no handler get passed here
+--         -- Keep original functionality of `automatic_setup = true`
+--         require("mason-nvim-dap.automatic_setup")(source_name)
+--     end,
+-- })
