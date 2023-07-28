@@ -20,7 +20,7 @@ export COMPLETION_WAITING_DOTS="false"
 export DISABLE_UNTRACKED_FILES_DIRTY="true"
 export HISTSIZE=10000
 export SAVEHIST=10000
-export HISTFILE=$XDG_CACHE_HOME/zsh/history
+export HISTFILE="$HOME/.zsh_history"
 export HIST_STAMPS="yyyy-mm-dd"
 
 export PROMPT='$(_user_host)${_current_dir} $(git_prompt_info)

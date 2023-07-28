@@ -77,14 +77,14 @@ end)
 vim.keymap.set("n", "<leader>u", require("telescope").extensions.undo.undo)
 
 -- Telescope: git_worktree
-vim.keymap.set("n", "<leader>gw", require("telescope").extensions.git_worktree.git_worktrees)
-vim.keymap.set("n", "<leader>gm", require("telescope").extensions.git_worktree.create_git_worktree)
+vim.keymap.set("n", "<leader>gw", function() require("telescope").extensions.git_worktree.git_worktrees() end)
+vim.keymap.set("n", "<leader>gm", function() require("telescope").extensions.git_worktree.create_git_worktree() end)
 
 -- Shortcuts
 vim.keymap.set("n", "<leader>lsp", ":e $DOTFILES/nvim/.config/nvim/after/plugin/lsp.lua<CR>")
 
 -- Nvim tree
-vim.keymap.set("n", "<C-b>", require("hendrik.nvim-tree").toggle_focused_file)
+vim.keymap.set("n", "<C-b>", function() require("hendrik.nvim-tree").toggle_focused_file() end)
 
 -- SymbolsOutline
 vim.keymap.set("n", "<leader>o", ":SymbolsOutline<cr>")

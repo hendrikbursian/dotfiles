@@ -1,7 +1,7 @@
 -- Inspiration: https://github.com/ThePrimeagen/.dotfiles
 local ok, telescope = pcall(require, "telescope")
 if not ok then
-    return
+   return
 end
 
 local actions = require("telescope.actions")
@@ -55,7 +55,7 @@ telescope.setup {
             shorten = 4,
         },
 
-        layout_config = {
+       layout_config = {
             height = 0.5,
         },
 
@@ -81,7 +81,23 @@ telescope.setup {
     },
 }
 
-telescope.load_extension("fzy_native")
-telescope.load_extension("git_worktree")
--- telescope.load_extension("dap")
-telescope.load_extension("undo")
+local ok = pcall(require, "fzy_native")
+if ok then
+    telescope.load_extension("fzy_native")
+end
+
+local ok = pcall(require, "git_worktree")
+if ok then
+    telescope.load_extension("git_worktree")
+end
+
+local ok = pcall(require, "dap")
+if ok then
+    telescope.load_extension("dap")
+end
+
+local ok = pcall(require, "undo")
+if ok then
+  telescope.load_extension("undo")
+end
+
