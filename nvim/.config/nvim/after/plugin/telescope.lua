@@ -1,7 +1,7 @@
 -- Inspiration: https://github.com/ThePrimeagen/.dotfiles
 local ok, telescope = pcall(require, "telescope")
 if not ok then
-   return
+    return
 end
 
 local actions = require("telescope.actions")
@@ -55,7 +55,7 @@ telescope.setup {
             shorten = 4,
         },
 
-       layout_config = {
+        layout_config = {
             height = 0.5,
         },
 
@@ -98,6 +98,5 @@ end
 
 local ok = pcall(require, "undo")
 if ok then
-  telescope.load_extension("undo")
+    telescope.load_extension("undo")
 end
-
