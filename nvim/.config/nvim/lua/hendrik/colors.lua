@@ -1,27 +1,30 @@
 -- Colorscheme
 vim.opt.termguicolors = true
 
+-- Define a list of colorschemes
+local colorschemes = {
+    { schema = 'nord',       background = 'dark' },
+    { schema = 'PaperColor', background = 'light' },
+}
+
+local current_colorscheme = 1
+function cycle_colorschemes(direction)
+    if direction == "forward" then
+        current_colorscheme = current_colorscheme % #colorschemes + 1
+    elseif direction == "backward" then
+        current_colorscheme = (current_colorscheme - 2) % #colorschemes + 1
+    end
+    vim.cmd("colorscheme " .. colorschemes[current_colorscheme].schema)
+    vim.opt.background = colorschemes[current_colorscheme].background
+end
+
+-- Map the keys to cycle through colorschemes
+vim.api.nvim_set_keymap("n", "<leader>c", ":lua cycle_colorschemes('forward')<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>C", ":lua cycle_colorschemes('backward')<CR>", { noremap = true, silent = true })
+
 -- local hour = os.date("*t").hour
 
-vim.cmd.colorscheme('nord')
-vim.opt.background = 'dark'
 
--- if (hour <= 4 or hour > 22) then
---     vim.cmd('colorscheme nord')
---     vim.opt.background = 'dark'
--- elseif (hour <= 6) then
---     vim.cmd('colorscheme nord')
---     vim.opt.background = 'dark'
--- elseif (hour <= 12) then
---     vim.cmd('colorscheme PaperColor')
---     vim.opt.background = 'light'
--- elseif (hour <= 16) then
---     vim.cmd('colorscheme PaperColor')
---     vim.opt.background = 'light'
--- elseif (hour <= 22) then
---     vim.cmd('colorscheme nord')
---     vim.opt.background = 'dark'
--- end
 
 -- vim.cmd('colorscheme gruvbox')
 -- vim.g.gruvbox_italic = 1
