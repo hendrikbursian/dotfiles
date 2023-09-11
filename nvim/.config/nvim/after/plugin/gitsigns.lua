@@ -4,6 +4,8 @@ if not ok then
 end
 
 gitsigns.setup({
+    current_line_blame = true,
+
     on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
         local map = function(mode, l, r, opts)
