@@ -7,7 +7,7 @@ local colorschemes = {
     { schema = 'PaperColor', background = 'light' },
 }
 
-local current_colorscheme = 1
+local current_colorscheme = 0
 function cycle_colorschemes(direction)
     if direction == "forward" then
         current_colorscheme = current_colorscheme % #colorschemes + 1
@@ -16,6 +16,10 @@ function cycle_colorschemes(direction)
     end
     vim.cmd("colorscheme " .. colorschemes[current_colorscheme].schema)
     vim.opt.background = colorschemes[current_colorscheme].background
+end
+
+if current_colorscheme == 0 then
+    cycle_colorschemes('forward')
 end
 
 -- Map the keys to cycle through colorschemes
