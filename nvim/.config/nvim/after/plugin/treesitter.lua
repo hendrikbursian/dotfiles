@@ -4,6 +4,8 @@ if not ok then
 end
 
 require("nvim-treesitter.configs").setup({
+    sync_install = false,
+
     ensure_installed = {
         "bash",
         "javascript",
@@ -88,9 +90,9 @@ require("nvim-treesitter.configs").setup({
             swap_next = {
                 ["<leader>l"] = "@parameter.inner",
             },
-            swap_previous = {
-                ["<leader>h"] = "@parameter.inner",
-            },
+            -- swap_previous = {
+            --     ["<leader>h"] = "@parameter.inner",
+            -- },
         },
     },
 })
