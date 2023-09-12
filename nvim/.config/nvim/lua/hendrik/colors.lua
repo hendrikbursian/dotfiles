@@ -7,28 +7,39 @@ local colorschemes = {
     { schema = 'PaperColor', background = 'light' },
 }
 
-local current_colorscheme = 0
-function cycle_colorschemes(direction)
-    if direction == "forward" then
-        current_colorscheme = current_colorscheme % #colorschemes + 1
-    elseif direction == "backward" then
-        current_colorscheme = (current_colorscheme - 2) % #colorschemes + 1
-    end
-    vim.cmd("colorscheme " .. colorschemes[current_colorscheme].schema)
-    vim.opt.background = colorschemes[current_colorscheme].background
+local function apply_colorscheme(colorscheme_index)
+    vim.cmd("colorscheme " .. colorschemes[colorscheme_index].schema)
+    vim.opt.background = colorschemes[colorscheme_index].background
 end
 
+local current_colorscheme = 0
+local function cycle_colorschemes(direction)
+    if direction == "next" then
+        current_colorscheme = current_colorscheme % #colorschemes + 1
+    elseif direction == "prev" then
+        current_colorscheme = (current_colorscheme - 2) % #colorschemes + 1
+    end
+    apply_colorscheme(current_colorscheme)
+end
+
+-- WSL
 if current_colorscheme == 0 then
-    cycle_colorschemes('forward')
+    local output = vim.fn.system(
+        'cmd.exe /c reg query "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize" /v AppsUseLightTheme')
+    if vim.v.shell_error == 0 then
+        if string.match(output, "0x0") then
+            apply_colorscheme(1)
+        else
+            apply_colorscheme(2)
+        end
+    else
+        apply_colorscheme(1)
+    end
 end
 
 -- Map the keys to cycle through colorschemes
-vim.api.nvim_set_keymap("n", "<leader>c", ":lua cycle_colorschemes('forward')<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>C", ":lua cycle_colorschemes('backward')<CR>", { noremap = true, silent = true })
-
--- local hour = os.date("*t").hour
-
-
+vim.keymap.set("n", "<leader>c", function() cycle_colorschemes('next') end, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>C", function() cycle_colorschemes('prev') end, { noremap = true, silent = true })
 
 -- vim.cmd('colorscheme gruvbox')
 -- vim.g.gruvbox_italic = 1
