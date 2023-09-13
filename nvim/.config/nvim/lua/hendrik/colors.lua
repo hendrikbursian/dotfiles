@@ -1,15 +1,35 @@
 -- Colorscheme
 vim.opt.termguicolors = true
 
+
 -- Define a list of colorschemes
 local colorschemes = {
-    { schema = 'nord',       background = 'dark' },
-    { schema = 'PaperColor', background = 'light' },
+    {
+        schema = "nord",
+        background = "dark",
+        callback = function()
+            -- transparency
+            vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+            vim.cmd("hi NonText guibg=NONE ctermbg=NONE")
+            vim.cmd("hi SignColumn guibg=NONE ctermbg=NONE")
+        end
+    },
+    {
+        schema = "nord",
+        background = "dark",
+    },
+    {
+        schema = "PaperColor",
+        background = "light"
+    },
 }
 
 local function apply_colorscheme(colorscheme_index)
     vim.cmd("colorscheme " .. colorschemes[colorscheme_index].schema)
     vim.opt.background = colorschemes[colorscheme_index].background
+    if colorschemes[colorscheme_index].callback then
+        colorschemes[colorscheme_index].callback()
+    end
 end
 
 local current_colorscheme = 0
@@ -30,7 +50,7 @@ if current_colorscheme == 0 then
         if string.match(output, "0x0") then
             apply_colorscheme(1)
         else
-            apply_colorscheme(2)
+            apply_colorscheme(3)
         end
     else
         apply_colorscheme(1)
@@ -38,14 +58,14 @@ if current_colorscheme == 0 then
 end
 
 -- Map the keys to cycle through colorschemes
-vim.keymap.set("n", "<leader>c", function() cycle_colorschemes('next') end, { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>C", function() cycle_colorschemes('prev') end, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>c", function() cycle_colorschemes("next") end, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>C", function() cycle_colorschemes("prev") end, { noremap = true, silent = true })
 
--- vim.cmd('colorscheme gruvbox')
+-- vim.cmd("colorscheme gruvbox")
 -- vim.g.gruvbox_italic = 1
--- vim.g.gruvbox_contrast_dark = 'hard'
--- vim.g.gruvbox_contrast_light = 'soft'
--- vim.opt.background = 'light'
+-- vim.g.gruvbox_contrast_dark = "hard"
+-- vim.g.gruvbox_contrast_light = "soft"
+-- vim.opt.background = "light"
 
 -- Completion
 
@@ -54,30 +74,29 @@ vim.keymap.set("n", "<leader>C", function() cycle_colorschemes('prev') end, { no
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
 -- Grey
-vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated', { bg = 'NONE', strikethrough = true, fg = '#808080' })
+vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "NONE", strikethrough = true, fg = "#808080" })
 
 -- Blue
-vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', { bg = 'NONE', fg = '#569CD6' })
-vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy', { bg = 'NONE', fg = '#569CD6' })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = "#569CD6" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { bg = "NONE", fg = "#569CD6" })
 
 -- Light blue
-vim.api.nvim_set_hl(0, 'CmpItemKindVariable', { bg = 'NONE', fg = '#9CDCFE' })
-vim.api.nvim_set_hl(0, 'CmpItemKindInterface', { bg = 'NONE', fg = '#9CDCFE' })
-vim.api.nvim_set_hl(0, 'CmpItemKindText', { bg = 'NONE', fg = '#9CDCFE' })
+vim.api.nvim_set_hl(0, "CmpItemKindVariable", { bg = "NONE", fg = "#9CDCFE" })
+vim.api.nvim_set_hl(0, "CmpItemKindInterface", { bg = "NONE", fg = "#9CDCFE" })
+vim.api.nvim_set_hl(0, "CmpItemKindText", { bg = "NONE", fg = "#9CDCFE" })
 
 -- Pink
-vim.api.nvim_set_hl(0, 'CmpItemKindFunction', { bg = 'NONE', fg = '#C586C0' })
-vim.api.nvim_set_hl(0, 'CmpItemKindMethod', { bg = 'NONE', fg = '#C586C0' })
+vim.api.nvim_set_hl(0, "CmpItemKindFunction", { bg = "NONE", fg = "#C586C0" })
+vim.api.nvim_set_hl(0, "CmpItemKindMethod", { bg = "NONE", fg = "#C586C0" })
 
 -- Front
-vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { bg = 'NONE', fg = '#D4D4D4' })
-vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { bg = 'NONE', fg = '#D4D4D4' })
-vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { bg = 'NONE', fg = '#D4D4D4' })
+vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { bg = "NONE", fg = "#D4D4D4" })
+vim.api.nvim_set_hl(0, "CmpItemKindProperty", { bg = "NONE", fg = "#D4D4D4" })
+vim.api.nvim_set_hl(0, "CmpItemKindUnit", { bg = "NONE", fg = "#D4D4D4" })
 
 -- Cursor
-vim.api.nvim_set_hl(0, 'Cursor', { fg = 'white', bg = 'red' })
-vim.api.nvim_set_hl(0, 'iCursor', { fg = 'white', bg = 'red' })
-vim.opt.guicursor = { 'n-v-c-sm:block-Cursor', 'i-ci-ve:block-Cursor', 'r-cr-o:hor20' }
-
+vim.api.nvim_set_hl(0, "Cursor", { fg = "white", bg = "red" })
+vim.api.nvim_set_hl(0, "iCursor", { fg = "white", bg = "red" })
+vim.opt.guicursor = { "n-v-c-sm:block-Cursor", "i-ci-ve:block-Cursor", "r-cr-o:hor20" }
 -- Column indicators
--- vim.api.nvim_set_hl('ColorColumn', { ctermbg = 0, bg = 'red' }, false)
+-- vim.api.nvim_set_hl("ColorColumn", { ctermbg = 0, bg = "red" }, false)
