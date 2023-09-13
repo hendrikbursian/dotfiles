@@ -1,7 +1,6 @@
 -- Colorscheme
 vim.opt.termguicolors = true
 
-
 -- Define a list of colorschemes
 local colorschemes = {
     {
@@ -12,6 +11,8 @@ local colorschemes = {
             vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
             vim.cmd("hi NonText guibg=NONE ctermbg=NONE")
             vim.cmd("hi SignColumn guibg=NONE ctermbg=NONE")
+            vim.cmd("hi CursorLine guibg=NONE ctermbg=NONE")
+            vim.cmd("hi StatusLine guibg=NONE ctermbg=NONE")
         end
     },
     {
