@@ -35,3 +35,5 @@ nvim_tree.setup({
         enable = true,
     },
 })
+
+nvim_tree.config.system_open.cmd = 'wslview'
