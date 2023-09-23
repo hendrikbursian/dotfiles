@@ -221,6 +221,7 @@ require("packer").startup((function(use)
     use "gruvbox-community/gruvbox"
     use "NLKNguyen/papercolor-theme"
     use "arcticicestudio/nord-vim"
+    use "casonadams/nord.vim"
     use "navarasu/onedark.nvim"
     use "mhinz/vim-startify"
 

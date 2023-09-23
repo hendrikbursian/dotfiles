@@ -3,26 +3,30 @@ vim.opt.termguicolors = true
 
 -- Define a list of colorschemes
 local colorschemes = {
+    -- {
+    --     schema = "nord",
+    --     background = "dark",
+    --     callback = function()
+    --         -- transparency
+    --         vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+    --         vim.cmd("hi NonText guibg=NONE ctermbg=NONE")
+    --         vim.cmd("hi SignColumn guibg=NONE ctermbg=NONE")
+    --         vim.cmd("hi CursorLine guibg=NONE ctermbg=NONE")
+    --         vim.cmd("hi StatusLine guibg=NONE ctermbg=NONE")
+    --     end
+    -- },
     {
         schema = "nord",
         background = "dark",
-        callback = function()
-            -- transparency
-            vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
-            vim.cmd("hi NonText guibg=NONE ctermbg=NONE")
-            vim.cmd("hi SignColumn guibg=NONE ctermbg=NONE")
-            vim.cmd("hi CursorLine guibg=NONE ctermbg=NONE")
-            vim.cmd("hi StatusLine guibg=NONE ctermbg=NONE")
-        end
     },
     {
-        schema = "nord",
-        background = "dark",
-    },
-    {
-        schema = "PaperColor",
+        schema = "nord-light",
         background = "light"
     },
+    -- {
+    --     schema = "PaperColor",
+    --     background = "light"
+    -- },
 }
 
 local function apply_colorscheme(colorscheme_index)
@@ -43,7 +47,7 @@ local function cycle_colorschemes(direction)
     apply_colorscheme(current_colorscheme)
 end
 
--- WSL
+-- Read windows dark mode settings with WSL
 if current_colorscheme == 0 then
     local output = vim.fn.system(
         'cmd.exe /c reg query "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize" /v AppsUseLightTheme')
@@ -51,7 +55,7 @@ if current_colorscheme == 0 then
         if string.match(output, "0x0") then
             apply_colorscheme(1)
         else
-            apply_colorscheme(3)
+            apply_colorscheme(2)
         end
     else
         apply_colorscheme(1)

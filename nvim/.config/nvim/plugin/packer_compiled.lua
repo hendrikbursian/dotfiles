@@ -206,6 +206,11 @@ _G.packer_plugins = {
     path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/nord-vim",
     url = "https://github.com/arcticicestudio/nord-vim"
   },
+  ["nord.vim"] = {
+    loaded = true,
+    path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/nord.vim",
+    url = "https://github.com/casonadams/nord.vim"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/home/hendrik/.config/local/share/nvim/site/pack/packer/start/null-ls.nvim",
