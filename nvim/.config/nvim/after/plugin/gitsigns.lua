@@ -34,17 +34,33 @@ gitsigns.setup({
 
         -- Actions
         map("n", "<leader>hs", gs.stage_hunk, { desc = "[S]tage Hunk" })
+        map("n", "<M-S>", gs.stage_hunk, { desc = "[S]tage Hunk" })
+
         map("n", "<leader>hr", gs.reset_hunk, { desc = "[R]eset Hunk" })
+        map("n", "<M-R>", gs.reset_hunk, { desc = "[R]eset Hunk" })
+
         map("v", "<leader>hs", function()
                 gs.stage_hunk { vim.fn.line("."), vim.fn.line("v") }
             end,
             { desc = "[S]tage Hunk" }
         )
+        map("v", "<M-S>", function()
+                gs.stage_hunk { vim.fn.line("."), vim.fn.line("v") }
+            end,
+            { desc = "[S]tage Hunk" }
+        )
+
         map("v", "<leader>hr", function()
                 gs.reset_hunk { vim.fn.line("."), vim.fn.line("v") }
             end,
             { desc = "[R]eset Hunk" }
         )
+        map("v", "<M-R>", function()
+                gs.reset_hunk { vim.fn.line("."), vim.fn.line("v") }
+            end,
+            { desc = "[R]eset Hunk" }
+        )
+
         map("n", "<leader>hS", gs.stage_buffer, { desc = "[S]tage Buffer" })
         map("n", "<leader>hu", gs.undo_stage_hunk, { desc = "[U]ndo stage Buffer" })
         map("n", "<leader>hR", gs.reset_buffer, { desc = "[R]eset Buffer" })
