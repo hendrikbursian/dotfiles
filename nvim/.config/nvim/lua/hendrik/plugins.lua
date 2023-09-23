@@ -171,6 +171,7 @@ require("packer").startup((function(use)
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
             "hrsh7th/cmp-calc",
+            "David-Kunz/cmp-npm",
 
             -- AI
             -- { "tzachar/cmp-tabnine",  run = "./install.sh"  },

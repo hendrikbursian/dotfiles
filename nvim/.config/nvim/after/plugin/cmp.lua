@@ -3,6 +3,11 @@ if not ok or cmp == nil then
     return
 end
 
+local ok, cmp_npm = pcall(require, "cmp-npm")
+if ok or cmp_npm == nil then
+    cmp_npm.setup({})
+end
+
 local ok_luasnip, luasnip = pcall(require, "luasnip")
 
 local options = {
@@ -176,6 +181,7 @@ options.formatting = {
 -- Sources
 options.sources = {
     { name = "path" },
+    { name = "npm",     keyword_length = 4 },
     { name = "calc" },
     { name = "copilot" },
     { name = "nvim_lsp" },
@@ -187,6 +193,7 @@ if ok_tabnine then
     table.insert(options.sources, 6, { name = "cmp_tabnine" })
 end
 
+cmp.setup(options)
 cmp.setup(options)
 
 cmp.setup.cmdline({ "/", "?" }, {
