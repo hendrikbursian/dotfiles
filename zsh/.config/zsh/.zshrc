@@ -71,3 +71,7 @@ fi
 [ -s "$HOME/.local/completions/wp-completions.bash" ] && source $HOME/.local/completions/wp-completion.bash
 
 [ -s "$ZDOTDIR/.zshrc.local" ] && source "$ZDOTDIR/.zshrc.local"
+
+# bun completions
+[ -s "/home/hendrik/.bun/_bun" ] && source "/home/hendrik/.bun/_bun"
+
