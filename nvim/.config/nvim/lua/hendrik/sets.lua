@@ -8,8 +8,8 @@ vim.opt.synmaxcol = 2000
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-vim.opt.foldlevelstart = 1
-vim.opt.foldmethod = 'indent'
+-- vim.opt.foldlevelstart = 1
+-- vim.opt.foldmethod = 'indent'
 
 -- Formatting
 vim.opt.tabstop = 4
