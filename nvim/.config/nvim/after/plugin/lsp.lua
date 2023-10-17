@@ -180,6 +180,17 @@ local servers = {
 
     sqlls = {},
 
+    tailwindcss = {
+        tailwindCSS = {
+            experimental = {
+                -- classRegex = {
+                --     "ui:\\s*{([^)]*)\\s*}", "[\"'`]([^\"'`]*).*?[\"'`]",
+                --     "/\\*ui\\*/\\s*{([^;]*)}", ":\\s*[\"'`]([^\"'`]*).*?[\"'`]"
+                -- }
+            }
+        }
+    },
+
     lua_ls = {
         Lua = {
             diagnostics = {

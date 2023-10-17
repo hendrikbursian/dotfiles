@@ -4,7 +4,7 @@ if not ok or cmp == nil then
 end
 
 local ok, cmp_npm = pcall(require, "cmp-npm")
-if ok or cmp_npm == nil then
+if ok then
     cmp_npm.setup({})
 end
 
