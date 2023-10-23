@@ -1,0 +1,10 @@
+x todo plugins
+x tsserver inline hints
+x neotree
+x fix snippets
+- formatting
+x session management
+- optimize loading
+- lazygit?
+- add shortcut for session management to dashboard
+- dap

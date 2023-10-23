@@ -1,41 +1,20 @@
-vim.g.mapleader = " "
+require("config.options")
 
-require("hendrik")
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system {
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    }
+end
+vim.opt.rtp:prepend(lazypath)
 
-local hendrik = vim.api.nvim_create_augroup("hendrik", {})
+require("lazy").setup("plugins")
 
-vim.api.nvim_create_autocmd("BufWritePost", {
-    group = hendrik,
-    callback = function()
-        vim.api.nvim_command("FormatWrite")
-    end
-})
-
-vim.api.nvim_create_autocmd("TermOpen", {
-    group = hendrik,
-    pattern = "*",
-    callback = function()
-        vim.opt_local.number = false
-        vim.opt_local.relativenumber = false
-        vim.cmd("startinsert")
-    end
-})
-
-local highlight_yank = vim.api.nvim_create_augroup("highlight_yank", {})
-
-vim.api.nvim_create_autocmd("TextYankPost", {
-    group = highlight_yank,
-    pattern = "*",
-    callback = function()
-        vim.highlight.on_yank({ timeout = 40 })
-    end
-})
-
-
-local packer_user_config = vim.api.nvim_create_augroup("packer_user_config", {})
-
-vim.api.nvim_create_autocmd("BufWritePost", {
-    group = packer_user_config,
-    pattern = "plugins.lua",
-    command = "source <afile> | PackerCompile"
-})
+require("config.keymaps")
+require("config.highlights")
+require("hendrik.colorscheme").load()
