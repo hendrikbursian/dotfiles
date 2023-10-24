@@ -5,7 +5,7 @@ return {
     -- Surround
     {
         "kylechui/nvim-surround",
-        event = "VeryLazy",
+        event = utils.FileEvent,
         opts = {
             move_cursor = false,
         },
@@ -38,7 +38,7 @@ return {
     -- Better search hightlights
     {
         "junegunn/vim-slash",
-        event = { "VeryLazy" },
+        event = utils.FileEvent,
         keys = {
             { "<Plug>(slash-after)", "zz" }
         }
@@ -46,6 +46,14 @@ return {
 
     {
         "numToStr/Comment.nvim",
+        keys = {
+            { "gb" },
+            { "gbc" },
+            { "gc" },
+            { "gcc" },
+            { "gb", mode = { "n", "v" } },
+            { "gc", mode = { "n", "v" } },
+        },
         opts = {
             ignore = "^$"
         },

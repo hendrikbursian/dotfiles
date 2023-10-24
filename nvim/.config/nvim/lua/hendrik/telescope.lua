@@ -1,11 +1,48 @@
+local utils = require("hendrik.utils")
+
+local function get_git_cwd()
+    local file_path = vim.api.nvim_buf_get_name(0);
+
+    return utils.find_git_ancestor(file_path) or vim.loop.cwd()
+end
+
 local M = {}
 
-M.git_files = function()
-    require("telescope.builtin").git_files({
+M.live_grep = function()
+    require("telescope.builtin").live_grep({
+        cwd = get_git_cwd(),
         hidden = true,
         no_ignore = true,
-        show_untracked = true
     })
+end
+
+M.find_files = function()
+    require("telescope.builtin").find_files({
+        cwd = get_git_cwd(),
+        hidden = true,
+        no_ignore = true
+    })
+end
+
+M.git_files = function()
+    local file_path = vim.api.nvim_buf_get_name(0)
+    local git_dir
+    if file_path ~= "" then
+        git_dir = utils.find_git_ancestor(file_path)
+    else
+        git_dir = utils.find_git_ancestor(vim.loop.cwd())
+    end
+
+    if git_dir ~= nil then
+        require("telescope.builtin").git_files({
+            hidden = false,
+            no_ignore = true,
+            show_untracked = true,
+            cwd = git_dir
+        })
+    else
+        M.find_files()
+    end
 end
 
 M.search_dotfiles = function()
@@ -13,7 +50,7 @@ M.search_dotfiles = function()
         prompt_title = "< Dotfiles >",
         cwd = vim.env.DOTFILES,
         hidden = true,
-        no_ignore = true,
+        no_ignore = false,
         show_untracked = true,
     })
 end
@@ -39,11 +76,5 @@ M.lsp_references = function()
     })
 end
 
-M.find_files = function()
-    require("telescope.builtin").find_files({
-        hidden = true,
-        no_ignore = true
-    })
-end
 
 return M

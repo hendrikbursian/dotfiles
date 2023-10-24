@@ -38,18 +38,29 @@ local function setup_dap_typescript()
                 {
                     type = "pwa-node",
                     request = "attach",
-                    name = "Yarn Workspace Attach",
+                    name = "Attach (Yarn Workspace)",
                     processId = function()
                         return require("dap.utils").pick_process({ filter = "yarn" })
                     end,
                     cwd = function()
-                        local lspconfig = require("lspconfig")
+                        local utils = require("hendrik.utils")
 
                         local file_name = vim.api.nvim_buf_get_name(0);
-                        local cwd = lspconfig.util.find_package_json_ancestor(file_name)
+                        local cwd = utils.find_package_json_ancestor(file_name)
 
                         return cwd
-                    end
+                    end,
+                    -- resolveSourceMapLocations = function()
+                    --     local lspconfig = require("lspconfig")
+
+                    --     local file_name = vim.api.nvim_buf_get_name(0);
+                    --     local cwd = lspconfig.util.find_package_json_ancestor(file_name)
+
+                    --     return {
+                    --         cwd .. "/**",
+                    --         "!**/node_modules/**"
+                    --     }
+                    -- end
                 },
             }
         end
@@ -73,7 +84,7 @@ return {
             -- Remember breakpoints
             {
                 "Weissle/persistent-breakpoints.nvim",
-                lazy = false,
+                event = utils.FileEvent,
                 keys = {
                     { "<leader>bb", function() require("persistent-breakpoints.api").toggle_breakpoint() end },
                     { "<leader>bc", function() require("persistent-breakpoints.api").set_conditional_breakpoint() end },
@@ -82,13 +93,6 @@ return {
                 opts = {
                     load_breakpoints_event = { "BufReadPost" }
                 },
-                config = function(_, opts)
-                    local pb = require("persistent-breakpoints")
-                    local pb_api = require("persistent-breakpoints.api")
-                    local dap = require("dap")
-
-                    pb.setup(opts)
-                end
             },
 
             -- mason.nvim integration
@@ -98,9 +102,9 @@ return {
                 cmd = { "DapInstall", "DapUninstall" },
                 keys = {
                     { "<F5>",  function() require("dap").continue() end },
-                    { "<F10>", function() require("dap").step_over() end },
-                    { "<F11>", function() require("dap").step_into() end },
-                    { "<F12>", function() require("dap").repl.toggle() end },
+                    { "<F6>", function() require("dap").step_over() end },
+                    { "<F7>", function() require("dap").step_into() end },
+                    { "<F8>", function() require("dap").repl.toggle() end },
                     -- { "<leader>b", function() require('dap').toggle_breakpoint() end },
                 },
                 opts = {

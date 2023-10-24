@@ -1,5 +1,7 @@
--- Git ===================================================================
+local utils = require("hendrik.utils")
+
 return {
+    -- Awesome git bindings
     {
         "tpope/vim-fugitive",
         keys = {
@@ -41,8 +43,7 @@ return {
     {
         -- "ThePrimeagen/git-worktree.nvim",
 
-        -- Using fixed version until PR is merged:
-        -- https://github.com/ThePrimeagen/git-worktree.nvim/pull/106
+        -- Using fixed version until PR is merged: https://github.com/ThePrimeagen/git-worktree.nvim/pull/106
         "brandoncc/git-worktree.nvim",
         branch = "catch-and-handle-telescope-related-error",
 
@@ -61,7 +62,7 @@ return {
         config = function(_, opts)
             require("git-worktree").setup(opts)
 
-            local Worktree = require("git-worktree")
+            -- local Worktree = require("git-worktree")
             -- op = Operations.Switch, Operations.Create, Operations.Delete
             -- metadata = table of useful values (structure dependent on op)
             --      Switch
@@ -74,20 +75,20 @@ return {
             --      Delete
             --          path = path where worktree deleted
 
-            Worktree.on_tree_change(function(op, metadata)
-                if op == Worktree.Operations.Switch then
-                    print("Switched from " .. metadata.prev_path .. " to " .. metadata.path)
-                    -- elseif op == Worktree.Operations.Create then
-                end
-            end)
+            -- Worktree.on_tree_change(function(op, metadata)
+            --     if op == Worktree.Operations.Switch then
+            --         print("Switched from " .. metadata.prev_path .. " to " .. metadata.path)
+            --         -- elseif op == Worktree.Operations.Create then
+            --     end
+            -- end)
 
-            pcall(require("telescope").load_extension, "git_worktree")
+            require("telescope").load_extension("git_worktree")
         end
     },
 
     {
         "lewis6991/gitsigns.nvim",
-        event = "VeryLazy",
+        event = utils.FileEvent,
         opts = {
             current_line_blame = true,
 
@@ -119,43 +120,43 @@ return {
                 end, { expr = true })
 
                 -- Actions
-                map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "[S]tage Hunk" })
-                map("n", "<M-S>", gitsigns.stage_hunk, { desc = "[S]tage Hunk" })
+                map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "Stage Hunk" })
+                map("n", "<M-S>", gitsigns.stage_hunk, { desc = "Stage Hunk" })
 
-                map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "[R]eset Hunk" })
-                map("n", "<M-R>", gitsigns.reset_hunk, { desc = "[R]eset Hunk" })
+                map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "Reset Hunk" })
+                map("n", "<M-R>", gitsigns.reset_hunk, { desc = "Reset Hunk" })
 
                 map("v", "<leader>hs", function()
                         gitsigns.stage_hunk { vim.fn.line("."), vim.fn.line("v") }
                     end,
-                    { desc = "[S]tage Hunk" }
+                    { desc = "Stage Hunk" }
                 )
                 map("v", "<M-S>", function()
                         gitsigns.stage_hunk { vim.fn.line("."), vim.fn.line("v") }
                     end,
-                    { desc = "[S]tage Hunk" }
+                    { desc = "Stage Hunk" }
                 )
 
                 map("v", "<leader>hr", function()
                         gitsigns.reset_hunk { vim.fn.line("."), vim.fn.line("v") }
                     end,
-                    { desc = "[R]eset Hunk" }
+                    { desc = "Reset Hunk" }
                 )
                 map("v", "<M-R>", function()
                         gitsigns.reset_hunk { vim.fn.line("."), vim.fn.line("v") }
                     end,
-                    { desc = "[R]eset Hunk" }
+                    { desc = "Reset Hunk" }
                 )
 
-                map("n", "<leader>hS", gitsigns.stage_buffer, { desc = "[S]tage Buffer" })
-                map("n", "<leader>hu", gitsigns.undo_stage_hunk, { desc = "[U]ndo stage Buffer" })
-                map("n", "<leader>hR", gitsigns.reset_buffer, { desc = "[R]eset Buffer" })
-                map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "[P]review Hunk" })
-                map("n", "<leader>hb", function() gitsigns.blame_line { full = true } end, { desc = "[B]lame Line" })
-                map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "[B]lame Line" })
-                map("n", "<leader>hd", gitsigns.diffthis, { desc = "[D]iff" })
-                map("n", "<leader>hD", function() gitsigns.diffthis("~") end, { desc = "[D]iff to last commit" })
-                map("n", "<leader>td", gitsigns.toggle_deleted, { desc = "[T]oggle (show) [d]eleted lines" })
+                map("n", "<leader>hS", gitsigns.stage_buffer, { desc = "Stage Buffer" })
+                map("n", "<leader>hu", gitsigns.undo_stage_hunk, { desc = "Undo stage Buffer" })
+                map("n", "<leader>hR", gitsigns.reset_buffer, { desc = "Reset Buffer" })
+                map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "Preview Hunk" })
+                map("n", "<leader>hb", function() gitsigns.blame_line { full = true } end, { desc = "Blame Line" })
+                map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "Blame Line" })
+                map("n", "<leader>hd", gitsigns.diffthis, { desc = "Diff" })
+                map("n", "<leader>hD", function() gitsigns.diffthis("~") end, { desc = "Diff to last commit" })
+                map("n", "<leader>td", gitsigns.toggle_deleted, { desc = "Toggle (show) [d]eleted lines" })
             end
 
         }

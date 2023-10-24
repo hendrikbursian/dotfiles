@@ -7,4 +7,8 @@ x session management
 - optimize loading
 - lazygit?
 - add shortcut for session management to dashboard
-- dap
+x dap
+- neotest
+- sync cursor to file after opening tree
+- sql formatting
+- yank highlighting

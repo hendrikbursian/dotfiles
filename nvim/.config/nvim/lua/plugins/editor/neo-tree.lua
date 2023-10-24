@@ -95,16 +95,17 @@ return {
                 },
                 window = {
                     mappings = {
-                        ["<space>"] = "none",
-                        ["w"] = "none",
-                        ["S"] = "none",
                         ["/"] = "none",
+                        ["<space>"] = "none",
+                        ["S"] = "none",
+                        ["f"] = "none",
+                        ["w"] = "none",
 
-                        ["s"] = "system_open",
-                        ["<C-x>"] = "open_split",
                         ["<C-v>"] = "open_vsplit",
+                        ["<C-x>"] = "open_split",
                         ["ff"] = "telescope_find",
                         ["fg"] = "telescope_grep",
+                        ["s"] = "system_open",
                     },
                 },
                 commands = {

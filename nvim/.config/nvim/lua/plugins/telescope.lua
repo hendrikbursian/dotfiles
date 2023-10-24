@@ -4,8 +4,6 @@ return {
         cmd = { "Telescope" },
         dependencies = { "nvim-lua/plenary.nvim", },
         keys = {
-            { "<leader>fg",      function() require("telescope.builtin").live_grep() end },
-            { "<leader>fs",      function() require("telescope.builtin").grep_string() end },
             { "<leader><space>", function() require("telescope.builtin").buffers() end },
             { "<leader>?",       function() require("telescope.builtin").oldfiles() end },
             { "<leader>fh",      function() require("telescope.builtin").help_tags() end },
@@ -24,6 +22,7 @@ return {
             { "<leader>dot", function() require("hendrik.telescope").search_dotfiles() end },
             { "<leader>ff",  function() require("hendrik.telescope").find_files() end },
             { "<leader>fc",  function() require("hendrik.telescope").grep_clipboard() end },
+            { "<leader>fg",  function() require("hendrik.telescope").live_grep() end },
         },
         opts = function()
             local actions = require("telescope.actions")

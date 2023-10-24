@@ -25,6 +25,11 @@ return {
         event = utils.FileEvent,
     },
 
+    -- {
+    --     "tummetott/unimpaired.nvim",
+    --     event = "VeryLazy",
+    -- },
+
     {
         "tpope/vim-unimpaired",
         event = "VeryLazy",
@@ -34,6 +39,16 @@ return {
         }
     },
     -- { "tpope/vim-obsession" },
+
+    -- search/replace in multiple files
+    {
+        "nvim-pack/nvim-spectre",
+        cmd = "Spectre",
+        opts = { open_cmd = "noswapfile vnew" },
+        keys = {
+            { "<leader>fr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
+        },
+    },
 
     -- Outline
     {
@@ -124,4 +139,5 @@ return {
     -- { import = "plugins.editor.nvim-tree" },
     { import = "plugins.editor.harpoon" },
 
+    { import = "plugins.editor.vim-dadbod" },
 }

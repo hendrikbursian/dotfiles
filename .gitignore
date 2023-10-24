@@ -1,6 +1,6 @@
-swap/
-undo/
-backup/
+/nvim/.config/nvim*/undo/
+/nvim/.config/nvim*/swap/
+/nvim/.config/nvim*/backup/
 .zcompdump*
 fonts/in/
 fonts/*.zip

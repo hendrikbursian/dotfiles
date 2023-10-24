@@ -1,3 +1,5 @@
+local utils = require("hendrik.utils")
+
 return {
     -- Highlight, edit, and navigate code
     {
@@ -116,7 +118,7 @@ return {
     -- Context lines
     {
         "nvim-treesitter/nvim-treesitter-context",
-        event = { "VeryLazy" },
+        event = utils.FileEvent,
         opts = {
             enable = true,   -- Enable this plugin (Can be enabled/disabled later via commands)
             throttle = true, -- Throttles plugin updates (may improve performance)

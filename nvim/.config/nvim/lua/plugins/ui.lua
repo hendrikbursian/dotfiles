@@ -94,7 +94,7 @@ return {
     -- Statusline
     {
         "nvim-lualine/lualine.nvim",
-        event = "VeryLazy",
+        event = utils.FileEvent,
         opts = function()
             return {
                 options = {

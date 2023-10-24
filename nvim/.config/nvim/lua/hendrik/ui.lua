@@ -3,6 +3,7 @@ local M = {}
 local qf_l = 0
 local qf_g = 0
 
+-- Source: ThePrimeagen
 -- Toggle quickfix or location list
 function M.toggle_qf_list(global)
     if global then
