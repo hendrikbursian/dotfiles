@@ -190,6 +190,12 @@ M.find_package_json_ancestor = function(startpath)
 	end)
 end
 
+M.get_git_dir_or_cwd = function()
+	local file_path = vim.api.nvim_buf_get_name(0)
+
+	return M.find_git_ancestor(file_path) or vim.loop.cwd()
+end
+
 -- Concatenates unique formatters/linters
 M.merge_by_ft_table = function(tab, ignore)
 	local unique = {}
