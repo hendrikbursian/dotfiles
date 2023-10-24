@@ -12,3 +12,4 @@ x dap
 - sync cursor to file after opening tree
 - sql formatting
 - yank highlighting
+- open DB on <C-b> when focus on sql file
