@@ -11,8 +11,8 @@ vim.keymap.set("n", "yy", "my0yy`y<CMD>delmark y<CR>")
 vim.keymap.set("v", "y", "my0y`y<CMD>delmark y<CR>")
 
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Center everything
 vim.keymap.set("n", "{", "{zz", { desc = "Move paragraph up" })
@@ -32,21 +32,16 @@ vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { desc = "Open Diag
 vim.keymap.set("n", "<leader>vq", vim.diagnostic.setloclist, { desc = "Add Diagnostics to local quickfix list" })
 
 vim.keymap.set("n", "<leader>s", ":so %<CR>", { desc = "Source current file" })
-vim.keymap.set(
-    "n",
-    "<leader>r",
-    function()
-        require("plenary.reload").reload_module("hendrik", true)
-    end,
-    { desc = "Reload config" }
-)
+-- stylua: ignore
+vim.keymap.set("n", "<leader>r", function() require("plenary.reload").reload_module("hendrik", true) end, { desc = "Reload config" })
 
 -- Timesheet
 -- vim.keymap.set("n", "<Leader>t", ":e $HOME/Documents/Freelancing/timesheet.txt<CR>", { desc = "Open Timesheet" })
+-- stylua: ignore
 vim.keymap.set("n", "<leader>lsp", ":e $DOTFILES/nvim/.config/nvim/lua/plugins/lsp.lua<CR>", { desc = "Open LSP config" })
 
 vim.keymap.set("n", "<C-f>", ":silent !tmux neww tmux-sessionizer<CR>", { desc = "Sezzzionizezzer" })
-vim.keymap.set("n", "<leader>d", "\"_d", { desc = "Delete without copying!" })
+vim.keymap.set("n", "<leader>d", '"_d', { desc = "Delete without copying!" })
 vim.keymap.set("n", "<C-s>", "<cmd>write<cr>", { desc = "Save" })
 vim.keymap.set("i", "<C-s>", "<C-o>de", { desc = "Delete forwards" })
 
@@ -59,15 +54,18 @@ vim.keymap.set("n", "<Down>", ":resize -5<cr>", { silent = true, desc = "Shrink 
 vim.keymap.set("n", "<Left>", ":vert resize -5<cr>", { silent = true, desc = "Shrink buffer horizontally" })
 vim.keymap.set("n", "<Right>", ":vert resize +5<cr>", { silent = true, desc = "Expand buffer horizontally" })
 
--- Toggle  Qickfixlist
-vim.keymap.set("n", "<C-q>", function() require("hendrik.ui").toggle_qf_list(false) end,
-    { noremap = true, silent = true, desc = "Toggle local quickfix list" })
-vim.keymap.set("n", "<leader>q", function() require("hendrik.ui").toggle_qf_list(true) end,
-    { noremap = true, silent = true, desc = "Toggle local quickfix list" })
+ -- stylua: ignore start
 
--- lazygit
-vim.keymap.set("n", "<leader>gg",
-    function() Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false }) end,
-    { desc = "Lazygit (root dir)" })
-vim.keymap.set("n", "<leader>gG", function() Util.terminal({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false }) end,
-    { desc = "Lazygit (cwd)" })
+-- Toggle  Qickfixlist
+vim.keymap.set("n", "<C-q>", function()
+	require("hendrik.ui").toggle_qf_list(false)
+end, { noremap = true, silent = true, desc = "Toggle local quickfix list" })
+vim.keymap.set("n", "<leader>q", function()
+	require("hendrik.ui").toggle_qf_list(true)
+end, { noremap = true, silent = true, desc = "Toggle local quickfix list" })
+
+-- Lazygit
+vim.keymap.set("n", "<leader>gg", function() Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit (root dir)" })
+vim.keymap.set("n", "<leader>gG", function() Util.terminal({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit (cwd)" })
+
+--stylua: ignore end
