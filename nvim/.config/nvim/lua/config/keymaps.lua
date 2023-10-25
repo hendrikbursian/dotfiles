@@ -56,13 +56,9 @@ vim.keymap.set("n", "<Right>", ":vert resize +5<cr>", { silent = true, desc = "E
 
  -- stylua: ignore start
 
--- Toggle  Qickfixlist
-vim.keymap.set("n", "<C-q>", function()
-	require("hendrik.ui").toggle_qf_list(false)
-end, { noremap = true, silent = true, desc = "Toggle local quickfix list" })
-vim.keymap.set("n", "<leader>q", function()
-	require("hendrik.ui").toggle_qf_list(true)
-end, { noremap = true, silent = true, desc = "Toggle local quickfix list" })
+-- Toggle  Quickfixlist
+vim.keymap.set("n", "<C-q>", function() require("hendrik.ui").toggle_qf_list(false) end, { noremap = true, silent = true, desc = "Toggle local quickfix list" })
+vim.keymap.set("n", "<leader>q", function() require("hendrik.ui").toggle_qf_list(true) end, { noremap = true, silent = true, desc = "Toggle local quickfix list" })
 
 -- Lazygit
 vim.keymap.set("n", "<leader>gg", function() Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit (root dir)" })
