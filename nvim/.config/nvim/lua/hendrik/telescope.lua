@@ -19,13 +19,8 @@ M.find_files = function()
 end
 
 M.git_files = function()
-	local file_path = vim.api.nvim_buf_get_name(0)
-	local git_dir
-	if file_path ~= "" then
-		git_dir = utils.find_git_ancestor(file_path)
-	else
-		git_dir = utils.find_git_ancestor(vim.loop.cwd())
-	end
+	local path = utils.get_current_file_or_cwd()
+	local git_dir = utils.find_git_ancestor(path)
 
 	if git_dir ~= nil then
 		require("telescope.builtin").git_files({

@@ -190,10 +190,19 @@ M.find_package_json_ancestor = function(startpath)
 	end)
 end
 
-M.get_git_dir_or_cwd = function()
-	local file_path = vim.api.nvim_buf_get_name(0)
+M.get_current_file_or_cwd = function()
+	local path = vim.fn.argv(0) or vim.api.nvim_buf_get_name(0)
+	if path == "" then
+		return vim.loop.cwd()
+	else
+		return path
+	end
+end
 
-	return M.find_git_ancestor(file_path) or vim.loop.cwd()
+M.get_git_dir_or_cwd = function()
+	local path = M.get_current_file_or_cwd()
+
+	return M.find_git_ancestor(path) or vim.loop.cwd()
 end
 
 -- Concatenates unique formatters/linters

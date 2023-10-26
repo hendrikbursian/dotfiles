@@ -22,6 +22,14 @@ return {
 		},
 		keys = {
 			{
+				"<C-b>",
+				function()
+					vim.print(utils.get_git_dir_or_cwd())
+					require("neo-tree.command").execute({ toggle = true, dir = utils.get_git_dir_or_cwd() })
+				end,
+				desc = "Explorer NeoTree (root)",
+			},
+			{
 				"<M-b>",
 				function()
 					local reveal_file = vim.api.nvim_buf_get_name(0)
@@ -43,13 +51,6 @@ return {
 					})
 				end,
 				desc = "Explorer NeoTree (cwd)",
-			},
-			{
-				"<C-b>",
-				function()
-					require("neo-tree.command").execute({ toggle = true, dir = utils.get_git_dir_or_cwd() })
-				end,
-				desc = "Explorer NeoTree (root)",
 			},
 			{
 				"<leader>ge",
