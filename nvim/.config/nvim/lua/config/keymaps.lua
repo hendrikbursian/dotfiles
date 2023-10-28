@@ -3,6 +3,10 @@ local Util = require("lazyvim.util")
 -- Disable <leader> only
 vim.keymap.set({ "n", "v" }, "<leader>", "<Nop>", { silent = true })
 
+-- next greatest remap ever : asbjornHaland
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+
 vim.keymap.set("n", "Y", "y$", { desc = "Tame yank!" })
 
 -- Make yank work with cursor=virtual
