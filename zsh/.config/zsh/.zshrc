@@ -70,6 +70,9 @@ fi
 # WP CLI
 [ -s "$HOME/.local/completions/wp-completions.bash" ] && source $HOME/.local/completions/wp-completion.bash
 
+# Bun
+[ -s "/home/hendrik/.bun/_bun" ] && source "/home/hendrik/.bun/_bun"
+
 [ -s "$ZDOTDIR/.zshrc.local" ] && source "$ZDOTDIR/.zshrc.local"
 
 # bun completions
