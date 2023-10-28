@@ -14,22 +14,3 @@ function git-rebase-interactive-branch-root() {
     git rebase --interactive $(git log $(git remote show origin | sed -n '/HEAD branch/s/.*: //p')..$(git branch --show-current) --oneline | tail -1 | awk '{ print $1 }')~1
 }
 
-function update_neovim() {
-    tmp_path=/tmp/nvim.appimage
-
-    nvim -v
-
-    echo ""
-    echo ""
-    echo "Downloading Neovim Appimage..."
-
-    curl -Lo $tmp_path https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
-    chmod u+x $tmp_path
-    sudo mv $tmp_path /usr/local/bin/nvim
-
-    echo "Neovim updated!"
-    echo ""
-    echo ""
-
-    nvim -v
-}
