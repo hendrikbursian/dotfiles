@@ -1,0 +1,36 @@
+wm.bar.mode: hide
+
+wm.gaps.inner.size:	0
+wj.gaps.outer.size:	0
+wm.floatingwindow.border.size:	0
+wm.window.border.size:	0
+xft.dpi: 192
+
+wm.workspace.01.name: 1: 1 Konsole
+wm.workspace.02.name: 2: 2 Arbeit
+wm.workspace.03.name: 3: 3 Browser
+wm.workspace.04.name: 4: 4 Notizen
+wm.workspace.05.name: 5: 5 Nachrichten
+wm.workspace.06.name: 6: 6 Finanzen
+wm.workspace.07.name: 7: 7 Musik
+wm.workspace.08.name: 8: 8
+wm.workspace.09.name: 9: 9
+wm.workspace.10.name: 10: 10
+wm.workspace.11.name: 11: 11
+wm.workspace.12.name: 12: 12
+wm.workspace.13.name: 13: 13
+wm.workspace.14.name: 14: 14
+wm.workspace.15.name: 15: 15
+wm.workspace.16.name: 16: 16
+wm.workspace.17.name: 17: 17
+wm.workspace.18.name: 18: 18
+wm.workspace.19.name: 19: 19
+wm.workspace.20.name: 20: 20
+
+
+i3xrocks.date.format2: %a %d/%m %H:%M
+
+regolith.wallpaper.file: ~/.config/regolith3/wallpaper.jpeg
+regolith.wallpaper.options: zoom
+!regolith.look.path: /usr/share/regolith-look/ayu
+regolith.look.path: /usr/share/regolith-look/nord
