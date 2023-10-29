@@ -4,6 +4,7 @@ local M = {}
 
 M.get_capabilities = function()
 	local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+
 	local capabilities = vim.tbl_deep_extend(
 		"force",
 		{},

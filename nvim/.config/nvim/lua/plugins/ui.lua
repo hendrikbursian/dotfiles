@@ -91,56 +91,5 @@ return {
 		end,
 	},
 
-	-- Statusline
-	{
-		"nvim-lualine/lualine.nvim",
-		event = utils.FileEvent,
-		opts = function()
-			return {
-				options = {
-					icons_enabled = false,
-					component_separators = "|",
-					section_separators = "",
-					disabled_filetypes = {
-						"dapui_scopes",
-						"dapui_breakpoints",
-						"dapui_stacks",
-						"dapui_watches",
-						"dapui_console",
-						"dap-repl",
-					},
-				},
-				sections = {
-					lualine_c = {
-						{
-							"filename",
-							file_status = true,
-							path = 1,
-							symbols = {
-								readonly = " [READONLY]",
-							},
-							color = function()
-								local buf = vim.api.nvim_get_current_buf()
-								local is_readonly = vim.api.nvim_buf_get_option(buf, "readonly")
-
-								if is_readonly then
-									return { fg = "#ff0000" }
-								else
-									return {}
-								end
-							end,
-						},
-					},
-				},
-				inactive_sections = {
-					lualine_a = {},
-					lualine_b = {},
-					lualine_c = { "filename" },
-					lualine_x = { "location" },
-					lualine_y = {},
-					lualine_z = {},
-				},
-			}
-		end,
-	},
+	{ import = "plugins.ui.lualine" },
 }

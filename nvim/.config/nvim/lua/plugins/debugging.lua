@@ -74,25 +74,11 @@ return {
 			{
 				"Weissle/persistent-breakpoints.nvim",
 				event = utils.FileEvent,
+                -- stylua: ignore
 				keys = {
-					{
-						"<leader>bb",
-						function()
-							require("persistent-breakpoints.api").toggle_breakpoint()
-						end,
-					},
-					{
-						"<leader>bc",
-						function()
-							require("persistent-breakpoints.api").set_conditional_breakpoint()
-						end,
-					},
-					{
-						"<leader>bD",
-						function()
-							require("persistent-breakpoints.api").clear_all_breakpoints()
-						end,
-					},
+					{ "<leader>bb", function() require("persistent-breakpoints.api").toggle_breakpoint() end, },
+					{ "<leader>bc", function() require("persistent-breakpoints.api").set_conditional_breakpoint() end, },
+					{ "<leader>bD", function() require("persistent-breakpoints.api").clear_all_breakpoints() end, },
 				},
 				opts = {
 					load_breakpoints_event = { "BufReadPost" },
@@ -104,31 +90,12 @@ return {
 				"jay-babu/mason-nvim-dap.nvim",
 				dependencies = "mason.nvim",
 				cmd = { "DapInstall", "DapUninstall" },
+                -- stylua: ignore
 				keys = {
-					{
-						"<F5>",
-						function()
-							require("dap").continue()
-						end,
-					},
-					{
-						"<F6>",
-						function()
-							require("dap").step_over()
-						end,
-					},
-					{
-						"<F7>",
-						function()
-							require("dap").step_into()
-						end,
-					},
-					{
-						"<F8>",
-						function()
-							require("dap").repl.toggle()
-						end,
-					},
+					{ "<F5>", function() require("dap").continue() end, },
+					{ "<F6>", function() require("dap").step_over() end, },
+					{ "<F7>", function() require("dap").step_into() end, },
+					{ "<F8>", function() require("dap").repl.toggle() end, },
 					-- { "<leader>b", function() require('dap').toggle_breakpoint() end },
 				},
 				opts = {

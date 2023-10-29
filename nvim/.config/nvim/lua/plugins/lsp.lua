@@ -7,7 +7,15 @@ return {
 		event = utils.FileEvent,
 		dependencies = {
 			-- Additional lua configuration
-			{ "folke/neodev.nvim", config = true, lazy = false },
+			{
+				"folke/neodev.nvim",
+				opts = {
+					library = {
+						plugins = { "neotest" },
+						types = true,
+					},
+				},
+			},
 
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
@@ -104,9 +112,11 @@ return {
 		end,
 	},
 
-	{ import = "plugins.lsp.typescript" },
-	{ import = "plugins.lsp.rust" },
-	{ import = "plugins.lsp.intelephense" },
-	{ import = "plugins.lsp.yamlls" },
-	{ import = "plugins.lsp.jsonls" },
+	{ import = "plugins.lsp" },
+
+	{ import = "plugins.lsp.lang.typescript" },
+	{ import = "plugins.lsp.lang.rust" },
+	{ import = "plugins.lsp.lang.intelephense" },
+	{ import = "plugins.lsp.lang.yamlls" },
+	{ import = "plugins.lsp.lang.jsonls" },
 }

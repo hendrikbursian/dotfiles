@@ -32,5 +32,5 @@ i3xrocks.date.format2: %a %d/%m %H:%M
 
 regolith.wallpaper.file: ~/.config/regolith3/wallpaper.jpeg
 regolith.wallpaper.options: zoom
-!regolith.look.path: /usr/share/regolith-look/ayu
+!regolith.look.path: /usr/share/regolith-look/gruvbox
 regolith.look.path: /usr/share/regolith-look/nord
