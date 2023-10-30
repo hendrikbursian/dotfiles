@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 alias e="explorer.exe"
-alias c="code-insiders"
 alias vim="nvim"
 alias v="nvim"
 # alias nvim-lazy="NVIM_APPNAME=nvim-lazy nvim"
@@ -24,7 +23,6 @@ alias ssl='openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout ssl
 alias x="chmod +x"
 alias f="fzf --preview 'cat {}'"
 alias y="yarn"
-alias copy="xclip -sel clip"
 alias gcl="gitlab-ci-local"
 alias pd="popd"
 alias pud="pushd"

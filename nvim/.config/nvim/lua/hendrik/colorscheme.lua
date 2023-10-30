@@ -24,7 +24,7 @@ local colorschemes = {}
 local current_colorscheme = nil
 
 local function apply_colorscheme(index)
-	vim.print("Setting colorscheme " .. colorschemes[index].schema)
+	-- vim.print("Setting colorscheme " .. colorschemes[index].schema)
 
 	vim.opt.background = colorschemes[index].background
 	vim.cmd("colorscheme " .. colorschemes[index].schema)

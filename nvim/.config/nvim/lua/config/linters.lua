@@ -6,6 +6,8 @@ M.linters_by_ft = {
 	css = { "eslint_d" },
 	dockerfile = { "hadolint" },
 	sh = { "shellcheck" },
+	bash = { "shellcheck" },
+	zsh = { "shellcheck" },
 
 	-- {"ansible_lint"}
 	-- {"codespell"}

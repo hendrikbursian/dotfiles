@@ -49,7 +49,7 @@ vim.opt.showbreak = "↪  \\"
 vim.opt.sidescroll = 20
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
-vim.opt.colorcolumn = { 80, 120 }
+-- vim.opt.colorcolumn = { 80, 120 }
 vim.opt.updatetime = 250
 -- vim.opt.updatetime = 50
 
