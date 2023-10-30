@@ -1,0 +1,21 @@
+- name: Install regolith
+  hosts: 127.0.0.1
+  become: true
+  vars:
+    packages:
+      - regolith-desktop
+      - regolith-session-flashback
+      - regolith-look-nord
+    config_files:
+      - .Xresources-regolith
+      - .config/regolith
+  pre_tasks:
+    - name: Update cache
+      apt:
+        update_cache: true
+  tasks:
+    - name: Install packages
+      apt:
+        name: "{{ item }}"
+        state: latest
+      loop: "{{ packages }}"

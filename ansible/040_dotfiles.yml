@@ -6,4 +6,3 @@
     - name: Change Shell
       command: "chsh {{ lookup('env', 'USER') }} --shell /usr/bin/zsh"
       become: true
-

@@ -1,0 +1,20 @@
+- name: Install Inteliphense
+  hosts: 127.0.0.1
+
+  vars:
+    source_key: intelephense/licence.txt
+    dest_key: $HOME/intelephense/licence.txt
+
+  tasks:
+    - name: Ensure intelephense directory exists.
+      file:
+        dest: $HOME/intelephense
+        mode: 0755
+        owner: "{{ lookup('env', 'USER') }}"
+        state: directory
+    - name: Install intelephense licence.
+      copy:
+        src: "{{ source_key }}"
+        dest: "{{ dest_key }}"
+        mode: 0600
+        owner: "{{ lookup('env', 'USER') }}"

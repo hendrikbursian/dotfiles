@@ -1,10 +1,9 @@
----
 - name: Install asdf
   hosts: 127.0.0.1
   become: no
   vars:
     asdf_user: "{{ lookup('env', 'USER') }}"
-    asdf_version: v0.9.0
+    asdf_version: v0.13.1
     asdf_init_shell: false
 
   roles:
@@ -12,8 +11,8 @@
       asdf_plugins:
         - name: nodejs
           versions:
-            - latest:14
             - latest:16
+            - latest:18
             - latest
           global: latest
         - name: golang
@@ -22,13 +21,9 @@
           global: latest
         - name: python
           versions:
-            - latest:2
             - latest:3
-          global: "latest:3 latest:2"
+          global: "latest:3"
       environment:
         ASDF_DOWNLOAD_PATH: "$HOME/.asdf"
         ASDF_NPM_DEFAULT_PACKAGES_FILE: "$HOME/.config/asdf/.default-npm-packages"
         ASDF_PYTHON_DEFAULT_PACKAGES_FILE: "$HOME/.config/asdf/.default-python-packages"
-
-
-
