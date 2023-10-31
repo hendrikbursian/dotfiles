@@ -191,7 +191,8 @@ M.find_package_json_ancestor = function(startpath)
 end
 
 M.get_current_file_or_cwd = function()
-	local path = vim.fn.argv(0) or vim.api.nvim_buf_get_name(0)
+	local path = arg[0] or vim.api.nvim_buf_get_name(0)
+
 	if path == "" then
 		return vim.loop.cwd()
 	else

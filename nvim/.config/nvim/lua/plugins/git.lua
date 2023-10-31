@@ -127,7 +127,7 @@ return {
 				map("n", "<leader>tb", gitsigns.toggle_current_line_blame,                                          { desc = "Blame Line" })
 				map("n", "<leader>hd", gitsigns.diffthis,                                                           { desc = "Diff" })
 				map("n", "<leader>hD", function() gitsigns.diffthis("~") end,                                       { desc = "Diff to last commit" })
-				map("n", "<leader>td", gitsigns.toggle_deleted,                                                     { desc = "Toggle (show) [d]eleted lines" })
+				map("n", "<leader>gd", gitsigns.toggle_deleted,                                                     { desc = "Toggle (show) [d]eleted lines" })
 				-- stylua: ignore end
 			end,
 		},

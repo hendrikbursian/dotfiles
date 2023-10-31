@@ -323,6 +323,7 @@ return {
 		end,
 	},
 
+	{ import = "plugins.coding.ai.sourcegraph" },
 	-- { import = "plugins.coding.copilot" },
 	-- { import = "plugins.coding.tabnine" },
 }

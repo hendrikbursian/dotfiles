@@ -19,15 +19,15 @@ return {
             end },
             { "<C-p>",       function() 	    require("hendrik.telescope").git_files() end },
             { "<leader>dot", function() 	    require("hendrik.telescope").search_dotfiles() end },
+            { "<leader>fF",  function() 	    require("hendrik.telescope").find_files() end },
             { "<leader>ff",  function() 	    require("hendrik.telescope").find_files({
                 glob_pattern = { "!*.spec.*" }
             }) end },
-            { "<leader>faf",  function() 	    require("hendrik.telescope").find_files() end },
-            { "<leader>fc",  function() 	    require("hendrik.telescope").grep_clipboard() end },
+            { "<leader>fG",  function() 	    require("hendrik.telescope").live_grep() end },
             { "<leader>fg",  function() 	    require("hendrik.telescope").live_grep({
                 glob_pattern = { "!*.spec.*" }
             }) end },
-            { "<leader>fag",  function() 	    require("hendrik.telescope").live_grep() end },
+            { "<leader>fc",  function() 	    require("hendrik.telescope").grep_clipboard() end },
         },
 		opts = function()
 			local actions = require("telescope.actions")
