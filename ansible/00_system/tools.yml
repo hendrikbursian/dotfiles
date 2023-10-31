@@ -14,9 +14,11 @@
       - gcc
       - git
       - gpg
+      - inotify-tools
       - iputils-ping
       - jq
       - llvm
+      - lynx
       - make
       - net-tools
       - ripgrep

@@ -25,15 +25,6 @@ return {
 		end,
 	},
 
-	-- Surround
-	{
-		"kylechui/nvim-surround",
-		event = utils.FileEvent,
-		opts = {
-			move_cursor = false,
-		},
-	},
-
 	-- Advanced substitute
 	{
 		"tpope/vim-abolish",
@@ -324,6 +315,7 @@ return {
 	},
 
 	{ import = "plugins.coding.ai.sourcegraph" },
-	-- { import = "plugins.coding.copilot" },
-	-- { import = "plugins.coding.tabnine" },
+	-- { import = "plugins.coding.ai.copilot" },
+	-- { import = "plugins.coding.ai.tabnine" },
+	{ import = "plugins.coding" },
 }
