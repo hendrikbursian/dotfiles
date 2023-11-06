@@ -314,7 +314,6 @@ return {
 		end,
 	},
 
-	{ import = "plugins.coding.ai.sourcegraph" },
 	-- { import = "plugins.coding.ai.copilot" },
 	-- { import = "plugins.coding.ai.tabnine" },
 	{ import = "plugins.coding" },
