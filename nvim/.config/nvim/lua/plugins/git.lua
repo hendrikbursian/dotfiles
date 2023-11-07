@@ -13,6 +13,7 @@ return {
 			{ "<leader>gf", ":Git push --force-with-lease<CR>",              silent = true                                 },
 			{ "<leader>gF", ":Git push --force<CR>",                         silent = true                                 },
 			{ "<leader>go", ":Git log<CR>",                                  silent = true                                 },
+            -- TODO: Check this
 			{ "<leader>gh", ":GcLog<CR>",                                    silent = true, mode = "v"                     },
 			{ "<leader>gW", ":Gwrite<CR>",                                   silent = true                                 },
 			{ "<leader>gu", ":Git undo<CR>",                                 silent = true                                 },
