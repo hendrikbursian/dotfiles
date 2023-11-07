@@ -16,3 +16,5 @@
 [pull]
 	default = current
 	rebase = true
+[init]
+	defaultBranch = master

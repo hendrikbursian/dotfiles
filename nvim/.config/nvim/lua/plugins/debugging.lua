@@ -39,6 +39,12 @@ local function setup_dap_typescript()
 					type = "pwa-node",
 					request = "attach",
 					name = "Attach (Yarn Workspace)",
+					port = function()
+						return vim.fn.input({
+							prompt = "Port> ",
+							default = "9229",
+						})
+					end,
 					processId = function()
 						return require("dap.utils").pick_process({ filter = "yarn" })
 					end,

@@ -27,7 +27,6 @@ return {
             { "<leader>fg",  function() 	    require("hendrik.telescope").live_grep({
                 glob_pattern = { "!*.spec.*" }
             }) end },
-            { "<leader>fc",  function() 	    require("hendrik.telescope").grep_clipboard() end },
         },
 		opts = function()
 			local actions = require("telescope.actions")

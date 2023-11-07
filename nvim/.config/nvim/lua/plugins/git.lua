@@ -4,36 +4,22 @@ return {
 	-- Awesome git bindings
 	{
 		"tpope/vim-fugitive",
+        -- stylua: ignore
 		keys = {
-			{ "<leader>gs", ":Git<CR>", silent = true },
-			{ "<leader>gl", ":Git pull<CR>", silent = true },
-			{ "<leader>gt", ":Git mergetool<CR>", silent = true },
-			{ "<leader>gp", ":Git push<CR>", silent = true },
-			{ "<leader>gf", ":Git push --force<CR>", silent = true },
-			{ "<leader>go", ":Git log<CR>", silent = true },
-			{ "<leader>gh", ":GcLog<CR>", silent = true, mode = "v" },
-			{ "<leader>gW", ":Gwrite<CR>", silent = true },
-			{
-				"cn",
-				":Git commit --no-verify<CR>",
-				silent = true,
-				buffer = true,
-				ft = "fugitive",
-			},
-			{
-				"an",
-				":Git commit --amend --no-verify<CR>",
-				silent = true,
-				buffer = true,
-				ft = "fugitive",
-			},
-			{
-				"ae",
-				":Git commit --amend --no-verify --no-edit<CR>",
-				silent = true,
-				buffer = true,
-				ft = "fugitive",
-			},
+			{ "<leader>gs", ":Git<CR>",                                      silent = true                                 },
+			{ "<leader>gl", ":Git pull<CR>",                                 silent = true                                 },
+			{ "<leader>gt", ":Git mergetool<CR>",                            silent = true                                 },
+			{ "<leader>gp", ":Git push<CR>",                                 silent = true                                 },
+			{ "<leader>gf", ":Git push --force-with-lease<CR>",              silent = true                                 },
+			{ "<leader>gF", ":Git push --force<CR>",                         silent = true                                 },
+			{ "<leader>go", ":Git log<CR>",                                  silent = true                                 },
+			{ "<leader>gh", ":GcLog<CR>",                                    silent = true, mode = "v"                     },
+			{ "<leader>gW", ":Gwrite<CR>",                                   silent = true                                 },
+			{ "<leader>gu", ":Git undo<CR>",                                 silent = true                                 },
+
+			{ "cn",         ":Git commit --no-verify<CR>",                   silent = true, buffer = true, ft = "fugitive" },
+			{ "an",         ":Git commit --amend --no-verify<CR>",           silent = true, buffer = true, ft = "fugitive" },
+			{ "ae",         ":Git commit --amend --no-verify --no-edit<CR>", silent = true, buffer = true, ft = "fugitive" },
 		},
 	},
 
