@@ -1,3 +1,10 @@
+local colorschemes = {
+	dark = {},
+	light = {},
+}
+local dark_colorscheme_index = 1
+local light_colorscheme_index = 1
+
 local function is_dark_mode()
 	if vim.fn.has("wsl") == 1 or vim.fn.has("win32") == 1 then
 		local apps_use_light_theme_value = vim.fn.system(
@@ -5,30 +12,26 @@ local function is_dark_mode()
 		)
 
 		if vim.v.shell_error ~= 0 then
-			return true
+			return vim.opt.background:get() == "dark"
 		end
 
 		if apps_use_light_theme_value == nil then
-			return true
+			return vim.opt.background:get() == "dark"
 		end
 
 		return string.match(apps_use_light_theme_value, "0x0")
 	end
 
 	-- TODO:
-	return true
+	return vim.opt.background:get() == "dark"
 end
 
-local colorschemes = {}
+local function apply_colorscheme(colorschemes, index, print_schema)
+	if print_schema == nil or print_schema == true then
+		print("Setting colorscheme " .. colorschemes[index].schema)
+	end
 
-local current_colorscheme = nil
-
-local function apply_colorscheme(index)
-	-- vim.print("Setting colorscheme " .. colorschemes[index].schema)
-
-	vim.opt.background = colorschemes[index].background
 	vim.cmd("colorscheme " .. colorschemes[index].schema)
-
 	if colorschemes[index].config then
 		colorschemes[index].config()
 	end
@@ -37,31 +40,69 @@ end
 local M = {}
 
 M.add = function(colorscheme)
-	colorschemes[#colorschemes + 1] = colorscheme
+	if colorscheme.background == "light" then
+		colorschemes.light[#colorschemes.light + 1] = colorscheme
+	else
+		colorschemes.dark[#colorschemes.dark + 1] = colorscheme
+	end
 end
 
+local did_init = false
 M.init = function()
-	if current_colorscheme ~= nil then
+	if did_init == true then
 		return
 	end
 
 	if is_dark_mode() then
-		current_colorscheme = 1
+		vim.opt.background = "dark"
+		apply_colorscheme(colorschemes.dark, dark_colorscheme_index, false)
 	else
-		current_colorscheme = 2
+		vim.opt.background = "light"
+		apply_colorscheme(colorschemes.light, light_colorscheme_index, false)
 	end
 
-	apply_colorscheme(current_colorscheme)
+	did_init = true
 end
 
 function M.next()
-	current_colorscheme = current_colorscheme % #colorschemes + 1
-	apply_colorscheme(current_colorscheme)
+	if vim.opt.background:get() == "light" then
+		light_colorscheme_index = light_colorscheme_index % #colorschemes.light + 1
+		apply_colorscheme(colorschemes.light, light_colorscheme_index)
+	else
+		dark_colorscheme_index = dark_colorscheme_index % #colorschemes.dark + 1
+		apply_colorscheme(colorschemes.dark, dark_colorscheme_index)
+	end
 end
 
 function M.prev()
-	current_colorscheme = (current_colorscheme - 2) % #colorschemes + 1
-	apply_colorscheme(current_colorscheme)
+	if vim.opt.background:get() == "light" then
+		light_colorscheme_index = (light_colorscheme_index - 2) % #colorschemes.light + 1
+		apply_colorscheme(colorschemes.light, light_colorscheme_index)
+	else
+		dark_colorscheme_index = (dark_colorscheme_index - 2) % #colorschemes.dark + 1
+		apply_colorscheme(colorschemes.dark, dark_colorscheme_index)
+	end
 end
+
+local group = vim.api.nvim_create_augroup("config_colorschemes", { clear = true })
+
+local bg = nil
+vim.api.nvim_create_autocmd("OptionSet", {
+	group = group,
+	pattern = "background",
+	callback = function()
+		if bg == vim.opt.background:get() then
+			return
+		else
+			bg = vim.opt.background:get()
+		end
+
+		if vim.opt.background:get() == "light" then
+			apply_colorscheme(colorschemes.light, light_colorscheme_index)
+		else
+			apply_colorscheme(colorschemes.dark, dark_colorscheme_index)
+		end
+	end,
+})
 
 return M
