@@ -26,6 +26,7 @@ return {
 				section_separators = "",
 
 				disabled_filetypes = {
+					"neo-tree",
 					"dapui_scopes",
 					"dapui_breakpoints",
 					"dapui_stacks",
