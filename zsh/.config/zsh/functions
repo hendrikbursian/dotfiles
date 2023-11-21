@@ -7,7 +7,7 @@ function git-fetch-worktree() {
 
 function git-add-worktree() {
 	git worktree add "$1"
-	cd "$1" || exit
+	cd "$1" || true
 }
 
 function git-rebase-interactive-branch-root() {
