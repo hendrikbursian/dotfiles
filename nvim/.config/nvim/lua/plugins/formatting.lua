@@ -86,6 +86,16 @@ return {
 			vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 		end,
 		config = function(_, opts)
+			-- let eslint only run if a config is found
+			require("conform.formatters.eslint_d").cwd = require("conform.util").root_file({
+				".eslint.js",
+				".eslint.cjs",
+				".eslint.yaml",
+				".eslint.yml",
+				".eslint.json",
+			})
+			require("conform.formatters.eslint_d").require_cwd = true
+
 			vim.api.nvim_create_user_command("FormatDisable", function(args)
 				if args.bang then
 					-- FormatDisable! will disable formatting just for this buffer
