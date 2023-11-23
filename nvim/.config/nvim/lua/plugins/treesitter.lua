@@ -22,12 +22,14 @@ return {
 
 			ensure_installed = {
 				"bash",
+				"go",
 				"javascript",
 				"lua",
 				"markdown",
 				"markdown_inline",
 				"regex",
 				"rust",
+				"templ",
 				"typescript",
 				"vim",
 				"vue",

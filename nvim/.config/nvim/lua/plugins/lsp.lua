@@ -25,6 +25,7 @@ return {
 
 			local servers = {
 				cssls = {},
+				gopls = {},
 				graphql = {},
 				html = {},
 				lemminx = {},
@@ -53,6 +54,7 @@ return {
 						},
 					},
 				},
+				templ = {},
 				volar = {},
 			}
 
