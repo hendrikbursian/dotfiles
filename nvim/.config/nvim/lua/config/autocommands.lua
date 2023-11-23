@@ -13,7 +13,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	end,
 })
 
--- TODO: Check this
 -- Highlight Yanks
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = augroup("highlight_yank"),
@@ -22,20 +21,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank({ timeout = 40 })
 	end,
 })
-
--- TODO: not working yet
--- Set filetypes for custom files
-local group = augroup("filetype")
-local custom_filetypes = {
-	{ pattern = "*.yml.template", filetype = "yaml" },
-	{ pattern = "*.conf.template", filetype = "nginx" },
-}
-for _, ft in pairs(custom_filetypes) do
-	vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-		group = group,
-		pattern = ft.pattern,
-		callback = function()
-			vim.bo.filetype = ft.filetype
-		end,
-	})
-end

@@ -62,6 +62,9 @@ M.get_default_server_config = function(settings)
 		capabilities = M.get_capabilities(),
 		on_attach = M.on_attach,
 		settings = settings,
+		flags = {
+			debounce_text_changes = 150,
+		},
 	}
 end
 
