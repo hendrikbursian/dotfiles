@@ -24,7 +24,6 @@ return {
 			{
 				"<C-b>",
 				function()
-					vim.print(utils.get_git_dir_or_cwd())
 					require("neo-tree.command").execute({ toggle = true, dir = utils.get_git_dir_or_cwd() })
 				end,
 				desc = "Explorer NeoTree (root)",
@@ -42,13 +41,20 @@ return {
 						dir = reveal_file:match("(.*/)")
 					end
 
-					require("neo-tree.command").execute({
-						toggle = true,
-						reveal = true,
-						dir = dir,
-						reveal_file = reveal_file,
-						reveal_force_cwd = true,
-					})
+					if utils.path.exists(dir) then
+						require("neo-tree.command").execute({
+							toggle = true,
+							reveal = true,
+							dir = dir,
+							reveal_file = reveal_file,
+							reveal_force_cwd = true,
+						})
+					else
+						require("neo-tree.command").execute({
+							toggle = true,
+							dir = utils.get_git_dir_or_cwd(),
+						})
+					end
 				end,
 				desc = "Explorer NeoTree (cwd)",
 			},
