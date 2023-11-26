@@ -1,7 +1,5 @@
-local utils = require("hendrik.utils")
-
 return {
-	{ "mbbill/undotree", event = utils.FileEvent },
+	{ "mbbill/undotree", event = "VeryLazy" },
 
 	{
 		"tpope/vim-unimpaired",

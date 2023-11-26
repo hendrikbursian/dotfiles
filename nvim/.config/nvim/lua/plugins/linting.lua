@@ -4,7 +4,7 @@ local utils = require("hendrik.utils")
 return {
 	{
 		"mfussenegger/nvim-lint",
-		event = utils.FileEvent,
+		event = "VeryLazy",
 		config = function()
 			local linters_by_ft = require("config.linters").linters_by_ft
 

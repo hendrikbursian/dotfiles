@@ -4,7 +4,7 @@ return {
 	-- Backticks as text-object
 	{
 		"keaising/textobj-backtick.nvim",
-		event = utils.FileEvent,
+		event = "VeryLazy",
 		config = true,
 	},
 
@@ -127,7 +127,7 @@ return {
 	-- Context lines
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-		event = utils.FileEvent,
+		event = "VeryLazy",
 		opts = {
 			enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
 			throttle = true, -- Throttles plugin updates (may improve performance)

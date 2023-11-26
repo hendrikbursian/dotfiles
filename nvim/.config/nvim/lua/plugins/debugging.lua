@@ -79,7 +79,7 @@ return {
 			-- Remember breakpoints
 			{
 				"Weissle/persistent-breakpoints.nvim",
-				event = utils.FileEvent,
+				event = "VeryLazy",
                 -- stylua: ignore
 				keys = {
 					{ "<leader>bb", function() require("persistent-breakpoints.api").toggle_breakpoint() end, },

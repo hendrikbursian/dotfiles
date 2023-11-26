@@ -52,7 +52,7 @@ return {
 	-- Better search hightlights
 	{
 		"junegunn/vim-slash",
-		event = utils.FileEvent,
+		event = "VeryLazy",
 		keys = {
 			{ "<Plug>(slash-after)", "zz" },
 		},
@@ -76,7 +76,7 @@ return {
 	-- Clipboard
 	{
 		"svermeulen/vim-yoink",
-		event = utils.FileEvent,
+		event = "VeryLazy",
 		keys = {
 			{ "<leader>n", "<plug>(YoinkPostPasteSwapBack)" },
 			{ "<leader>p", "<plug>(YoinkPostPasteSwapForward)" },
@@ -102,7 +102,7 @@ return {
 	{
 		"mg979/vim-visual-multi",
 		branch = "master",
-		event = utils.FileEvent,
+		event = "VeryLazy",
 		config = function()
 			vim.g.VM_mouse_mappings = 1
 			vim.g.VM_maps.Undo = "u"

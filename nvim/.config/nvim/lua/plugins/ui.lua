@@ -5,12 +5,67 @@ return {
 	{
 		"mhinz/vim-startify",
 		lazy = false,
+		config = function()
+			local function git_modified()
+				local files = vim.fn.systemlist("git ls-files -m 2>/dev/null")
+				return vim.fn.map(files, "{'line': v:val, 'path': v:val}")
+			end
+
+			local function git_untracked()
+				local files = vim.fn.systemlist("git ls-files -o --exclude-standard 2>/dev/null")
+				return vim.fn.map(files, "{'line': v:val, 'path': v:val}")
+			end
+
+            -- stylua: ignore
+			vim.g.startify_lists = {
+				{ type = "sessions",    header = { "   Sessions" } },
+				{ type = git_modified,  header = { "   Git modified" } },
+				{ type = "dir",         header = { "   MRU " .. vim.loop.cwd() } },
+				{ type = "files",       header = { "   MRU" } },
+				{ type = git_untracked, header = { "   Git untracked" } },
+				{ type = "bookmarks",   header = { "   Bookmarks" } },
+				{ type = "commands",    header = { "   Commands" } },
+			}
+
+			local function get_session_name()
+				local path = vim.fn.fnamemodify(vim.loop.cwd(), ":~:t")
+				if vim.fn.empty(path) then
+					path = "no-project"
+				end
+				local branch = vim.fn.system({ "git", "branch", "--show-current" })
+				if vim.fn.empty(branch) then
+					branch = ""
+				else
+					branch = "-" .. branch
+				end
+
+				return vim.fn.substitute(path .. branch, "/", "-", "g")
+			end
+
+			local group = vim.api.nvim_create_augroup("config_startify", { clear = true })
+
+			-- vim.api.nvim_create_autocmd("User", {
+			-- 	group = group,
+			-- 	pattern = "StartifyReady",
+			-- 	callback = function()
+			-- 		vim.cmd("SLoad " .. get_session_name())
+			-- 	end,
+			-- })
+
+			vim.api.nvim_create_autocmd("VimLeavePre", {
+				group = group,
+				pattern = "*",
+				callback = function()
+					vim.cmd("SSave! " .. get_session_name())
+				end,
+			})
+		end,
 	},
 
 	-- Symbol highlighting
 	{
 		"RRethy/vim-illuminate",
-		event = utils.FileEvent,
+		event = "VeryLazy",
 	},
 
 	{

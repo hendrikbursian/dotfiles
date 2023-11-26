@@ -73,7 +73,7 @@ return {
 
 	{
 		"lewis6991/gitsigns.nvim",
-		event = utils.FileEvent,
+		event = "VeryLazy",
 		opts = {
 			current_line_blame = true,
 

@@ -1,10 +1,8 @@
-local utils = require("hendrik.utils")
-
 -- LSP
 return {
 	{
 		"neovim/nvim-lspconfig",
-		event = utils.FileEvent,
+		event = "VeryLazy",
 		dependencies = {
 			-- Additional lua configuration
 			{

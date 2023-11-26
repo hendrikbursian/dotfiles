@@ -4,7 +4,7 @@ local utils = require("hendrik.utils")
 return {
 	"folke/todo-comments.nvim",
 	cmd = { "TodoTrouble", "TodoTelescope" },
-	event = utils.FileEvent,
+	event = "VeryLazy",
 	config = true,
         -- stylua: ignore
         keys = {

@@ -13,8 +13,6 @@ local mason_names = {
 
 local M = {}
 
-M.FileEvent = { "BufReadPost", "BufNewFile", "BufWritePre" }
-
 -- https://github.com/neovim/nvim-lspconfig/blob/6428fcab6f3c09e934bc016c329806314384a41e/lua/lspconfig/util.lua
 -- Some path utilities
 M.path = (function()
