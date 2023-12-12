@@ -5,11 +5,12 @@
     packages:
       - apt-transport-https
       - bash
-      - brave-browser
       - build-essential
       - curl
       - dash
+      - direnv
       - fd-find
+      - fuse
       - fzf
       - gcc
       - git
@@ -35,36 +36,57 @@
       - xsel
       - zlib1g-dev
       - zsh
-  pre_tasks:
-    - name: Add brave-browser apt repository
-      shell: |
-        curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-        echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-      become: true
+  tasks:
     - name: Upgrade dist
       apt:
         update_cache: true
         upgrade: "dist"
       become: true
       ignore_errors: true
+
     - name: Update cache
       apt:
         update_cache: true
       become: true
       ignore_errors: true
-  tasks:
+
     - name: Install packages
       apt:
         name: "{{ item }}"
         state: latest
       loop: "{{ packages }}"
       become: true
+      ignore_errors: true
+
     - name: Add node package managers
       shell: |
         # Install bun
         command: curl -fsSL https://bun.sh/install | bash
-    # TODO: add omz
-    # - name: Add OMZ
-    #   shell: |
-    #     # Install bun
-    #     command: curl -fsSL https://bun.sh/install | bash
+
+    - name: Add OMZ
+      shell: |
+        chsh -s $(which zsh)
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      ignore_errors: true
+
+    - name: Add brave key
+      shell: |
+        curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+      become: true
+
+    - name: Update cache
+      apt:
+        update_cache: true
+      become: true
+      ignore_errors: true
+
+    - name: Install brave
+      apt:
+        name: "brave-browser"
+        state: latest
+      become: true
+
+    - name: Install rust
+      shell: |
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y

@@ -1,7 +1,7 @@
 - name: Install SSH key
   hosts: 127.0.0.1
   vars:
-    source_key: ssh/id_ed25519
+    source_key: data/ssh/id_ed25519
     dest_key: $HOME/.ssh/id_ed25519
 
   tasks:

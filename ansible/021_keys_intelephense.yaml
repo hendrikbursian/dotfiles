@@ -2,7 +2,7 @@
   hosts: 127.0.0.1
 
   vars:
-    source_key: intelephense/licence.txt
+    source_key: data/intelephense/licence.txt
     dest_key: $HOME/intelephense/licence.txt
 
   tasks:

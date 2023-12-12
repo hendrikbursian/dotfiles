@@ -1,0 +1,21 @@
+- name: Install tools
+  ansible.builtin.import_playbook: 010_tools.yaml
+    
+- name: Install ssh keys
+  ansible.builtin.import_playbook: 020_keys_ssh.yaml
+
+- name: Install intelephense keys
+  ansible.builtin.import_playbook: 021_keys_intelephense.yaml
+
+- name: Install dotfiles 
+  ansible.builtin.import_playbook: 040_dotfiles.yaml
+
+- name: Install xkb file
+  ansible.builtin.import_playbook: 041_xkb.yaml
+
+- name: Install neovim
+  ansible.builtin.import_playbook: 050_apps_neovim.yaml
+
+- name: Install asdf 
+  ansible.builtin.import_playbook: 050_asdf.yaml
+

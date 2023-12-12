@@ -19,11 +19,6 @@
           versions:
             - latest
           global: latest
-        - name: python
-          versions:
-            - latest:3
-          global: "latest:3"
       environment:
         ASDF_DOWNLOAD_PATH: "$HOME/.asdf"
         ASDF_NPM_DEFAULT_PACKAGES_FILE: "$HOME/.config/asdf/.default-npm-packages"
-        ASDF_PYTHON_DEFAULT_PACKAGES_FILE: "$HOME/.config/asdf/.default-python-packages"
