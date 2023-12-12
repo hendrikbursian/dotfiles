@@ -32,7 +32,7 @@
       - unzip
       - vim
       - wget
-      - yarn
+      - xsel
       - zlib1g-dev
       - zsh
   pre_tasks:
@@ -40,11 +40,6 @@
       shell: |
         curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
         echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-      become: true
-    - name: Add yarn apt repository
-      shell: |
-        sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
-        echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
       become: true
     - name: Upgrade dist
       apt:
@@ -66,8 +61,10 @@
       become: true
     - name: Add node package managers
       shell: |
-        # Install pnpm
-        command: curl -fsSL https://get.pnpm.io/install.sh | sh -
-
         # Install bun
         command: curl -fsSL https://bun.sh/install | bash
+    # TODO: add omz
+    # - name: Add OMZ
+    #   shell: |
+    #     # Install bun
+    #     command: curl -fsSL https://bun.sh/install | bash
