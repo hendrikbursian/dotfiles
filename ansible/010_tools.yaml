@@ -23,6 +23,7 @@
       - lynx
       - make
       - net-tools
+      - redshift
       - ripgrep
       - rsync
       - socat
