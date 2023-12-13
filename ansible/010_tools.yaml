@@ -114,3 +114,7 @@
       shell: |
         curl https://sh.rustup.rs -sSf | sh -s -- -y
         rm $HOME/.zshenv 2&> /dev/null
+
+    - name: Set docker user group
+      shell: |
+        sudo usermod -aG docker $USER
