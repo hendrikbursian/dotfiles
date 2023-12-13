@@ -3,52 +3,6 @@
   connection: local
   vars:
     packages:
-      - apt-transport-https
-      - bash
-      - build-essential
-      - curl
-      - dash
-      - direnv
-      - fd-find
-      - fuse
-      - fzf
-      - gcc
-      - git
-      - gpg
-      - htop
-      - i3xrocks-battery
-      - i3xrocks-cpu-usage
-      - i3xrocks-disk-capacity
-      - i3xrocks-memory
-      - i3xrocks-microphone
-      - i3xrocks-net-traffic
-      - i3xrocks-updates
-      - i3xrocks-volume
-      - i3xrocks-wifi
-      - inotify-tools
-      - iputils-ping
-      - jq
-      - llvm
-      - lynx
-      - make
-      - net-tools
-      - redshift
-      - regolith-desktop
-      - regolith-look-nord
-      - regolith-session-flashback
-      - ripgrep
-      - rsync
-      - socat
-      - stow
-      - tldr
-      - tmux
-      - tree
-      - unzip
-      - vim
-      - wget
-      - xsel
-      - zlib1g-dev
-      - zsh
   tasks:
     - name: Upgrade dist
       apt:
@@ -57,18 +11,87 @@
       become: true
       ignore_errors: true
 
-    - name: Update cache
+    - name: Install essential packages
       apt:
+        pkg:
+          - curl
+          - gpg
+        state: latest
         update_cache: true
       become: true
       ignore_errors: true
 
+    - name: Add brave key
+      shell: |
+        curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+      become: true
+
+    - name: Add regolith key
+      shell: |
+        curl -fsSL https://regolith-desktop.org/regolith.key | gpg --dearmor | sudo tee /usr/share/keyrings/regolith-archive-keyring.gpg > /dev/null
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/regolith-archive-keyring.gpg] https://regolith-desktop.org/release-3_0-ubuntu-jammy-amd64 jammy main" | sudo tee /etc/apt/sources.list.d/regolith.list
+      become: true
+
+
     - name: Install packages
       apt:
-        name: "{{ item }}"
+        pkg:
+          - apt-transport-https
+          - bash
+          - brave-browser
+          - build-essential
+          - dash
+          - direnv
+          - fd-find
+          - fuse
+          - fzf
+          - gcc
+          - git
+          - gpg
+          - htop
+          - i3xrocks-battery
+          - i3xrocks-cpu-usage
+          - i3xrocks-disk-capacity
+          - i3xrocks-memory
+          - i3xrocks-microphone
+          - i3xrocks-net-traffic
+          - i3xrocks-updates
+          - i3xrocks-volume
+          - i3xrocks-wifi
+          - inotify-tools
+          - iputils-ping
+          - jq
+          - llvm
+          - lynx
+          - make
+          - net-tools
+          - redshift
+          - regolith-desktop
+          - regolith-look-nord
+          - regolith-session-flashback
+          - ripgrep
+          - rsync
+          - socat
+          - stow
+          - tldr
+          - tmux
+          - tree
+          - unzip
+          - vim
+          - wget
+          - xsel
+          - zlib1g-dev
+          - zsh
         state: latest
-      loop: "{{ packages }}"
+        update_cache: true
       become: true
+      ignore_errors: true
+
+    - name: Add Oh my zsh
+      shell: |
+        chsh -s $(which zsh)
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
       ignore_errors: true
 
     - name: Add node package managers
@@ -76,30 +99,7 @@
         # Install bun
         command: curl -fsSL https://bun.sh/install | bash
 
-    - name: Add OMZ
-      shell: |
-        chsh -s $(which zsh)
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-      ignore_errors: true
-
-    - name: Add brave key
-      shell: |
-        curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-      become: true
-
-    - name: Update cache
-      apt:
-        update_cache: true
-      become: true
-      ignore_errors: true
-
-    - name: Install brave
-      apt:
-        name: "brave-browser"
-        state: latest
-      become: true
-
     - name: Install rust
       shell: |
-        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
+        curl https://sh.rustup.rs -sSf | sh -s -- -y
+        rm $HOME/.zshenv
