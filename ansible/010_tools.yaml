@@ -16,6 +16,15 @@
       - git
       - gpg
       - htop
+      - i3xrocks-battery
+      - i3xrocks-cpu-usage
+      - i3xrocks-disk-capacity
+      - i3xrocks-memory
+      - i3xrocks-microphone
+      - i3xrocks-net-traffic
+      - i3xrocks-updates
+      - i3xrocks-volume
+      - i3xrocks-wifi
       - inotify-tools
       - iputils-ping
       - jq
@@ -24,6 +33,9 @@
       - make
       - net-tools
       - redshift
+      - regolith-desktop
+      - regolith-look-nord
+      - regolith-session-flashback
       - ripgrep
       - rsync
       - socat
