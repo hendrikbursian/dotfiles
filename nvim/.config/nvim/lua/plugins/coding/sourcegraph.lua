@@ -1,8 +1,7 @@
-local utils = require("hendrik.utils")
-
 return {
 	{
 		"sourcegraph/sg.nvim",
+		enabled = false,
 		event = "VeryLazy",
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim", "nvim-lspconfig" },
 		opts = function()

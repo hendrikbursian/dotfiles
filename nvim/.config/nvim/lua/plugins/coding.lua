@@ -77,6 +77,7 @@ return {
 	{
 		"svermeulen/vim-yoink",
 		event = "VeryLazy",
+		enable = false,
 		keys = {
 			{ "<leader>n", "<plug>(YoinkPostPasteSwapBack)" },
 			{ "<leader>p", "<plug>(YoinkPostPasteSwapForward)" },
