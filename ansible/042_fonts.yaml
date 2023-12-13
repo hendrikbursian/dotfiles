@@ -1,0 +1,9 @@
+- name: Install fonts
+  hosts: 127.0.0.1
+
+  tasks:
+    - name: Install Plex
+      shell: |
+        mkdir -p $HOME/.local/share/fonts
+        unzip -o ./data/fonts/IBMPlexMono.zip -d $HOME/hendrik.local/share/fonts
+        fc-cache -fv

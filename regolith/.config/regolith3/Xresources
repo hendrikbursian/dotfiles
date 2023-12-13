@@ -1,4 +1,4 @@
-wm.bar.mode: hide
+!wm.bar.mode: hide
 
 wm.gaps.inner.size:	0
 wj.gaps.outer.size:	0

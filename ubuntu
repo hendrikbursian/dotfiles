@@ -3,7 +3,7 @@
 rm $HOME/.config/redshift.conf 2&> /dev/null
 
 if [[ -z $STOW_FOLDERS ]]; then
-    STOW_FOLDERS="zsh,bin,asdf,nvim,tmux,z,regolith,fonts,conf,redshift"
+    STOW_FOLDERS="zsh,bin,asdf,nvim,tmux,z,regolith,conf,redshift"
 fi
 
 if [[ -z $DOTFILES ]]; then
@@ -13,4 +13,5 @@ fi
 STOW_FOLDERS=$STOW_FOLDERS DOTFILES=$DOTFILES $DOTFILES/install
 
 rm $HOME/.config/redshift.conf 2&> /dev/null &&
-cp ./redshift/.config/redshift.conf $HOME/.config/redshift.conf 
+cp $HOME/.dotfiles/redshift/.config/redshift.conf $HOME/.config/redshift.conf 
+regolith-look refresh
