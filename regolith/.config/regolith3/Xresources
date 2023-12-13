@@ -1,10 +1,12 @@
 !wm.bar.mode: hide
 
 wm.gaps.inner.size:	0
-wj.gaps.outer.size:	0
+wm.gaps.outer.size:	0
 wm.floatingwindow.border.size:	0
 wm.window.border.size:	0
-xft.dpi: 192
+! xft.dpi: 192
+
+gnome.terminal.font: BlexMono Nerd Font Text 11
 
 wm.workspace.01.name: 1: 1 Konsole
 wm.workspace.02.name: 2: 2 Arbeit
