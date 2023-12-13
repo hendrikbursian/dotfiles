@@ -12,6 +12,11 @@ fi
 
 STOW_FOLDERS=$STOW_FOLDERS DOTFILES=$DOTFILES $DOTFILES/install
 
+# redshift
 rm $HOME/.config/redshift.conf 2&> /dev/null &&
 cp $HOME/.dotfiles/redshift/.config/redshift.conf $HOME/.config/redshift.conf 
+systemctl --user enable redshift
+systemctl --user start redshift
+
+# regolith
 regolith-look refresh

@@ -3,6 +3,6 @@
 pushd $DOTFILES
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
 do
-    stow --restow --adopt --override='.*' $folder
+    stow --restow --override='.*' $folder
 done
 popd
