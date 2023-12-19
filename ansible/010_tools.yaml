@@ -57,6 +57,7 @@
           - fd-find
           - fuse
           - fzf
+          - gawk
           - gcc
           - git
           - gpg

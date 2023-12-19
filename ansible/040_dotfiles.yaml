@@ -1,5 +1,0 @@
-- name: Install Dotfiles
-  hosts: 127.0.0.1
-  tasks:
-    - name: Install dotfiles
-      command: "{{ lookup('env', 'HOME') }}/.dotfiles/ubuntu"

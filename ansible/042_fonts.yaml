@@ -5,5 +5,5 @@
     - name: Install Plex
       shell: |
         mkdir -p $HOME/.local/share/fonts
-        unzip -o ./data/fonts/IBMPlexMono.zip -d $HOME/hendrik.local/share/fonts
+        unzip -o ./data/fonts/IBMPlexMono.zip -d $HOME/.local/share/fonts
         fc-cache -fv
