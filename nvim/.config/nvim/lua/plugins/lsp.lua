@@ -44,6 +44,9 @@ return {
 				prismals = {},
 				tailwindcss = {
 					tailwindCSS = {
+						includeLanguages = {
+							templ = "html",
+						},
 						experimental = {
 							-- classRegex = {
 							--     "ui:\\s*{([^)]*)\\s*}", "[\"'`]([^\"'`]*).*?[\"'`]",

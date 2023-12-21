@@ -37,6 +37,7 @@ export ASDF_NPM_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/.default-npm-packag
 export ASDF_PYTHON_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/.default-python-packages"
 export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 export BUN_INSTALL="$HOME/.bun"
+export PYENV_ROOT="$HOME/.pyenv"
 
 # Path
 export PATH="$HOME/bin:$PATH"
@@ -51,6 +52,7 @@ export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PNPM_HOME:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.deno/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 LOCAL_MYSQL_PATH=/opt/Local/resources/extraResources/lightning-services/mysql-8.0.16+6/bin/linux/bin
 

@@ -14,6 +14,7 @@ M.formatters_by_ft = {
 	yaml = { { "prettierd", "prettier" } },
 	json = { { "prettierd", "prettier" } },
 	php = { { "phpcbf" } },
+	templ = { { "templ" } },
 
 	-- filetypes without defined formatters
 	["_"] = { "trim_newlines", "trim_whitespaces" },

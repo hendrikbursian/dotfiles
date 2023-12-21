@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.python3_host_prog = "python3"
 vim.g.maplocalleader = " "
 
 vim.opt.path:append({ "**" })

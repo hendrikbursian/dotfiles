@@ -72,5 +72,10 @@ if command -v phpenv &> /dev/null; then eval "$(phpenv init -)"; fi
 # direnv
 eval "$(direnv hook zsh)"
 
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && 
+eval "$(pyenv init -)" 
+
 # Overrides
 [ -s "$ZDOTDIR/.zshrc.local" ] && source "$ZDOTDIR/.zshrc.local"
