@@ -3,15 +3,8 @@
 ## Environment variables
 export COLORTERM="truecolor"
 
-export DOTFILES="$HOME/.dotfiles"
-
-# XDG
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
-export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
-
 # ZSH Config
-export ZSH_COMPDUMP="XDG_CACHE_HOME/zsh/.zcompdump-${HOST/.*/}-${ZSH_VERSION}"
+export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/.zcompdump-${HOST/.*/}-${ZSH_VERSION}"
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_THEME="avit"
 export ENABLE_CORRECTION="false"
@@ -22,13 +15,6 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 export HISTFILE="$HOME/.zsh_history"
 export HIST_STAMPS="yyyy-mm-dd"
-
-export PROMPT='$(_user_host)${_current_dir} $(git_prompt_info)
-%{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
-
-# Editor
-export EDITOR="nvim"
-export VISUAL="nvim"
 
 # Misc
 export COMPOSER_HOME="$XDG_CONFIG_HOME/composer"
