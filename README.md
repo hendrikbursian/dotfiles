@@ -12,6 +12,9 @@ git clone https://github.com/hendrikbursian/dotfiles.git ~/.dotfiles
 
 # Install dotfiles
 ~/.dotfiles/ubuntu
+
+# Add ssh url to dotfiles
+git -C ~/.dotfiles remote set-url origin git@github.com:hendrikbursian/dotfiles.git
 ```
 
 ## Run Sway on iGPU
