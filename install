@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 pushd $DOTFILES
+echo "Installing dotfiles"
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
 do
     stow --restow --override='.*' $folder
