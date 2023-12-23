@@ -1,5 +1,9 @@
 return {
-	{ "mbbill/undotree", event = "VeryLazy" },
+	{
+		"mbbill/undotree",
+		enabled = false,
+		event = "VeryLazy",
+	},
 
 	{
 		"tpope/vim-unimpaired",
