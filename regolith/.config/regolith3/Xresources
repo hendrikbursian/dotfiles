@@ -36,3 +36,6 @@ regolith.wallpaper.file: ~/.config/regolith3/wallpaper.jpeg
 regolith.wallpaper.options: zoom
 !regolith.look.path: /usr/share/regolith-look/ayu
 regolith.look.path: /usr/share/regolith-look/nord
+
+regolith.sway.unsupported_gpu: true
+wm.bar.status_config: ~/.config/.i3status-rust.conf
