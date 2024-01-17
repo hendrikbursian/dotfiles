@@ -12,7 +12,7 @@ vim.opt.synmaxcol = 2000
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-vim.opt.foldlevelstart = 3
+vim.opt.foldlevelstart = 99
 vim.opt.foldmethod = "indent"
 
 -- Formatting
