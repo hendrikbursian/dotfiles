@@ -2,34 +2,68 @@ return {
 	{
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
-		opts = {
-			nav_first_in_list = true,
-			--projects = {
-			--    ["/home/hendrik/workspace/quokka-backend"] = {
-			--        term = {
-			--            cmds = {
-			--                " from terminal harpoon?"",
-			--            }
-			--        }
-			--    }
-			--}
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
 		},
+		opts = function()
+			local utils = require("hendrik.utils")
+
+			return {
+				settings = {
+					key = utils.get_git_dir_or_cwd,
+				},
+				default = {
+					get_root_dir = utils.get_git_dir_or_cwd,
+				},
+			}
+		end,
         -- stylua: ignore
         keys = {
             { "<leader>a", function() require("harpoon"):list():append() end },
-            { "<C-e>", 
-                function()
-                    local harpoon = require("harpoon")
-                    harpoon.ui:toggle_quick_menu(harpoon:list())
-                end
-            },
-            { "<C-j>",     function() require("harpoon"):list():select(1) end },
-            { "<C-k>",     function() require("harpoon"):list():select(2) end },
-            { "<C-l>",     function() require("harpoon"):list():select(3) end },
+            "<C-e>",
+            -- { "<C-e>", 
+            --     function()
+            --         local harpoon = require("harpoon")
+            --         harpoon.ui:toggle_quick_menu(harpoon:list())
+            --     end
+            -- },
+            { "<C-S-j>",     function() require("harpoon"):list():select(1) end },
+            { "<C-S-k>",     function() require("harpoon"):list():select(2) end },
+            { "<C-S-l>",     function() require("harpoon"):list():select(3) end },
+            { "<C-S-;>",     function() require("harpoon"):list():select(4) end },
+
+             -- Toggle previous & next buffers stored within Harpoon list
+            { "<C-S-p>",     function() require("harpoon"):list():prev() end },
+            { "<C-S-n>",     function() require("harpoon"):list():next() end },
         },
 		config = function(_, opts)
 			local harpoon = require("harpoon")
+			local config = require("telescope.config").values
+
+			vim.print(opts)
 			harpoon:setup(opts)
+
+			local function toggle_telescope(harpoon_files)
+				local file_paths = {}
+				for _, item in ipairs(harpoon_files.items) do
+					table.insert(file_paths, item.value)
+				end
+				require("telescope.pickers")
+					.new({}, {
+						prompt_title = "Harpoon",
+						finder = require("telescope.finders").new_table({
+							results = file_paths,
+						}),
+
+						previewer = config.file_previewer({}),
+						sorter = config.generic_sorter({}),
+					})
+					:find()
+			end
+
+			vim.keymap.set("n", "<C-e>", function()
+				toggle_telescope(harpoon:list())
+			end, { desc = "Open harpoon window" })
 		end,
 	},
 
