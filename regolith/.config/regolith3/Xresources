@@ -4,7 +4,6 @@ wm.gaps.inner.size:	0
 wm.gaps.outer.size:	0
 wm.floatingwindow.border.size:	0
 wm.window.border.size:	0
-! xft.dpi: 192
 
 gnome.terminal.font: BlexMono Nerd Font Text 11
 
@@ -15,8 +14,8 @@ wm.workspace.04.name: 4: 4 Notizen
 wm.workspace.05.name: 5: 5 Nachrichten
 wm.workspace.06.name: 6: 6 Finanzen
 wm.workspace.07.name: 7: 7 Musik
-wm.workspace.08.name: 8: 8 Movies
-wm.workspace.09.name: 9: 9
+wm.workspace.08.name: 8: 8 Bibel
+wm.workspace.09.name: 9: 9 
 wm.workspace.10.name: 10: 10
 wm.workspace.11.name: 11: 11
 wm.workspace.12.name: 12: 12
@@ -29,13 +28,10 @@ wm.workspace.18.name: 18: 18
 wm.workspace.19.name: 19: 19
 wm.workspace.20.name: 20: 20
 
-
 i3xrocks.date.format2: %a %d/%m %H:%M
 
 regolith.wallpaper.file: ~/.config/regolith3/wallpaper.jpeg
 regolith.wallpaper.options: zoom
-!regolith.look.path: /usr/share/regolith-look/ayu
-regolith.look.path: /usr/share/regolith-look/nord
 
-regolith.sway.unsupported_gpu: true
 wm.bar.status_config: ~/.config/.i3status-rust.conf
+regolith.look.path: /usr/share/regolith-look/nevil
