@@ -39,9 +39,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.deno/bin:$PATH"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
-LOCAL_MYSQL_PATH=/opt/Local/resources/extraResources/lightning-services/mysql-8.0.16+6/bin/linux/bin
+export CAPACITOR_ANDROID_STUDIO_PATH=/home/hendrik/.nix-profile/bin/android-studio
 
-[ -d $LOCAL_MYSQL_PATH ] && export PATH="$PATH:$LOCAL_MYSQL_PATH"
 . "$HOME/.cargo/env"
 
 # Export DISPLAY on WSL
@@ -124,3 +123,5 @@ eval "$(pyenv init -)"
 
 # Overrides
 [ -s "$ZDOTDIR/.zshrc.local" ] && source "$ZDOTDIR/.zshrc.local"
+export ANDROID_HOME=/home/hendrik/Android/Sdk
+export ANDROID_SDK_ROOT=/home/hendrik/Android/Sdk
