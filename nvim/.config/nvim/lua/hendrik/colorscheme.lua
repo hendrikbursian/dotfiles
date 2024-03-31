@@ -5,8 +5,30 @@ local colorschemes = {
 local dark_colorscheme_index = 1
 local light_colorscheme_index = 1
 
+local function is_color_dark(color)
+	-- Convert color code to RGB components
+	local r = tonumber(color:sub(2, 3), 16) / 255
+	local g = tonumber(color:sub(4, 5), 16) / 255
+	local b = tonumber(color:sub(6, 7), 16) / 255
+
+	-- Calculate luminance using relative luminance formula
+	local luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+	-- Return true if luminance is less than or equal to 0.5 (considered dark), otherwise false
+	return luminance <= 0.5
+end
+
+local function is_windows()
+	return vim.fn.has("wsl") == 1 or vim.fn.has("win32") == 1
+end
+
+local function is_linux()
+	local uname_output = vim.fn.system("uname")
+	return uname_output:match("^Linux")
+end
+
 local function is_dark_mode()
-	if vim.fn.has("wsl") == 1 or vim.fn.has("win32") == 1 then
+	if is_windows() then
 		local apps_use_light_theme_value = vim.fn.system(
 			'cmd.exe /c reg query "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize" /v AppsUseLightTheme'
 		)
@@ -20,9 +42,11 @@ local function is_dark_mode()
 		end
 
 		return string.match(apps_use_light_theme_value, "0x0")
+	elseif is_linux() then
+		local terminal_color = vim.fn.system('xrdb -query | grep "gnome.terminal.color0" | cut -d "\t" -f2')
+		return is_color_dark(terminal_color)
 	end
 
-	-- TODO:
 	return vim.opt.background:get() == "dark"
 end
 
