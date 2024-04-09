@@ -12,7 +12,7 @@ set_from_resource $wm.bar.status_command wm.bar.status_command i3xrocks -u ~/.co
 # The bar configuration
 bar {
   position top 
-  height 18 
+  height 18
   mode $wm.bar.mode
   font pango:$wm.bar.font
   separator_symbol $wm.bar.separatorchar

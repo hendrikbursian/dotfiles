@@ -11,58 +11,15 @@
       become: true
       ignore_errors: true
 
-    - name: Install essential packages
-      apt:
-        pkg:
-          - curl
-          - ca-certificates
-          - gpg
-        state: latest
-        update_cache: true
-      become: true
-      ignore_errors: true
-
     - name: Add regolith key
       shell: |
         curl -fsSL https://regolith-desktop.org/regolith.key | gpg --dearmor | sudo tee /usr/share/keyrings/regolith-archive-keyring.gpg > /dev/null
         echo "deb [arch=amd64 signed-by=/usr/share/keyrings/regolith-archive-keyring.gpg] https://regolith-desktop.org/release-3_0-ubuntu-$(. /etc/os-release && echo "$VERSION_CODENAME")-amd64 $(. /etc/os-release && echo "$VERSION_CODENAME") main" | sudo tee /etc/apt/sources.list.d/regolith.list
       become: true
 
-    - name: Add docker key
-      shell: |
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor | sudo tee /etc/apt/keyrings/docker.gpg > /dev/null
-        echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list
-      become: true
-
-    # TODO: Use nix
-    # - name: Add brave key
-    #   shell: |
-    #     curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-    #     echo "deb [arch=amd64 signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-    #   become: true
-
     - name: Install packages
       apt:
         pkg:
-          - apt-transport-https
-          - bash
-          # - brave-browser
-          - build-essential
-          - containerd.io
-          - dash
-          - direnv
-          - docker-buildx-plugin
-          - docker-ce
-          - docker-ce-cli
-          - docker-compose-plugin
-          - fd-find
-          - fuse
-          - fzf
-          - gawk
-          - gcc
-          - git
-          - gpg
-          - htop
           - i3xrocks-battery
           - i3xrocks-cpu-usage
           - i3xrocks-disk-capacity
@@ -72,30 +29,9 @@
           - i3xrocks-updates
           - i3xrocks-volume
           - i3xrocks-wifi
-          - inotify-tools
-          - iputils-ping
-          - jq
-          - llvm
-          - lynx
-          - make
-          - net-tools
-          - redshift
           - regolith-desktop
           - regolith-look-nord
           - regolith-session-flashback
-          - ripgrep
-          - rsync
-          - socat
-          - stow
-          - tldr
-          - tmux
-          - tree
-          - unzip
-          - vim
-          - wget
-          - xsel
-          - zlib1g-dev
-          - zsh
         state: latest
         update_cache: true
       become: true

@@ -39,8 +39,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.deno/bin:$PATH"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
-export CAPACITOR_ANDROID_STUDIO_PATH=/home/hendrik/.nix-profile/bin/android-studio
-
 . "$HOME/.cargo/env"
 
 # Export DISPLAY on WSL
@@ -55,6 +53,7 @@ plugins=(
   git
   fzf
   vi-mode
+  direnv
 )
 
 source "$ZSH"/oh-my-zsh.sh
@@ -113,9 +112,6 @@ _comp_options+=(globdots) # complete dotfiles
 # PHPenv
 if command -v phpenv &> /dev/null; then eval "$(phpenv init -)"; fi
 
-# direnv
-eval "$(direnv hook zsh)"
-
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && 
@@ -123,5 +119,5 @@ eval "$(pyenv init -)"
 
 # Overrides
 [ -s "$ZDOTDIR/.zshrc.local" ] && source "$ZDOTDIR/.zshrc.local"
-export ANDROID_HOME=/home/hendrik/Android/Sdk
-export ANDROID_SDK_ROOT=/home/hendrik/Android/Sdk
+
+. $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh

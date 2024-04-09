@@ -16,3 +16,5 @@ export VISUAL="nvim"
 export PROMPT='$(_user_host)${_current_dir} $(git_prompt_info)
 %{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
 
+
+if [ -e /home/hendrik/.nix-profile/etc/profile.d/nix.sh ]; then . /home/hendrik/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
