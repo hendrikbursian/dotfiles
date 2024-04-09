@@ -9,6 +9,7 @@ local mason_names = {
 	gofmt = false,
 	sql_formatter = "sql-formatter",
 	rustfmt = false,
+	nixpkgs_fmt = "nixpkgs-fmt",
 }
 
 local M = {}

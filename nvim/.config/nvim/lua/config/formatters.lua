@@ -15,7 +15,7 @@ M.formatters_by_ft = {
 	json = { { "prettierd", "prettier" } },
 	php = { { "phpcbf" } },
 	templ = { { "templ" } },
-	nix = { { "nixpkgs-fmt" } },
+	nix = { { "nixpkgs_fmt" } },
 
 	-- filetypes without defined formatters
 	["_"] = { "trim_newlines", "trim_whitespaces" },
