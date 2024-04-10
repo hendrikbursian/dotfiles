@@ -1,6 +1,14 @@
-{ config, pkgs, ... }:
+{ callPackage
+, config
+, pkgs
+, lib
+, ...
+}:
 
 {
+  imports = [
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "hendrik";
@@ -15,16 +23,12 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  # programs.bash = {
-  #   enable = true;
-  #   shellAliases = {
-  #     l = "ls -lisa";
-  #     ".." = "cd ..";
-  #   };
-  # };
+  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.permittedInsecurePackages = [
+  #   "electron-25.9.0"
+  # ];
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
+  # The home.packages option allows you to install Nix packages into your environment.
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -42,15 +46,14 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-
     # Programs
     pkgs.brave
-    # pkgs.masterpdfeditor
+    pkgs.masterpdfeditor
     # pkgs.obsidian
-    # pkgs.onlyoffice-bin_latest
-    # pkgs.scribus
-    # pkgs.skypeforlinux
-    # pkgs.telegram-desktop
+    pkgs.onlyoffice-bin_latest
+    pkgs.scribus
+    pkgs.skypeforlinux
+    pkgs.telegram-desktop
 
     # pkgs.android-studio
     # pkgs.android-tools
@@ -79,7 +82,6 @@
     pkgs.jq
     pkgs.llvm
     pkgs.lynx
-    pkgs.lynx
     pkgs.neovim
     pkgs.nettools
     pkgs.nix
@@ -96,12 +98,16 @@
     pkgs.tree
     pkgs.unzip
     pkgs.vim
+    pkgs.neovim
     pkgs.wget
     pkgs.xsel
+    pkgs.zsh
+    pkgs.oh-my-zsh
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
+
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
@@ -113,6 +119,50 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    ".zshenv".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/.zshenv";
+    ".gitconfig".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/.gitconfig";
+    ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/.tmux.conf";
+    ".asdfrc".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/.asdfrc";
+    ".rgignore".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/.rgignore";
+    ".tool-versions".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/.tool-versions";
+
+    ".local/bin" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/.local/bin";
+      recursive = true;
+    };
+  };
+
+  xdg.configFile = {
+    "nix" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/.config/nix";
+      recursive = true;
+    };
+
+    "zsh" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/.config/zsh";
+      recursive = true;
+    };
+
+    "nvim" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/.config/nvim";
+      recursive = true;
+    };
+
+    ".i3status-rust.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/.config/.i3status-rust.conf";
+    "regolith3" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/.config/regolith3";
+      recursive = true;
+    };
+
+    "asdf" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/.config/asdf";
+      recursive = true;
+    };
+
+    "redshift.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/.config/redshift.conf";
+    "systemd/user/default.target.wants/redshift.service".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/.config/systemd/user/default.target.wants/redshift.service";
+    "systemd/user/redshift.service".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/.config/systemd/user/redshift.service";
   };
 
   # Home Manager can also manage your environment variables through
@@ -136,5 +186,4 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
 }

@@ -29,12 +29,12 @@ vim.opt.number = true
 -- Backups
 vim.opt.hidden = true
 vim.opt.swapfile = false
-vim.opt.directory = os.getenv("XDG_CONFIG_HOME") .. "/nvim/swap//"
+vim.opt.directory = os.getenv("XDG_DATA_HOME") .. "/nvim/swap//"
 vim.opt.backup = true
 vim.opt.writebackup = true
-vim.opt.backupdir = os.getenv("XDG_CONFIG_HOME") .. "/nvim/backup//"
+vim.opt.backupdir = os.getenv("XDG_DATA_HOME") .. "/nvim/backup//"
 vim.opt.undofile = true
-vim.opt.undodir = os.getenv("XDG_CONFIG_HOME") .. "/nvim/undo//"
+vim.opt.undodir = os.getenv("XDG_DATA_HOME") .. "/nvim/undo//"
 
 -- Seaching
 vim.opt.hlsearch = true

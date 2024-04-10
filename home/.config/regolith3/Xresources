@@ -39,5 +39,6 @@ wm.workspace.20.name: 20: 20
 regolith.wallpaper.file: ~/.config/regolith3/wallpaper.jpeg
 regolith.wallpaper.options: zoom
 
-!regolith.look.path: /usr/share/regolith-look/blackhole
+! regolith.look.path: /usr/share/regolith-look/blackhole
+!regolith.look.path: /usr/share/regolith-look/gruvbox
 regolith.look.path: /usr/share/regolith-look/nevil
