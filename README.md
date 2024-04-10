@@ -20,6 +20,7 @@ git -C ~/.dotfiles remote set-url origin git@github.com:hendrikbursian/dotfiles.
 # Run install script
 ```bash
 ~/.dotfiles/ansible/scripts/run_ansible.sh
+```
 
 ## Run Sway on iGPU
 ```bash
