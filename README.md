@@ -12,7 +12,7 @@ sh <(curl -L https://releases.nixos.org/nix/nix-2.17.1/install) --daemon
 git clone https://github.com/hendrikbursian/dotfiles.git ~/.dotfiles
 
 # Let home-manager install everything else
-nix --extra-experimental-features nix-command --extra-experimental-features flakes run home-manager/release-23.11 -- init --switch ~/.dotfiles/
+nix --extra-experimental-features nix-command --extra-experimental-features flakes run home-manager/master -- init --switch ~/.dotfiles/
 
 # Set git ssh url
 git -C ~/.dotfiles remote set-url origin git@github.com:hendrikbursian/dotfiles.git
