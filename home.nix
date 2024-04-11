@@ -55,6 +55,7 @@
     pkgs.skypeforlinux
     pkgs.telegram-desktop
 
+    pkgs.dbeaver
     # pkgs.android-studio
     # pkgs.android-tools
     # pkgs.zulu
