@@ -160,6 +160,11 @@
       recursive = true;
     };
 
+    "direnv" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/direnv";
+      recursive = true;
+    };
+
     "redshift.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/redshift.conf";
     "systemd/user/default.target.wants/redshift.service".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/systemd/user/default.target.wants/redshift.service";
     "systemd/user/redshift.service".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/systemd/user/redshift.service";
