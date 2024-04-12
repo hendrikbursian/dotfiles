@@ -1,6 +1,7 @@
 # Gaps
-wm.gaps.inner.size:	10
-wm.gaps.outer.size:	0
+wm.gaps.inner.size: 10
+wm.gaps.outer.size: 0
+wm.gaps.smart: off
 
 # Window
 wm.window.border.size:	0
