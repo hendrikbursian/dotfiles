@@ -37,9 +37,11 @@ wm.workspace.18.name: 18: 18
 wm.workspace.19.name: 19: 19
 wm.workspace.20.name: 20: 20
 
+wm.binding.lock: Escape
+wm.binding.sleep: Shift+Escape
+
 regolith.wallpaper.file: ~/.config/regolith3/wallpaper.jpeg
 regolith.wallpaper.options: zoom
 
 ! regolith.look.path: /usr/share/regolith-look/blackhole
-!regolith.look.path: /usr/share/regolith-look/gruvbox
 regolith.look.path: /usr/share/regolith-look/nevil

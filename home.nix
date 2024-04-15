@@ -66,9 +66,6 @@
     pkgs.curl
     pkgs.comma
     pkgs.direnv
-    pkgs.docker
-    pkgs.docker-buildx
-    pkgs.docker-compose
     pkgs.fd
     pkgs.fuse3
     pkgs.fzf
