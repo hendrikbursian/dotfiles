@@ -25,7 +25,7 @@
         NIX_CONFIG = "extra-experimental-features = nix-command flakes";
 
         packages = [
-	  pkgs.home-manager
+          pkgs.home-manager
           pkgs.git
         ];
       };
