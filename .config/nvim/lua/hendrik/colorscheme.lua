@@ -71,10 +71,35 @@ M.add = function(colorscheme)
 	end
 end
 
+local function find_schema_index(colorschemes, scheme_name)
+	for i, v in ipairs(colorschemes) do
+		if v.schema == scheme_name then
+			return i
+		end
+	end
+
+	return nil
+end
+
 local did_init = false
 M.init = function()
 	if did_init == true then
 		return
+	end
+
+	if is_linux() then
+		local regolith_look = vim.fn.system('xrdb -query | grep "regolith.look:" | cut -f2')
+		if string.match(regolith_look, "gruvbox") then
+			local index = find_schema_index(colorschemes.dark, "gruvbox")
+			if index ~= nil then
+				dark_colorscheme_index = index
+			end
+		elseif string.match(regolith_look, "nord") then
+			local index = find_schema_index(colorschemes.dark, "nord")
+			if index ~= nil then
+				dark_colorscheme_index = index
+			end
+		end
 	end
 
 	if is_dark_mode() then

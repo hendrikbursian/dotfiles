@@ -44,6 +44,7 @@ return {
 	{
 		"casonadams/nord.vim",
 		lazy = false,
+		priority = 1000,
 		config = function()
 			colorscheme.add({
 				schema = "nord",
@@ -69,8 +70,8 @@ return {
 
 	{
 		"gruvbox-community/gruvbox",
-		priority = 1000,
-		keys = keys,
+		lazy = false,
+		priority = 900,
 		config = function()
 			colorscheme.add({
 				schema = "gruvbox",
