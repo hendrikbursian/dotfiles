@@ -16,6 +16,14 @@ return {
 				return vim.fn.map(files, "{'line': v:val, 'path': v:val}")
 			end
 
+			vim.g.startify_custom_header = {
+				"   Home",
+				"",
+				"   =============================================================================",
+			}
+			vim.g.startify_enable_special = 0
+			vim.g.startify_enable_unsafe = 1
+
             -- stylua: ignore
 			vim.g.startify_lists = {
 				{ type = "sessions",    header = { "   Sessions" } },
