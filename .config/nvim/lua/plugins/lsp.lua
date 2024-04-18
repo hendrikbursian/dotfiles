@@ -57,6 +57,20 @@ return {
 				},
 				templ = {},
 				volar = {},
+				intelephense = {
+					intelephense = {
+                        -- stylua: ignore
+						stubs = { "Core", "PDO", "Phar", "Reflection", "SPL", "SimpleXML", "acf-pro", "bcmath", "bz2", "calendar", "curl", "date", "dba", "dom", "enchant", "fileinfo", "filter", "ftp", "gd", "genesis", "gettext", "hash", "iconv", "imap", "intl", "json", "ldap", "libxml", "mbstring", "mcrypt", "mysql", "mysqli", "password", "pcntl", "pcre", "pdo_mysql", "polylang", "readline", "recode", "regex", "session", "soap", "sockets", "sodium", "standard", "superglobals", "sysvsem", "sysvshm", "tokenizer", "woocommerce", "Wordpress", "wp-cli", "xdebug", "xml", "xmlreader", "xmlwriter", "yaml", "zip", "zlib" },
+						environment = {
+							includePaths = {
+								os.getenv("COMPOSER_HOME") .. "/vendor/php-stubs",
+							},
+						},
+						files = {
+							maxSize = 32 * 1024 * 1024, -- MB
+						},
+					},
+				},
 			}
 
 			local opts = {
@@ -119,7 +133,7 @@ return {
 
 	{ import = "plugins.lsp.lang.typescript" },
 	{ import = "plugins.lsp.lang.rust" },
-	{ import = "plugins.lsp.lang.intelephense" },
+	-- { import = "plugins.lsp.lang.intelephense" },
 	{ import = "plugins.lsp.lang.yamlls" },
 	{ import = "plugins.lsp.lang.jsonls" },
 }
