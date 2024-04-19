@@ -3,7 +3,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	opts = function(_, opts)
-		local utils = require("hendrik.utils")
+		local utils = require("modules.utils")
 
 		local license_path = vim.env.HOME .. "/intelephense/licence.txt"
 		local license_exists = utils.path.exists(license_path)

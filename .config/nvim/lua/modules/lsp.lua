@@ -43,7 +43,7 @@ M.on_attach = function(_, bufnr)
 	-- Telescope
 	nmap("gd", require("telescope.builtin").lsp_definitions, "Goto Definition")
 	nmap("gi", require("telescope.builtin").lsp_implementations, "Goto Implementation")
-	nmap("gr", require("hendrik.telescope").lsp_references, "Goto References")
+	nmap("gr", require("modules.telescope").lsp_references, "Goto References")
 	nmap("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type Definition")
 	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
 	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")

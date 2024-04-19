@@ -1,5 +1,3 @@
-local utils = require("hendrik.utils")
-
 local function setup_dap_typescript()
 	local dap = require("dap")
 	if not dap.adapters["pwa-node"] then
@@ -49,7 +47,7 @@ local function setup_dap_typescript()
 						return require("dap.utils").pick_process({ filter = "yarn" })
 					end,
 					cwd = function()
-						local utils = require("hendrik.utils")
+						local utils = require("modules.utils")
 
 						local file_name = vim.api.nvim_buf_get_name(0)
 						local cwd = utils.find_package_json_ancestor(file_name)

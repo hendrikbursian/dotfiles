@@ -37,7 +37,7 @@ vim.keymap.set("n", "<leader>vq", vim.diagnostic.setloclist, { desc = "Add Diagn
 
 vim.keymap.set("n", "<leader>s", ":so %<CR>", { desc = "Source current file" })
 -- stylua: ignore
-vim.keymap.set("n", "<leader>r", function() require("plenary.reload").reload_module("hendrik", true) end, { desc = "Reload config" })
+vim.keymap.set("n", "<leader>r", function() require("plenary.reload").reload_module("module", true) end, { desc = "Reload config" })
 
 -- Timesheet
 -- vim.keymap.set("n", "<Leader>t", ":e $HOME/Documents/Freelancing/timesheet.txt<CR>", { desc = "Open Timesheet" })
@@ -61,8 +61,8 @@ vim.keymap.set("n", "<Right>", ":vert resize +5<cr>", { silent = true, desc = "E
  -- stylua: ignore start
 
 -- Toggle  Quickfixlist
-vim.keymap.set("n", "<C-q>", function() require("hendrik.ui").toggle_qf_list(false) end, { noremap = true, silent = true, desc = "Toggle local quickfix list" })
-vim.keymap.set("n", "<leader>q", function() require("hendrik.ui").toggle_qf_list(true) end, { noremap = true, silent = true, desc = "Toggle local quickfix list" })
+vim.keymap.set("n", "<C-q>", function() require("modules.ui").toggle_qf_list(false) end, { noremap = true, silent = true, desc = "Toggle local quickfix list" })
+vim.keymap.set("n", "<leader>q", function() require("modules.ui").toggle_qf_list(true) end, { noremap = true, silent = true, desc = "Toggle local quickfix list" })
 
 -- Lazygit
 vim.keymap.set("n", "<leader>gg", function() Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit (root dir)" })

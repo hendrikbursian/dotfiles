@@ -19,7 +19,7 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 		},
 		opts = function()
-			local lsp = require("hendrik.lsp")
+			local lsp = require("modules.lsp")
 
 			local servers = {
 				cssls = {},

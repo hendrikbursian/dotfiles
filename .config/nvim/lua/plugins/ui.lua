@@ -1,5 +1,3 @@
-local utils = require("hendrik.utils")
-
 return {
 	-- Startscreen
 	{

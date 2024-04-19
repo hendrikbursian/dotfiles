@@ -1,4 +1,4 @@
-local colorscheme = require("hendrik.colorscheme")
+local colorscheme = require("modules.colorscheme")
 
 -- stylua: ignore
 local keys = {

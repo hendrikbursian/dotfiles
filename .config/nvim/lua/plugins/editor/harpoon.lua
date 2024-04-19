@@ -6,7 +6,7 @@ return {
 			"nvim-telescope/telescope.nvim",
 		},
 		opts = function()
-			local utils = require("hendrik.utils")
+			local utils = require("modules.utils")
 
 			return {
 				settings = {

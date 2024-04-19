@@ -17,14 +17,14 @@ return {
                     previewer = false,
                 }))
             end },
-            { "<C-p>",       function() 	    require("hendrik.telescope").git_files() end },
-            { "<leader>dot", function() 	    require("hendrik.telescope").search_dotfiles() end },
-            { "<leader>fF",  function() 	    require("hendrik.telescope").find_files() end },
-            { "<leader>ff",  function() 	    require("hendrik.telescope").find_files({
+            { "<C-p>",       function() 	    require("modules.telescope").git_files() end },
+            { "<leader>dot", function() 	    require("modules.telescope").search_dotfiles() end },
+            { "<leader>fF",  function() 	    require("modules.telescope").find_files() end },
+            { "<leader>ff",  function() 	    require("modules.telescope").find_files({
                 glob_pattern = { "!*.spec.*" }
             }) end },
-            { "<leader>fG",  function() 	    require("hendrik.telescope").live_grep() end },
-            { "<leader>fg",  function() 	    require("hendrik.telescope").live_grep({
+            { "<leader>fG",  function() 	    require("modules.telescope").live_grep() end },
+            { "<leader>fg",  function() 	    require("modules.telescope").live_grep({
                 glob_pattern = { "!*.spec.*" }
             }) end },
         },

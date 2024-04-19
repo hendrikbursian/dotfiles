@@ -1,4 +1,4 @@
-local utils = require("hendrik.utils")
+local utils = require("modules.utils")
 
 -- Formatting
 return {

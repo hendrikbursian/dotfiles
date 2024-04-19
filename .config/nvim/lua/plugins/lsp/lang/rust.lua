@@ -5,7 +5,7 @@ return {
 	opts = function(_, opts)
 		opts.servers.rust_analyzer = {}
 		opts.handlers.rust_analyzer = function()
-			local lsp = require("hendrik.lsp")
+			local lsp = require("modules.lsp")
 			local rust_tools = require("rust-tools")
 
 			rust_tools.setup({
