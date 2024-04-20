@@ -84,16 +84,12 @@
     pkgs.nettools
     pkgs.nix
     pkgs.nix-direnv
-    pkgs.nixpkgs-fmt
-    pkgs.nodePackages_latest.eslint_d
+    pkgs.nodejs_21
     pkgs.oh-my-zsh
-    pkgs.phpPackages.php-codesniffer
-    pkgs.prettierd
     pkgs.redshift
     pkgs.ripgrep
     pkgs.rsync
     pkgs.shellcheck
-    pkgs.shfmt
     pkgs.socat
     pkgs.sshfs
     pkgs.stow
@@ -103,8 +99,20 @@
     pkgs.unzip
     pkgs.vim
     pkgs.wget
+    pkgs.wp-cli
     pkgs.xsel
     pkgs.zsh
+
+    # Formatters
+    pkgs.nixpkgs-fmt
+    pkgs.nodePackages_latest.eslint_d
+    pkgs.nodePackages_latest.prettier
+    pkgs.nodePackages_latest.sql-formatter
+    pkgs.phpPackages.php-codesniffer
+    pkgs.prettierd
+    pkgs.shfmt
+    pkgs.stylua
+
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

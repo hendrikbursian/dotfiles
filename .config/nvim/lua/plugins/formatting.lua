@@ -118,24 +118,4 @@ return {
 			require("conform").setup(opts)
 		end,
 	},
-
-	{
-		"williamboman/mason.nvim",
-		cmd = "Mason",
-		opts = function(_, opts)
-			local formatters_by_ft = require("config.formatters").formatters_by_ft
-			local names = utils.merge_by_ft_table(formatters_by_ft, { "trim_newlines", "trim_whitespaces" })
-
-			opts.ensure_installed = opts.ensure_installed or {}
-
-			for _, name in pairs(names) do
-				local mason_name = utils.get_mason_name(name)
-				if mason_name ~= nil then
-					table.insert(opts.ensure_installed, mason_name)
-				end
-			end
-
-			return opts
-		end,
-	},
 }
