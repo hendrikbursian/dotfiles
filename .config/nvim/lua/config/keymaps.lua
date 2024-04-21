@@ -35,7 +35,7 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" }
 vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { desc = "Open Diagnostic floating window" })
 vim.keymap.set("n", "<leader>vq", vim.diagnostic.setloclist, { desc = "Add Diagnostics to local quickfix list" })
 
-vim.keymap.set("n", "<leader>s", ":so %<CR>", { desc = "Source current file" })
+vim.keymap.set("n", "<leader>S", ":so %<CR>", { desc = "Source current file" })
 -- stylua: ignore
 vim.keymap.set("n", "<leader>r", function() require("plenary.reload").reload_module("module", true) end, { desc = "Reload config" })
 
