@@ -1,5 +1,3 @@
-local utils = require("modules.utils")
-
 return {
 	-- Backticks as text-object
 	{
