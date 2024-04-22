@@ -24,7 +24,6 @@ return {
 
             -- stylua: ignore
 			vim.g.startify_lists = {
-				{ type = "sessions",    header = { "   Sessions" } },
 				{ type = git_modified,  header = { "   Git modified" } },
 				{ type = "dir",         header = { "   MRU " .. vim.loop.cwd() } },
 				{ type = "files",       header = { "   MRU" } },
@@ -32,39 +31,6 @@ return {
 				{ type = "bookmarks",   header = { "   Bookmarks" } },
 				{ type = "commands",    header = { "   Commands" } },
 			}
-
-			local function get_session_name()
-				local path = vim.fn.fnamemodify(vim.loop.cwd(), ":~:t")
-				if vim.fn.empty(path) then
-					path = "no-project"
-				end
-				local branch = vim.fn.system({ "git", "branch", "--show-current" })
-				if vim.fn.empty(branch) then
-					branch = ""
-				else
-					branch = "-" .. branch
-				end
-
-				return vim.fn.substitute(path .. branch, "/", "-", "g")
-			end
-
-			local group = vim.api.nvim_create_augroup("config_startify", { clear = true })
-
-			-- vim.api.nvim_create_autocmd("User", {
-			-- 	group = group,
-			-- 	pattern = "StartifyReady",
-			-- 	callback = function()
-			-- 		vim.cmd("SLoad " .. get_session_name())
-			-- 	end,
-			-- })
-
-			vim.api.nvim_create_autocmd("VimLeavePre", {
-				group = group,
-				pattern = "*",
-				callback = function()
-					vim.cmd("SSave! " .. get_session_name())
-				end,
-			})
 		end,
 	},
 
