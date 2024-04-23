@@ -6,16 +6,15 @@ return {
 		"nvim-telescope/telescope.nvim",
 		"nvim-lspconfig",
 	},
-    -- stylua: ignore
+	-- stylua: ignore
 	keys = {
-		{ "<leader>cs", function() require("sg.extensions.telescope").fuzzy_search_results() end, desc = "Sourcegraph fuzzy search", },
-		{ "<leader>ca", function() vim.cmd(":CodyAsk") end, mode = { "v" } },
-		{ "<leader>ce", function() vim.cmd(":CodyExplain") end, mode = { "v" } },
-		{ "<leader>co", function() vim.cmd(":CodyChat") end },
-		{ "<leader>cO", function() vim.cmd(":CodyChat!") end },
-		{ "<leader>ct", function() vim.cmd(":CodyToggle") end },
-		{ "<leader>cT", function() vim.cmd(":CodyTask") end, mode = { "v" } },
-		{ "<leader>cR", function() vim.cmd(":CodyRestart") end },
+		{ "<leader>cs", function() require("s.extensions.telescope").fuzzy_search_results() end, desc = "Sourcegraph fuzzy search" },
+		{ "<leader>ca", ":CodyAsk ", mode = { "v" } },
+		{ "<leader>ce", "<cmd>CodyExplain<CR>", mode = { "v" } },
+		{ "<leader>ct", ":CodyTask ", mode = { "v", "n" } },
+		{ "<leader>co", "<cmd>CodyChat<CR>", mode = { "n" } },
+		{ "<leader>cO", "<cmd>CodyChat!<CR>", mode = { "n" } },
+		{ "yoC", "<cmd>CodyToggle<CR>", mode = { "n" } },
 	},
 	build = "nvim -l build/init.lua",
 	opts = function()
