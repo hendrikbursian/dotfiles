@@ -185,6 +185,14 @@ return {
 					["<C-d>"] = cmp.mapping.scroll_docs(4),
 					["<C-u>"] = cmp.mapping.scroll_docs(-4),
 
+					["<c-x>"] = cmp.mapping.complete({
+						config = {
+							sources = {
+								{ name = "cody" },
+							},
+						},
+					}),
+
 					-- TAB: Replace
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
@@ -261,6 +269,7 @@ return {
 					--         cmp_tabnine = "[Tabnine]",
 					--         buffer = "[Buffer]",
 					--         nvim_lsp = "[LSP]",
+					--         cody = "[cody]",
 					--         luasnip = "[LuaSnip]",
 					--         nvim_lua = "[Lua]",
 					--         latex_symbols = "[Latex]",
@@ -275,6 +284,7 @@ return {
 					{ name = "path" },
 					{ name = "npm", keyword_length = 4 },
 					{ name = "calc" },
+					{ name = "cody" },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "buffer", keyword_length = 2, max_item_count = 7 },

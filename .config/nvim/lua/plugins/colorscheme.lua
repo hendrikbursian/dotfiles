@@ -139,7 +139,20 @@ return {
 			colorscheme.add({
 				schema = "onedark",
 				background = "dark",
-				config = set_overrides,
+				config = function()
+					set_overrides()
+				end,
+			})
+			colorscheme.add({
+				schema = "onedark",
+				background = "light",
+				config = function()
+					set_overrides()
+					vim.api.nvim_set_hl(0, "Normal", {
+						bg = "#ffffff",
+						fg = "#000000",
+					})
+				end,
 			})
 		end,
 	},

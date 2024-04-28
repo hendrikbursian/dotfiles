@@ -10,7 +10,7 @@ return {
 	keys = {
 		{ "<leader>cs", function() require("s.extensions.telescope").fuzzy_search_results() end, desc = "Sourcegraph fuzzy search" },
 		{ "<leader>ca", ":CodyAsk ", mode = { "v" } },
-		{ "<leader>ce", "<cmd>CodyExplain<CR>", mode = { "v" } },
+		{ "<leader>ce", ":CodyExplain<CR>", mode = { "v" } },
 		{ "<leader>ct", ":CodyTask ", mode = { "v", "n" } },
 		{ "<leader>co", "<cmd>CodyChat<CR>", mode = { "n" } },
 		{ "<leader>cO", "<cmd>CodyChat!<CR>", mode = { "n" } },

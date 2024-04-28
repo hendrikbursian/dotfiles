@@ -38,7 +38,7 @@ M.on_attach = function(_, bufnr)
 	nmap("K", vim.lsp.buf.hover, "Hover Documentation")
 	nmap("<leader>k", vim.lsp.buf.signature_help, "Signature Help")
 
-	nmap("<leader>ct", vim.lsp.buf.incoming_calls, "Incoming Calls")
+	-- nmap("<leader>ct", vim.lsp.buf.incoming_calls, "Incoming Calls")
 
 	-- Telescope
 	nmap("gd", require("telescope.builtin").lsp_definitions, "Goto Definition")
