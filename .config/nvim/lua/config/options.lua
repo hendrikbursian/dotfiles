@@ -80,4 +80,9 @@ vim.opt.termguicolors = true
 
 -- Cursor
 vim.opt.guicursor = { "n-v-c-sm:block-Cursor", "i-ci-ve:block-Cursor", "r-cr-o:hor20" }
+
+-- Obsidian
+vim.opt.conceallevel = 1
+
+-- Colorscheme
 vim.opt.background = "dark"

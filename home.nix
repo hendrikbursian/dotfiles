@@ -25,7 +25,6 @@
 
   nixpkgs.config.allowUnfree = true;
   # nixpkgs.config.permittedInsecurePackages = [
-  #   "electron-25.9.0"
   # ];
 
   # The home.packages option allows you to install Nix packages into your environment.
@@ -47,18 +46,18 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     # Programs
+    pkgs.alarm-clock-applet
     pkgs.brave
     pkgs.masterpdfeditor
-    # pkgs.obsidian
+    pkgs.obsidian
     pkgs.onlyoffice-bin_latest
-    pkgs.scribus
     pkgs.skypeforlinux
     pkgs.telegram-desktop
 
     pkgs.dbeaver
     # pkgs.android-studio
     # pkgs.android-tools
-    # pkgs.zulu
+    # pkgs.zulu # java
 
     # Tools
     pkgs.bash
@@ -84,7 +83,7 @@
     pkgs.nettools
     pkgs.nix
     pkgs.nix-direnv
-    pkgs.nodejs_21
+    pkgs.nodejs_22
     pkgs.oh-my-zsh
     pkgs.redshift
     pkgs.ripgrep
@@ -93,10 +92,12 @@
     pkgs.socat
     pkgs.sshfs
     pkgs.stow
+    pkgs.subversion
     pkgs.tldr
     pkgs.tmux
     pkgs.tree
     pkgs.unzip
+    pkgs.vagrant
     pkgs.vim
     pkgs.wget
     pkgs.wp-cli
@@ -175,10 +176,15 @@
       recursive = true;
     };
 
-    "redshift.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/redshift.conf";
+    # "redshift.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/redshift.conf";
+
     "systemd/user/default.target.wants/redshift.service".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/systemd/user/default.target.wants/redshift.service";
     "systemd/user/redshift.service".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/systemd/user/redshift.service";
   };
+
+  home.activation.copyFiles = ''
+    cp $DOTFILES/.config/redshift.conf $HOME/.config/
+  '';
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. If you don't want to manage your shell through Home

@@ -41,17 +41,22 @@ return {
 				path = "~/Documents/Notizen/",
 			},
 		},
+
+		-- Where to put new notes created from completion. Valid options are
+		--  * "current_dir" - put new notes in same directory as the current buffer.
+		--  * "notes_subdir" - put new notes in the default notes subdirectory.
+		new_notes_location = "current_dir",
 		completion = {
 			nvim_cmp = true,
 			min_chars = 2,
-			-- Where to put new notes created from completion. Valid options are
-			--  * "current_dir" - put new notes in same directory as the current buffer.
-			--  * "notes_subdir" - put new notes in the default notes subdirectory.
-			new_notes_location = "current_dir",
 
-			-- Whether to add the output of the node_id_func to new notes in autocompletion.
-			-- E.g. "[[Foo" completes to "[[foo|Foo]]" assuming "foo" is the ID of the note.
-			prepend_note_id = true,
+			-- Optional, customize how wiki links are formatted. You can set this to one of:
+			--  * "use_alias_only", e.g. '[[Foo Bar]]'
+			--  * "prepend_note_id", e.g. '[[foo-bar|Foo Bar]]'
+			--  * "prepend_note_path", e.g. '[[foo-bar.md|Foo Bar]]'
+			--  * "use_path_only", e.g. '[[foo-bar.md]]'
+			-- Or you can set it to a function that takes a table of options and returns a string, like this:
+			wiki_link_func = "prepend_note_id",
 		},
 		mappings = {
 			-- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
@@ -62,7 +67,6 @@ return {
 				opts = { noremap = false, expr = true, buffer = true },
 			},
 		},
-		overwrite_mappings = false,
 		finder = "telescope.nvim",
 	},
 }
