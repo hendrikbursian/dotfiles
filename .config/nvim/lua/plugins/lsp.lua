@@ -103,6 +103,8 @@ return {
 		config = function(_, opts)
 			require("mason").setup(opts)
 
+			opts.ensure_installed = opts.ensure_installed or {}
+
 			local mr = require("mason-registry")
 			mr:on("package:install:success", function()
 				vim.defer_fn(function()

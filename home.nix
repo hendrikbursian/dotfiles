@@ -73,6 +73,7 @@
     pkgs.git
     pkgs.gnumake
     pkgs.gnupg
+    pkgs.hadolint
     pkgs.htop
     pkgs.inotify-tools
     pkgs.iputils
