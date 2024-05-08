@@ -30,6 +30,9 @@ local set_overrides = function()
 	vim.api.nvim_set_hl(0, "CmpItemKindInterface", { bg = "NONE", fg = "#9CDCFE" })
 	vim.api.nvim_set_hl(0, "CmpItemKindText", { bg = "NONE", fg = "#9CDCFE" })
 
+	-- Cody
+	vim.api.nvim_set_hl(0, "CmpItemKindCody", { fg = "Red" })
+
 	-- Pink
 	vim.api.nvim_set_hl(0, "CmpItemKindFunction", { bg = "NONE", fg = "#C586C0" })
 	vim.api.nvim_set_hl(0, "CmpItemKindMethod", { bg = "NONE", fg = "#C586C0" })

@@ -3,7 +3,7 @@
 if [[ $# == 1 ]]; then
     selected=$1
 else
-    selected=$({ find ~/Documents ~/Workspace/Personal ~/Workspace/Freelancing -mindepth 1 -maxdepth 2 -type d 2> /dev/null; tmux list-sessions -F '#{session_name}'; } | sort -r | uniq | fzf)
+    selected=$({ find ~/Documents ~/Workspace/Personal ~/Workspace/Freelancing ~/Workspace/Freelancing/wordpress-sites/www/ -mindepth 1 -maxdepth 2 -type d 2> /dev/null; tmux list-sessions -F '#{session_name}'; } | sort -r | uniq | fzf)
 fi
 
 if [[ -z $selected ]]; then

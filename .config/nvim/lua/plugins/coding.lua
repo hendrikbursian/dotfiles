@@ -284,7 +284,7 @@ return {
 					{ name = "path" },
 					{ name = "npm", keyword_length = 4 },
 					{ name = "calc" },
-					{ name = "cody" },
+					-- { name = "cody" },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "buffer", keyword_length = 2, max_item_count = 7 },

@@ -1,8 +1,8 @@
 local M = {}
 M.formatters_by_ft = {
 	lua = { "stylua" },
-	javascript = { { "eslint_d", "prettierd", "prettier" } },
-	typescript = { { "eslint_d", "prettierd", "prettier" } },
+	javascript = { { "eslint_d", "eslint", "prettierd", "prettier" } },
+	typescript = { { "eslint_d", "eslint", "prettierd", "prettier" } },
 	css = { { "eslint_d", "prettierd", "prettier" } },
 	html = { { "eslint_d", "prettierd", "prettier" } },
 	vue = { { "eslint_d", "prettierd", "prettier" } },
