@@ -52,6 +52,7 @@
     pkgs.obsidian
     pkgs.onlyoffice-bin_latest
     pkgs.skypeforlinux
+    pkgs.spotify
     pkgs.telegram-desktop
 
     pkgs.dbeaver
