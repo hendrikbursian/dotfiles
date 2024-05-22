@@ -55,7 +55,7 @@
     pkgs.spotify
     pkgs.telegram-desktop
 
-    pkgs.dbeaver
+    pkgs.dbeaver-bin
     # pkgs.android-studio
     # pkgs.android-tools
     # pkgs.zulu # java
