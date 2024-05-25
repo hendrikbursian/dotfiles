@@ -58,7 +58,6 @@
     pkgs.dbeaver-bin
     # pkgs.android-studio
     # pkgs.android-tools
-    # pkgs.zulu # java
 
     # Tools
     pkgs.bash
@@ -85,7 +84,6 @@
     pkgs.nettools
     pkgs.nix
     pkgs.nix-direnv
-    pkgs.nodejs_22
     pkgs.oh-my-zsh
     pkgs.redshift
     pkgs.ripgrep
@@ -106,6 +104,11 @@
     pkgs.xsel
     pkgs.zsh
 
+    # Languages
+    # pkgs.zulu # java
+    pkgs.go
+    pkgs.nodejs_22
+
     # Formatters
     pkgs.nixpkgs-fmt
     pkgs.nodePackages_latest.eslint_d
@@ -115,6 +118,18 @@
     pkgs.prettierd
     pkgs.shfmt
     pkgs.stylua
+
+    # LSPs
+    pkgs.gopls
+    pkgs.lemminx # xml
+    pkgs.lua-language-server
+    pkgs.nodePackages_latest.intelephense
+    pkgs.nodePackages_latest.volar
+    pkgs.nodePackages_latest.vscode-css-languageserver-bin
+    pkgs.nodePackages_latest.graphql-language-service-cli
+    pkgs.nodePackages_latest.vscode-html-languageserver-bin
+    pkgs.tailwindcss-language-server
+    pkgs.templ
 
   ];
 
