@@ -54,6 +54,7 @@
     pkgs.skypeforlinux
     pkgs.spotify
     pkgs.telegram-desktop
+    pkgs.vlc
 
     pkgs.dbeaver-bin
     # pkgs.android-studio
