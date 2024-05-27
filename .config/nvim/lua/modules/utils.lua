@@ -4,14 +4,6 @@ local uv = vim.loop
 
 local is_windows = uv.os_uname().version:match("Windows")
 
--- Maps linters/formatters to their respective mason name for installation
-local mason_names = {
-	gofmt = false,
-	sql_formatter = "sql-formatter",
-	rustfmt = false,
-	nixpkgs_fmt = "nixpkgs-fmt",
-}
-
 local M = {}
 
 -- https://github.com/neovim/nvim-lspconfig/blob/6428fcab6f3c09e934bc016c329806314384a41e/lua/lspconfig/util.lua
@@ -189,6 +181,14 @@ M.find_package_json_ancestor = function(startpath)
 	end)
 end
 
+M.find_wp_ancestor = function(startpath)
+	return M.search_ancestors(startpath, function(path)
+		if M.path.is_file(M.path.join(path, "wp-config.php")) then
+			return path
+		end
+	end)
+end
+
 M.get_current_file_or_cwd = function()
 	local path = arg[0] or vim.api.nvim_buf_get_name(0)
 
@@ -203,45 +203,6 @@ M.get_git_dir_or_cwd = function()
 	local path = M.get_current_file_or_cwd()
 
 	return M.find_git_ancestor(path) or vim.loop.cwd()
-end
-
--- Concatenates unique formatters/linters
-M.merge_by_ft_table = function(tab, ignore)
-	local unique = {}
-	for _, values in pairs(tab) do
-		for _, value in ipairs(values) do
-			if type(value) == "table" then
-				for _, sub_value in ipairs(value) do
-					unique[sub_value] = true
-				end
-			else
-				unique[value] = true
-			end
-		end
-	end
-
-	for _, name in pairs(ignore) do
-		unique[name] = nil
-	end
-
-	local result = {}
-	for name, value in pairs(unique) do
-		if value ~= nil then
-			table.insert(result, name)
-		end
-	end
-	return result
-end
-
-M.get_mason_name = function(name)
-	local mason_name = mason_names[name]
-	if type(mason_name) == "string" then
-		return mason_name
-	elseif mason_name == false then
-		return nil
-	else
-		return name
-	end
 end
 
 return M

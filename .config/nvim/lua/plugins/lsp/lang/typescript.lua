@@ -51,7 +51,7 @@ return {
 				server = {
 					capabilities = lsp.get_capabilities(),
 					on_attach = lsp.on_attach,
-					settings = settings,
+					settings = opts.servers.tsserver,
 				},
 			})
 		end
