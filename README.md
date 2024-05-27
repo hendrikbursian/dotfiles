@@ -1,5 +1,7 @@
 # Setup
 
+## Initial Installation
+
 ```bash
 # Install git and curl
 sudo apt install git curl
@@ -16,14 +18,19 @@ nix --extra-experimental-features nix-command --extra-experimental-features flak
 
 # Set git ssh url
 git -C ~/.dotfiles remote set-url origin git@github.com:hendrikbursian/dotfiles.git
-```
-# Run install script
-```bash
+
+# Setup the rest
 ~/.dotfiles/ansible/scripts/run_ansible.sh
 ```
 
-## Run Sway on iGPU
+## Further installations
+After the initial installation all further installations can be run with the following command:
 ```bash
-# Adjust if nessecary
-echo WLR_DRM_DEVICES=/dev/dri/by-path/pci-0000:00:02.0-card:/dev/dri/by-path/pci-0000:00:02.0-render > /etc/environment.d/80-regolith-sway.conf
+home-manager switch --flake ~/.dotfiles
+```
+
+## Update home-manager dependencies
+For updating dependencies that are managed with home-manger run the following command:
+```bash
+nix flake update ~/.dotfiles/
 ```
