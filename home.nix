@@ -67,6 +67,7 @@
     pkgs.curl
     pkgs.direnv
     pkgs.fd
+    pkgs.fh
     pkgs.fuse3
     pkgs.fzf
     pkgs.gawk
@@ -126,11 +127,18 @@
     pkgs.lua-language-server
     pkgs.nodePackages_latest.intelephense
     pkgs.nodePackages_latest.volar
-    pkgs.nodePackages_latest.vscode-css-languageserver-bin
+    # pkgs.nodePackages_latest.vscode-css-languageserver-bin
+    # pkgs.nodePackages_latest.vscode-json-languageserver-bin
     pkgs.nodePackages_latest.graphql-language-service-cli
-    pkgs.nodePackages_latest.vscode-html-languageserver-bin
+    pkgs.nodePackages_latest.typescript-language-server
+    # pkgs.nodePackages_latest.vscode-html-languageserver-bin
     pkgs.tailwindcss-language-server
     pkgs.templ
+    pkgs.vscode-langservers-extracted
+    pkgs.yaml-language-server
+
+    # Debuggers
+    pkgs.delve
 
   ];
 

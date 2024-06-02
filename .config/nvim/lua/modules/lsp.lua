@@ -47,7 +47,7 @@ M.on_attach = function(_, bufnr)
 	nmap("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type Definition")
 	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
 	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
-	nmap("<leader>K", function() vim.lsp.inlay_hint(0, nil) end, "Toggle Inlay Hints")
+	nmap("<leader>K", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({bufnr = 0}), {bufnr = 0}) end, "Toggle Inlay Hints")
 
 	-- Lesser used LSP functionality
 	nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "Workspace Add Folder")

@@ -1,9 +1,13 @@
--- LSP
 return {
 	{
 		"neovim/nvim-lspconfig",
 		event = "VeryLazy",
 		dependencies = {
+			{
+				"folke/neoconf.nvim",
+				config = true,
+			},
+
 			-- Additional lua configuration
 			{
 				"folke/neodev.nvim",
@@ -18,10 +22,23 @@ return {
 		opts = function()
 			local servers = {
 				cssls = {},
-				gopls = {},
+				gopls = {
+					gopls = {
+						hints = {
+							assignVariableTypes = true,
+							compositeLiteralFields = true,
+							compositeLiteralTypes = true,
+							constantValues = true,
+							functionTypeParameters = true,
+							parameterNames = true,
+							rangeVariableTypes = true,
+						},
+					},
+				},
 				graphql = {},
 				html = {},
 				lemminx = {},
+				-- jsonls = {},
 				lua_ls = {
 					Lua = {
 						diagnostics = {

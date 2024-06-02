@@ -23,6 +23,9 @@ return {
 		return {
 			on_attach = lsp.on_attach,
 			node_executable = os.getenv("HOME") .. "/.nix-profile/bin/node",
+			chat = {
+				default_model = "anthropic/claude-3-haiku-20240307",
+			},
 		}
 	end,
 }

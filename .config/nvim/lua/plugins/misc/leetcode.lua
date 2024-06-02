@@ -22,5 +22,14 @@ return {
 			focus_testcases = "H",
 			focus_result = "L",
 		},
+
+		injector = {
+			go = {
+				before = { "package main" },
+			},
+			golang = {
+				before = { "package main" },
+			},
+		},
 	},
 }

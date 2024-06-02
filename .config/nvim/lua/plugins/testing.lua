@@ -23,7 +23,7 @@ return {
 		},
         -- stylua: ignore
         keys = {
-            { "<leader>tt", function() require("neotest").run.run(vim.fn.expand("%")) end,                                            desc = "Run Nearest" },
+            { "<leader>tt", function() require("neotest").run.run(vim.fn.expand("%")) end,                          desc = "Run Nearest" },
             { "<leader>tT", function() require("neotest").run.run(vim.loop.cwd()) end,                              desc = "Run All Test Files" },
             { "<leader>tf", function() require("neotest").run.run(vim.api.nvim_buf_get_name(0)) end,                desc = "Run File" },
             { "<leader>tl", function() require("neotest").run.run_last() end,                                       desc = "Run Last" },
@@ -65,11 +65,11 @@ return {
 	},
 
 	{
-		"mfussenegger/nvim-dap",
+		"nvim-dap",
 		optional = true,
         -- stylua: ignore
         keys = {
-            { "<leader>td", function() require("neotest").run.run({ strategy = "dap" }) end, desc = "Debug Nearest" },
+            { "<leader>td", function() require("neotest").run.run({ strategy = "dap", suite = false }) end, desc = "Debug Nearest" },
         },
 	},
 }
