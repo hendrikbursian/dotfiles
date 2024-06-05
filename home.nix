@@ -1,18 +1,26 @@
-{ callPackage
-, config
-, pkgs
-, lib
-, ...
-}:
+{ nixGL, callPackage, config, pkgs, lib, username, homeDirectory, ... }:
 
+let
+  nixGLDefault = nixGL.packages."${pkgs.system}".nixGLDefault;
+  nixGLNvidia = nixGL.packages."${pkgs.system}".nixGLNvidia;
+  nixGLIntel = nixGL.packages."${pkgs.system}".nixGLIntel;
+  nixVulkanNvidia = nixGL.packages."${pkgs.system}".nixVulkanNvidia;
+  nixVulkanIntel = nixGL.packages."${pkgs.system}".nixVulkanIntel;
+in
 {
+  # source: https://github.com/nix-community/home-manager/issues/3968#issuecomment-2135919008
   imports = [
+    (builtins.fetchurl {
+      url = "https://raw.githubusercontent.com/Smona/home-manager/nixgl-compat/modules/misc/nixgl.nix";
+      sha256 = "74f9fb98f22581eaca2e3c518a0a3d6198249fb1490ab4a08f33ec47827e85db";
+    })
   ];
+  nixGL.prefix = "${nixGLDefault}/bin/nixGL";
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "hendrik";
-  home.homeDirectory = "/home/hendrik";
+  home.username = username;
+  home.homeDirectory = homeDirectory;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -23,9 +31,12 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  nixpkgs.config.allowUnfree = true;
-  # nixpkgs.config.permittedInsecurePackages = [
-  # ];
+  nixpkgs.config = {
+    allowUnfree = true;
+    # allowBroken = true;
+    permittedInsecurePackages = [
+    ];
+  };
 
   # The home.packages option allows you to install Nix packages into your environment.
   home.packages = [
@@ -47,18 +58,26 @@
     # '')
     # Programs
     pkgs.alarm-clock-applet
-    pkgs.brave
+    (config.lib.nixGL.wrap pkgs.brave)
+    (config.lib.nixGL.wrap pkgs.firefox)
     pkgs.masterpdfeditor
-    pkgs.obsidian
-    pkgs.onlyoffice-bin_latest
+    (config.lib.nixGL.wrap pkgs.obsidian)
+    (config.lib.nixGL.wrap pkgs.onlyoffice-bin_latest)
+    (config.lib.nixGL.wrap pkgs.openshot-qt)
     pkgs.skypeforlinux
     pkgs.spotify
     pkgs.telegram-desktop
-    pkgs.vlc
+    (config.lib.nixGL.wrap pkgs.vlc)
+
+    nixGLDefault
+    nixGLIntel
+    nixGLNvidia
+    nixVulkanIntel
+    nixVulkanNvidia
 
     pkgs.dbeaver-bin
     # pkgs.android-studio
-    # pkgs.android-tools
+    pkgs.android-tools
 
     # Tools
     pkgs.bash
@@ -233,4 +252,12 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.obs-studio = {
+    enable = true;
+    package = (config.lib.nixGL.wrap pkgs.obs-studio);
+    plugins = [
+      pkgs.obs-studio-plugins.droidcam-obs
+    ];
+  };
 }

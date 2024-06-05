@@ -10,13 +10,17 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # source: https://github.com/nix-community/home-manager/issues/3968#issuecomment-2135919008
+    nixGL = {
+      url = "github:nix-community/nixGL/310f8e49a149e4c9ea52f1adf70cdc768ec53f8a";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, nixGL, home-manager, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-
       username = "hendrik";
       homeDirectory = "/home/${username}/";
     in
@@ -40,7 +44,7 @@
         extraSpecialArgs = {
           homeDirectory = homeDirectory;
           username = username;
-          dotfilesPath = "${homeDirectory}/.dotfiles/";
+          nixGL = nixGL;
         };
       };
 
