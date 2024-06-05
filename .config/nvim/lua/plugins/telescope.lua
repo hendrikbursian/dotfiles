@@ -118,32 +118,4 @@ return {
 			end,
 		},
 	},
-
-	{
-		"debugloop/telescope-undo.nvim",
-		dependencies = {
-			{
-				"nvim-telescope/telescope.nvim",
-				opts = {
-					extensions = {
-						undo = {
-							-- side_by_side = true,
-							-- use_delta = false,
-						},
-					},
-				},
-			},
-		},
-		keys = {
-			{
-				"<leader>u",
-				function()
-					require("telescope").extensions.undo.undo()
-				end,
-			},
-		},
-		config = function()
-			require("telescope").load_extension("undo")
-		end,
-	},
 }
