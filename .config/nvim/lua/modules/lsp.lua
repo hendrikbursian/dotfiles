@@ -1,5 +1,14 @@
 local lsp_config = require("lspconfig")
 
+local function toggle_inlay_hints()
+	local is_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = 0 })
+	vim.lsp.inlay_hint.enable(not is_enabled, { bufnr = 0 })
+end
+
+local function show_workspace_folders()
+	vim.print(vim.lsp.buf.list_workspace_folders())
+end
+
 local M = {}
 
 M.get_capabilities = function()
@@ -20,39 +29,28 @@ M.on_attach = function(_, bufnr)
 	-- https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/tj/lsp/init.lua
 	-- https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
 
-	-- In this case, we create a function that lets us more easily define mappings specific
-	-- for LSP related items. It sets the mode, buffer and description for us each time.
-	local nmap = function(keys, func, desc)
-		if desc then
-			desc = "LSP: " .. desc
-		end
-
-		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
-	end
-
     -- stylua: ignore start
 
-	nmap("<leader>vrn", vim.lsp.buf.rename, "Vim Re[n]ame")
-	nmap("<leader>.", vim.lsp.buf.code_action, "Code Action (Habit from VSCode <C-.>)")
+	vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename,                                         { desc = "Vim Re[n]ame", buffer = bufnr })
+	vim.keymap.set("n", "<leader>.",   vim.lsp.buf.code_action,                                    { desc = "Code Action (Habit from VSCode <C-.>)", buffer = bufnr })
 
-	nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-	nmap("<leader>k", vim.lsp.buf.signature_help, "Signature Help")
-
-	-- nmap("<leader>ct", vim.lsp.buf.incoming_calls, "Incoming Calls")
+	vim.keymap.set("n", "K",           vim.lsp.buf.hover,                                          { desc = "Hover Documentation", buffer = bufnr })
+	vim.keymap.set("n", "<leader>k",   vim.lsp.buf.signature_help,                                 { desc = "Signature Help", buffer = bufnr })
 
 	-- Telescope
-	nmap("gd", require("telescope.builtin").lsp_definitions, "Goto Definition")
-	nmap("gi", require("telescope.builtin").lsp_implementations, "Goto Implementation")
-	nmap("gr", require("modules.telescope").lsp_references, "Goto References")
-	nmap("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type Definition")
-	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
-	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
-	nmap("<leader>K", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({bufnr = 0}), {bufnr = 0}) end, "Toggle Inlay Hints")
+	vim.keymap.set("n", "gd",          require("telescope.builtin").lsp_definitions,               { desc = "Goto Definition", buffer = bufnr })
+	vim.keymap.set("n", "gi",          require("telescope.builtin").lsp_implementations,           { desc = "Goto Implementation", buffer = bufnr })
+	vim.keymap.set("n", "gr",          require("modules.telescope").lsp_references,                { desc = "Goto References", buffer = bufnr })
+	vim.keymap.set("n", "<leader>D",   require("telescope.builtin").lsp_type_definitions,          { desc = "Type Definition", buffer = bufnr })
+	vim.keymap.set("n", "<leader>ds",  require("telescope.builtin").lsp_document_symbols,          { desc = "Document Symbols", buffer = bufnr })
+	vim.keymap.set("n", "<leader>ws",  require("telescope.builtin").lsp_dynamic_workspace_symbols, { desc = "Workspace Symbols", buffer = bufnr })
+    vim.keymap.set("n", "<leader>K",   toggle_inlay_hints,                                         { desc = "Toggle Inlay Hints", buffer = bufnr })
+	vim.keymap.set("i", "<C-k>",       vim.lsp.buf.signature_help,                                 { desc = "Signature Help", buffer = bufnr })
 
 	-- Lesser used LSP functionality
-	nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "Workspace Add Folder")
-	nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "Workspace Remove Folder")
-	nmap("<leader>wl", function() vim.print(vim.lsp.buf.list_workspace_folders()) end, "Workspace List Folders")
+	vim.keymap.set("n", "<leader>wa",  vim.lsp.buf.add_workspace_folder,                           { desc = "Workspace Add Folder", buffer = bufnr })
+	vim.keymap.set("n", "<leader>wr",  vim.lsp.buf.remove_workspace_folder,                        { desc = "Workspace Remove Folder", buffer = bufnr })
+	vim.keymap.set("n", "<leader>wl",  show_workspace_folders,                                     { desc = "Workspace List Folders", buffer = bufnr })
 
 	-- stylua: ignore end
 end
