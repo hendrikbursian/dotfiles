@@ -141,6 +141,7 @@ return {
             { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
         },
 	},
+	{ import = "plugins.coding.snippets" },
 
 	-- Autocompletion
 	{
@@ -321,6 +322,14 @@ return {
 				}),
 			})
 		end,
+	},
+
+	{
+		"kylechui/nvim-surround",
+		event = "VeryLazy",
+		opts = {
+			move_cursor = false,
+		},
 	},
 
 	-- { import = "plugins.coding.ai.copilot" },
