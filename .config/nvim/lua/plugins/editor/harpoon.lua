@@ -2,20 +2,25 @@ return {
 	{
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
+		event = "VeryLazy",
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
 		},
 		opts = function()
-			local utils = require("modules.utils")
-
 			return {
 				settings = {
-					key = utils.get_git_dir_or_cwd,
 					save_on_toggle = true,
 					sync_on_ui_close = true,
+					key = function()
+						local utils = require("modules.utils")
+						return utils.get_git_dir_or_cwd()
+					end,
 				},
 				default = {
-					get_root_dir = utils.get_git_dir_or_cwd,
+					get_root_dir = function()
+						local utils = require("modules.utils")
+						return utils.get_git_dir_or_cwd()
+					end,
 				},
 			}
 		end,

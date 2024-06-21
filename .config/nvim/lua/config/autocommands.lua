@@ -21,3 +21,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank({ timeout = 40 })
 	end,
 })
+
+-- Auto root to git directory
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = augroup("auto_root"),
+	pattern = "*",
+	callback = function()
+		local utils = require("modules.utils")
+		local path = utils.get_git_dir_or_cwd()
+		vim.cmd(":lcd " .. path)
+	end,
+})
