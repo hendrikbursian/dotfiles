@@ -134,7 +134,7 @@ return {
 						["<C-x>"] = "open_split",
 						["ff"] = "telescope_find",
 						["fg"] = "telescope_grep",
-						["s"] = "system_open",
+						["gx"] = "system_open",
 						["Y"] = "copy_path",
 					},
 				},
