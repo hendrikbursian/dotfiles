@@ -33,13 +33,9 @@ export PATH="$PNPM_HOME:$PATH"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/.phpenv/bin:$PATH"
 export PATH="$HOME/neovim/bin:$PATH"
-export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PNPM_HOME:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.deno/bin:$PATH"
 export PATH="$PYENV_ROOT/bin:$PATH"
-
-. "$HOME/.cargo/env"
 
 # Export DISPLAY on WSL
 if grep -qi microsoft /proc/version; then

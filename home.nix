@@ -129,6 +129,8 @@ in
     # pkgs.zulu # java
     pkgs.go
     pkgs.nodejs_22
+    pkgs.rustc
+    pkgs.cargo
 
     # Formatters
     pkgs.nixpkgs-fmt
@@ -155,6 +157,7 @@ in
     pkgs.templ
     pkgs.vscode-langservers-extracted
     pkgs.yaml-language-server
+    pkgs.rust-analyzer
 
     # Debuggers
     pkgs.delve
