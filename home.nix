@@ -90,7 +90,7 @@ in
     pkgs.fuse3
     pkgs.fzf
     pkgs.gawk
-    pkgs.gcc-unwrapped
+    pkgs.gcc
     pkgs.git
     pkgs.gnumake
     pkgs.gnupg
