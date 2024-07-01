@@ -6,7 +6,7 @@ M.formatters_by_ft = {
 	css = { { "eslint_d", "prettierd", "prettier" } },
 	html = { { "eslint_d", "prettierd", "prettier" } },
 	vue = { { "eslint_d", "prettierd", "prettier" } },
-	go = { { "gofmt" } },
+	go = { "gofmt" },
 	rust = { { "rustfmt" } },
 	sh = { { "shellcheck", "shfmt" } },
 	bash = { { "shfmt" } },
@@ -16,6 +16,7 @@ M.formatters_by_ft = {
 	php = { { "phpcbf" } },
 	templ = { { "templ" } },
 	nix = { { "nixpkgs_fmt" } },
+	blade = { "blade-formatter" },
 
 	-- filetypes without defined formatters
 	["_"] = { "trim_newlines", "trim_whitespaces" },

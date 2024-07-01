@@ -12,55 +12,96 @@ return {
 				signs = true,
 				virtual_text = false,
 			},
+			state = {
+				enabled = true,
+			},
 			diagnostic = {
 				enabled = false,
 				severity = vim.log.levels.TRACE,
 			},
 			output = {
-				enabled = false,
-				open_on_run = false,
+				enabled = true,
+				open_on_run = true,
+			},
+			summary = {
+				animated = false,
+				follow = true,
+				expand_errors = true,
 			},
 		},
         -- stylua: ignore
         keys = {
-            { "<leader>tt", function() require("neotest").run.run(vim.fn.expand("%")) end,                          desc = "Run Nearest" },
-            { "<leader>tT", function() require("neotest").run.run(vim.loop.cwd()) end,                              desc = "Run All Test Files" },
-            { "<leader>tf", function() require("neotest").run.run(vim.api.nvim_buf_get_name(0)) end,                desc = "Run File" },
-            { "<leader>tl", function() require("neotest").run.run_last() end,                                       desc = "Run Last" },
-            { "<leader>ts", function() require("neotest").summary.toggle() end,                                     desc = "Toggle Summary" },
-            { "<leader>to", function() require("neotest").output_panel.open({ enter = true, auto_close = true, last_run = false }) end,     desc = "Show Output" },
-            { "<leader>tO", function() require("neotest").output_panel.toggle() end,                                desc = "Toggle Output Panel" },
-            { "<leader>tS", function() require("neotest").run.stop() end,                                           desc = "Stop" },
+            { "<leader>ta", function() require("neotest").run.attach() end,                                                      desc = "[t]est [a]ttach" },
+            { "<leader>tf", function() require("neotest").run.run(vim.api.nvim_buf_get_name(0)) end,                             desc = "[t]est run [f]ile" },
+            { "<leader>tA", function() require("neotest").run.run(vim.uv.cwd()) end,                                             desc = "[t]est [A]ll files" },
+            { "<leader>tS", function() require("neotest").run.run({ suite = true }) end,                                         desc = "[t]est [S]uite" },
+            { "<leader>tt", function() require("neotest").run.run() end,                                                         desc = "[t]est [n]earest" },
+            { "<leader>tw", function() require("neotest").watch.toggle() end,                                                     desc = "[t]est [w]atch" },
+            { "<leader>tl", function() require("neotest").run.run_last() end,                                                    desc = "[t]est [l]ast" },
+            { "<leader>ts", function() require("neotest").summary.toggle() end,                                                  desc = "[t]est [s]ummary" },
+            { "<leader>to", function() require("neotest").output.open({ enter = true, auto_close = true, last_run = false}) end, desc = "[t]est [o]utput" },
+            { "<leader>tO", function() require("neotest").output_panel.toggle() end,                                             desc = "[t]est [O]utput panel" },
+            { "<leader>tS", function() require("neotest").run.stop() end,                                                        desc = "[t]est [t]erminate" },
+            { "<leader>td", function() require("neotest").run.run(vim.fn.expand("%:h")) end,                                     desc = "[t]est [d]irectory" },
+            { "<leader>tD", function() require("neotest").run.run({ suite = false, strategy = "dap" }) end,                      desc = "[t]est [D]debug" },
         },
 	},
 
 	{
 		"nvim-neotest/neotest",
-		dependencies = { "nvim-neotest/neotest-go" },
+		dependencies = {
+			"fredrikaverpil/neotest-golang",
+			dependencies = {
+				{
+					"leoluz/nvim-dap-go",
+					opts = {},
+				},
+			},
+			branch = "main",
+		},
 
 		opts = function(_, opts)
-			-- get neotest namespace (api call creates or returns namespace)
-			local neotest_ns = vim.api.nvim_create_namespace("neotest")
-			vim.diagnostic.config({
-				virtual_text = {
-					format = function(diagnostic)
-						local message =
-							diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
-						return message
-					end,
+			opts.adapters = opts.adapters or {}
+			opts.adapters["neotest-golang"] = {
+				go_test_args = {
+					"-v",
+					"-race",
+					"-count=1",
+					"-timeout=60s",
 				},
-			}, neotest_ns)
-
-			table.insert(
-				opts.adapters,
-				require("neotest-go")({
-					experimental = {
-						test_table = true,
-					},
-				})
-			)
+				dap_go_enabled = true,
+			}
 
 			return opts
+		end,
+		config = function(_, opts)
+			if opts.adapters then
+				local adapters = {}
+				for name, config in pairs(opts.adapters or {}) do
+					if type(name) == "number" then
+						if type(config) == "string" then
+							config = require(config)
+						end
+						adapters[#adapters + 1] = config
+					elseif config ~= false then
+						local adapter = require(name)
+						if type(config) == "table" and not vim.tbl_isempty(config) then
+							local meta = getmetatable(adapter)
+							if adapter.setup then
+								adapter.setup(config)
+							elseif meta and meta.__call then
+								adapter(config)
+							else
+								error("Adapter " .. name .. " does not support setup")
+							end
+						end
+						adapters[#adapters + 1] = adapter
+					end
+				end
+				opts.adapters = adapters
+			end
+
+			require("neotest").setup(opts)
 		end,
 	},
 
@@ -70,8 +111,7 @@ return {
 			{ "nvim-neotest/neotest-jest" },
 		},
 		opts = function(_, opts)
-			table.insert(opts.adapters, require("neotest-jest"))
-
+			opts.adapters["neotest-jest"] = {}
 			return opts
 		end,
 	},
@@ -81,7 +121,7 @@ return {
 		optional = true,
         -- stylua: ignore
         keys = {
-            { "<leader>td", function() require("neotest").run.run({ strategy = "dap", suite = false }) end, desc = "Debug Nearest" },
+            { "<leader>tD", function() require("neotest").run.run({ strategy = "dap", suite = false }) end, desc = "Debug Nearest" },
         },
 	},
 }

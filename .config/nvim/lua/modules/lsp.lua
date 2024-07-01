@@ -35,7 +35,6 @@ M.on_attach = function(_, bufnr)
 	vim.keymap.set("n", "<leader>.",   vim.lsp.buf.code_action,                                    { desc = "Code Action (Habit from VSCode <C-.>)", buffer = bufnr })
 
 	vim.keymap.set("n", "K",           vim.lsp.buf.hover,                                          { desc = "Hover Documentation", buffer = bufnr })
-	vim.keymap.set("n", "<leader>k",   vim.lsp.buf.signature_help,                                 { desc = "Signature Help", buffer = bufnr })
 
 	-- Telescope
 	vim.keymap.set("n", "gd",          require("telescope.builtin").lsp_definitions,               { desc = "Goto Definition", buffer = bufnr })

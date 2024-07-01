@@ -56,6 +56,7 @@ M.lsp_references = function(opts)
 		file_ignore_patterns = { "%.spec.ts" },
 		jump_type = "split",
 		fname_width = 60,
+		include_declaration = false,
 	}))
 end
 

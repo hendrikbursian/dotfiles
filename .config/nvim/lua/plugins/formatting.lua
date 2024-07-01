@@ -78,6 +78,12 @@ return {
 					-- shfmt = {
 					--     prepend_args = { "-i", "2" },
 					-- },
+
+					goimports = {
+						command = "gopls",
+						args = { "imports", "$FILENAME" },
+						inherit = true,
+					},
 				},
 			}
 		end,

@@ -38,6 +38,8 @@ in
     ];
   };
 
+
+  fonts.fontconfig.enable = true;
   # The home.packages option allows you to install Nix packages into your environment.
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
@@ -48,7 +50,7 @@ in
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    (pkgs.nerdfonts.override { fonts = [ "IBMPlexMono" ]; })
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -56,18 +58,20 @@ in
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    # Programs
-    pkgs.alarm-clock-applet
+    # Applications
     (config.lib.nixGL.wrap pkgs.brave)
     (config.lib.nixGL.wrap pkgs.firefox)
-    pkgs.masterpdfeditor
     (config.lib.nixGL.wrap pkgs.obsidian)
     (config.lib.nixGL.wrap pkgs.onlyoffice-bin_latest)
     (config.lib.nixGL.wrap pkgs.openshot-qt)
-    pkgs.skypeforlinux
+    (config.lib.nixGL.wrap pkgs.vlc)
+    (config.lib.nixGL.wrap pkgs.skypeforlinux)
+    (config.lib.nixGL.wrap pkgs.zathura)
+    (config.lib.nixGL.wrap pkgs.zoom-us)
+    pkgs.alarm-clock-applet
+    pkgs.masterpdfeditor
     pkgs.spotify
     pkgs.telegram-desktop
-    (config.lib.nixGL.wrap pkgs.vlc)
 
     nixGLDefault
     nixGLIntel
@@ -125,10 +129,23 @@ in
     pkgs.xsel
     pkgs.zsh
 
+    # Libraries
+    pkgs.xorg.libX11.dev
+    pkgs.xorg.libXcursor.dev
+    pkgs.xorg.libXext.dev
+    pkgs.xorg.libXfixes.dev
+    pkgs.xorg.libXi.dev
+    pkgs.xorg.libXinerama.dev
+    pkgs.xorg.libXrandr.dev
+    pkgs.xorg.libXrender.dev
+    pkgs.xorg.libXxf86vm
+
     # Languages
     # pkgs.zulu # java
     pkgs.go
     pkgs.nodejs_22
+    pkgs.corepack_22
+    pkgs.typescript
     pkgs.rustc
     pkgs.cargo
 
@@ -143,21 +160,21 @@ in
     pkgs.stylua
 
     # LSPs
+    pkgs.ccls
+    pkgs.emmet-ls
     pkgs.gopls
     pkgs.lemminx # xml
+    pkgs.llvmPackages_18.clang-tools
     pkgs.lua-language-server
-    pkgs.nodePackages_latest.intelephense
-    pkgs.nodePackages_latest.volar
-    # pkgs.nodePackages_latest.vscode-css-languageserver-bin
-    # pkgs.nodePackages_latest.vscode-json-languageserver-bin
     pkgs.nodePackages_latest.graphql-language-service-cli
+    pkgs.nodePackages_latest.intelephense
     pkgs.nodePackages_latest.typescript-language-server
-    # pkgs.nodePackages_latest.vscode-html-languageserver-bin
+    pkgs.rust-analyzer
     pkgs.tailwindcss-language-server
     pkgs.templ
     pkgs.vscode-langservers-extracted
+    pkgs.vue-language-server
     pkgs.yaml-language-server
-    pkgs.rust-analyzer
 
     # Debuggers
     pkgs.delve
@@ -250,7 +267,7 @@ in
   #  /etc/profiles/per-user/hendrik/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.

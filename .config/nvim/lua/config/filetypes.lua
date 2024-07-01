@@ -5,5 +5,6 @@ vim.filetype.add({
 	pattern = {
 		[".*%.ya?ml.template"] = "yaml",
 		[".*%.conf.template"] = "nginx",
+		[".*%.blade%.php"] = "blade",
 	},
 })

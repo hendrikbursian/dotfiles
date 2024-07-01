@@ -1,5 +1,4 @@
 -- PHP LSP
--- TODO: The settings are not applied in the lsp configs!!!!!
 return {
 	"neovim/nvim-lspconfig",
 	opts = function(_, opts)
@@ -29,6 +28,7 @@ return {
 			},
 		}
 
+		-- TODO: use this in on_new_config (lspconfig.intelephense.on_new_config)
 		local cwd = utils.get_git_dir_or_cwd()
 		local wp_home = utils.find_wp_ancestor(cwd)
 		if wp_home ~= nil then

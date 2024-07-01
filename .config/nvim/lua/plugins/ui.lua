@@ -1,3 +1,8 @@
+local banned_messages = {
+	"No LSP References found",
+	"Request textDocument/prepareRename failed with message: You cannot rename this element.",
+}
+
 return {
 	-- Startscreen
 	{
@@ -20,9 +25,8 @@ return {
 				"   =============================================================================",
 			}
 			vim.g.startify_enable_special = 0
-			vim.g.startify_enable_unsafe = 1
 
-            -- stylua: ignore
+			-- stylua: ignore
 			vim.g.startify_lists = {
 				{ type = git_modified,  header = { "   Git modified" } },
 				{ type = "dir",         header = { "   MRU " .. vim.loop.cwd() } },
@@ -54,8 +58,8 @@ return {
 		},
 		opts = {
 			timeout = 5000,
-			-- render = "simple",
-			-- stages = "static",
+			render = "simple",
+			stages = "static",
 			-- top_down = false,
 			-- background_colour = "#000000",
 			max_height = function()
@@ -69,7 +73,15 @@ return {
 			end,
 		},
 		init = function()
-			vim.notify = require("notify")
+			vim.notify = function(msg, ...)
+				for _, banned_msg in ipairs(banned_messages) do
+					if string.find(msg, banned_msg) then
+						vim.print(msg, ...)
+						return
+					end
+				end
+				require("notify")(msg, ...)
+			end
 		end,
 	},
 

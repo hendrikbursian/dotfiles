@@ -1,6 +1,7 @@
 -- Remember breakpoints
 return {
 	"nvim-dap",
+	enabled = false,
 	optional = true,
 	dependencies = {
 		"weissle/persistent-breakpoints.nvim",

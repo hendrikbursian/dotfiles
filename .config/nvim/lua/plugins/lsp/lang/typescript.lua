@@ -42,17 +42,51 @@ return {
 			},
 		}
 
-		opts.handlers.tsserver = function()
+		opts.handlers.tsserver = function(settings)
 			local lsp = require("modules.lsp")
+
+			local vue_plugin_paths =
+				vim.fn.system("pnpm list --global @vue/typescript-plugin --parseable --fail-if-no-match")
+			if vim.v.shell_error ~= 0 then
+				vim.print("tsserver lsp setup: Failed to find @vue/typescript-plugin")
+			end
+
+			local vue_plugin_path = nil
+			for line in vue_plugin_paths:gmatch("[^\r\n]+") do
+				if line:find("@vue/typescript-plugin", nil, true) then
+					vue_plugin_path = line
+					break
+				end
+			end
+
+			if vue_plugin_path == nil then
+				vim.print("tsserver lsp setup: cannot find vue plugin for typescript")
+			end
 
 			require("typescript").setup({
 				disable_commands = false, -- prevent the plugin from creating Vim commands
 				debug = false, -- enable debug logging for commands
-				server = {
-					capabilities = lsp.get_capabilities(),
-					on_attach = lsp.on_attach,
-					settings = opts.servers.tsserver,
-				},
+				server = vim.tbl_deep_extend("force", lsp.get_default_server_config(settings), {
+					init_options = {
+						plugins = {
+							{
+								name = "@vue/typescript-plugin",
+								location = vue_plugin_path,
+								languages = { "javascript", "typescript", "vue" },
+							},
+						},
+					},
+					filetypes = {
+						"javascript",
+						"javascript.jsx",
+						"javascriptreact",
+						"typescript",
+						"typescript.tsx",
+						"typescriptreact",
+						"vue",
+					},
+					single_file_support = true,
+				}),
 			})
 		end
 

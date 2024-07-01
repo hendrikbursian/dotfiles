@@ -21,7 +21,9 @@ return {
 		},
 		opts = function()
 			local servers = {
-				cssls = {},
+				-- cssls = {},
+				-- ccls = {
+				emmet_ls = {},
 				gopls = {
 					gopls = {
 						hints = {
@@ -36,7 +38,6 @@ return {
 					},
 				},
 				graphql = {},
-				html = {},
 				lemminx = {},
 				-- jsonls = {},
 				lua_ls = {
@@ -68,12 +69,32 @@ return {
 					},
 				},
 				templ = {},
-				volar = {},
+			}
+
+			local handlers = {
+				emmet_ls = function(settings)
+					local lspconfig = require("lspconfig")
+					local lsp = require("modules.lsp")
+					lspconfig.emmet_ls = vim.tbl_deep_extend("force", lsp.get_default_server_config(settings), {
+						filetypes = {
+							"css",
+							"eruby",
+							"html",
+							"htmldjango",
+							"javascriptreact",
+							"less",
+							"pug",
+							"sass",
+							"scss",
+							"typescriptreact",
+						},
+					})
+				end,
 			}
 
 			local opts = {
 				servers = servers,
-				handlers = {},
+				handlers = handlers,
 			}
 
 			return opts
@@ -85,7 +106,7 @@ return {
 				if opts.handlers[server_name] == nil then
 					lsp.config_setup(server_name, server_config)
 				else
-					opts.handlers[server_name]()
+					opts.handlers[server_name](server_config)
 				end
 			end
 		end,
@@ -93,9 +114,11 @@ return {
 
 	{ import = "plugins.lsp" },
 
+	{ import = "plugins.lsp.lang.volar" },
 	{ import = "plugins.lsp.lang.typescript" },
 	{ import = "plugins.lsp.lang.rust" },
 	{ import = "plugins.lsp.lang.intelephense" },
 	{ import = "plugins.lsp.lang.yamlls" },
 	{ import = "plugins.lsp.lang.jsonls" },
+	{ import = "plugins.lsp.lang.html" },
 }
