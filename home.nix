@@ -59,6 +59,7 @@ in
     #   echo "Hello, ${config.home.username}!"
     # '')
     # Applications
+    (config.lib.nixGL.wrap pkgs.alacritty)
     (config.lib.nixGL.wrap pkgs.brave)
     (config.lib.nixGL.wrap pkgs.firefox)
     (config.lib.nixGL.wrap pkgs.obsidian)
@@ -67,7 +68,7 @@ in
     (config.lib.nixGL.wrap pkgs.vlc)
     (config.lib.nixGL.wrap pkgs.skypeforlinux)
     (config.lib.nixGL.wrap pkgs.zathura)
-    (config.lib.nixGL.wrap pkgs.zoom-us)
+    pkgs.zoom-us
     pkgs.alarm-clock-applet
     pkgs.masterpdfeditor
     pkgs.spotify
@@ -84,6 +85,7 @@ in
     pkgs.android-tools
 
     # Tools
+    pkgs.asciidoctor-with-extensions
     pkgs.bash
     pkgs.cacert
     pkgs.comma
@@ -110,6 +112,7 @@ in
     pkgs.nix
     pkgs.nix-direnv
     pkgs.oh-my-zsh
+    pkgs.pandoc
     pkgs.redshift
     pkgs.ripgrep
     pkgs.rsync

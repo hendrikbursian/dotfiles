@@ -28,6 +28,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
 vim.keymap.set("n", "<C-o>", "<C-o>zz", { desc = "Jump to previous position" })
 vim.keymap.set("n", "<C-i>", "<C-i>zz", { desc = "Jump to next position" })
 --vim.keymap.set("n","J", "mzJ`z")
+vim.keymap.set("n", "gX", ":!xdg-open %:h<cr>", { desc = "Open directory of current file" })
 
 -- Diagnostic
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })
@@ -41,13 +42,12 @@ vim.keymap.set("n", "<leader>r", function() require("plenary.reload").reload_mod
 
 -- Timesheet
 -- vim.keymap.set("n", "<Leader>t", ":e $HOME/Documents/Freelancing/timesheet.txt<CR>", { desc = "Open Timesheet" })
--- stylua: ignore
-vim.keymap.set("n", "<leader>lsp", ":e $DOTFILES/nvim/.config/nvim/lua/plugins/lsp.lua<CR>", { desc = "Open LSP config" })
 
+-- stylua: ignore
 vim.keymap.set("n", "<C-f>", ":silent !tmux neww tmux-sessionizer<CR>", { desc = "Sezzzionizezzer" })
 vim.keymap.set("n", "<leader>d", '"_d', { desc = "Delete without copying!" })
 vim.keymap.set("n", "<C-s>", "<cmd>write<cr>", { desc = "Save" })
-vim.keymap.set("i", "<C-s>", "<C-o>de", { desc = "Delete forwards" })
+vim.keymap.set("i", "<C-s>", "<C-o>", { desc = "Delete forwards" })
 
 vim.keymap.set("n", "<leader>x", ":!chmod +x %<CR>", { silent = true, desc = "Give executable permission" })
 vim.keymap.set("n", "<leader>X", ":!chmod -x %<CR>", { silent = true, desc = "Remove executable permission" })

@@ -1,8 +1,25 @@
 -- Extended Typescript Tools
+
+local ts_neoconf_defaults = {
+	vue_plugin_path = nil,
+}
+
 return {
 	"neovim/nvim-lspconfig",
-	dependencies = { "jose-elias-alvarez/typescript.nvim" },
+	dependencies = {
+		"jose-elias-alvarez/typescript.nvim",
+		"folke/neoconf.nvim",
+	},
 	opts = function(_, opts)
+		require("neoconf.plugins").register({
+			on_schema = function(schema)
+				schema:set("ts_server.vue_plugin_path", {
+					description = "Path to the @vue/typescript-plugin path",
+					type = "string",
+				})
+			end,
+		})
+
 		opts.servers.tsserver = {
 			javascript = {
 				suggest = {
@@ -45,36 +62,12 @@ return {
 		opts.handlers.tsserver = function(settings)
 			local lsp = require("modules.lsp")
 
-			local vue_plugin_paths =
-				vim.fn.system("pnpm list --global @vue/typescript-plugin --parseable --fail-if-no-match")
-			if vim.v.shell_error ~= 0 then
-				vim.print("tsserver lsp setup: Failed to find @vue/typescript-plugin")
-			end
-
-			local vue_plugin_path = nil
-			for line in vue_plugin_paths:gmatch("[^\r\n]+") do
-				if line:find("@vue/typescript-plugin", nil, true) then
-					vue_plugin_path = line
-					break
-				end
-			end
-
-			if vue_plugin_path == nil then
-				vim.print("tsserver lsp setup: cannot find vue plugin for typescript")
-			end
-
-			require("typescript").setup({
+			local ts_config = {
 				disable_commands = false, -- prevent the plugin from creating Vim commands
 				debug = false, -- enable debug logging for commands
 				server = vim.tbl_deep_extend("force", lsp.get_default_server_config(settings), {
 					init_options = {
-						plugins = {
-							{
-								name = "@vue/typescript-plugin",
-								location = vue_plugin_path,
-								languages = { "javascript", "typescript", "vue" },
-							},
-						},
+						plugins = {},
 					},
 					filetypes = {
 						"javascript",
@@ -87,7 +80,23 @@ return {
 					},
 					single_file_support = true,
 				}),
-			})
+			}
+
+			local ts_neoconf = require("neoconf").get("ts_server", ts_neoconf_defaults)
+
+			if ts_neoconf.vue_plugin_path == nil then
+				vim.print(
+					"tsserver lsp setup: cannot find vue plugin for typescript. run `pnpm install --global @vue/typescript-plugin` then `pnpm list --global @vue/typescript-plugin` and paste path into global neoconf (~/.config/nvim/neoconf.json)"
+				)
+			else
+				table.insert(ts_config.server.init_options.plugins, {
+					name = "@vue/typescript-plugin",
+					location = ts_neoconf.vue_plugin_path,
+					languages = { "javascript", "typescript", "vue" },
+				})
+			end
+
+			require("typescript").setup(ts_config)
 		end
 
 		return opts

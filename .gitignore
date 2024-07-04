@@ -7,3 +7,4 @@ fonts/*.zip
 /zsh/.config/local/share/zsh/zcompdump*
 /z/.config/local/share/z/z
 /fonts/.local/share/fonts/.uuid
+/.config/nvim/neoconf.json

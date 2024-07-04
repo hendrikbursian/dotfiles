@@ -1,5 +1,3 @@
-local utils = require("modules.utils")
-
 -- Formatting
 return {
 	{

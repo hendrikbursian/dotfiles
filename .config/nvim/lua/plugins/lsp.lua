@@ -3,11 +3,6 @@ return {
 		"neovim/nvim-lspconfig",
 		event = "VeryLazy",
 		dependencies = {
-			{
-				"folke/neoconf.nvim",
-				config = true,
-			},
-
 			-- Additional lua configuration
 			{
 				"folke/neodev.nvim",
