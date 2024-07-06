@@ -18,7 +18,6 @@ return {
 			local servers = {
 				-- cssls = {},
 				-- ccls = {
-				emmet_ls = {},
 				gopls = {
 					gopls = {
 						hints = {
@@ -66,26 +65,7 @@ return {
 				templ = {},
 			}
 
-			local handlers = {
-				emmet_ls = function(settings)
-					local lspconfig = require("lspconfig")
-					local lsp = require("modules.lsp")
-					lspconfig.emmet_ls = vim.tbl_deep_extend("force", lsp.get_default_server_config(settings), {
-						filetypes = {
-							"css",
-							"eruby",
-							"html",
-							"htmldjango",
-							"javascriptreact",
-							"less",
-							"pug",
-							"sass",
-							"scss",
-							"typescriptreact",
-						},
-					})
-				end,
-			}
+			local handlers = {}
 
 			local opts = {
 				servers = servers,

@@ -31,7 +31,7 @@ M.on_attach = function(_, bufnr)
 
     -- stylua: ignore start
 
-	vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename,                                         { desc = "Vim Re[n]ame", buffer = bufnr })
+	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename,                                         { desc = "Vim Re[n]ame", buffer = bufnr })
 	vim.keymap.set("n", "<leader>.",   vim.lsp.buf.code_action,                                    { desc = "Code Action (Habit from VSCode <C-.>)", buffer = bufnr })
 
 	vim.keymap.set("n", "K",           vim.lsp.buf.hover,                                          { desc = "Hover Documentation", buffer = bufnr })

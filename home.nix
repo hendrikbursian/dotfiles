@@ -164,7 +164,6 @@ in
 
     # LSPs
     pkgs.ccls
-    pkgs.emmet-ls
     pkgs.gopls
     pkgs.lemminx # xml
     pkgs.llvmPackages_18.clang-tools
