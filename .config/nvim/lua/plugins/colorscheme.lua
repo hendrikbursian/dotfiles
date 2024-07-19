@@ -79,6 +79,7 @@ return {
 			colorscheme.add({
 				schema = "gruvbox",
 				background = "dark",
+				favorite = true,
 				config = function()
 					vim.g.gruvbox_italic = 1
 					vim.g.gruvbox_contrast_dark = "hard"
@@ -151,11 +152,65 @@ return {
 				background = "light",
 				config = function()
 					set_overrides()
-					vim.api.nvim_set_hl(0, "Normal", {
-						bg = "#ffffff",
-						fg = "#000000",
-					})
+					vim.api.nvim_set_hl(0, "Normal", { bg = "#ffffff", fg = "#000000" })
+					vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#ffffff" })
+					vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "#ffffff" })
+					vim.api.nvim_set_hl(0, "NeoTreeEndOfBuffer", { bg = "#ffffff", fg = "#ffffff" })
 				end,
+			})
+		end,
+	},
+
+	{
+		"mofiqul/vscode.nvim",
+		priority = 1000,
+		keys = keys,
+		config = function()
+			colorscheme.add({
+				schema = "vscode",
+				background = "light",
+				config = set_overrides,
+			})
+			colorscheme.add({
+				schema = "vscode",
+				background = "dark",
+				config = set_overrides,
+			})
+		end,
+	},
+	{
+		"cdmill/neomodern.nvim",
+		priority = 1000,
+		keys = keys,
+		config = function()
+			colorscheme.add({
+				schema = "neomodern",
+				background = "light",
+				-- config = set_overrides,
+			})
+			colorscheme.add({
+				schema = "neomodern",
+				background = "dark",
+				-- config = set_overrides,
+			})
+		end,
+	},
+	{
+		"folke/tokyonight.nvim",
+		priority = 1000,
+		lazy = false,
+		keys = keys,
+		config = function()
+			colorscheme.add({
+				schema = "tokyonight",
+				background = "light",
+				favorite = true,
+				config = set_overrides,
+			})
+			colorscheme.add({
+				schema = "tokyonight",
+				background = "dark",
+				config = set_overrides,
 			})
 		end,
 	},

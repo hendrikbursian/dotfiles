@@ -66,8 +66,14 @@ local M = {}
 M.add = function(colorscheme)
 	if colorscheme.background == "light" then
 		colorschemes.light[#colorschemes.light + 1] = colorscheme
+		if colorscheme.favorite then
+			light_colorscheme_index = #colorschemes.light
+		end
 	else
 		colorschemes.dark[#colorschemes.dark + 1] = colorscheme
+		if colorscheme.favorite then
+			dark_colorscheme_index = #colorschemes.dark
+		end
 	end
 end
 
