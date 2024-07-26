@@ -16,7 +16,7 @@ return {
 		},
 		opts = function()
 			local servers = {
-				-- cssls = {},
+				cssls = {},
 				-- ccls = {
 				gopls = {
 					gopls = {

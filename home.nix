@@ -68,11 +68,9 @@ in
     (config.lib.nixGL.wrap pkgs.vlc)
     (config.lib.nixGL.wrap pkgs.skypeforlinux)
     (config.lib.nixGL.wrap pkgs.zathura)
-    pkgs.zoom-us
     pkgs.alarm-clock-applet
     pkgs.masterpdfeditor
     pkgs.spotify
-    pkgs.telegram-desktop
 
     nixGLDefault
     nixGLIntel
@@ -92,6 +90,7 @@ in
     pkgs.curl
     pkgs.direnv
     pkgs.fd
+    pkgs.feh
     pkgs.fh
     pkgs.fuse3
     pkgs.fzf
@@ -243,14 +242,22 @@ in
       recursive = true;
     };
 
-    # "redshift.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/redshift.conf";
-
     "systemd/user/default.target.wants/redshift.service".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/systemd/user/default.target.wants/redshift.service";
     "systemd/user/redshift.service".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/systemd/user/redshift.service";
+
+    "systemd/user/next-bg.service".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/systemd/user/next-bg.service";
+    "systemd/user/timers.target.wants/next-bg.timer".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/systemd/user/timers.target.wants/next-bg.timer";
+    "systemd/user/next-bg.timer".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/systemd/user/next-bg.timer";
   };
 
   home.activation.copyFiles = ''
     cp $DOTFILES/.config/redshift.conf $HOME/.config/
+
+    # cp $DOTFILES/.config/systemd/user/default.target.wants/next-bg.service $HOME/.config/systemd/user/default.target.wants/
+    # cp $DOTFILES/.config/systemd/user/next-bg.service $HOME/.config/systemd/user/
+
+    # cp $DOTFILES/.config/systemd/user/default.target.wants/next-bg.timer $HOME/.config/systemd/user/default.target.wants/
+    # cp $DOTFILES/.config/systemd/user/next-bg.timer $HOME/.config/systemd/user/
   '';
 
   # Home Manager can also manage your environment variables through
