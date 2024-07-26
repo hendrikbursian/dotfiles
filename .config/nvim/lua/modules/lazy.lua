@@ -1,4 +1,7 @@
 local config = {
+	change_detection = {
+		notify = false,
+	},
 	performance = {
 		rtp = {
 			disabled_plugins = {

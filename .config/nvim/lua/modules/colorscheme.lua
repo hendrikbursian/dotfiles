@@ -59,6 +59,18 @@ local function apply_colorscheme(colorschemes, index, print_schema)
 	if colorschemes[index].config then
 		colorschemes[index].config()
 	end
+
+	local ok, transparent = pcall(require, "transparent")
+	if ok == true then
+		if vim.g.transparent_enabled == true then
+			transparent.toggle(true)
+		else
+			transparent.toggle(false)
+		end
+
+		transparent.clear_prefix("lualine")
+		transparent.clear_prefix("NeoTree")
+	end
 end
 
 local M = {}

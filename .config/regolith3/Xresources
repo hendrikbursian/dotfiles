@@ -8,6 +8,8 @@ wm.window.border.size:	0
 wm.floatingwindow.border.size:	0
 
 gnome.terminal.font: BlexMono Nerd Font Text 11
+gnome.terminal.use-transparent-background: true
+gnome.terminal.background-transparency-percent: 15
 
 # Bar
 wm.bar.font: BlexMono Nerd Font Text 9

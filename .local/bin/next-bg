@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+BG_PATH=$HOME/Pictures/Backgrounds
+image_path="$(rg ~/.fehbg --no-line-number -o -e '--bg[^ ]* '\''(.*)'\''' -r '$1')"
+
+if [ $? -ne 0 ]; then
+    image_path=""
+fi
+
+images=($(ls -1 "$BG_PATH"))
+if [ "$image_path" == "" ]; then
+    next_image="${images[0]}"
+else
+    image_name=$(basename "$image_path")
+    for i in "${!images[@]}"; do
+        if [ "${images[$i]}" == "$image_name" ]; then
+            image_index=$i
+            break
+        fi
+    done
+    next_index=$(( (image_index + 1) % ${#images[@]} ))
+    next_image="${images[$next_index]}"
+fi
+
+feh --bg-fill "$BG_PATH/$next_image"
+
