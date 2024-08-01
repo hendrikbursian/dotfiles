@@ -44,7 +44,7 @@ vim.keymap.set("n", "<leader>r", function() require("plenary.reload").reload_mod
 -- vim.keymap.set("n", "<Leader>t", ":e $HOME/Documents/Freelancing/timesheet.txt<CR>", { desc = "Open Timesheet" })
 
 -- stylua: ignore
-vim.keymap.set("n", "<C-f>", ":silent !tmux neww tmux-sessionizer<CR>", { desc = "Sezzzionizezzer" })
+vim.keymap.set("n", "<C-f>", ":silent !tmux neww -e SESSION_DIRS=$SESSION_DIRS tmux-sessionizer<CR>", { desc = "Sezzzionizezzer" })
 vim.keymap.set("n", "<leader>d", '"_d', { desc = "Delete without copying!" })
 vim.keymap.set("n", "<C-s>", "<cmd>write<cr>", { desc = "Save" })
 vim.keymap.set("i", "<C-s>", "<C-o>", { desc = "Delete forwards" })
