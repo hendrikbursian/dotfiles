@@ -3,14 +3,7 @@
 if [[ $# == 1 ]]; then
     selected=$1
 else
-    DIRS="$(find ~/Documents -mindepth 1 -maxdepth 1 -type d 2> /dev/null)
-$(find ~/Workspace/Personal -mindepth 1 -maxdepth 1 -not \( -path '*/experiments' -prune \) -type d 2> /dev/null)
-$(find ~/Workspace/Personal/experiments -mindepth 1 -maxdepth 1 -type d 2> /dev/null)
-$(find ~/Workspace/Freelancing -mindepth 1 -maxdepth 2 -not \( -path '*/wordpress-sites' -prune \) -type d 2> /dev/null)
-$(find ~/Workspace/Freelancing/wordpress-sites/www/*/public_html/wp-content/plugins -mindepth 1 -maxdepth 1 -type d 2> /dev/null)
-$(find ~/Workspace/Freelancing/wordpress-sites/www/*/public_html/wp-content/themes -mindepth 1 -maxdepth 1 -type d 2> /dev/null)
-$(tmux list-sessions -F '#{session_name}')"
-    selected=$(echo "$DIRS" | sort -r | uniq | fzf)
+    selected=$(echo "$SESSION_DIRS" | uniq | fzf)
 fi
 
 if [[ -z $selected ]]; then

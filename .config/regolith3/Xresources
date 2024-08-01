@@ -9,12 +9,12 @@ wm.floatingwindow.border.size:	0
 
 gnome.terminal.font: BlexMono Nerd Font Text 11
 gnome.terminal.use-transparent-background: true
-gnome.terminal.background-transparency-percent: 15
+gnome.terminal.background-transparency-percent: 33
 
 # Bar
 wm.bar.font: BlexMono Nerd Font Text 9
 
-wm.bar.status_config: ~/.config/.i3status-rust.conf
+wm.bar.status_command: i3status-rs
 
 i3xrocks.date.format2: %a %d/%m %H:%M
 
@@ -25,7 +25,7 @@ wm.workspace.04.name: 4: 4 Notizen
 wm.workspace.05.name: 5: 5 Nachrichten
 wm.workspace.06.name: 6: 6 Finanzen
 wm.workspace.07.name: 7: 7 Musik
-wm.workspace.08.name: 8: 8 Bibel
+wm.workspace.08.name: 8: 8 Tagebuch
 wm.workspace.09.name: 9: 9 
 wm.workspace.10.name: 10: 10
 wm.workspace.11.name: 11: 11
@@ -45,6 +45,5 @@ wm.binding.sleep: Shift+Escape
 regolith.wallpaper.file: ~/.config/regolith3/wallpaper.jpeg
 regolith.wallpaper.options: zoom
 
-! regolith.look.path: /usr/share/regolith-look/blackhole
-!regolith.look.path: /usr/share/regolith-look/blackhole
-regolith.look.path: /usr/share/regolith-look/nord
+!regolith.look.path: /usr/share/regolith-look/gruvbox
+regolith.look.path: /usr/share/regolith-look/nevil

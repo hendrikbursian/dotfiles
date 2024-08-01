@@ -21,6 +21,7 @@ export COMPOSER_HOME="$XDG_CONFIG_HOME/composer"
 export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 export BUN_INSTALL="$HOME/.bun"
 export PYENV_ROOT="$HOME/.pyenv"
+export FLYCTL_INSTALL="/home/hendrik/.fly"
 
 # Path
 export PATH="$HOME/bin:$PATH"
@@ -30,11 +31,13 @@ export PATH="$COMPOSER_HOME/vendor/bin:$PATH"
 export PATH="$PNPM_HOME:$PATH"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.phpenv/bin:$PATH"
 export PATH="$HOME/neovim/bin:$PATH"
 export PATH="$PNPM_HOME:$PATH"
 export PATH="$HOME/.deno/bin:$PATH"
 export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 # Export DISPLAY on WSL
 if grep -qi microsoft /proc/version; then

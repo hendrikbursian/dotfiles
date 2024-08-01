@@ -101,16 +101,19 @@ in
     pkgs.gnupg
     pkgs.hadolint
     pkgs.htop
+    pkgs.i3status-rust
     pkgs.inotify-tools
     pkgs.iputils
     pkgs.jq
     pkgs.llvm
     pkgs.lynx
+    pkgs.mitmproxy
     pkgs.neovim
     pkgs.nettools
     pkgs.nix
     pkgs.nix-direnv
     pkgs.oh-my-zsh
+    pkgs.openssl.dev
     pkgs.pandoc
     pkgs.redshift
     pkgs.ripgrep
@@ -226,12 +229,13 @@ in
       recursive = true;
     };
 
-    ".i3status-rust.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/.i3status-rust.conf";
     "regolith3" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/regolith3";
       recursive = true;
     };
 
+    "i3status-rust" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/i3status-rust";
       recursive = true;
     };
 

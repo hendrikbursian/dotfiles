@@ -13,7 +13,8 @@ shadow = true;
 #################################
 
 inactive-opacity = 0.93;
-active-opacity = 0.93;
+active-opacity = 1;
+#active-opacity = 0.93;
 frame-opacity = 0.93;
 inactive-opacity-override = false;
 
