@@ -14,6 +14,17 @@ function git-rebase-interactive-branch-root() {
 	git rebase --interactive "$(git log $(git remote show origin | sed -n '/HEAD branch/s/.*: //p')..$(git branch --show-current) --oneline | tail -1 | awk '{ print $1 }')"~1
 }
 
+function kill-port() {
+    pids=$(lsof -i ":$1" | tail -n+2 | awk '{ print $2 }')
+    errcode=$?
+    if [[ $errcode -ne 0 ]] || [[ "$pids" == "" ]]; then
+        echo "No processes found"
+        return
+    fi
+
+    kill -9 "$pids"
+}
+
 # Template function for starting services
 #
 #  function _dev() {

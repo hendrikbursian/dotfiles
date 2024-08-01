@@ -27,6 +27,7 @@ alias gcl="gitlab-ci-local"
 alias pd="popd"
 alias pud="pushd"
 alias t="trans"
+alias kp="kill-port"
 
 # This is specific to WSL 2. If the WSL 2 VM goes rogue and decides not to free
 # up memory, this command will free your memory after about 20-30 seconds.
