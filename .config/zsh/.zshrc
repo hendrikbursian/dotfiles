@@ -18,8 +18,6 @@ export HIST_STAMPS="yyyy-mm-dd"
 
 # Misc
 export COMPOSER_HOME="$XDG_CONFIG_HOME/composer"
-export ASDF_NPM_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/.default-npm-packages"
-export ASDF_PYTHON_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/.default-python-packages"
 export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 export BUN_INSTALL="$HOME/.bun"
 export PYENV_ROOT="$HOME/.pyenv"
@@ -46,7 +44,6 @@ fi
 
 # ZSH Config
 plugins=(
-  asdf
   git
   fzf
   vi-mode

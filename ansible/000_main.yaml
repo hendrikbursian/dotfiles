@@ -16,8 +16,5 @@
 - name: Install neovim
   ansible.builtin.import_playbook: 050_apps_neovim.yaml
 
-- name: Install asdf
-  ansible.builtin.import_playbook: 050_asdf.yaml
-
 - name: Install dotfiles
   ansible.builtin.import_playbook: 060_dotfiles.yaml
