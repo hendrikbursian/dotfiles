@@ -51,7 +51,7 @@ return {
 
 					local on_format = get_on_format_callback(bufnr, true)
 
-					return { timeout_ms = 200, lsp_fallback = true }, on_format
+					return { timeout_ms = 200, lsp_fallback = true, stop_after_first = true }, on_format
 				end,
 
 				format_after_save = function(bufnr)
@@ -66,7 +66,7 @@ return {
 
 					local on_format = get_on_format_callback(bufnr, false)
 
-					return { lsp_fallback = true }, on_format
+					return { lsp_fallback = true, stop_after_first = true }, on_format
 				end,
 
 				notify_on_error = true,
@@ -120,6 +120,7 @@ return {
 				vim.b.disable_autoformat = false
 			end, {
 				desc = "Re-enable autoformat-on-save",
+				bang = true,
 			})
 
 			require("conform").setup(opts)

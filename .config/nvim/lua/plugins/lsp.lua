@@ -18,20 +18,8 @@ return {
 			local servers = {
 				cssls = {},
 				-- ccls = {
-				gopls = {
-					gopls = {
-						hints = {
-							assignVariableTypes = true,
-							compositeLiteralFields = true,
-							compositeLiteralTypes = true,
-							constantValues = true,
-							functionTypeParameters = true,
-							parameterNames = true,
-							rangeVariableTypes = true,
-						},
-					},
-				},
 				graphql = {},
+				htmx = {},
 				lemminx = {},
 				-- jsonls = {},
 				lua_ls = {
@@ -88,7 +76,6 @@ return {
 	},
 
 	{ import = "plugins.lsp" },
-
 	{ import = "plugins.lsp.lang.volar" },
 	{ import = "plugins.lsp.lang.typescript" },
 	{ import = "plugins.lsp.lang.rust" },
@@ -96,4 +83,5 @@ return {
 	{ import = "plugins.lsp.lang.yamlls" },
 	{ import = "plugins.lsp.lang.jsonls" },
 	{ import = "plugins.lsp.lang.html" },
+	{ import = "plugins.lsp.lang.golang" },
 }

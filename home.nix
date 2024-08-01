@@ -164,6 +164,7 @@ in
     # LSPs
     pkgs.ccls
     pkgs.gopls
+    pkgs.htmx-lsp
     pkgs.lemminx # xml
     pkgs.llvmPackages_18.clang-tools
     pkgs.lua-language-server
