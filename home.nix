@@ -243,24 +243,53 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/direnv";
       recursive = true;
     };
-
-    "systemd/user/default.target.wants/redshift.service".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/systemd/user/default.target.wants/redshift.service";
-    "systemd/user/redshift.service".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/systemd/user/redshift.service";
-
-    "systemd/user/next-bg.service".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/systemd/user/next-bg.service";
-    "systemd/user/timers.target.wants/next-bg.timer".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/systemd/user/timers.target.wants/next-bg.timer";
-    "systemd/user/next-bg.timer".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/systemd/user/next-bg.timer";
   };
 
-  home.activation.copyFiles = ''
-    cp $DOTFILES/.config/redshift.conf $HOME/.config/
-
-    # cp $DOTFILES/.config/systemd/user/default.target.wants/next-bg.service $HOME/.config/systemd/user/default.target.wants/
-    # cp $DOTFILES/.config/systemd/user/next-bg.service $HOME/.config/systemd/user/
-
-    # cp $DOTFILES/.config/systemd/user/default.target.wants/next-bg.timer $HOME/.config/systemd/user/default.target.wants/
-    # cp $DOTFILES/.config/systemd/user/next-bg.timer $HOME/.config/systemd/user/
+  # redshift doesnt like symlinks
+  home.activation.copyRedshiftConfig = ''
+    cp "$DOTFILES/.config/redshift.conf" "$HOME/.config/"
   '';
+
+  systemd.user.services.redshift = {
+    Unit = {
+      Description = "Redshift display colour temperature adjustment";
+      Documentation = "http://jonls.dk/redshift/";
+      After = "graphical-session.target";
+    };
+    Service = {
+      ExecStart = "/bin/redshift";
+      Restart = "always";
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+  };
+
+  systemd.user.services.next_bg = {
+    Unit = {
+      Description = "Changes background";
+      After = "graphical-session.target";
+    };
+    Service = {
+      ExecStart = "%h/.local/bin/next-bg";
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+  };
+
+  systemd.user.timers.next_bg = {
+    Unit = {
+      Description = "Run next-bg periodically";
+    };
+    Timer = {
+      OnCalendar = "*-*-* *:0/5:00";
+      Persistent = "true";
+    };
+    Install = {
+      WantedBy = [ "timers.target" ];
+    };
+  };
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. If you don't want to manage your shell through Home

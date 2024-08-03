@@ -21,6 +21,10 @@ git -C ~/.dotfiles remote set-url origin git@github.com:hendrikbursian/dotfiles.
 
 # Setup the rest
 ~/.dotfiles/ansible/scripts/run_ansible.sh
+
+# set keymaps
+sudo cp "$DOTFILES/xkb/symbols/pc" "/usr/share/X11/xkb/symbols/pc"
+sudo setxkbmap
 ```
 
 ## Further installations
