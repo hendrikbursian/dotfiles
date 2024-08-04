@@ -43,8 +43,23 @@ local function is_dark_mode()
 
 		return string.match(apps_use_light_theme_value, "0x0")
 	elseif is_linux() then
+		local session = os.getenv("XDG_SESSION_TYPE")
+		if session == nil then
+			vim.print("colorscheme: session could not be determined")
+			return false
+		end
+
+		if session == "wayland" then
+			vim.print("colorscheme: usage on wayland not supported yet")
+			return false
+		end
+
 		local terminal_color = vim.fn.system('xrdb -query | grep "gnome.terminal.color0" | cut -d "\t" -f2')
-		return is_color_dark(terminal_color)
+		if vim.v.shell_error ~= 0 or terminal_color == "" then
+			return false
+		end
+
+		is_color_dark(terminal_color)
 	end
 
 	return vim.opt.background:get() == "dark"

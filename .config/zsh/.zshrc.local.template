@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export SESSION_DIRS="$(tmux list-sessions -F '#{session_name}')
+export SESSION_DIRS="
 $DOTFILES
 # $(find ~/some_path -mindepth 1 -maxdepth 1 -not \( -path '*/some_unwanted_path' -prune \) -type d 2> /dev/null)
 "

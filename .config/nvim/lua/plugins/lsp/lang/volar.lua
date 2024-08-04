@@ -33,7 +33,7 @@ return {
 			if volar_neoconf.typescript_path == nil or not utils.path.exists(volar_neoconf.typescript_path) then
 				vim.print(
 					"Path volar.typescript_path is invalid: "
-						.. volar_neoconf.typescript_path
+						.. (volar_neoconf.typescript_path or "")
 						.. ". Make sure to install typescript globally and add the path in the neoconf."
 				)
 			else

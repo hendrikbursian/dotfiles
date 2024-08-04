@@ -17,6 +17,11 @@ return {
 
 		local log_files_config = require("neoconf").get("quick_files")
 
+		if log_files_config == nil then
+			vim.print("Missing quick_files config")
+			return
+		end
+
 		vim.keymap.set("n", "<leader>1", ":edit " .. log_files_config["1"] .. "<cr>")
 		vim.keymap.set("n", "<leader>2", ":edit " .. log_files_config["2"] .. "<cr>")
 		vim.keymap.set("n", "<leader>3", ":edit " .. log_files_config["3"] .. "<cr>")

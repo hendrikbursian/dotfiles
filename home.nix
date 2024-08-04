@@ -1,26 +1,10 @@
-{ nixGL, callPackage, config, pkgs, lib, username, homeDirectory, ... }:
+{ callPackage, config, pkgs, lib, username, homeDirectory, ... }:
 
-let
-  nixGLDefault = nixGL.packages."${pkgs.system}".nixGLDefault;
-  nixGLNvidia = nixGL.packages."${pkgs.system}".nixGLNvidia;
-  nixGLIntel = nixGL.packages."${pkgs.system}".nixGLIntel;
-  nixVulkanNvidia = nixGL.packages."${pkgs.system}".nixVulkanNvidia;
-  nixVulkanIntel = nixGL.packages."${pkgs.system}".nixVulkanIntel;
-in
 {
-  # source: https://github.com/nix-community/home-manager/issues/3968#issuecomment-2135919008
-  imports = [
-    (builtins.fetchurl {
-      url = "https://raw.githubusercontent.com/Smona/home-manager/nixgl-compat/modules/misc/nixgl.nix";
-      sha256 = "74f9fb98f22581eaca2e3c518a0a3d6198249fb1490ab4a08f33ec47827e85db";
-    })
-  ];
-  nixGL.prefix = "${nixGLDefault}/bin/nixGL";
-
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = username;
-  home.homeDirectory = homeDirectory;
+  home.username = "hendrik";
+  home.homeDirectory = "/home/hendrik";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -59,24 +43,19 @@ in
     #   echo "Hello, ${config.home.username}!"
     # '')
     # Applications
-    (config.lib.nixGL.wrap pkgs.alacritty)
-    (config.lib.nixGL.wrap pkgs.brave)
-    (config.lib.nixGL.wrap pkgs.firefox)
-    (config.lib.nixGL.wrap pkgs.obsidian)
-    (config.lib.nixGL.wrap pkgs.onlyoffice-bin_latest)
-    (config.lib.nixGL.wrap pkgs.openshot-qt)
-    (config.lib.nixGL.wrap pkgs.vlc)
-    (config.lib.nixGL.wrap pkgs.skypeforlinux)
-    (config.lib.nixGL.wrap pkgs.zathura)
+    pkgs.alacritty
+    pkgs.bitwarden
+    pkgs.brave
+    pkgs.firefox
+    pkgs.obsidian
+    pkgs.onlyoffice-bin_latest
+    pkgs.openshot-qt
+    pkgs.vlc
+    pkgs.skypeforlinux
+    pkgs.zathura
     pkgs.alarm-clock-applet
     pkgs.masterpdfeditor
     pkgs.spotify
-
-    nixGLDefault
-    nixGLIntel
-    nixGLNvidia
-    nixVulkanIntel
-    nixVulkanNvidia
 
     pkgs.dbeaver-bin
     # pkgs.android-studio
@@ -112,7 +91,6 @@ in
     pkgs.nettools
     pkgs.nix
     pkgs.nix-direnv
-    pkgs.oh-my-zsh
     pkgs.openssl.dev
     pkgs.pandoc
     pkgs.redshift
@@ -132,7 +110,6 @@ in
     pkgs.wget
     pkgs.wp-cli
     pkgs.xsel
-    pkgs.zsh
 
     # Libraries
     pkgs.xorg.libX11.dev
@@ -174,11 +151,12 @@ in
     pkgs.nodePackages_latest.graphql-language-service-cli
     pkgs.nodePackages_latest.intelephense
     pkgs.nodePackages_latest.typescript-language-server
+    pkgs.nodePackages_latest.typescript-language-server
+    pkgs.nodePackages_latest.vls
     pkgs.rust-analyzer
     pkgs.tailwindcss-language-server
     pkgs.templ
     pkgs.vscode-langservers-extracted
-    pkgs.vue-language-server
     pkgs.yaml-language-server
 
     # Debuggers
@@ -201,7 +179,6 @@ in
     #   org.gradle.daemon.idletimeout=3600000
     # '';
 
-    ".zshenv".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.zshenv";
     ".gitconfig".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.gitconfig";
     ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.tmux.conf";
     ".rgignore".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.rgignore";
@@ -216,11 +193,6 @@ in
   xdg.configFile = {
     "nix" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/nix";
-      recursive = true;
-    };
-
-    "zsh" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/zsh";
       recursive = true;
     };
 
@@ -247,7 +219,7 @@ in
 
   # redshift doesnt like symlinks
   home.activation.copyRedshiftConfig = ''
-    cp "$DOTFILES/.config/redshift.conf" "$HOME/.config/"
+    cp "$HOME/.dotfiles/.config/redshift.conf" "$HOME/.config/"
   '';
 
   systemd.user.services.redshift = {
@@ -308,14 +280,211 @@ in
   #
   home.sessionVariables = {
     EDITOR = "nvim";
+    VISUAL = "nvim";
+
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_HOME = "$XDG_CONFIG_HOME/local/share";
+    XDG_CACHE_HOME = "$XDG_CONFIG_HOME/cache";
+
+    DOTFILES = "$HOME/.dotfiles";
+
+    COMPOSER_HOME = "$XDG_CONFIG_HOME/composer";
+    PNPM_HOME = "$XDG_DATA_HOME/pnpm";
+    BUN_INSTALL = "$HOME/.bun";
+    PYENV_ROOT = "$HOME/.pyenv";
+    FLYCTL_INSTALL = "$HOME.fly";
+
+    PATH = "/usr/local/bin:$HOME/bin:$HOME/.local/bin:$FLYCTL_INSTALL/bin:$HOME/.cargo/bin:$HOME/go/bin:$BUN_INSTALL/bin:$COMPOSER_HOME/vendor/bin:$HOME/.phpenv/bin:$PYENV_ROOT/bin:$PATH";
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+
+  xdg.configFile."zsh" = {
+    source = config.lib.file.mkOutOfStoreSymlink "$DOTFILES/.config/zsh";
+    recursive = true;
+  };
+
+  # TODO: add in zsh config: fpath+=(/usr/share/zsh/site-functions)
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autocd = true;
+    autosuggestion.enable = true;
+    cdpath = [
+      "~/Workspace/Personal"
+      "~/Workspace/Freelancing"
+      "~/.dotfiles"
+    ];
+    defaultKeymap = "viins";
+    history.size = 20000;
+    historySubstringSearch = {
+      enable = true;
+      searchUpKey = [
+        "^K"
+        "^[[A"
+      ];
+      searchDownKey = [
+        "^J"
+        "^[[B"
+      ];
+    };
+
+    envExtra = ''
+      if [ -e /home/hendrik/.nix-profile/etc/profile.d/nix.sh ]; then . /home/hendrik/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+    '';
+
+    initExtraBeforeCompInit = ''
+      export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/.zcompdump-''${HOST/.*/}-''${ZSH_VERSION}"
+    '';
+
+    completionInit = ''
+      _comp_options+=(globdots) # complete dotfiles
+      autoload -U compinit && compinit
+
+      source /usr/share/doc/fzf/examples/key-bindings.zsh
+      source /usr/share/doc/fzf/examples/completion.zsh
+    '';
+
+    initExtra = ''
+      export COLORTERM="truecolor"
+
+      source "$ZDOTDIR"/dircolors # Generated by: $ dircolors $ZDOTDIR/.dircolors > $ZDOTDIR/dircolors
+      source "$ZDOTDIR"/functions
+
+      source /usr/share/fzf/completion.zsh
+      source /usr/share/fzf/key-bindings.zsh
+
+      # ZSH Config
+      export ENABLE_CORRECTION="false"
+      export DISABLE_MAGIC_FUNCTIONS="true"
+      export COMPLETION_WAITING_DOTS="false"
+      export DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+      # Export DISPLAY on WSL
+      if grep -qi microsoft /proc/version; then
+          export DISPLAY="$(/sbin/ip route | awk '/default/ { print $3 }'):0"
+          export LIBGL_ALWAYS_INDIRECT=1
+      fi
+
+      export PROMPT='$(_user_host)''${_current_dir} $(git_prompt_info)
+      %{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
+
+      # Fast directory switching
+      setopt AUTO_PUSHD           # Push the current directory visited on the stack.
+      setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
+      setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd.
+
+      alias d='dirs -v'
+      for index ({1..9}) alias "$index"="cd +''${index}"; unset index
+
+      # Keyinds
+      bindkey -s ^f "tmux-sessionizer\n"
+      bindkey -v
+      bindkey -s ^a "tmux\n"
+      bindkey -M vicmd ^e edit-command-line
+
+      # Change cursor shape for different vi modes.
+      function zle-keymap-select {
+          if [[ ''${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+              echo -ne '\e[1 q'
+      
+          elif [[ ''${KEYMAP} == main ]] ||
+              [[ ''${KEYMAP} == viins ]] ||
+              [[ ''${KEYMAP} = "" ]] ||
+              [[ $1 = 'beam' ]]; then
+              echo -ne '\e[5 q'
+          fi
+      }
+      zle -N zle-keymap-select
+
+      # Remove mode switching delay.
+      export KEYTIMEOUT=1
+
+      # Use vim keybinds in menu selection
+      zmodload zsh/complist
+      bindkey -M menuselect 'h' vi-backward-char
+      bindkey -M menuselect 'k' vi-up-line-or-history
+      bindkey -M menuselect 'l' vi-forward-char
+      bindkey -M menuselect 'j' vi-down-line-or-history
+
+      # Add text objects
+      autoload -Uz select-bracketed select-quoted
+      zle -N select-quoted
+      zle -N select-bracketed
+      for km in viopp visual; do
+        bindkey -M $km -- '-' vi-up-line-or-history
+        for c in {a,i}''${(s..)^:-\'\"\`\|,./:;=+@}; do
+          bindkey -M $km $c select-quoted
+        done
+        for c in {a,i}''${(s..)^:-'()[]{}<>bB'}; do
+          bindkey -M $km $c select-bracketed
+        done
+      done
+
+      # Add "surround" functionality
+      autoload -Uz surround
+      zle -N delete-surround surround
+      zle -N add-surround surround
+      zle -N change-surround surround
+      bindkey -M vicmd cs change-surround
+      bindkey -M vicmd ds delete-surround
+      bindkey -M vicmd ys add-surround
+      bindkey -M visual S add-surround
+    '';
+
+    shellAliases = {
+      e = "explorer.exe";
+      vim = "nvim";
+      v = "nvim";
+      # nvim-lazy="NVIM_APPNAME=nvim-lazy nvim";
+      # vl="nvim-lazy";
+      vf = "fzf | xargs nvim";
+      dc = "docker-compose";
+      gcf = "git commit --fixup";
+      gwt = "git worktree";
+      gwtf = "git-fetch-worktree";
+      gwtl = "git worktree list";
+      gwtr = "git worktree remove";
+      gwtm = "git worktree remove";
+      gwta = "git-add-worktree";
+      grbid = "git-rebase-interactive-branch-root";
+      genssl = "openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout ssl.key -out ssl.cert -subj \"/CN=127.0.0.1/\"";
+      gpriv = "git config user.email \"hendrikbursian@protonmail.com\" && git config user.name \"Hendrik Bursian\"";
+      gu = "git undo";
+      x = "chmod +x";
+      f = "fzf --preview 'cat {}'";
+      y = "yarn";
+      gcl = "gitlab-ci-local";
+      pd = "popd";
+      pud = "pushd";
+      t = "trans";
+      kp = "kill-port";
+      ".." = "cd ..";
+      "..." = "cd ../..";
+
+      # This is specific to WSL 2. If the WSL 2 VM goes rogue and decides not to free;
+      # up memory, this command will free your memory after about 20-30 seconds.;
+      #   Details: https://github.com/microsoft/WSL/issues/4166#issuecomment-628493643;
+      drop_cache = "sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a && printf '\n%s\n' 'Ram-cache and Swap Cleared'\"";
+    };
+
+    oh-my-zsh = {
+      enable = true;
+      theme = "avit";
+      plugins = [
+        "git"
+        "fzf"
+        "vi-mode"
+        "direnv"
+      ];
+    };
+  };
+
   programs.obs-studio = {
     enable = true;
-    package = (config.lib.nixGL.wrap pkgs.obs-studio);
+    package = pkgs.obs-studio;
     plugins = [
       pkgs.obs-studio-plugins.droidcam-obs
     ];
