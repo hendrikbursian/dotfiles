@@ -42,42 +42,41 @@
       [ "$(tty)" = "/dev/tty1" ] && exec sway
     '';
 
-    initExtraBeforeCompInit = ''
-      # Show hidden files
-      setopt globdots
-
-      # Don't complete ./ 
-      zstyle ':completion:*' ignore-parents 'parent pwd directory ..'
-
-      # Fzf tab completion config
-      # disable sort when completing `git checkout`
-      zstyle ':completion:*:git-checkout:*' sort false
-      # set descriptions format to enable group support
-      # NOTE: don't use escape sequences here, fzf-tab will ignore them
-      zstyle ':completion:*:descriptions' format '[%d]'
-      # set list-colors to enable filename colorizing
-      zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
-      # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
-      zstyle ':completion:*' menu no
-      # preview directory's content with eza when completing cd
-      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
-      # switch group using `<` and `>`
-      zstyle ':fzf-tab:*' switch-group '<' '>'
-      # Use tab as multi select toggle
-      zstyle ':fzf-tab:*' fzf-bindings 'ctrl-a:toggle-all'
-    '';
-
     initExtra =
       lib.readFile (./. + "/zsh/dircolors") +
       lib.readFile (./. + "/zsh/functions.zsh") +
       ''
+        # Show hidden files
+        setopt globdots
+
         bindkey -s ^f "tmux-sessionizer\n"
-        bindkey -v
         bindkey -s ^a "tmux\n"
         bindkey -M vicmd ^e edit-command-line
-        bindkey -M vicmd ^e edit-command-line
+        bindkey -v
+
+        # Autosuggestion
         bindkey '^l' forward-word
+        bindkey '^x' autosuggest-accept
         
+        
+        # Fzf-tab
+        # disable sort when completing `git checkout`
+        zstyle ':completion:*:git-checkout:*' sort false
+        # set descriptions format to enable group support
+        # NOTE: don't use escape sequences here, fzf-tab will ignore them
+        zstyle ':completion:*:descriptions' format '[%d]'
+        # set list-colors to enable filename colorizing
+        zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+        # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+        zstyle ':completion:*' menu no
+        # preview directory's content with eza when completing cd
+        zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+        # switch group using `<` and `>`
+        zstyle ':fzf-tab:*' switch-group '<' '>'
+
+        # Don't complete ./ 
+        zstyle ':completion:*' ignore-parents 'parent pwd directory'
+
         # Remove mode switching delay.
         export KEYTIMEOUT=5;
         
@@ -94,6 +93,7 @@
             fi
         }
         zle -N zle-keymap-select
+        echo -ne '\e[5 q'
         
         NEWLINE=$'\n'
         export PROMPT='$(_user_host)''${_current_dir} $(git_prompt_info)''${NEWLINE}%{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
@@ -157,12 +157,11 @@
 
     oh-my-zsh = {
       enable = true;
+      theme = "avit";
       plugins = [
         "git"
         "vi-mode"
-        "direnv"
       ];
-      theme = "avit";
     };
   };
 }
