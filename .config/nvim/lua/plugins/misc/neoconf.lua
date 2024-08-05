@@ -16,12 +16,15 @@ return {
 		})
 
 		local log_files_config = require("neoconf").get("quick_files")
-
-		vim.keymap.set("n", "<leader>1", ":edit " .. log_files_config["1"] .. "<cr>")
-		vim.keymap.set("n", "<leader>2", ":edit " .. log_files_config["2"] .. "<cr>")
-		vim.keymap.set("n", "<leader>3", ":edit " .. log_files_config["3"] .. "<cr>")
-		vim.keymap.set("n", "<leader>4", ":edit " .. log_files_config["4"] .. "<cr>")
-		vim.keymap.set("n", "<leader>5", ":edit " .. log_files_config["5"] .. "<cr>")
-		vim.keymap.set("n", "<leader>7", ":edit " .. log_files_config["7"] .. "<cr>")
+		if log_files_config ~= nil then
+			vim.keymap.set("n", "<leader>1", ":edit " .. log_files_config["1"] .. "<cr>")
+			vim.keymap.set("n", "<leader>2", ":edit " .. log_files_config["2"] .. "<cr>")
+			vim.keymap.set("n", "<leader>3", ":edit " .. log_files_config["3"] .. "<cr>")
+			vim.keymap.set("n", "<leader>4", ":edit " .. log_files_config["4"] .. "<cr>")
+			vim.keymap.set("n", "<leader>5", ":edit " .. log_files_config["5"] .. "<cr>")
+			vim.keymap.set("n", "<leader>7", ":edit " .. log_files_config["7"] .. "<cr>")
+		else
+			vim.print("no log files path set")
+		end
 	end,
 }

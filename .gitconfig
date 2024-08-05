@@ -6,11 +6,12 @@
 
 [push]
 	default = current
+    autoSetupRemote = true
 
 [alias]
     undo = reset --soft @~1
 [mergetool "fugitive"]
-	cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
+	cmd = nvim -f -c "Gvdiffsplit! $MERGED"
 [merge]
 	tool = fugitive
 [pull]

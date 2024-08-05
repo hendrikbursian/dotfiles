@@ -43,8 +43,7 @@ local function is_dark_mode()
 
 		return string.match(apps_use_light_theme_value, "0x0")
 	elseif is_linux() then
-		local terminal_color = vim.fn.system('xrdb -query | grep "gnome.terminal.color0" | cut -d "\t" -f2')
-		return is_color_dark(terminal_color)
+        return true
 	end
 
 	return vim.opt.background:get() == "dark"

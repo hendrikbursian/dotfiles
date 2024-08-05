@@ -1,6 +1,0 @@
-- name: Install Dotfiles
-  hosts: 127.0.0.1
-  tasks:
-    - name: Install dotfiles
-      shell: |
-        echo "Restart this session, open a new (zsh) shell and install the dotfiles: {{ lookup('env', 'HOME') }}/.dotfiles/ubuntu"

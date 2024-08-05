@@ -1,5 +1,0 @@
-# Run flameshot at startup
-exec --no-startup-id flameshot
-
-# Screenshot keybindings
-bindsym --release $mod+Shift+S exec flameshot gui

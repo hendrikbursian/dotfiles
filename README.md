@@ -1,40 +1,7 @@
-# Setup
-
-## Initial Installation
+# Dotfiles
 
 ```bash
-# Install git and curl
-sudo apt install git curl
+git clone https://github.com/hendrikbursian/dotfiles.git ~Workspace/dotfiles
 
-# Install nix
-# Version 2.17.1 must be used as long as https://github.com/NixOS/nix/pull/9723 is not merged (Bug in `config.lib.file.mkOutOfStoreSymlink`)
-sh <(curl -L https://releases.nixos.org/nix/nix-2.17.1/install) --daemon
-
-# Clone repository
-git clone https://github.com/hendrikbursian/dotfiles.git ~/.dotfiles
-
-# Let home-manager install everything else
-NIXPKGS_ALLOW_UNFREE=1 nix --extra-experimental-features nix-command --extra-experimental-features flakes run home-manager/master -- init --switch ~/.dotfiles/
-
-# Set git ssh url
-git -C ~/.dotfiles remote set-url origin git@github.com:hendrikbursian/dotfiles.git
-
-# Setup the rest
-~/.dotfiles/ansible/scripts/run_ansible.sh
-
-# set keymaps
-sudo cp "$DOTFILES/xkb/symbols/pc" "/usr/share/X11/xkb/symbols/pc"
-sudo setxkbmap
-```
-
-## Further installations
-After the initial installation all further installations can be run with the following command:
-```bash
-NIXPKGS_ALLOW_UNFREE=1 home-manager switch --impure --flake ~/.dotfiles 
-```
-
-## Update home-manager dependencies
-For updating dependencies that are managed with home-manger run the following command:
-```bash
-nix flake update ~/.dotfiles/
+sudo nixos-rebuild -I nixos-config=$HOME/Workspace/dotfiles/configuration.nix switch
 ```

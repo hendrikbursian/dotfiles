@@ -9,7 +9,7 @@ return {
 
 		if not license_exists then
 			vim.defer_fn(function()
-				vim.notify("Intelephense License missing!", vim.log.levels.WARN)
+				vim.print("Intelephense License missing!", vim.log.levels.WARN)
 			end, 0)
 		end
 
