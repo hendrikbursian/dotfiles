@@ -14,9 +14,17 @@
 
   xdg.enable = true;
 
-  home.file = {
-    ".gitconfig".source = config.lib.file.mkOutOfStoreSymlink ./.gitconfig;
-    ".rgignore".source = config.lib.file.mkOutOfStoreSymlink ./.rgignore;
+  services.wlsunset = {
+    enable = true;
+    gamma = 0.8;
+    # latitude = 52.52437;
+    # longitude = 13.41053;
+    sunrise = "06:30";
+    sunset = "18:00";
+    temperature = {
+      day = 5000;
+      night = 3000;
+    };
   };
 
   home.packages = with pkgs; [
@@ -26,9 +34,7 @@
 
     # User
     gnumake
-    fzf
     mitmproxy
-    nix-direnv
     nix-index
     socat
     tldr
@@ -45,17 +51,15 @@
     vlc
   ];
 
-  services.wlsunset = {
-    enable = true;
-    gamma = 0.8;
-    # latitude = 52.52437;
-    # longitude = 13.41053;
-    sunrise = "06:30";
-    sunset = "18:00";
-    temperature = {
-      day = 5000;
-      night = 3000;
-    };
+  home.file = {
+    ".gitconfig".source = config.lib.file.mkOutOfStoreSymlink ./.gitconfig;
+    ".rgignore".source = config.lib.file.mkOutOfStoreSymlink ./.rgignore;
+  };
+
+  programs.foot.enable = true;
+  xdg.configFile.foot = {
+    source = config.lib.file.mkOutOfStoreSymlink ./.config/foot;
+    recursive = true;
   };
 
   programs.direnv = {
@@ -83,6 +87,12 @@
 
     nix-direnv.enable = true;
   };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
 
   # The state version is required and should stay at the version you
   # originally installed.
