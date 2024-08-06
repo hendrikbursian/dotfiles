@@ -10,6 +10,7 @@
 
   home.sessionVariables = {
     PATH = "$HOME/.local/bin:$PATH";
+    DOTFILES = ./.;
   };
 
   xdg.enable = true;
@@ -40,6 +41,7 @@
     tldr
     wl-clipboard
     wp-cli
+    comma
 
     # Linters
     hadolint
@@ -54,6 +56,10 @@
   home.file = {
     ".gitconfig".source = config.lib.file.mkOutOfStoreSymlink ./.gitconfig;
     ".rgignore".source = config.lib.file.mkOutOfStoreSymlink ./.rgignore;
+    ".local/bin" = {
+      source = config.lib.file.mkOutOfStoreSymlink ./.local/bin;
+      recursive = true;
+    };
   };
 
   programs.foot.enable = true;
