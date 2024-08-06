@@ -46,60 +46,60 @@
       lib.readFile (./. + "/zsh/dircolors") +
       lib.readFile (./. + "/zsh/functions.zsh") +
       ''
-        # Show hidden files
-        setopt globdots
+         # Show hidden files
+         setopt globdots
 
-        bindkey -s ^f "tmux-sessionizer\n"
-        bindkey -s ^a "tmux\n"
-        bindkey -M vicmd ^e edit-command-line
-        bindkey -v
+         bindkey -s ^f "tmux-sessionizer\n"
+         bindkey -s ^a "tmux\n"
+         bindkey -M vicmd ^e edit-command-line
+         bindkey -v
 
-        # Autosuggestion
-        bindkey '^l' forward-word
-        bindkey '^x' autosuggest-accept
+         # Autosuggestion
+         bindkey '^l' forward-word
+         bindkey '^x' autosuggest-accept
         
         
-        # Fzf-tab
-        # disable sort when completing `git checkout`
-        zstyle ':completion:*:git-checkout:*' sort false
-        # set descriptions format to enable group support
-        # NOTE: don't use escape sequences here, fzf-tab will ignore them
-        zstyle ':completion:*:descriptions' format '[%d]'
-        # set list-colors to enable filename colorizing
-        zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
-        # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
-        zstyle ':completion:*' menu no
-        # preview directory's content with eza when completing cd
-        zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
-        # switch group using `<` and `>`
-        zstyle ':fzf-tab:*' switch-group '<' '>'
+         # Fzf-tab
+         # disable sort when completing `git checkout`
+         zstyle ':completion:*:git-checkout:*' sort false
+         # set descriptions format to enable group support
+         # NOTE: don't use escape sequences here, fzf-tab will ignore them
+         zstyle ':completion:*:descriptions' format '[%d]'
+         # set list-colors to enable filename colorizing
+         zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+         # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+         zstyle ':completion:*' menu no
+         # preview directory's content with eza when completing cd
+         zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+         # switch group using `<` and `>`
+         zstyle ':fzf-tab:*' switch-group '<' '>'
 
-        # Don't complete ./ 
-        zstyle ':completion:*' ignore-parents 'parent pwd directory'
+         # Don't complete ./ 
+         zstyle ':completion:*' ignore-parents 'parent pwd directory'
 
-        # Remove mode switching delay.
-        export KEYTIMEOUT=5;
+         # Remove mode switching delay.
+         export KEYTIMEOUT=5;
         
-        # Change cursor shape for different vi modes.
-        function zle-keymap-select {
-            if [[ ''${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
-                echo -ne '\e[1 q'
+         # Change cursor shape for different vi modes.
+         function zle-keymap-select {
+             if [[ ''${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+                 echo -ne '\e[1 q'
         
-            elif [[ ''${KEYMAP} == main ]] ||
-                [[ ''${KEYMAP} == viins ]] ||
-                [[ ''${KEYMAP} = "" ]] ||
-                [[ $1 = 'beam' ]]; then
-                echo -ne '\e[5 q'
-            fi
-        }
-        zle -N zle-keymap-select
+             elif [[ ''${KEYMAP} == main ]] ||
+                 [[ ''${KEYMAP} == viins ]] ||
+                 [[ ''${KEYMAP} = "" ]] ||
+                 [[ $1 = 'beam' ]]; then
+                 echo -ne '\e[5 q'
+             fi
+         }
+         zle -N zle-keymap-select
         echo -ne '\e[5 q'
         
-        NEWLINE=$'\n'
-        export PROMPT='$(_user_host)''${_current_dir} $(git_prompt_info)''${NEWLINE}%{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
+         NEWLINE=$'\n'
+         export PROMPT='$(_user_host)''${_current_dir} $(git_prompt_info)''${NEWLINE}%{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
         
-        # Overrides
-        [ -s "$ZDOTDIR/.zshrc.local" ] && source "$ZDOTDIR/.zshrc.local"
+         # Overrides
+         [ -s "$ZDOTDIR/.zshrc.local" ] && source "$ZDOTDIR/.zshrc.local"
       '';
 
     shellAliases = {
