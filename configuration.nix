@@ -161,6 +161,7 @@
     tree
     unzip
     vim
+    xdg-utils
   ];
 
   programs.zsh.enable = true;

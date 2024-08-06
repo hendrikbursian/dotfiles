@@ -143,7 +143,11 @@ return {
 						local node = state.tree:get_node()
 						local path = node:get_id()
 
-						vim.ui.open(path)
+						if vim.fn.has("nvim-10.0.1") == 1 then
+							vim.ui.open(path)
+						else
+							vim.cmd(":silent !xdg-open " .. path)
+						end
 					end,
 					telescope_find = function(state)
 						local node = state.tree:get_node()
