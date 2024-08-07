@@ -17,6 +17,11 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-f5c0a19f-c80e-476c-98d5-4d2f7770f5da".device = "/dev/disk/by-uuid/f5c0a19f-c80e-476c-98d5-4d2f7770f5da";
+  boot.initrd.luks.devices."data" = {
+    device = "/dev/disk/by-uuid/2826446c-062d-46f2-9759-18b1068e0203";
+    bypassWorkqueues = true;
+  };
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -45,9 +50,8 @@
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
+  i18n.defaultLocale = "de_DE.UTF-8";
+  i18n.supportedLocales = [ "en_US.UTF-8" ];
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_DE.UTF-8";
     LC_IDENTIFICATION = "de_DE.UTF-8";
@@ -101,9 +105,6 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   environment.pathsToLink = [ "/share/zsh" ];
   environment.sessionVariables = {
     EDITOR = "nvim";
@@ -132,6 +133,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    cryptsetup
     curl
     fd
     git

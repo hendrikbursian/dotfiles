@@ -34,7 +34,7 @@
       # Status bar
       set -g status-position bottom
       set -g status-justify left
-      set -g status-right '#(date "+%%a %%d/%%m %%H:%%M")'
+      set -g status-right '#(date "+%%a %%d.%%m %%H:%%M Uhr")'
       set -g status-right-length 50
       set -g status-left-length 20
       set -g status-left '#S - '

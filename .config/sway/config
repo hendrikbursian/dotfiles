@@ -1,8 +1,8 @@
 font pango:BlexMono Nerd Font Text 9
 
-default_border pixel 0
+default_border pixel 1
 default_floating_border normal 0
-hide_edge_borders both
+hide_edge_borders none
 
 floating_modifier Mod4
 
@@ -29,7 +29,7 @@ set $text-inactive #babdb6
 set $bar           #000000
 set $statusline    #e0e0e0
 
-client.focused          $bg-focused   $bg-focused  $text          $bg-focused $bg-focused
+client.focused          $bg-focused   $bg-focused  $text          $bg-info $bg-info
 client.unfocused        $bg-inactive  $bg-inactive $text-inactive $bar        $bar
 client.focused_inactive $bg-inactive  $bg-inactive $text-inactive $bar        $bar
 client.urgent           $bg-urgent    $bg-urgent   $text          $bar        $bar
@@ -118,33 +118,31 @@ bindsym Mod4+Space exec dmenu_path | dmenu --fast --insensitive --nb="$bar" --fo
 bindsym Mod4+Return exec foot
 
 # Commands
+bindsym Mod4+a focus parent
+bindsym Mod4+t layout toggle all
+bindsym Mod4+f fullscreen toggle
+bindsym Mod4+minus scratchpad show
+bindsym Mod4+r mode resize
+
+bindsym Mod4+Shift+t focus mode_toggle
 bindsym Mod4+Shift+q kill
 bindsym Mod4+Shift+c reload
 bindsym Mod4+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 bindsym Mod4+Shift+minus move scratchpad
 bindsym Mod4+Shift+f floating toggle
-bindsym Mod4+a focus parent
-bindsym Mod4+e layout toggle split
-bindsym Mod4+f fullscreen toggle
-bindsym Mod4+minus scratchpad show
-bindsym Mod4+r mode resize
-bindsym Mod4+Shift+t focus mode_toggle
-bindsym Mod4+v splitv
-bindsym Mod4+b splith
-bindsym Mod4+s layout stacking
-bindsym Mod4+t layout tabbed
 
 # Media keys
 bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'
 bindsym XF86AudioMute exec'pactl set-sink-mute @DEFAULT_SINK@ toggle'
 bindsym XF86AudioRaiseVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'
 bindsym XF86MonBrightnessDown exec light -U 5
-bindsym XF86MonBrightnessUp exec light -A 5
-
-input "type:keyboard" {
+bindsym Mod4+Alt+Backspace input "type:keyboard" xkb_switch_layout next  
+                        
+input "type:keyboard" {  
     repeat_delay 240
     repeat_rate 60
     xkb_options caps:escape
+    xkb_layout us,de
 }
 
 input "type:touchpad" {
