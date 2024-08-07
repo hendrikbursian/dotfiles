@@ -123,6 +123,7 @@ bindsym Mod4+t layout toggle all
 bindsym Mod4+f fullscreen toggle
 bindsym Mod4+minus scratchpad show
 bindsym Mod4+r mode resize
+bindsym Mod4+c exec XDG_CURRENT_DESKTOP=gnome gnome-control-center
 
 bindsym Mod4+Shift+t focus mode_toggle
 bindsym Mod4+Shift+q kill
