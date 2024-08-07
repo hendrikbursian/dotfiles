@@ -19,9 +19,9 @@ M.formatters_by_ft = {
 	blade = { "blade-formatter" },
 
 	-- filetypes without defined formatters
-	["_"] = { "trim_newlines", "trim_whitespaces" },
+	["_"] = { "trim_newlines", "trim_whitespace" },
 
 	-- every filetype (including the above ones)
-	-- ["*"] = {},
+	["*"] = { "trim_newlines", "trim_whitespace" },
 }
 return M

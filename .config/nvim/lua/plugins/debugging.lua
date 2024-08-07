@@ -47,7 +47,6 @@ return {
 
                 -- refresh adapters
                 dap.adapters = dap_settings.adapters
-                vim.print(dap.adapters)
 
                 load_vscode_launch_json(dap_settings)
 

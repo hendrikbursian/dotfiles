@@ -23,6 +23,7 @@
     extraConfig = ''
       set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
       set -ga terminal-overrides ",*256col*:Tc"
+      set-option -sa terminal-features ',foot:RGB'
 
       set -g status-bg black
       set -g status-fg white

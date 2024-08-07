@@ -1,3 +1,4 @@
+local utils = require("modules.utils")
 local Util = require("lazyvim.util")
 
 -- Disable <leader> only
@@ -28,7 +29,28 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
 vim.keymap.set("n", "<C-o>", "<C-o>zz", { desc = "Jump to previous position" })
 vim.keymap.set("n", "<C-i>", "<C-i>zz", { desc = "Jump to next position" })
 --vim.keymap.set("n","J", "mzJ`z")
-vim.keymap.set("n", "gX", ":!xdg-open %:h<cr>", { desc = "Open directory of current file" })
+vim.keymap.set("n", "gX", function()
+	local path = vim.fn.expand("%:h")
+	vim.fn.jobstart("xdg-open '" .. path .. "'", { detach = true })
+end, { desc = "Open directory of current file", silent = true })
+
+vim.keymap.set("n", "<leader>no", function()
+	vim.ui.input({ prompt = "search nix option: " }, function(input)
+		vim.fn.jobstart("nixopt '" .. input .. "'", { detach = true })
+	end)
+end, { desc = "Open [n]ix [o]ption in browser" })
+
+vim.keymap.set("n", "<leader>no", function()
+	vim.ui.input({ prompt = "search nix option: " }, function(input)
+		vim.fn.jobstart("nixopt '" .. input .. "'", { detach = true })
+	end)
+end, { desc = "Open [n]ix [o]ption in browser" })
+
+vim.keymap.set("n", "<leader>ho", function()
+	vim.ui.input({ prompt = "search home manager option: " }, function(input)
+		vim.fn.jobstart("hmopt '" .. input .. "'", { detach = true })
+	end)
+end, { desc = "Open [h]ome manager [o]ption in browser" })
 
 -- Diagnostic
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })

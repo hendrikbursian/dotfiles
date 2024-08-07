@@ -1,29 +1,34 @@
-{ config, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 {
-  wayland.windowManager.sway = {
+  xdg.configFile = {
+    sway = {
+      source = config.lib.file.mkOutOfStoreSymlink ./.config/sway;
+      recursive = true;
+    };
+    i3status-rust = {
+      source = config.lib.file.mkOutOfStoreSymlink ./.config/i3status-rust;
+      recursive = true;
+    };
+  };
+
+  services.mako.enable = true;
+
+  home.packages = with pkgs; [
+    sway
+    i3status-rust
+    dmenu-rs
+  ];
+
+  programs.wpaperd = {
     enable = true;
-    config = rec {
-      modifier = "Mod4";
-      startup = [
-        {command = "gnome-text-editor";}
-      ];
-
-      keybindings = 
-        let
-          modifier = config.wayland.windowManager.sway.config.modifier;
-        in lib.mkOptionDefault {
-          "${modifier}+Shift+Return" = "exec epiphany --new-window";
-
-          # Brightness
-          "XF86MonBrightnessDown" = "exec light -U 5";
-          "XF86MonBrightnessUp" = "exec light -A 5";
-          
-          # Volume
-          "XF86AudioRaiseVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'";
-          "XF86AudioLowerVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'";
-          "XF86AudioMute" = "exec'pactl set-sink-mute @DEFAULT_SINK@ toggle'";
-        };
+    settings = {
+      default = {
+        path = config.home.homeDirectory + "/Pictures/Backgrounds";
+        duration = "5m";
+        sorting = "ascending";
+        mode = "zoom";
+      };
     };
   };
 }

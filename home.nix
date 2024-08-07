@@ -28,10 +28,14 @@
     };
   };
 
+
   home.packages = with pkgs; [
     (pkgs.nerdfonts.override {
       fonts = [ "IBMPlexMono" ];
     })
+
+    # Fonts
+    font-awesome
 
     # User
     gnumake
@@ -51,6 +55,7 @@
     bitwarden
     onlyoffice-bin_latest
     vlc
+    brave
   ];
 
   home.file = {

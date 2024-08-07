@@ -65,20 +65,8 @@
     enable = false;
 
     # Enable the GNOME Desktop Environment.
-    displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
-
     videoDrivers = [ "modeset" ];
-
-    # Configure keymaps in X11
-    xkb = {
-      layout = "us";
-      extraLayouts.pc = {
-        description = "tab replaced with esc";
-        languages = [ "eng" ];
-        symbolsFile = ./xkb/symbols/pc;
-      };
-    };
   };
 
   services.getty.autologinUser = "hendrik";
@@ -137,6 +125,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+    backupFileExtension = "home-manager-backup";
     users.hendrik = import ./home.nix;
   };
 

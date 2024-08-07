@@ -1,0 +1,75 @@
+[theme]
+theme = "native"
+[theme.overrides]
+idle_bg = "#000000"
+idle_fg = "#eeeeec"
+good_bg = "#000000"
+good_fg = "#8ec07c"
+warning_bg = "#000000"
+warning_fg = "#d79921"
+critical_bg = "#000000"
+critical_fg = "#cc241d"
+info_bg = "#000000"
+info_fg = "#458588"
+separator_bg = "$000000"
+separator_fg = "#000000"
+separator = " "
+end_separator = ""
+
+[icons]
+icons = "awesome6"
+
+[[block]]
+block = "net"
+format = "^icon_net_down$speed_down.eng(prefix:K)  ^icon_net_up$speed_up.eng(prefix:K) "
+inactive_format = ""
+interval = 3 
+
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "used"
+format = "$icon $path: $used /$available"
+warning = 60.0
+alert = 10.0
+
+[[block]]
+block = "memory"
+format = " $icon $mem_used.eng(p:Mi)/$mem_total.eng(p:Mi)"
+warning_mem = 80
+critical_mem = 95
+
+[[block]]
+block = "cpu"
+
+[[block]]
+block = "sound"
+show_volume_when_muted = true
+device_kind = "source"
+step_width = 3
+
+[[block]]
+block = "sound"
+format = " $icon {$volume|} "
+show_volume_when_muted = true
+headphones_indicator = true
+step_width = 3
+
+[[block]]
+block = "tea_timer"
+format = " $icon  {$hours:$minutes:$seconds |}"
+# command=~/go/bin/i3-timer -alarm-command="notify-send 'i3-timer' 'Alarm Elapsed!'; play /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga"
+done_cmd = "notify-send 'Timer Finished'"
+increment = 60
+
+[[block]]
+block = "battery"
+if_command = "test -e /sys/class/power_supply/BAT0"
+
+[[block]]
+block = "uptime"
+
+[[block]]
+block = "time"
+interval = 10
+format = "$timestamp.datetime(f:'%a %d/%m %R') "
