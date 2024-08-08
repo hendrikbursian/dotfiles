@@ -10,12 +10,15 @@ focus_wrapping no
 focus_follows_mouse always
 focus_on_window_activation smart
 
-mouse_warping output
-
 workspace_layout default
 workspace_auto_back_and_forth no
   
-# colors
+# Mouse
+mouse_warping output
+seat * hide_cursor 8000
+tiling_drag enable
+
+# Colors
 set $bg-good       #8ec07c
 set $bg-info       #458588
 set $bg-focused    #d65d0e
