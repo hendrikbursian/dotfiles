@@ -3,7 +3,8 @@
 if [[ $# == 1 ]]; then
     selected=$1
 else
-    selected=$(echo "$(tmux list-sessions -F '#{session_name}' 2&> /dev/null)
+    sessions=$(tmux list-sessions -F '#{session_name}' 2> /dev/null)
+    selected=$(echo "$sessions
 $SESSION_DIRS" | uniq | sed '/^$/d' | fzf)
 fi
 
