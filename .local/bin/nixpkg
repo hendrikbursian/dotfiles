@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function open() {
+    xdg-open "https://search.nixos.org/packages?query=$1"
+
+}
+open "$@"

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 function open() {
-    xdg-open "https://home-manager-options.extranix.com/?release=release-24.05&query=$1"
+    xdg-open "https://home-manager-options.extranix.com/?query=$1"
 }
 open "$@"
