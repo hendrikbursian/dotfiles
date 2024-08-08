@@ -8,6 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ./tuxedo.nix
+    ./plymouth.nix
     <home-manager/nixos>
   ];
 
