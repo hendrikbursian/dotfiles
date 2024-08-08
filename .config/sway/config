@@ -32,10 +32,10 @@ set $text-inactive #babdb6
 set $bar           #000000
 set $statusline    #e0e0e0
 
-client.focused          $bg-focused   $bg-focused  $text          $bg-info $bg-info
-client.unfocused        $bg-inactive  $bg-inactive $text-inactive $bar        $bar
-client.focused_inactive $bg-inactive  $bg-inactive $text-inactive $bar        $bar
-client.urgent           $bg-urgent    $bg-urgent   $text          $bar        $bar
+client.focused          $bg-focused   $bg-focused  $text          $bg-inactive  $bg-inactive
+client.unfocused        $bg-inactive  $bg-inactive $text-inactive $bar          $bar
+client.focused_inactive $bg-inactive  $bg-inactive $text-inactive $bar          $bar
+client.urgent           $bg-urgent    $bg-urgent   $text          $bar          $bar
 
 set $ws1   1 Konsole
 set $ws2   2 Arbeit
