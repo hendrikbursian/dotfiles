@@ -114,6 +114,9 @@ bindsym Mod4+Shift+n exec xdg-open /home/hendrik
 # Browser 
 bindsym Mod4+Shift+Return exec epiphany --new-window
 
+# Dotfiles
+bindsym Mod4+Shift+d exec foot tmux-sessionizer $DOTFILES
+
 # Launcher
 bindsym Mod4+Space exec dmenu_path | dmenu --fast --insensitive --nb="$bar" --font 'BlexMono Nerd Font Text' | xargs swaymsg exec --
 
