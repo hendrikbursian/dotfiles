@@ -80,16 +80,20 @@
           };
 
           window = {
-            border = 1;
+            border = 0;
             titlebar = false;
             commands = [
               {
-                command = "opacity 0.8";
-                criteria = { class = ".*"; };
+                command = "opacity 0.9";
+                criteria = {
+                  all = true;
+                };
               }
               {
-                command = "opacity 0.8";
-                criteria = { "app_id" = ".*"; };
+                command = "opacity 1";
+                criteria = {
+                  floating = true;
+                };
               }
             ];
           };
@@ -97,15 +101,14 @@
           floating = {
             border = 0;
             criteria = [
-              { class = "^org.gnome.TextEditor$"; }
               { app_id = "^org.gnome.TextEditor$"; }
               { class = "Bitwarden"; }
             ];
           };
 
           gaps = {
-            inner = 10;
-            outer = 10;
+            inner = 8;
+            outer = 0;
             smartGaps = false;
           };
 
@@ -121,7 +124,7 @@
             };
             colors = {
               focusedWorkspace = {
-                border = colors.focused;
+                border = colors.inactive;
                 background = colors.focused;
                 text = colors.text;
               };
@@ -155,7 +158,6 @@
           };
           defaultWorkspace = ws1;
           startup = [
-            { command = "swaymsg workspace $ws4"; }
             { command = "gnome-text-editor"; }
           ];
           keybindings =
