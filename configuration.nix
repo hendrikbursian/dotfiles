@@ -5,12 +5,11 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      <home-manager/nixos>
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./tuxedo.nix
+    <home-manager/nixos>
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -31,18 +30,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  # Keyboard backlight
-  boot.kernelParams = [
-    "tuxedo_keyboard.mode=0"
-    "tuxedo_keyboard.brightness=0"
-    "tuxedo_keyboard.color_left=0xffffff"
-  ];
-  hardware.tuxedo-keyboard.enable = true;
-  hardware.tuxedo-rs = {
-    enable = true;
-    tailor-gui.enable = true;
-  };
 
   # Display backlight
   programs.light.enable = true;
