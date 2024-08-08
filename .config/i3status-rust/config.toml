@@ -37,6 +37,11 @@ inactive_format = "  "
 interval = 3 
 
 [[block]]
+block = "bluetooth"
+mac = "E4:0D:36:88:B3:8B"
+disconnected_format = ""
+
+[[block]]
 block = "cpu"
 interval = 12
 format = " $icon $utilization ($frequency/$max_frequency) "
@@ -70,6 +75,9 @@ headphones_indicator = true
 step_width = 3
 
 [[block]]
+block = "backlight"
+
+[[block]]
 block = "uptime"
 
 [[block]]
@@ -80,3 +88,18 @@ if_command = "test -e /sys/class/power_supply/BAT0"
 block = "time"
 interval = 10
 format = " $timestamp.datetime(f:'%a %d.%m %R Uhr') "
+
+[[block]]
+block = "menu"
+text = " \uf011 "
+[[block.items]]
+display =  "  Sleep  "
+cmd =  "systemctl suspend"
+[[block.items]]
+display =  "Power Off"
+cmd =  "poweroff"
+confirm_msg =  "Are you sure you want to power off?"
+[[block.items]]
+display =  "  Reboot "
+cmd = "reboot"
+confirm_msg = "Are you sure you want to reboot?"
