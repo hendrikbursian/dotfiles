@@ -39,7 +39,7 @@
     };
 
     loginExtra = ''
-      [ "$(tty)" = "/dev/tty1" ] && exec sway
+      [ "$(tty)" = "/dev/tty1" ] && exec sway --unsupported-gpu
     '';
 
     initExtra =

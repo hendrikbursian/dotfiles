@@ -45,7 +45,7 @@
       config =
         {
           fonts = {
-            names = [ "BlexMono Nerd Font" ];
+            names = [ "Font Awesome 6 Free" "BlexMono Nerd Font" ];
             size = 9.0;
           };
           colors = {
@@ -103,6 +103,7 @@
             criteria = [
               { app_id = "^org.gnome.TextEditor$"; }
               { class = "Bitwarden"; }
+              { title = ".*Bitwarden.*"; }
             ];
           };
 
@@ -115,7 +116,7 @@
           bars = [{
             id = "top";
             position = "top";
-            statusCommand = "i3status-rs";
+            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs";
             workspaceButtons = true;
             trayOutput = "*";
             fonts = {
@@ -156,7 +157,7 @@
           seat = {
             "*" = { hide_cursor = "8000"; };
           };
-          defaultWorkspace = ws1;
+          defaultWorkspace = "workspace ${ws1}";
           startup = [
             { command = "gnome-text-editor"; }
           ];
@@ -202,13 +203,11 @@
                 "${modifier}+Alt+9" = "move container to workspace ${ws9}; workspace ${ws9}";
                 "${modifier}+Alt+0" = "move container to workspace ${ws10}; workspace ${ws10}";
 
-                # TODO: test
-
                 # File explorer
                 "${modifier}+Shift+n" = "exec xdg-open /home/hendrik";
 
                 # Browser 
-                "${modifier}+Shift+Return" = "exec epiphany --new-window";
+                "${modifier}+Shift+Return" = "exec brave";
 
                 # Dotfiles
                 "${modifier}+Shift+d" = "exec foot tmux-sessionizer $DOTFILES";
@@ -217,7 +216,8 @@
                 "${modifier}+space" = "exec ${config.wayland.windowManager.sway.config.menu}";
 
                 # Settings
-                "${modifier}+c" = "XDG_CURRENT_DESKTOP=gnome gnome-control-center";
+                "${modifier}+c" = "exec env XDG_CURRENT_DESKTOP=gnome gnome-control-center";
+
 
                 # XKB Switcher
                 "${modifier}+Alt+Backspace" = "input \"type:keyboard\" xkb_switch_layout next";
@@ -258,7 +258,7 @@
     settings = {
       default = {
         duration = "5m";
-        sorting = "ascending";
+        sorting = "random";
         mode = "center";
       };
       eDP-1 = {

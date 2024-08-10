@@ -18,8 +18,6 @@
   services.wlsunset = {
     enable = true;
     gamma = 0.8;
-    # latitude = 52.52437;
-    # longitude = 13.41053;
     sunrise = "06:30";
     sunset = "18:00";
     temperature = {
@@ -29,11 +27,8 @@
   };
 
   home.packages = with pkgs; [
-    (pkgs.nerdfonts.override {
-      fonts = [ "IBMPlexMono" ];
-    })
-
     # Fonts
+    (pkgs.nerdfonts.override { fonts = [ "IBMPlexMono" ]; })
     font-awesome
 
     # User

@@ -7,6 +7,9 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./power-management.nix
+    ./nvidia/offload.nix
+    # ./nvidia/disable.nix
     ./tuxedo.nix
     ./plymouth.nix
     <home-manager/nixos>
@@ -15,6 +18,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.configurationLimit = 12;
 
   boot.initrd.luks.devices."luks-f5c0a19f-c80e-476c-98d5-4d2f7770f5da".device = "/dev/disk/by-uuid/f5c0a19f-c80e-476c-98d5-4d2f7770f5da";
   boot.initrd.luks.devices."data" = {
@@ -55,16 +59,42 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = false;
-
-    # Enable the GNOME Desktop Environment.
-    desktopManager.gnome.enable = true;
-    videoDrivers = [ "modeset" ];
-  };
-
   services.getty.autologinUser = "hendrik";
+
+  # Enable Gnome Desktop Environment
+  services.xserver.desktopManager.gnome.enable = true;
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome-photos
+    gnome-tour
+  ]) ++ (with pkgs.gnome; [
+    cheese # webcam tool
+    gnome-terminal
+    geary # email reader
+    evince # document viewer
+    gnome-characters
+    epiphany # browser
+    totem # video player
+    tali # poker game
+    iagno # go game
+    hitori # sudoku game
+    atomix # puzzle game
+  ]);
+  nixpkgs.overlays = [
+    # GNOME 46: triple-buffering-v4-46
+    (final: prev: {
+      gnome = prev.gnome.overrideScope (gnomeFinal: gnomePrev: {
+        mutter = gnomePrev.mutter.overrideAttrs (old: {
+          src = pkgs.fetchFromGitLab {
+            domain = "gitlab.gnome.org";
+            owner = "vanvugt";
+            repo = "mutter";
+            rev = "triple-buffering-v4-46";
+            hash = "sha256-C2VfW3ThPEZ37YkX7ejlyumLnWa9oij333d5c4yfZxc=";
+          };
+        });
+      });
+    })
+  ];
 
   # Enable the gnome-keyring secrets vault. 
   # Will be exposed through DBus to programs willing to store secrets.
@@ -77,7 +107,11 @@
   hardware.opengl = {
     enable = true;
     driSupport = true;
+    extraPackages = with pkgs; [
+      onevpl-intel-gpu
+    ];
   };
+
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;

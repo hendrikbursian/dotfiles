@@ -57,9 +57,19 @@ critical_mem = 95
 block = "disk_space"
 path = "/"
 info_type = "used"
-format = " $icon $path: $used/$available "
-warning = 60.0
-alert = 10.0
+format = " $icon $path: $used/$available $percentage "
+warning = 40.0
+alert = 90.0
+interval = 300
+
+[[block]]
+block = "disk_space"
+path = "/boot"
+info_type = "used"
+format = " $icon $path: $used/$available $percentage "
+warning = 40.0
+alert = 90.0
+interval = 300
 
 [[block]]
 block = "sound"
