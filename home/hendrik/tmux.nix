@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.tmux = {
@@ -59,7 +59,7 @@
       bind % split-window -h -c "#{pane_current_path}"
 
       # Direct binds 
-      bind-key -r C-j run-shell "~/.local/bin/tmux-sessionizer ~/.dotfiles"
+      bind-key -r C-j run-shell "~/.local/bin/tmux-sessionizer ${config.dotfiles}"
     '';
   };
 }

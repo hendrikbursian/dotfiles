@@ -9,30 +9,25 @@
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "thunderbolt" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
+  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/74cc49b5-d8de-4b6f-ab53-b5d1f3f92263";
+    { device = "/dev/disk/by-uuid/7630686d-46bb-4b76-8724-82305f55729c";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."luks-d8eb5c04-4756-4a67-a2a5-e21c0d1ba314".device = "/dev/disk/by-uuid/d8eb5c04-4756-4a67-a2a5-e21c0d1ba314";
+  boot.initrd.luks.devices."luks-f258f8e0-ff45-4b72-8828-de627a2a2545".device = "/dev/disk/by-uuid/f258f8e0-ff45-4b72-8828-de627a2a2545";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/7BE2-1BD4";
+    { device = "/dev/disk/by-uuid/9A70-58AF";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  fileSystems."/mnt/Data" =
-    { device = "/dev/disk/by-uuid/45e09acf-e93f-4266-88de-a63f3f1aec5a";
-      fsType = "ext4";
-    };
-
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/96401987-535c-4ac0-9681-0b2870b783f5"; }
+    [ { device = "/dev/disk/by-uuid/92b30032-6da1-4988-b3cc-0b9724f7ba64"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -41,8 +36,8 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp0s20f0u3u1.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp0s31f6.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp57s0u1u1.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

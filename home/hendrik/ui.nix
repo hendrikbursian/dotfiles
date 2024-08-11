@@ -1,19 +1,32 @@
 { pkgs, lib, config, ... }:
 
 {
-  xdg.configFile = {
-    i3status-rust = {
-      source = config.lib.file.mkOutOfStoreSymlink ./.config/i3status-rust;
-      recursive = true;
+  services = {
+    mako.enable = true;
+
+    wlsunset = {
+      enable = true;
+      gamma = 0.8;
+      sunrise = "06:30";
+      sunset = "18:00";
+      temperature = {
+        day = 5000;
+        night = 3000;
+      };
     };
   };
-
-  services.mako.enable = true;
 
   home.packages = with pkgs; [
     i3status-rust
     dmenu-rs
   ];
+
+  xdg.configFile = {
+    i3status-rust = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.dotfilesHome}/.config/i3status-rust";
+      recursive = true;
+    };
+  };
 
   wayland.windowManager.sway =
     let
@@ -104,6 +117,7 @@
               { app_id = "^org.gnome.TextEditor$"; }
               { class = "Bitwarden"; }
               { title = ".*Bitwarden.*"; }
+              { title = ".*Bild im Bild.*"; }
             ];
           };
 
@@ -116,7 +130,7 @@
           bars = [{
             id = "top";
             position = "top";
-            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs";
+            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${config.xdg.configHome}/i3status-rust/config.toml";
             workspaceButtons = true;
             trayOutput = "*";
             fonts = {
@@ -218,7 +232,6 @@
                 # Settings
                 "${modifier}+c" = "exec env XDG_CURRENT_DESKTOP=gnome gnome-control-center";
 
-
                 # XKB Switcher
                 "${modifier}+Alt+Backspace" = "input \"type:keyboard\" xkb_switch_layout next";
 
@@ -262,6 +275,10 @@
         mode = "center";
       };
       eDP-1 = {
+        path = "${config.home.homeDirectory}/Pictures/Backgrounds";
+        apply-shadow = true;
+      };
+      eDP-2 = {
         path = "${config.home.homeDirectory}/Pictures/Backgrounds";
         apply-shadow = true;
       };

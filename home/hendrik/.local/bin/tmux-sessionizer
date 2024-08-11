@@ -5,6 +5,7 @@ if [[ $# == 1 ]]; then
 else
     sessions=$(tmux list-sessions -F '#{session_name}' 2> /dev/null)
     selected=$(echo "$sessions
+$DOTFILES
 $SESSION_DIRS" | uniq | sed '/^$/d' | fzf)
 fi
 

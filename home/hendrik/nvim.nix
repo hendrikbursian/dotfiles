@@ -1,27 +1,21 @@
 { pkgs, config, lib, ... }:
 
-let
-  unstable = import <nixos-unstable> { };
-in
 {
-
   xdg.configFile.nvim = {
-    source = config.lib.file.mkOutOfStoreSymlink ./.config/nvim;
+    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfilesHome}/.config/nvim";
     recursive = true;
   };
 
-
   home.activation.installNvimPlugins = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ${unstable.neovim-unwrapped}/bin/nvim --headless "+Lazy! restore" +qa
+    PATH="${pkgs.git}/bin" ${pkgs.unstable.neovim-unwrapped}/bin/nvim --headless "+Lazy! restore" +qa
   '';
 
   programs.neovim = {
     enable = true;
-    package = unstable.neovim-unwrapped;
+    package = pkgs.unstable.neovim-unwrapped;
     defaultEditor = true;
     vimAlias = true;
-    extraPackages = with pkgs; [
-
+    extraPackages = with pkgs;[
       # Languages
       zig
       go
@@ -33,7 +27,6 @@ in
       python3
 
       # LSP
-      # nodePackages_latest.intelephense 
       ccls
       delve
       gopls
@@ -42,6 +35,8 @@ in
       llvmPackages_18.clang-tools
       lua-language-server
       nodePackages_latest.graphql-language-service-cli
+      nodePackages_latest.intelephense
+
       nodePackages_latest.typescript-language-server
       nodePackages_latest.vls
       rust-analyzer

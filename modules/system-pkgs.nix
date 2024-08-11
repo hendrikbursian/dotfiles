@@ -1,0 +1,29 @@
+{ pkgs, ... }: {
+  environment.systemPackages = with pkgs; [
+    cryptsetup
+    curl
+    fd
+    git
+    gnupg
+    gparted
+    htop
+    jq
+    lsof
+    neovim
+    nh
+    nix-output-monitor
+    nvd
+    openssl.dev
+    qemu
+    ripgrep
+    rsync
+    sshfs
+    stow
+    subversion
+    tmux
+    tree
+    unzip
+    vim
+    xdg-utils
+  ];
+}
