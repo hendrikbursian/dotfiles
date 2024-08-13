@@ -9,9 +9,7 @@ in
 
     ../../modules/power-management.nix
 
-    ../../modules/nvidia/sync.nix
-    # ../../modules/nvidia/offload.nix
-    # ../../modules/nvidia/disable.nix
+    ../../modules/nvidia.nix
 
     ../../modules/plymouth.nix
     ../../modules/system-pkgs.nix
@@ -19,6 +17,8 @@ in
 
     ../../modules/users/${user}.nix
   ];
+
+  nvidia.mode = "sync";
 
   hardware.cpu.intel.updateMicrocode = true;
 
