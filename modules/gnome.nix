@@ -10,7 +10,6 @@
     cheese # webcam tool
     gnome-terminal
     geary # email reader
-    evince # document viewer
     gnome-characters
     epiphany # browser
     totem # video player

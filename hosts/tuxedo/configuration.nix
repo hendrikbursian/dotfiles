@@ -9,7 +9,7 @@ in
 
     ../../modules/power-management.nix
 
-    ../../modules/nvidia.nix
+    # ../../modules/nvidia.nix
 
     ../../modules/plymouth.nix
     ../../modules/system-pkgs.nix
@@ -18,9 +18,79 @@ in
     ../../modules/users/${user}.nix
   ];
 
-  nvidia.mode = "sync";
+  # nvidia.mode = "sync";
+
+  boot.kernelPackages = pkgs.unstable.linuxPackages;
+
+  # Enable OpenGL
+  hardware.opengl = {
+    enable = true;
+  };
+
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+
+    # Modesetting is required.
+    modesetting.enable = true;
+
+    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+    # Enable this if you have graphical corruption issues or application crashes after waking
+    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
+    # of just the bare essentials.
+    powerManagement.enable = false;
+
+    # Fine-grained power management. Turns off GPU when not in use.
+    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+    powerManagement.finegrained = false;
+
+    # Use the NVidia open source kernel module (not to be confused with the
+    # independent third-party "nouveau" open source driver).
+    # Support is limited to the Turing and later architectures. Full list of 
+    # supported GPUs is at: 
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+    # Only available from driver 515.43.04+
+    # Currently alpha-quality/buggy, so false is currently the recommended setting.
+    open = false;
+
+    # Enable the Nvidia settings menu,
+    # accessible via `nvidia-settings`.
+    nvidiaSettings = true;
+
+    # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
+  };
+
+
+  hardware.nvidia.prime = {
+    sync.enable = true;
+    intelBusId = "PCI:0:2:0";
+    nvidiaBusId = "PCI:1:0:0";
+  };
+
+  # intel
+  boot.kernelParams = [ "module_blacklist=i915" ];
+
+  environment = {
+    variables = {
+      WLR_NO_HARDWARE_CURSORS = 1;
+    };
+  };
+
+  boot.initrd.kernelModules = [ "nvidia" ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11_beta ];
+
+
+
+
+
+
+
+  power-management.module = "auto-cpufreq";
 
   hardware.cpu.intel.updateMicrocode = true;
+  hardware.bluetooth.enable = false;
 
   boot.initrd.luks.devices."swap".device = "/dev/disk/by-uuid/9bd94eff-c5b8-4fe1-a90a-53996b1b956b";
 
@@ -30,25 +100,10 @@ in
     "cryptd"
   ];
 
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-    tuxedo-keyboard
-  ];
-
-  # Keyboard backlight
-  boot.kernelParams = [
-    "tuxedo_keyboard.mode=0"
-    "tuxedo_keyboard.brightness=0"
-    "tuxedo_keyboard.color_left=0xffffff"
-  ];
-
   # Display backlight
   programs.light.enable = true;
 
-  hardware.tuxedo-keyboard.enable = true;
-  hardware.tuxedo-rs = {
-    enable = true;
-    tailor-gui.enable = true;
-  };
+  hardware.tuxedo-keyboard.enable = false;
 
   # Bootloader.
   # boot.kernel.sysctl = { "net.ipv4.ip_unprivileged_port_start" = 0; };
@@ -66,8 +121,6 @@ in
     # proxy.default = "http://user:password@proxy:port/";
     # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
-
-  power-management.module = "auto-cpufreq";
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -93,15 +146,6 @@ in
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
-
-  # Enable graphics driver in NixOS
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    extraPackages = with pkgs; [
-      onevpl-intel-gpu
-    ];
-  };
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;

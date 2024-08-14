@@ -1,3 +1,5 @@
 # nixos build-vm artifacts
 /nixos.qcow2
 /result
+
+/home/hendrik/.config/nvim/neoconf.json

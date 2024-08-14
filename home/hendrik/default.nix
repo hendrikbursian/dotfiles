@@ -15,11 +15,11 @@
   };
 
   imports = [
-    ./ui.nix
+    ./ui
+    ./foot.nix
     ./zsh
     ./nvim.nix
     ./tmux.nix
-    ./foot.nix
     ./programs.nix
   ];
 
