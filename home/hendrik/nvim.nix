@@ -6,6 +6,19 @@
     recursive = true;
   };
 
+  home.activation.initNeoconfJson =
+    let
+      neoconfJson = "${config.xdg.configHome}/nvim/neoconf.json";
+    in
+    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      if [[ -f neoconf.json ]]; then
+        jq '.volar.typescript_path = "${pkgs.typescript}"' ${neoconfJson} > ${neoconfJson}.tmp
+        mv ${neoconfJson}.tmp ${neoconfJson}
+      else
+        echo "{ \"volar\": { \"typescript_path\": \"${pkgs.typescript}\" } }" | jq > ${neoconfJson}
+      fi
+    '';
+
   home.activation.installNvimPlugins = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     PATH="${pkgs.git}/bin" ${pkgs.unstable.neovim-unwrapped}/bin/nvim --headless "+Lazy! restore" +qa
   '';
@@ -16,16 +29,6 @@
     defaultEditor = true;
     vimAlias = true;
     extraPackages = with pkgs;[
-      # Languages
-      zig
-      go
-      nodejs_22
-      corepack_22
-      typescript
-      rustc
-      cargo
-      python3
-
       # LSP
       ccls
       delve
@@ -36,9 +39,8 @@
       lua-language-server
       nodePackages_latest.graphql-language-service-cli
       nodePackages_latest.intelephense
-
       nodePackages_latest.typescript-language-server
-      nodePackages_latest.vls
+      unstable.vue-language-server
       rust-analyzer
       tailwindcss-language-server
       templ

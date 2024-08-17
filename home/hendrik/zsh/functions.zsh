@@ -13,14 +13,14 @@ function git-rebase-interactive-branch-root() {
 }
 
 function kill-port() {
-    pids=$(lsof -i ":$1" | tail -n+2 | awk '{ print $2 }')
+    pids=$(lsof -i ":$1" | tail -n+2 | awk '{ print $2 }' | sort | uniq)
     errcode=$?
     if [[ $errcode -ne 0 ]] || [[ "$pids" == "" ]]; then
         echo "No processes found"
         return
     fi
 
-    kill -9 "$pids"
+    echo "$pids" | xargs -I '{}' kill -9 {}
 }
 
 # Template function for starting services

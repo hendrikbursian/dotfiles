@@ -5,21 +5,40 @@
     (pkgs.nerdfonts.override { fonts = [ "IBMPlexMono" ]; })
     font-awesome
 
-    # User
-    gnumake
-    mitmproxy
-    nix-index
-    socat
-    tldr
-    wl-clipboard
-    comma
-    devenv
-    pdftk
-    eza
+    # Languages
+    go
+    gopls
+    delve
+    air
+
+    nodejs_22
+    corepack_22
+    typescript
+
+    cargo
+    rustc
+
+    gcc
+    python3
+    zig
 
     # Linters
     hadolint
     shellcheck
+
+    # User
+    comma
+    devenv
+    eza
+    gnumake
+    mitmproxy
+    nix-index
+    pdftk
+    socat
+    tldr
+    wget
+    wl-clipboard
+    sloc
 
     # Apps
     bitwarden

@@ -6,7 +6,7 @@ in
 {
   options.power-management = {
     module = lib.mkOption {
-      type = lib.types.enum [ "tlp" "auto-cpufreq" ];
+      type = lib.types.enum [ false "tlp" "auto-cpufreq" ];
       default = "tlp";
       description = "Select the power management module to activate.";
       example = "tlp or auto-cpufreq";
@@ -14,8 +14,8 @@ in
   };
 
   config = {
-    powerManagement.enable = true;
-    services.thermald.enable = true;
+    powerManagement.enable = moduleValue != false;
+    services.thermald.enable = moduleValue != false;
 
     services.tlp = {
       enable = moduleValue == "tlp";

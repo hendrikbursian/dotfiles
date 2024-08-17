@@ -65,13 +65,6 @@ return {
 				end,
 				desc = "Git explorer",
 			},
-			{
-				"<leader>be",
-				function()
-					require("neo-tree.command").execute({ source = "buffers", toggle = true })
-				end,
-				desc = "Buffer explorer",
-			},
 		},
 		deactivate = function()
 			vim.cmd([[Neotree close]])

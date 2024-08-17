@@ -41,7 +41,6 @@ return {
 				diagnosticsDelay = "500ms",
 				symbolMatcher = "fuzzy",
 				semanticTokens = true,
-				noSemanticTokens = true, -- disable semantic string tokens so we can use treesitter highlight injection
 			},
 		}
 

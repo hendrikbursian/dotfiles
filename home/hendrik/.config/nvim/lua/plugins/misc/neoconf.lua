@@ -23,8 +23,6 @@ return {
 			vim.keymap.set("n", "<leader>4", ":edit " .. log_files_config["4"] .. "<cr>")
 			vim.keymap.set("n", "<leader>5", ":edit " .. log_files_config["5"] .. "<cr>")
 			vim.keymap.set("n", "<leader>7", ":edit " .. log_files_config["7"] .. "<cr>")
-		else
-			vim.print("no log files path set")
 		end
 	end,
 }

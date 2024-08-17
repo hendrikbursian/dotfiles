@@ -29,7 +29,8 @@
       homeDirectory = "/home/hendrik";
 
       sessionVariables = {
-        PATH = "${config.home.homeDirectory}/.local/bin:$PATH";
+        PATH = "${config.home.sessionVariables.GOPATH}/bin:${config.home.homeDirectory}/.local/bin:$PATH";
+        GOPATH = "${config.home.homeDirectory}/go";
         DOTFILES = config.dotfiles;
       };
 

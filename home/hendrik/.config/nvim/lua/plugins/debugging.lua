@@ -61,20 +61,21 @@ return {
             -- {"<leader>bB", function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end, desc = "de[b]ug [B]reakpoint"},
             -- {"<leader>bR", function() require("dap").clear_breakpoints() end, desc = "de[b]ug [R]emove breakpoints" },
 
-            {"<leader>bc", function() require("dap").continue() end, desc = "de[b]ug [c]ontinue (start here)" },
+            {"<leader>bc", function() require("dap").continue() end,      desc = "de[b]ug [c]ontinue (start here)" },
             {"<leader>bC", function() require("dap").run_to_cursor() end, desc = "de[b]ug [C]ursor" },
-            {"<leader>bg", function() require("dap").goto_() end, desc = "de[b]ug [g]o to line" },
-            {"<leader>bo", function() require("dap").step_over() end, desc = "de[b]ug step [o]ver" },
-            {"<leader>bO", function() require("dap").step_out() end, desc = "de[b]ug step [O]ut" },
-            {"<leader>bi", function() require("dap").step_into() end, desc = "de[b]ug [i]nto" },
-            {"<leader>bj", function() require("dap").down() end, desc = "de[b]ug [j]ump down" },
-            {"<leader>bk", function() require("dap").up() end, desc = "de[b]ug [k]ump up" },
-            {"<leader>bl", function() require("dap").run_last() end, desc = "de[b]ug [l]ast" },
-            {"<leader>bp", function() require("dap").pause() end, desc = "de[b]ug [p]ause" },
-            {"<leader>br", function() require("dap").repl.toggle() end, desc = "de[b]ug [r]epl" },
-            {"<leader>bs", function() require("dap").session() end, desc ="de[b]ug [s]ession" },
-            {"<leader>bt", function() require("dap").terminate() end, desc = "de[b]ug [t]erminate" },
-            {"<leader>bw", function() require("dap.ui.widgets").hover() end, desc = "de[b]ug [w]idgets" },
+            {"<leader>bg", function() require("dap").goto_() end,         desc = "de[b]ug [g]o to line" },
+            {"<leader>bn", function() require("dap").step_over() end,     desc = "de[b]ug step over [n]ext" },
+            {"<leader>bN", function() require("dap").step_back() end,     desc = "de[b]ug step back [N]ext" },
+            {"<leader>bo", function() require("dap").step_out() end,      desc = "de[b]ug step [o]ut" },
+            {"<leader>bi", function() require("dap").step_into() end,     desc = "de[b]ug steop [i]nto" },
+            {"<leader>bj", function() require("dap").down() end,          desc = "de[b]ug [j]ump down" },
+            {"<leader>bk", function() require("dap").up() end,            desc = "de[b]ug [k]ump up" },
+            {"<leader>bl", function() require("dap").run_last() end,      desc = "de[b]ug [l]ast" },
+            {"<leader>bp", function() require("dap").pause() end,         desc = "de[b]ug [p]ause" },
+            -- {"<leader>br", function() require("dap").repl.toggle() end,   desc = "de[b]ug [r]epl" },
+            {"<leader>bR", function() require("dap").restart() end,       desc ="de[b]ug [R]estart" },
+            {"<leader>bs", function() require("dap").session() end,       desc ="de[b]ug [s]ession" },
+            {"<leader>bT", function() require("dap").terminate() end,     desc = "de[b]ug [T]erminate" },
         },
 		config = function()
 			local Config = require("lazyvim.config")
@@ -118,6 +119,103 @@ return {
 					-- })
 				end,
 			})
+		end,
+	},
+
+	-- UI for debugging
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = {
+			"nvim-dap",
+			"nvim-neotest/nvim-nio",
+		},
+        -- stylua: ignore
+        keys = {
+            { "<leader>bu", function() require("dapui").toggle({}) end,           desc = "Dap UI" },
+            { "<leader>be", function() require("dapui").eval({enter = true, title = "Eval", width = 92, height = 20 }) end, desc = "De[b]ug [e]val",  mode = { "n", "v" } },
+            { "<leader>br", function() require("dapui").float_element("repl",{enter = true, title = "Repl", width = 92, height = 20}) end, desc = "De[b]ug [r]epl",  mode = { "n", "v" } },
+            { "<leader>bv", function() require("dapui").float_element("scopes",{enter = true, title = "Scopes", width = 92, height = 20}) end, desc = "De[b]ug [v]ariables",  mode = { "n" } },
+            { "<leader>bO", function() require("dapui").float_element("console",{enter = true, title = "Console", width = 92, height = 20}) end, desc = "De[b]ug [O]utput",  mode = { "n" } },
+            { "<leader>bw", function() require("dapui").float_element("watches",{enter = true, title = "Watch expressions", width = 92, height = 20}) end, desc = "De[b]ug [w]atches",  mode = { "n" } },
+            { "<leader>bf", function() require("dapui").float_element("stacks",{enter = true, title = "Stack frames", width = 92, height = 20}) end, desc = "De[b]ug stack [f]rames",  mode = { "n" } },
+        },
+		opts = {
+			expand_lines = true,
+			force_buffers = true,
+			mappings = {
+				edit = {},
+				expand = {},
+				open = {},
+				remove = {},
+				repl = {},
+				toggle = {},
+			},
+			element_mappings = {
+				watches = {
+					expand = { "<CR>", "t" },
+					edit = { "e", "c", "a" },
+					repl = { "r" },
+					remove = { "dd" },
+				},
+				stacks = {
+					toggle = { "<CR>", "<2-LeftMouse>", "t", "yo" },
+					open = { "o", "gd" },
+				},
+				breakpoints = {
+					open = { "o", "gd", "<2-LeftMouse>" },
+					toggle = { "<CR>", "t", "yo" },
+					remove = { "dd" },
+				},
+				scopes = {
+					edit = { "e", "c", "a", "i" },
+					expand = { "<CR>", "t", "yo" },
+					reple = { "r" },
+				},
+			},
+			layouts = {
+				{
+					elements = {
+						{
+							id = "watches",
+							size = 0.33,
+						},
+						{
+							id = "breakpoints",
+							size = 0.33,
+						},
+						{
+							id = "stacks",
+							size = 0.33,
+						},
+					},
+					position = "left",
+					size = 44,
+				},
+				{
+					elements = {
+						{
+							id = "repl",
+							size = 1,
+						},
+					},
+					position = "bottom",
+					size = 8,
+				},
+			},
+		},
+		config = function(_, opts)
+			local dap = require("dap")
+			local dapui = require("dapui")
+
+			dapui.setup(opts)
+
+			dap.listeners.after.event_initialized["dapui_config"] = function()
+				dapui.open({})
+			end
+
+			dap.listeners.after.event_breakpoint["dapui_config"] = function()
+				dapui.open({})
+			end
 		end,
 	},
 
