@@ -76,6 +76,7 @@ return {
             {"<leader>bR", function() require("dap").restart() end,       desc ="de[b]ug [R]estart" },
             {"<leader>bs", function() require("dap").session() end,       desc ="de[b]ug [s]ession" },
             {"<leader>bT", function() require("dap").terminate() end,     desc = "de[b]ug [T]erminate" },
+            {"<leader>be", function() require("dap.ui.widgets").hover() end,     desc = "de[b]ug [e]val" },
         },
 		config = function()
 			local Config = require("lazyvim.config")
@@ -132,7 +133,7 @@ return {
         -- stylua: ignore
         keys = {
             { "<leader>bu", function() require("dapui").toggle({}) end,           desc = "Dap UI" },
-            { "<leader>be", function() require("dapui").eval({enter = true, title = "Eval", width = 92, height = 20 }) end, desc = "De[b]ug [e]val",  mode = { "n", "v" } },
+            -- { "<leader>be", function() require("dapui").eval(nil, {enter = true, title = "Eval", width = 92, height = 20 }) end, desc = "De[b]ug [e]val",  mode = { "n", "v" } },
             { "<leader>br", function() require("dapui").float_element("repl",{enter = true, title = "Repl", width = 92, height = 20}) end, desc = "De[b]ug [r]epl",  mode = { "n", "v" } },
             { "<leader>bv", function() require("dapui").float_element("scopes",{enter = true, title = "Scopes", width = 92, height = 20}) end, desc = "De[b]ug [v]ariables",  mode = { "n" } },
             { "<leader>bO", function() require("dapui").float_element("console",{enter = true, title = "Console", width = 92, height = 20}) end, desc = "De[b]ug [O]utput",  mode = { "n" } },
@@ -165,6 +166,10 @@ return {
 					open = { "o", "gd", "<2-LeftMouse>" },
 					toggle = { "<CR>", "t", "yo" },
 					remove = { "dd" },
+				},
+				eval = {
+					toggle = { "<CR>", "t", "yo" },
+					open = { "o", "gd" },
 				},
 				scopes = {
 					edit = { "e", "c", "a", "i" },

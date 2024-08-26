@@ -40,14 +40,23 @@
       set -g status-left '#S - '
 
       setw -g window-status-format '#I:#W'
-      set-option -g window-status-current-style bg=#aaaaaa,fg=#333333
+      # set-option -g window-status-current-style bg=#aaaaaa,fg=#333333
+
       setw -g window-status-separator ' | '
+
+      # Source https://github.com/tmux/tmux/issues/4069 
+      bind-key r run-shell "tmux resize-window -x 10000 -t \$(tmux display-message -p '#I')"
+
+      # long log lines dont wrap
+      bind-key r resize-window -x 10000 -t "$(tmux display-message -p '#I')"
 
       # Pane navigation
       bind h select-pane -L
       bind j select-pane -D
       bind k select-pane -U
       bind l select-pane -R
+      bind u tmux capture-pane -J -p | grep -oE '(https?)://.*[^>]' | uniq | tac | fzf-tmux -d20 --multi --bind alt-a:select-all,alt-d:deselect-all | xargs xdg-open
+
 
       # Easier and faster switching between next/prev window
       bind C-p previous-window

@@ -42,8 +42,8 @@ return {
             { "<leader>to", function() require("neotest").output.open({ enter = true, auto_close = true, last_run = false}) end, desc = "[t]est [o]utput" },
             { "<leader>tO", function() require("neotest").output_panel.toggle() end,                                             desc = "[t]est [O]utput panel" },
             { "<leader>tS", function() require("neotest").run.stop() end,                                                        desc = "[t]est [t]erminate" },
-            { "<leader>td", function() require("neotest").run.run(vim.fn.expand("%:h")) end,                                     desc = "[t]est [d]irectory" },
-            { "<leader>tD", function() require("neotest").run.run({ suite = false, strategy = "dap" }) end,                      desc = "[t]est [D]debug" },
+            -- { "<leader>td", function() require("neotest").run.run(vim.fn.expand("%:h")) end,                                     desc = "[t]est [d]irectory" },
+            { "<leader>td", function() require("neotest").run.run({ suite = false, strategy = "dap" }) end,                      desc = "[t]est [d]debug" },
         },
 	},
 

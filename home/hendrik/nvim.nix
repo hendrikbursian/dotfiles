@@ -43,7 +43,6 @@
       unstable.vue-language-server
       rust-analyzer
       tailwindcss-language-server
-      templ
       vscode-langservers-extracted
       yaml-language-server
 

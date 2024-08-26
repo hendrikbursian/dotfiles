@@ -8,8 +8,10 @@
     # Languages
     go
     gopls
+    gotools
     delve
     air
+    templ
 
     nodejs_22
     corepack_22
@@ -39,6 +41,16 @@
     wget
     wl-clipboard
     sloc
+    lynx
+    w3m
+    yt-dlp
+    ffmpeg
+    sqlitebrowser
+    sqlite
+    dbmate
+    sqlc
+    protonmail-bridge
+    # visidata
 
     # Apps
     bitwarden

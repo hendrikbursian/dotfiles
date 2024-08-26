@@ -53,6 +53,7 @@ vim.opt.signcolumn = "yes"
 -- vim.opt.colorcolumn = { 80, 120 }
 vim.opt.updatetime = 250
 -- vim.opt.updatetime = 50
+vim.opt.listchars = "eol:%,tab:> ,trail:-,extends:>,precedes:<,nbsp:+"
 
 -- vim.opt.cmdheight = 0
 

@@ -43,7 +43,7 @@ local function is_dark_mode()
 
 		return string.match(apps_use_light_theme_value, "0x0")
 	elseif is_linux() then
-        return true
+		return true
 	end
 
 	return vim.opt.background:get() == "dark"
@@ -62,13 +62,11 @@ local function apply_colorscheme(colorschemes, index, print_schema)
 	local ok, transparent = pcall(require, "transparent")
 	if ok == true then
 		if vim.g.transparent_enabled == true then
+			-- reapply on changed scheme
 			transparent.toggle(true)
-		else
-			transparent.toggle(false)
+			transparent.clear_prefix("lualine")
+			transparent.clear_prefix("NeoTree")
 		end
-
-		transparent.clear_prefix("lualine")
-		transparent.clear_prefix("NeoTree")
 	end
 end
 

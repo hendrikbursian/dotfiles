@@ -1,8 +1,7 @@
 -- Autocompletion
 return {
 	"hrsh7th/nvim-cmp",
-	event = "InsertEnter",
-	version = false,
+	lazy = false,
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
@@ -136,15 +135,18 @@ return {
 			},
 
 			-- Sources
-			sources = {
+
+			sources = cmp.config.sources({
 				{ name = "path" },
-				{ name = "npm", keyword_length = 4 },
 				{ name = "calc" },
+				{ name = "npm", keyword_length = 4 },
+				{ name = "luasnip" },
+			}, {
 				-- { name = "cody" },
 				{ name = "nvim_lsp" },
-				{ name = "luasnip" },
+			}, {
 				{ name = "buffer", keyword_length = 2, max_item_count = 7 },
-			},
+			}),
 
 			experimental = {
 				ghost_text = {
@@ -156,9 +158,9 @@ return {
 	config = function(_, opts)
 		local cmp = require("cmp")
 
-		for _, source in ipairs(opts.sources) do
-			source.group_index = source.group_index or 1
-		end
+		-- for _, source in ipairs(opts.sources) do
+		-- 	source.group_index = source.group_index or 1
+		-- end
 
 		cmp.setup(opts)
 

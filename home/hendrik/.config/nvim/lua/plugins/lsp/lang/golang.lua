@@ -2,6 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	opts = function(_, opts)
 		opts.servers.gopls = {
+			-- https://github.com/golang/tools/blob/master/gopls/doc/settings.md
 			gopls = {
 				analyses = {
 					unreachable = true,
@@ -13,8 +14,8 @@ return {
 					undeclaredname = true,
 					fillreturns = true,
 					nonewvars = true,
-					fieldalignment = false,
-					shadow = true,
+					fieldalignment = true,
+					shadow = false,
 				},
 				codelenses = {
 					generate = true, -- show the `go generate` lens.
@@ -35,11 +36,10 @@ return {
 					rangeVariableTypes = true,
 				},
 				usePlaceholders = true,
+				experimentalPostfixCompletions = true,
+				completeFunctionCalls = true,
 				completeUnimported = true,
 				staticcheck = true,
-				matcher = "Fuzzy",
-				diagnosticsDelay = "500ms",
-				symbolMatcher = "fuzzy",
 				semanticTokens = true,
 			},
 		}

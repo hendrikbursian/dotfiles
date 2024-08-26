@@ -16,18 +16,8 @@ return {
 			},
 		},
 		opts = function()
-			local formatters_by_ft = require("config.formatters").formatters_by_ft
-
-			local slow_format_filetypes = {}
-
-			local function get_on_format_callback(bufnr, sync)
+			local function get_on_format_callback()
 				return function(err)
-					if sync then
-						if err and err:match("timeout$") then
-							slow_format_filetypes[vim.bo[bufnr].filetype] = true
-						end
-					end
-
 					if err then
 						return
 					end
@@ -37,34 +27,40 @@ return {
 			end
 
 			return {
-				formatters_by_ft = formatters_by_ft,
+				formatters_by_ft = {
+					lua = { "stylua" },
+					javascript = { "eslint_d", "eslint", "prettierd", "prettier" },
+					typescript = { "eslint_d", "eslint", "prettierd", "prettier" },
+					css = { "eslint_d", "prettierd", "prettier" },
+					html = { "eslint_d", "prettierd", "prettier" },
+					vue = { "eslint_d", "prettierd", "prettier" },
+					go = { "goimports", "gofmt" },
+					rust = { "rustfmt" },
+					sh = { "shellcheck", "shfmt" },
+					bash = { "shfmt" },
+					sql = { "sql_formatter" },
+					yaml = { "prettierd", "prettier" },
+					json = { "prettier" },
+					php = { "phpcbf" },
+					templ = { "templ" },
+					nix = { "nixpkgs_fmt" },
+					blade = { "blade-formatter" },
 
-				format_on_save = function(bufnr)
-					if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-						return
-					end
+					-- filetypes without defined formatters
+					["_"] = { "trim_newlines", "trim_whitespace" },
 
-					-- Guard against slow formatters
-					if slow_format_filetypes[vim.bo[bufnr].filetype] then
-						return
-					end
+					-- every filetype (including the above ones)
+					["*"] = { "trim_newlines", "trim_whitespace" },
+				},
 
-					local on_format = get_on_format_callback(bufnr, true)
-
-					return { timeout_ms = 200, lsp_fallback = true, stop_after_first = true }, on_format
-				end,
+				format_on_save = false,
 
 				format_after_save = function(bufnr)
 					if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
 						return
 					end
 
-					-- Guard against fast formatters
-					if not slow_format_filetypes[vim.bo[bufnr].filetype] then
-						return
-					end
-
-					local on_format = get_on_format_callback(bufnr, false)
+					local on_format = get_on_format_callback()
 
 					return { lsp_fallback = true, stop_after_first = true }, on_format
 				end,
@@ -76,12 +72,6 @@ return {
 					-- shfmt = {
 					--     prepend_args = { "-i", "2" },
 					-- },
-
-					goimports = {
-						command = "gopls",
-						args = { "imports", "$FILENAME" },
-						inherit = true,
-					},
 				},
 			}
 		end,
