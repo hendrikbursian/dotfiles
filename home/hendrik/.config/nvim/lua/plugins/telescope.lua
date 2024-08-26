@@ -17,7 +17,7 @@ return {
                     previewer = false,
                 }))
             end },
-            { "<C-p>",       function() 	    require("modules.telescope").git_files() end },
+            { "<C-p>",       function() 	    require("modules.telescope").git_files({ file_ignore_patterns = { "%_templ.go", "%_templ.txt" } }) end },
             { "<leader>dot", function() 	    require("modules.telescope").search_dotfiles() end },
             { "<leader>fF",  function() 	    require("modules.telescope").find_files() end },
             { "<leader>ff",  function() 	    require("modules.telescope").find_files({

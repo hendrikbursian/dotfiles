@@ -91,3 +91,24 @@ vim.keymap.set("n", "<leader>gg", function() Util.terminal({ "lazygit" }, { cwd 
 vim.keymap.set("n", "<leader>gG", function() Util.terminal({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit (cwd)" })
 
 --stylua: ignore end
+
+--go specifics
+local function toggle_go_test_file()
+	local filepath = vim.fn.expand("%:p")
+
+	if filepath:match("_test%.go$") then
+		local go_file = filepath:gsub("_test%.go$", ".go")
+		vim.cmd("edit " .. go_file)
+	else
+		local test_file = filepath:gsub("%.go$", "_test.go")
+		vim.cmd("edit " .. test_file)
+	end
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "go",
+	callback = function()
+        -- stylua: ignore
+		vim.keymap.set( "n", "gt", toggle_go_test_file, { desc = "[g]o [t]est", noremap = true, silent = true, buffer = true })
+	end,
+})

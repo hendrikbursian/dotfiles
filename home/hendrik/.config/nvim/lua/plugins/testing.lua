@@ -48,6 +48,11 @@ return {
 	},
 
 	{
+		"andythigpen/nvim-coverage",
+		config = true,
+		event = "VeryLazy",
+	},
+	{
 		"nvim-neotest/neotest",
 		dependencies = {
 			"fredrikaverpil/neotest-golang",
@@ -59,7 +64,6 @@ return {
 			},
 			branch = "main",
 		},
-
 		opts = function(_, opts)
 			opts.adapters = opts.adapters or {}
 			opts.adapters["neotest-golang"] = {
@@ -68,6 +72,7 @@ return {
 					"-race",
 					"-count=1",
 					"-timeout=60s",
+					"-coverprofile=" .. vim.fn.getcwd() .. "/coverage.out",
 				},
 				dap_go_enabled = true,
 			}

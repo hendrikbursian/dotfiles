@@ -136,17 +136,15 @@ return {
 
 			-- Sources
 
-			sources = cmp.config.sources({
+			sources = {
 				{ name = "path" },
 				{ name = "calc" },
 				{ name = "npm", keyword_length = 4 },
 				{ name = "luasnip" },
-			}, {
 				-- { name = "cody" },
 				{ name = "nvim_lsp" },
-			}, {
 				{ name = "buffer", keyword_length = 2, max_item_count = 7 },
-			}),
+			},
 
 			experimental = {
 				ghost_text = {

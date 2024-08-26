@@ -54,7 +54,6 @@ return {
 				background = "dark",
 				config = function()
 					-- vim.api.nvim_set_hl(0, "Normal", { bg = "#f5f5f5", fg = "#ffffff" })
-
 					-- set_overrides()
 				end,
 			})
@@ -63,9 +62,14 @@ return {
 				schema = "nord-light",
 				background = "light",
 				config = function()
-					vim.api.nvim_set_hl(0, "Normal", { bg = "#ffffff", fg = "#2e3440" })
+					vim.g.nord_contrast = true
+					vim.g.nord_borders = false
+					vim.g.nord_disable_background = false
+					vim.g.nord_italic = true
+					vim.g.nord_uniform_diff_background = false
+					vim.g.nord_bold = true
 
-					-- set_overrides()
+					vim.api.nvim_set_hl(0, "Normal", { bg = "#ffffff", fg = "#2e3440" })
 				end,
 			})
 		end,
