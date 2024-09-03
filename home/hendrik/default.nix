@@ -1,7 +1,8 @@
-{ pkgs, config, lib, ... }:
+{ inputs, pkgs, config, lib, ... }:
+
 
 {
-  options = {
+  options = rec {
     dotfiles = lib.mkOption {
       type = lib.types.str;
       default = "${config.home.homeDirectory}/Workspace/dotfiles";
@@ -15,6 +16,13 @@
   };
 
   imports = [
+    inputs.base16.nixosModule
+    # https://tinted-theming.github.io/base16-gallery/
+    # { scheme = "${inputs.tt-schemes}/base16/nord.yaml"; }
+    { scheme = "${inputs.tt-schemes}/base16/nord-light.yaml"; }
+    # { scheme = "${inputs.tt-schemes}/base16/gruvbox-dark-hard.yaml"; }
+    ./theming.nix
+
     ./ui
     ./foot.nix
     ./zsh
@@ -29,8 +37,10 @@
       homeDirectory = "/home/hendrik";
 
       sessionVariables = {
-        PATH = "${config.home.sessionVariables.GOPATH}/bin:${config.home.homeDirectory}/.local/bin:$PATH";
-        GOPATH = "${config.home.homeDirectory}/go";
+        GOPATH = "${config.home.homeDirectory}/.go";
+        PNPM_HOME = "${config.xdg.dataHome}/pnpm";
+
+        PATH = "${config.home.sessionVariables.GOPATH}/bin:${config.home.sessionVariables.PNPM_HOME}:${config.home.homeDirectory}/.local/bin:$PATH";
         DOTFILES = config.dotfiles;
       };
 

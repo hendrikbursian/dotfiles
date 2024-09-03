@@ -44,7 +44,7 @@ return {
 			},
 		}
 
-		opts.handlers.tsserver = function(settings)
+		opts.handlers.gopls = function(settings)
 			local lsp = require("modules.lsp")
 			local lspconfig = require("lspconfig")
 			local config = vim.tbl_deep_extend("force", lsp.get_default_server_config(settings), {

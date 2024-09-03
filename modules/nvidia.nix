@@ -3,7 +3,7 @@
 {
   boot.kernelPackages = pkgs.linuxPackages;
   boot.kernelParams = [
-    "module_blacklist=i915" # disable intel driver
+    # "module_blacklist=i915" # disable intel driver
   ];
 
   environment = {
@@ -18,8 +18,8 @@
       WLR_RENDERER = "vulkan";
       XDG_SESSION_TYPE = "wayland";
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-      __GL_GSYNC_ALLOWED = 0;
-      __GL_VRR_ALLOWED = 0;
+      __GL_GSYNC_ALLOWED = 1;
+      __GL_VRR_ALLOWED = 1;
     };
 
     systemPackages = with pkgs; [

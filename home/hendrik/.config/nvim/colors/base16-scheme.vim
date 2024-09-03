@@ -1,0 +1,1 @@
+/nix/store/14bfikzpigp0hw40cvy1xjwr5j8v6i3d-home-manager-files/.config/nvim/colors/base16-scheme.vim

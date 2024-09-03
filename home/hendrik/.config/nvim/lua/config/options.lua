@@ -77,6 +77,8 @@ vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy" }
 vim.opt.synmaxcol = 200
 
 -- Colorscheme
+vim.g.base16colorspace = 256
+vim.g.base16_background_transparent = 1
 vim.opt.termguicolors = true
 
 -- Cursor

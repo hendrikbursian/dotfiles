@@ -1,10 +1,16 @@
 { pkgs, config, lib, ... }:
 
 {
-  xdg.configFile.nvim = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfilesHome}/.config/nvim";
+  xdg.configFile."nvim/after" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfilesHome}/.config/nvim/after";
     recursive = true;
   };
+
+  xdg.configFile."nvim/lua" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfilesHome}/.config/nvim/lua";
+    recursive = true;
+  };
+  xdg.configFile."nvim/lazy-lock.json".source = config.lib.file.mkOutOfStoreSymlink "${config.dotfilesHome}/.config/nvim/lazy-lock.json";
 
   home.activation.initNeoconfJson =
     let
@@ -19,9 +25,9 @@
       fi
     '';
 
-  home.activation.installNvimPlugins = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    PATH="${pkgs.git}/bin" ${pkgs.unstable.neovim-unwrapped}/bin/nvim --headless "+Lazy! restore" +qa
-  '';
+  # home.activation.installNvimPlugins = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  #   PATH="${pkgs.git}/bin" ${config.programs.neovim.package}/bin/nvim --headless "+Lazy! restore" +qa
+  # '';
 
   programs.neovim = {
     enable = true;

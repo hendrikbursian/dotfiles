@@ -40,13 +40,13 @@ return {
 				["<C-d>"] = cmp.mapping.scroll_docs(4),
 				["<C-u>"] = cmp.mapping.scroll_docs(-4),
 
-				["<c-x>"] = cmp.mapping.complete({
-					config = {
-						sources = {
-							{ name = "cody" },
-						},
-					},
-				}),
+				-- ["<c-x>"] = cmp.mapping.complete({
+				-- 	config = {
+				-- 		sources = {
+				-- 			{ name = "cody" },
+				-- 		},
+				-- 	},
+				-- }),
 
 				-- TAB: Replace
 				["<Tab>"] = cmp.mapping(function(fallback)

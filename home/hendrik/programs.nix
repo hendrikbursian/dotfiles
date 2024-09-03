@@ -15,6 +15,7 @@
 
     nodejs_22
     corepack_22
+    nodePackages_latest.pnpm
     typescript
 
     cargo
@@ -50,7 +51,7 @@
     dbmate
     sqlc
     protonmail-bridge
-    # visidata
+    visidata
 
     # Apps
     bitwarden
@@ -61,8 +62,8 @@
     telegram-desktop
     dbeaver-bin
     zathura
+    teams-for-linux
   ];
-
 
   programs.direnv = {
     enable = true;

@@ -1,18 +1,6 @@
-{ pkgs, config, lib, ... }:
+{ inputs, pkgs, config, lib, ... }:
 
 let
-  colors = {
-    good = "#8ec07c";
-    info = "#458588";
-    focused = "#d65d0e";
-    warn = "#d79921";
-    inactive = "#323232";
-    urgent = "#cc241d";
-    text = "#eeeeec";
-    text-inactive = "#babdb6";
-    bar = "#000000";
-    statusline = "#e0e0e0";
-  };
   ws1 = "1 Konsole";
   ws2 = "2 Arbeit";
   ws3 = "3 Browser";
@@ -23,13 +11,52 @@ let
   ws8 = "8 Tagebuch";
   ws9 = "number 9";
   ws10 = "number 10";
+
+  themeSwayBars = builtins.map
+    (bar: bar // {
+      extraConfig = (with config.scheme.withHashtag; ''
+        colors {
+          background ${base00}
+          separator  ${base01}
+          statusline ${base04}
+
+          # State             Border    BG        Text
+          focused_workspace   ${base05} ${base0D} ${base00}
+          active_workspace    ${base05} ${base03} ${base00}
+          inactive_workspace  ${base03} ${base01} ${base05}
+          urgent_workspace    ${base08} ${base08} ${base00}
+          binding_mode        ${base00} ${base0A} ${base00}
+        }
+      '');
+    });
+  themei3StatusBarRust =
+    with config.scheme.withHashtag;''
+      [theme]
+      theme = "native"
+
+      [theme.overrides]
+      idle_bg = "${base00}"
+      idle_fg = "${base05}"
+      info_bg = "${base00}"
+      info_fg = "${base0C}"
+      good_bg = "${base00}"
+      good_fg = "${base0B}"
+      warning_bg = "${base00}"
+      warning_fg = "${base0A}"
+      critical_bg = "${base00}"
+      critical_fg = "${base08}"
+    '';
 in
 {
-  xdg.configFile = {
-    i3status-rust = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.dotfilesHome}/.config/i3status-rust";
-      recursive = true;
-    };
+  xdg.configFile."i3status-rust/config.toml".source = pkgs.writeTextFile {
+    name = "config.toml"; # The name of the resulting file
+    text =
+      themei3StatusBarRust +
+      ''
+        separator = ""
+        end_separator = ""
+      '' +
+      builtins.readFile ../.config/i3status-rust/config.toml;
   };
 
   home.packages = with pkgs; [
@@ -45,37 +72,7 @@ in
           names = [ "Font Awesome 6 Free" "BlexMono Nerd Font" ];
           size = 9.0;
         };
-        colors = {
-          focused = {
-            border = colors.focused;
-            background = colors.focused;
-            text = colors.text;
-            indicator = colors.inactive;
-            childBorder = colors.inactive;
-          };
-          unfocused = {
-            border = colors.inactive;
-            background = colors.inactive;
-            text = colors.text-inactive;
-            indicator = colors.bar;
-            childBorder = colors.bar;
-          };
-          focusedInactive = {
-            border = colors.inactive;
-            background = colors.inactive;
-            text = colors.text-inactive;
-            indicator = colors.bar;
-            childBorder = colors.bar;
-          };
-          urgent = {
-            border = colors.urgent;
-            background = colors.urgent;
-            text = colors.text;
-            indicator = colors.bar;
-            childBorder = colors.bar;
-          };
-        };
-
+        # Basic color configuration using the Base16 variables for windows and borders.
         window = {
           border = 0;
           titlebar = false;
@@ -111,22 +108,15 @@ in
           smartGaps = false;
         };
 
-        bars = [{
+        bars = themeSwayBars [{
           id = "top";
           position = "top";
-          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${config.xdg.configHome}/i3status-rust/config.toml";
+          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs";
           workspaceButtons = true;
           trayOutput = "*";
           fonts = {
             names = [ "BlexMono Nerd Font" ];
             size = 9.0;
-          };
-          colors = {
-            focusedWorkspace = {
-              border = colors.inactive;
-              background = colors.focused;
-              text = colors.text;
-            };
           };
           extraConfig = ''
             strip_workspace_numbers no
@@ -151,7 +141,7 @@ in
         };
         modifier = "Mod4";
         terminal = "foot";
-        menu = "${pkgs.dmenu-rs}/bin/dmenu_path | ${pkgs.dmenu-rs}/bin/dmenu --insensitive --nb '${colors.bar}' --font 'BlexMono Nerd Font 9' | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+        # menu = "${pkgs.dmenu-rs}/bin/dmenu_path | ${pkgs.dmenu-rs}/bin/dmenu --insensitive --nb '${colors.bar}' --font 'BlexMono Nerd Font 9' | ${pkgs.findutils}/bin/xargs swaymsg exec --";
         seat = {
           # "*" = { hide_cursor = "8000"; };
         };
@@ -222,7 +212,7 @@ in
               # Sway commands
               "${modifier}+t" = "layout toggle all";
               "${modifier}+Shift+t" = "focus mode_toggle";
-              "${modifier}+Shift+f" = "floating toggle";
+              "${modifier} +Shift+f" = "floating toggle";
 
 
               # Media keys
@@ -250,3 +240,4 @@ in
       };
   };
 }
+

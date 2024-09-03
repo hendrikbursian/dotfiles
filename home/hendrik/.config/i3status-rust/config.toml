@@ -1,20 +1,3 @@
-[theme]
-theme = "native"
-[theme.overrides]
-idle_bg = "#000000"
-idle_fg = "#eeeeec"
-good_bg = "#000000"
-good_fg = "#8ec07c"
-warning_bg = "#000000"
-warning_fg = "#d79921"
-critical_bg = "#000000"
-critical_fg = "#cc241d"
-info_bg = "#000000"
-info_fg = "#458588"
-separator_bg = "$000000"
-separator_fg = "#000000"
-separator = ""
-end_separator = ""
 
 [icons]
 icons = "awesome6"

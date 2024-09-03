@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ inputs, pkgs, config, lib, ... }:
 
 {
   programs.zsh = {
@@ -31,7 +31,67 @@
 
     sessionVariables = {
       COLORTERM = "truecolor";
-      LS_COLORS = ''no=0;38;15:rs=0:di=1;34:ln=01;35:mh=00:pi=40;33:so=1;38;211:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=30;42:st=37;44:ex=1;30;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;33:*.au=01;33:*.flac=01;33:*.mid=01;33:*.midi=01;33:*.mka=01;33:*.mp3=01;33:*.mpc=01;33:*.ogg=01;33:*.ra=01;33:*.wav=01;33:*.axa=01;33:*.oga=01;33:*.spx=01;33:*.xspf=01;33:*.doc=01;91:*.ppt=01;91:*.xls=01;91:*.docx=01;91:*.pptx=01;91:*.xlsx=01;91:*.odt=01;91:*.ods=01;91:*.odp=01;91:*.pdf=01;91:*.tex=01;91:*.md=01;91:'';
+
+      # LS_COLORS = ''
+      #   # Directories
+      #   di=${config.theme.colors.base16.base09};  # glacier (base09)
+
+      #   # Symbolic links
+      #   ln=${config.theme.colors.base16.base08};  # off_blue (base08)
+
+      #   # Pipes
+      #   pi=${config.theme.colors.base16.base02};  # gray (base02)
+
+      #   # Executables
+      #   ex=${config.theme.colors.base16.base0D};  # yellow (base0D)
+
+      #   # Block devices
+      #   bd=${config.theme.colors.base16.base0E};  # green (base0E);${config.theme.colors.base16.base0B};  # with background red (base0B)
+
+      #   # Character devices
+      #   cd=${config.theme.colors.base16.base0E};  # green (base0E);${config.theme.colors.base16.base0B};  # with background red (base0B)
+
+      #   # Sockets
+      #   so=${config.theme.colors.base16.base0F};  # purple (base0F)
+
+      #   # Orphaned symbolic links
+      #   or=${config.theme.colors.base16.base0B};  # red (base0B)
+
+      #   # Missing files
+      #   mi=${config.theme.colors.base16.base0B};  # red (base0B)
+
+      #   # Files with setuid bit set
+      #   su=${config.theme.colors.base16.base0B};  # red (base0B);${config.theme.colors.base16.base01};  # with background dark_gray (base01)
+
+      #   # Files with setgid bit set
+      #   sg=${config.theme.colors.base16.base0B};  # red (base0B);${config.theme.colors.base16.base01};  # with background dark_gray (base01)
+
+      #   # Directories writable to others, with sticky bit
+      #   tw=${config.theme.colors.base16.base0D};  # yellow (base0D);${config.theme.colors.base16.base01};  # with background dark_gray (base01)
+
+      #   # Directories writable to others, without sticky bit
+      #   ow=${config.theme.colors.base16.base0B};  # red (base0B);${config.theme.colors.base16.base01};  # with background dark_gray (base01)
+
+      #   # Normal files
+      #   fi=${config.theme.colors.base16.base03};  # light_gray (base03)
+
+      #   # Archives and compressed files
+      #   *.tar=${config.theme.colors.base16.base0D};  # yellow (base0D)
+      #   *.zip=${config.theme.colors.base16.base0D};  # yellow (base0D)
+      #   *.gz=${config.theme.colors.base16.base0D};  # yellow (base0D)
+      #   *.bz2=${config.theme.colors.base16.base0D};  # yellow (base0D)
+      #   *.xz=${config.theme.colors.base16.base0D};  # yellow (base0D)
+
+      #   # Images
+      #   *.jpg=${config.theme.colors.base16.base0E};  # green (base0E)
+      #   *.png=${config.theme.colors.base16.base0E};  # green (base0E)
+      #   *.gif=${config.theme.colors.base16.base0E};  # green (base0E)
+
+      #   # Documents
+      #   *.pdf=${config.theme.colors.base16.base0B};  # red (base0B)
+      #   *.doc=${config.theme.colors.base16.base0B};  # red (base0B)
+      #   *.txt=${config.theme.colors.base16.base06};  # white (base06)
+      # '';
 
       ENABLE_CORRECTION = "false";
       DISABLE_UNTRACKED_FILES_DIRTY = "true";
@@ -41,6 +101,7 @@
     loginExtra = ''
       [ "$(tty)" = "/dev/tty1" ] && exec sway --unsupported-gpu
     '';
+
     initExtra =
       lib.readFile (./functions.zsh) +
       ''
@@ -98,6 +159,7 @@
         
          # Overrides
          [ -s "$ZDOTDIR/.zshrc.local" ] && source "$ZDOTDIR/.zshrc.local"
+
       '';
 
     shellAliases = {
