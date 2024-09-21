@@ -17,6 +17,7 @@
     corepack_22
     nodePackages_latest.pnpm
     typescript
+    unstable.vscode-js-debug
 
     cargo
     rustc

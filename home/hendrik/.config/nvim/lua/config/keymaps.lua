@@ -1,4 +1,3 @@
-local utils = require("modules.utils")
 local Util = require("lazyvim.util")
 
 -- Disable <leader> only
@@ -13,7 +12,7 @@ vim.keymap.set("n", "Y", "y$", { desc = "Tame yank!" })
 -- Make yank work with cursor=virtual
 vim.keymap.set("n", "yy", "my0yy`y<CMD>delmark y<CR>")
 -- TODO: check this
-vim.keymap.set("v", "y", "my0y`y<CMD>delmark y<CR>")
+-- vim.keymap.set("v", "y", "my0y`y<CMD>delmark y<CR>")
 
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -33,24 +32,6 @@ vim.keymap.set("n", "gX", function()
 	local path = vim.fn.expand("%:h")
 	vim.fn.jobstart("xdg-open '" .. path .. "'", { detach = true })
 end, { desc = "Open directory of current file", silent = true })
-
-vim.keymap.set("n", "<leader>no", function()
-	vim.ui.input({ prompt = "search nix option: " }, function(input)
-		vim.fn.jobstart("nixopt '" .. input .. "'", { detach = true })
-	end)
-end, { desc = "Open [n]ix [o]ption in browser" })
-
-vim.keymap.set("n", "<leader>no", function()
-	vim.ui.input({ prompt = "search nix option: " }, function(input)
-		vim.fn.jobstart("nixopt '" .. input .. "'", { detach = true })
-	end)
-end, { desc = "Open [n]ix [o]ption in browser" })
-
-vim.keymap.set("n", "<leader>ho", function()
-	vim.ui.input({ prompt = "search home manager option: " }, function(input)
-		vim.fn.jobstart("hmopt '" .. input .. "'", { detach = true })
-	end)
-end, { desc = "Open [h]ome manager [o]ption in browser" })
 
 -- Diagnostic
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })

@@ -3,11 +3,12 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"jose-elias-alvarez/typescript.nvim",
 		"folke/neoconf.nvim",
+		"nvim-lua/plenary.nvim",
+		"pmizio/typescript-tools.nvim",
 	},
 	opts = function(_, opts)
-		opts.servers.tsserver = {
+		opts.servers.ts_ls = {
 			javascript = {
 				suggest = {
 					enable = false,
@@ -46,42 +47,38 @@ return {
 			},
 		}
 
-		opts.handlers.tsserver = function(settings)
+		opts.handlers.ts_ls = function(settings)
 			local lsp = require("modules.lsp")
 
-			local ts_config = {
-				disable_commands = false, -- prevent the plugin from creating Vim commands
-				debug = false, -- enable debug logging for commands
-				server = vim.tbl_deep_extend("force", lsp.get_default_server_config(settings), {
-					init_options = {
-						plugins = {},
-					},
-					filetypes = {
-						"javascript",
-						"javascript.jsx",
-						"javascriptreact",
-						"typescript",
-						"typescript.tsx",
-						"typescriptreact",
-						"vue",
-					},
-					single_file_support = true,
-				}),
-			}
+			local config = vim.tbl_deep_extend("force", lsp.get_default_server_config(settings), {
+				init_options = {
+					plugins = {},
+				},
+				filetypes = {
+					"javascript",
+					"javascript.jsx",
+					"javascriptreact",
+					"typescript",
+					"typescript.tsx",
+					"typescriptreact",
+					"vue",
+				},
+				single_file_support = true,
+			})
 
 			local vue = require("plugins.lsp.lang.helpers").get_vue_config()
 
 			if vue.typescript_plugin == nil then
-				vim.print("tsserver lsp setup: cannot find @vue/typescript-plugin")
+				vim.print("ts_ls lsp setup: cannot find @vue/typescript-plugin")
 			else
-				table.insert(ts_config.server.init_options.plugins, {
+				table.insert(config.init_options.plugins, {
 					name = "@vue/typescript-plugin",
 					location = vue.typescript_plugin,
 					languages = { "javascript", "typescript", "vue" },
 				})
 			end
 
-			require("typescript").setup(ts_config)
+			require("lspconfig").ts_ls.setup(config)
 		end
 
 		return opts

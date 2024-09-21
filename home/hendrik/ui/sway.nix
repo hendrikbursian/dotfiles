@@ -16,6 +16,7 @@ let
     (bar: bar // {
       extraConfig = (with config.scheme.withHashtag; ''
         colors {
+
           background ${base00}
           separator  ${base01}
           statusline ${base04}
@@ -61,11 +62,15 @@ in
 
   home.packages = with pkgs; [
     i3status-rust
-    dmenu-rs
+    dmenu-wayland
   ];
 
   wayland.windowManager.sway = {
     enable = true;
+
+    extraConfig = ''
+      for_window [title="Playwright Test"] move container to workspace ${ws2};
+    '';
     config =
       {
         fonts = {
@@ -141,7 +146,7 @@ in
         };
         modifier = "Mod4";
         terminal = "foot";
-        # menu = "${pkgs.dmenu-rs}/bin/dmenu_path | ${pkgs.dmenu-rs}/bin/dmenu --insensitive --nb '${colors.bar}' --font 'BlexMono Nerd Font 9' | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+        menu = "exec ${pkgs.dmenu-wayland}/bin/dmenu-wl_run --insensitive --normal-background '${config.scheme.withHashtag.base00}' --normal-foreground '${config.scheme.withHashtag.base05}' --selected-background '${config.scheme.withHashtag.base0D}' --selected-foreground '${config.scheme.withHashtag.base00}'";
         seat = {
           # "*" = { hide_cursor = "8000"; };
         };
@@ -201,6 +206,7 @@ in
               "${modifier}+Shift+d" = "exec foot tmux-sessionizer $DOTFILES";
 
               # Launcher
+              "${modifier}+d" = "exec ${pkgs.dmenu-wayland}/bin/dmenu-wl_run -i";
               "${modifier}+space" = "exec ${config.wayland.windowManager.sway.config.menu}";
 
               # Settings
@@ -212,8 +218,7 @@ in
               # Sway commands
               "${modifier}+t" = "layout toggle all";
               "${modifier}+Shift+t" = "focus mode_toggle";
-              "${modifier} +Shift+f" = "floating toggle";
-
+              "${modifier}+Shift+f" = "floating toggle";
 
               # Media keys
               "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+;";
@@ -223,6 +228,7 @@ in
               "XF86MonBrightnessDown" = "exec light -U 5";
               "XF86MonBrightnessUp" = "exec light -A 5";
             };
+
         modes = {
           resize = {
             Down = "resize grow height 32 px";

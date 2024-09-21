@@ -7,16 +7,16 @@ return {
 	"rcarriga/nvim-notify",
 	event = "VeryLazy",
 	keys = {
-		{
-			"<leader>un",
-			function()
-				require("notify").dismiss({ silent = true, pending = true })
-			end,
-			desc = "Dismiss all Notifications",
-		},
+		-- {
+		-- 	"<leader>un",
+		-- 	function()
+		-- 		require("notify").dismiss({ silent = true, pending = true })
+		-- 	end,
+		-- 	desc = "Dismiss all Notifications",
+		-- },
 	},
 	opts = {
-		timeout = 5000,
+		timeout = 1200,
 		render = "simple",
 		stages = "static",
 		-- top_down = false,

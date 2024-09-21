@@ -1,4 +1,4 @@
-local function get_neoconf_defaults()
+local function get_dap_settings()
 	local dap = require("dap")
 
 	-- extract filetypes from dap.configurations
@@ -42,8 +42,7 @@ return {
         keys = {
             { "<F5>", function()
                 local dap = require("dap")
-                local dap_defaults = get_neoconf_defaults()
-                local dap_settings = require("neoconf").get("nvim-dap", dap_defaults)
+                local dap_settings = get_dap_settings()
 
                 -- refresh adapters
                 dap.adapters = dap_settings.adapters
@@ -96,30 +95,7 @@ return {
 				return vim.json.decode(json.json_strip_comments(str))
 			end
 
-			local dap_defaults = get_neoconf_defaults()
-
-			-- register your settings schema with Neodev, so auto-completion will work in the json files
-			require("neoconf.plugins").register({
-				on_schema = function(schema)
-					-- this call will create a json schema based on the lua types of your default settings
-					schema:import("nvim-dap", dap_defaults)
-					-- Optionally update some of the json schema
-					-- schema:set("nvim-dap.type", {
-					-- 	description = "Special array containg booleans or numbers",
-					-- 	type = "string",
-					-- })
-					-- schema:set("nvim-dap.port", {
-					-- 	description = "Special array containg booleans or numbers",
-					-- 	type = "number",
-					-- })
-					-- schema:set("nvim-dap.args", {
-					-- 	description = "Special array containg booleans or numbers",
-					-- 	anyOf = {
-					-- 		{ type = "string" },
-					-- 	},
-					-- })
-				end,
-			})
+			local dap_defaults = get_dap_settings()
 		end,
 	},
 

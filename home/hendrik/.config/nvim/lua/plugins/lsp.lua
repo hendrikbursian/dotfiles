@@ -16,7 +16,26 @@ return {
 		},
 		opts = function()
 			local servers = {
-				cssls = {},
+				cssls = {
+					css = {
+						validate = true,
+						lint = {
+							unknownAtRules = "ignore",
+						},
+					},
+					scss = {
+						validate = true,
+						lint = {
+							unknownAtRules = "ignore",
+						},
+					},
+					less = {
+						validate = true,
+						lint = {
+							unknownAtRules = "ignore",
+						},
+					},
+				},
 				-- ccls = {
 				graphql = {},
 				htmx = {},
