@@ -53,6 +53,13 @@
     sqlc
     protonmail-bridge
     visidata
+    clight
+    inotify-tools
+    gnuplot
+    # flameshot
+    # xdg-desktop-portal-gnome
+    # xdg-desktop-portal-gtk
+    # xdg-desktop-portal
 
     # Apps
     bitwarden
@@ -64,6 +71,9 @@
     dbeaver-bin
     zathura
     teams-for-linux
+    audacity
+    gimp
+    imagemagick
   ];
 
   programs.direnv = {

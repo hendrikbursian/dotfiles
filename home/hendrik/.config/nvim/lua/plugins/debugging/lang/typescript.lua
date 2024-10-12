@@ -6,61 +6,67 @@ return {
 
 		dap.adapters["pwa-node"] = {
 			type = "server",
-			host = "localhost",
+			host = "::1",
 			port = "${port}",
 			executable = {
-				command = "node",
-				-- 💀 Make sure to update this path to point to your installation
+				command = "js-debug",
 				args = {
-					-- TODO: use nix for this
-					-- require("mason-registry").get_package("js-debug-adapter"):get_install_path()
-					-- 	.. "/js-debug/src/dapDebugServer.js",
-					-- "${port}",
-					"asdfasdfasdfasdf",
+					"${port}",
 				},
 			},
 		}
 
+		local dap_configurations = {
+			{
+				type = "pwa-node",
+				request = "launch",
+				name = "Launch file",
+				program = "${file}",
+				cwd = "${workspaceFolder}",
+			},
+			{
+				type = "pwa-node",
+				request = "attach",
+				name = "Attach (Port 9229)",
+				address = "localhost",
+				port = 9229,
+				cwd = "${workspaceFolder}",
+			},
+			-- {
+			-- 	type = "pwa-node",
+			-- 	request = "Attach (Process picker)",
+			-- 	name = "Attach",
+			-- 	processId = require("dap.utils").pick_process,
+			-- 	cwd = "${workspaceFolder}",
+			-- },
+
+			-- {
+			-- 	type = "pwa-node",
+			-- 	request = "attach",
+			-- 	name = "Attach (Yarn Workspace)",
+			-- 	port = function()
+			-- 		return vim.fn.input({
+			-- 			prompt = "Port> ",
+			-- 			default = "9229",
+			-- 		})
+			-- 	end,
+			-- 	processId = function()
+			-- 		return require("dap.utils").pick_process({ filter = "yarn" })
+			-- 	end,
+			-- 	cwd = function()
+			-- 		local utils = require("modules.utils")
+
+			-- 		local file_name = vim.api.nvim_buf_get_name(0)
+			-- 		local cwd = utils.find_package_json_ancestor(file_name)
+
+			-- 		return cwd
+			-- 	end,
+			-- },
+		}
+
 		for _, language in ipairs({ "typescript", "javascript", "typescriptreact", "javascriptreact" }) do
 			if not dap.configurations[language] then
-				dap.configurations[language] = {
-					{
-						type = "pwa-node",
-						request = "launch",
-						name = "Launch file",
-						program = "${file}",
-						cwd = "${workspaceFolder}",
-					},
-					{
-						type = "pwa-node",
-						request = "attach",
-						name = "Attach",
-						processId = require("dap.utils").pick_process,
-						cwd = "${workspaceFolder}",
-					},
-					-- {
-					-- 	type = "pwa-node",
-					-- 	request = "attach",
-					-- 	name = "Attach (Yarn Workspace)",
-					-- 	port = function()
-					-- 		return vim.fn.input({
-					-- 			prompt = "Port> ",
-					-- 			default = "9229",
-					-- 		})
-					-- 	end,
-					-- 	processId = function()
-					-- 		return require("dap.utils").pick_process({ filter = "yarn" })
-					-- 	end,
-					-- 	cwd = function()
-					-- 		local utils = require("modules.utils")
-
-					-- 		local file_name = vim.api.nvim_buf_get_name(0)
-					-- 		local cwd = utils.find_package_json_ancestor(file_name)
-
-					-- 		return cwd
-					-- 	end,
-					-- },
-				}
+				dap.configurations[language] = dap_configurations
 			end
 		end
 	end,

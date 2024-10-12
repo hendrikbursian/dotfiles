@@ -86,6 +86,9 @@ format = " $timestamp.datetime(f:'%a %d.%m %R Uhr') "
 block = "menu"
 text = " \uf011 "
 [[block.items]]
+display =  "  Lock   "
+cmd = "swaylock"
+[[block.items]]
 display =  "  Sleep  "
 cmd =  "systemctl suspend"
 [[block.items]]

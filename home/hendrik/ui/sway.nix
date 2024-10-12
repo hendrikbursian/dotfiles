@@ -65,6 +65,18 @@ in
     dmenu-wayland
   ];
 
+  programs.swaylock = {
+    enable = true;
+    settings = {
+      color = config.scheme.base00;
+      font-size = 12;
+      indicator-idle-visible = false;
+      indicator-radius = 50;
+      line-color = config.scheme.base03;
+      show-failed-attempts = true;
+    };
+  };
+
   wayland.windowManager.sway = {
     enable = true;
 

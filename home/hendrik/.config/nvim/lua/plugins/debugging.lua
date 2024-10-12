@@ -37,7 +37,6 @@ end
 return {
 	{
 		"mfussenegger/nvim-dap",
-
         --stylua: ignore
         keys = {
             { "<F5>", function()
@@ -51,9 +50,10 @@ return {
 
                 dap.continue()
             end, },
-            { "<F6>", function() require("dap").step_over() end, },
-            { "<F7>", function() require("dap").step_into() end, },
-            { "<F8>", function() require("dap").repl.toggle() end, },
+
+            -- { "<F6>", function() require("dap").step_over() end, },
+            -- { "<F7>", function() require("dap").step_into() end, },
+            -- { "<F8>", function() require("dap").repl.toggle() end, },
 
             -- breakpoints
             -- {"<leader>bb", function() require("dap").toggle_breakpoint() end, desc = "toggle de[b]ug [b]reakpoint" },
@@ -94,8 +94,6 @@ return {
 			vscode.json_decode = function(str)
 				return vim.json.decode(json.json_strip_comments(str))
 			end
-
-			local dap_defaults = get_dap_settings()
 		end,
 	},
 
@@ -176,7 +174,11 @@ return {
 					elements = {
 						{
 							id = "repl",
-							size = 1,
+							size = 0.66,
+						},
+						{
+							id = "console",
+							size = 0.34,
 						},
 					},
 					position = "bottom",

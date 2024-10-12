@@ -1,24 +1,26 @@
 local utils = require("modules.utils")
 
+local on_readonly_file = function(value, fallback)
+	return function()
+		local file_path = vim.api.nvim_buf_get_name(0)
+		if file_path == "" or not utils.path.exists(file_path) then
+			return fallback
+		end
+
+		local is_readonly = vim.api.nvim_buf_get_option(0, "readonly")
+		if not is_readonly then
+			return fallback
+		end
+
+		return value
+	end
+end
+
 -- Statusline
 return {
 	"nvim-lualine/lualine.nvim",
 	event = "VeryLazy",
 	opts = function(_, opts)
-		local red_on_existing_file = function()
-			local file_path = vim.api.nvim_buf_get_name(0)
-			if file_path == "" or not utils.path.exists(file_path) then
-				return {}
-			end
-
-			local is_readonly = vim.api.nvim_buf_get_option(0, "readonly")
-			if not is_readonly then
-				return {}
-			end
-
-			return { fg = "#ff0000" }
-		end
-
 		return vim.tbl_deep_extend("keep", opts, {
 			options = {
 				icons_enabled = false,
@@ -44,7 +46,7 @@ return {
 						symbols = {
 							readonly = " [READONLY]",
 						},
-						color = red_on_existing_file,
+						color = on_readonly_file({ bg = "red", fg = "white" }, {}),
 					},
 				},
 			},

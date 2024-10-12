@@ -38,7 +38,7 @@ return {
 				},
 				-- ccls = {
 				graphql = {},
-				htmx = {},
+				-- htmx = {},
 				lemminx = {},
 				-- jsonls = {},
 				lua_ls = {

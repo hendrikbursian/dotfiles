@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+last_main_build=
+function getLastMainBuild() {
+    for dir in $(home-manager generations | cut -d' ' -f7); do
+        if [[ $(find "$dir" -name specialisation) ]]; then
+            last_main_build=$dir
+            return
+        fi
+    done
+}
+
+getLastMainBuild
+
+if [[ ! $last_main_build ]]; then
+    echo "No specialisations found"
+    exit
+fi
+
+
+default_specialisation_name=nord-light
+
+if [[ "$1" ]]; then
+    specialisation_name=$1
+else
+    specialisation_name=$(find -L "$last_main_build" -maxdepth 3 -name activate | cut -d/ -f 6 | sed "s/^$/${default_specialisation_name}/" | fzf)
+fi
+
+if [[ $specialisation_name == "$default_specialisation_name" ]]; then
+    "$last_main_build/activate"
+else
+    "$last_main_build/specialisation/$specialisation_name/activate"
+fi

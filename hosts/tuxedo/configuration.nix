@@ -31,10 +31,25 @@ in
     "cryptd"
   ];
 
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    tuxedo-keyboard
+  ];
+
+  # Keyboard backlight
+  boot.kernelParams = [
+    "tuxedo_keyboard.mode=0"
+    "tuxedo_keyboard.brightness=0"
+    "tuxedo_keyboard.color_left=0xffffff"
+  ];
+
   # Display backlight
   programs.light.enable = true;
 
-  hardware.tuxedo-keyboard.enable = false;
+  hardware.tuxedo-keyboard.enable = true;
+  hardware.tuxedo-rs = {
+    enable = true;
+    tailor-gui.enable = true;
+  };
 
   # Bootloader.
   # boot.kernel.sysctl = { "net.ipv4.ip_unprivileged_port_start" = 0; };
@@ -80,6 +95,9 @@ in
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
+
+  # Needed for swaylock to work
+  security.pam.services.swaylock = { };
 
   security.rtkit.enable = true;
   services.pipewire = {

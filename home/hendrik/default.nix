@@ -1,6 +1,9 @@
 { inputs, pkgs, config, lib, ... }:
 
 
+let
+  defaultTheme = "nord-light";
+in
 {
   options = rec {
     dotfiles = lib.mkOption {
@@ -17,10 +20,12 @@
 
   imports = [
     inputs.base16.nixosModule
-    # https://tinted-theming.github.io/base16-gallery/
-    # { scheme = "${inputs.tt-schemes}/base16/nord.yaml"; }
-    { scheme = "${inputs.tt-schemes}/base16/nord-light.yaml"; }
-    # { scheme = "${inputs.tt-schemes}/base16/gruvbox-dark-hard.yaml"; }
+    {
+      # https://tinted-theming.github.io/base16-gallery/
+      scheme = (config.lib.base16.mkSchemeAttrs "${inputs.tt-schemes}/base16/${defaultTheme}.yaml").override {
+        base00 = "ffffff";
+      };
+    }
     ./theming.nix
 
     ./ui
@@ -32,6 +37,31 @@
   ];
 
   config = {
+    xdg.configFile."theme".source = pkgs.writeTextFile {
+      name = "theme"; # The name of the resulting file
+      text = defaultTheme;
+    };
+
+    specialisation = {
+      nord.configuration = {
+        scheme = lib.mkForce "${inputs.tt-schemes}/base16/nord.yaml";
+
+        xdg.configFile."theme".source = lib.mkForce (pkgs.writeTextFile {
+          name = "theme"; # The name of the resulting file
+          text = "nord";
+        });
+      };
+
+      gruvbox.configuration = {
+        scheme = lib.mkForce "${inputs.tt-schemes}/base16/gruvbox-dark-hard.yaml";
+
+        xdg.configFile."theme".source = lib.mkForce (pkgs.writeTextFile {
+          name = "theme"; # The name of the resulting file
+          text = "gruvbox";
+        });
+      };
+    };
+
     home = {
       username = "hendrik";
       homeDirectory = "/home/hendrik";
@@ -42,6 +72,7 @@
 
         PATH = "${config.home.sessionVariables.GOPATH}/bin:${config.home.sessionVariables.PNPM_HOME}:${config.home.homeDirectory}/.local/bin:$PATH";
         DOTFILES = config.dotfiles;
+        THEME_FILE = "${config.xdg.configHome}/theme";
       };
 
       file = {

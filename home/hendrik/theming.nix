@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   # Zathura
@@ -13,6 +13,7 @@
       name = "foot.ini";
       text = ''
         [main]
+        shell=themed-shell-wrapper
         font=BlexMono Nerd Font Text:size=12
       '' + builtins.readFile (config.scheme inputs.base16-foot);
     };
@@ -46,6 +47,7 @@
       require("config.filetypes")
 
       vim.cmd("colorscheme base16-scheme")
+      require("modules.ui").refreshColorTheme()
     '';
   };
 

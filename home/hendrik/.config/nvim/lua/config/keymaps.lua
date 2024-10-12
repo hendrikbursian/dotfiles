@@ -1,4 +1,5 @@
 local Util = require("lazyvim.util")
+local ui = require("modules.ui")
 
 -- Disable <leader> only
 vim.keymap.set({ "n", "v" }, "<leader>", "<Nop>", { silent = true })
@@ -70,6 +71,9 @@ vim.keymap.set("n", "<leader>q", function() require("modules.ui").toggle_qf_list
 -- Lazygit
 vim.keymap.set("n", "<leader>gg", function() Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit (root dir)" })
 vim.keymap.set("n", "<leader>gG", function() Util.terminal({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit (cwd)" })
+
+-- Set theme according to nix home-manager theme
+vim.keymap.set("n", "<leader>cc", ui.refreshColorTheme, { desc = "Refresh colorscheme depending on THEME_FILE env variable" })
 
 --stylua: ignore end
 

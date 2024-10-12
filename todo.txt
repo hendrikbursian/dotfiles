@@ -1,0 +1,1 @@
+- hydra for window manipulation (wider, narrower buffer, with repeated clicks, like arrows at the moment)
