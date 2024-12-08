@@ -182,7 +182,9 @@
       gensslcert = "openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout ssl.key -out ssl.cert -subj \"/CN=127.0.0.1/\"";
       gensshkey = "ssh-keygen -t ed25519 -C \"hendrikbursian@protonmail.com\"";
       x = "chmod +x";
+      o = "xdg-open";
       kp = "kill-port";
+      sc = "grim - \"$(slurp)\" | wl-copy";
     };
 
     plugins = [

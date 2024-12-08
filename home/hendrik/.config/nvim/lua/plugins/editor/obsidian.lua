@@ -44,6 +44,10 @@ return {
 				name = "Journal",
 				path = "~/Documents/Journal/",
 			},
+			{
+				name = "Simplonik",
+				path = "~/Documents/Journal/Simplonik/",
+			},
 		},
 
 		-- Where to put new notes created from completion. Valid options are

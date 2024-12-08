@@ -45,6 +45,7 @@ return {
 					templ = { "templ" },
 					nix = { "nixpkgs_fmt" },
 					blade = { "blade-formatter" },
+					markdown = { "mdfmt" },
 
 					-- filetypes without defined formatters
 					["_"] = { "trim_newlines", "trim_whitespace" },
@@ -72,6 +73,11 @@ return {
 					-- shfmt = {
 					--     prepend_args = { "-i", "2" },
 					-- },
+					mdfmt = {
+						command = "mdfmt",
+						stdin = false,
+						args = { "-w", "$FILENAME" },
+					},
 				},
 			}
 		end,
@@ -81,6 +87,8 @@ return {
 		end,
 		config = function(_, opts)
 			-- let eslint only run if a config is found
+			require("conform.formatters.markdownfmt").command = "mdfmt"
+
 			require("conform.formatters.eslint_d").cwd = require("conform.util").root_file({
 				".eslint.js",
 				".eslint.cjs",

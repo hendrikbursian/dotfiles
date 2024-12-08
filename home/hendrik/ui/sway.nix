@@ -106,6 +106,12 @@ in
                 floating = true;
               };
             }
+            {
+              command = "resize set 520 360";
+              criteria = {
+                title = "Startpage";
+              };
+            }
           ];
         };
 
@@ -164,7 +170,7 @@ in
         };
         defaultWorkspace = "workspace ${ws1}";
         startup = [
-          { command = "gnome-text-editor"; }
+          { command = "exec foot Startpage"; }
         ];
         keybindings =
           let
@@ -211,14 +217,20 @@ in
               # File explorer
               "${modifier}+Shift+n" = "exec xdg-open /home/hendrik";
 
+              # Startpage
+              "${modifier}+s" = "exec foot Startpage";
+
               # Browser 
               "${modifier}+Shift+Return" = "exec brave";
 
+              # Screenshot
+              "${modifier}+Shift+s" = "exec screenshot";
+
               # Dotfiles
-              "${modifier}+Shift+d" = "exec foot tmux-sessionizer $DOTFILES";
+              "${modifier}+d" = "exec foot tmux-sessionizer $DOTFILES";
 
               # Launcher
-              "${modifier}+d" = "exec ${pkgs.dmenu-wayland}/bin/dmenu-wl_run -i";
+              # "${modifier}+d" = "exec ${pkgs.dmenu-wayland}/bin/dmenu-wl_run -i";
               "${modifier}+space" = "exec ${config.wayland.windowManager.sway.config.menu}";
 
               # Settings
@@ -232,13 +244,17 @@ in
               "${modifier}+Shift+t" = "focus mode_toggle";
               "${modifier}+Shift+f" = "floating toggle";
 
+              # Os commands
+              "${modifier}+Alt+l" = "exec swaylock";
+              "${modifier}+Shift+Escape" = "exec systemctl suspend";
+
               # Media keys
               "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+;";
               "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-;";
               "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle;";
 
-              "XF86MonBrightnessDown" = "exec light -U 5";
-              "XF86MonBrightnessUp" = "exec light -A 5";
+              "XF86MonBrightnessDown" = "exec light -U 2";
+              "XF86MonBrightnessUp" = "exec light -A 2";
             };
 
         modes = {

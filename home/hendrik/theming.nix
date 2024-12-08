@@ -14,7 +14,8 @@
       text = ''
         [main]
         shell=themed-shell-wrapper
-        font=BlexMono Nerd Font Text:size=12
+        # font=BlexMono Nerd Font Text:size=12
+        font=Monospace:size=12
       '' + builtins.readFile (config.scheme inputs.base16-foot);
     };
   };

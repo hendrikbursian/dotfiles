@@ -56,6 +56,8 @@
     clight
     inotify-tools
     gnuplot
+    slurp
+    grim
     # flameshot
     # xdg-desktop-portal-gnome
     # xdg-desktop-portal-gtk
@@ -74,6 +76,7 @@
     audacity
     gimp
     imagemagick
+    obsidian
   ];
 
   programs.direnv = {

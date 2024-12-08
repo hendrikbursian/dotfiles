@@ -50,6 +50,7 @@ M.on_attach = function(_, bufnr)
 	vim.keymap.set("n", "<leader>wr",  vim.lsp.buf.remove_workspace_folder,                         { desc = "Workspace Remove Folder", buffer = bufnr })
 	vim.keymap.set("n", "<leader>wl",  show_workspace_folders,                                      { desc = "Workspace List Folders", buffer = bufnr })
 
+	vim.keymap.set("n", "<leader>ll",  function () vim.api.nvim_command("LspRestart") end,          { desc = "Workspace List Folders", buffer = bufnr })
 	-- stylua: ignore end
 end
 

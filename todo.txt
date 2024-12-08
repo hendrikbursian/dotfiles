@@ -1,1 +1,14 @@
+Erledigt
+- grim 
+- slurp # screenshot functionality 
+
+Ausstehend
+- Sprache in lualine geben
 - hydra for window manipulation (wider, narrower buffer, with repeated clicks, like arrows at the moment)
+- Configure protonmail-bridge - Offen
+- Home-Manager wayland Optionen durchgehen - Offen
+- Zsh Konfiguration auf "fail" Branch einfuegen - Offen
+- Kanschi - Monitoranschluss korrigieren - Offen
+- https://github.com/swaywm/sway/wiki/i3-Migration-Guide - Offen
+- tmux continuuum - look
+- tmux restore - look

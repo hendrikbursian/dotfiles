@@ -58,6 +58,7 @@
           "nvidia-persistenced"
 
           "intelephense"
+          "obsidian"
         ];
 
         # make unstable packages accessable via pkgs.unstable
