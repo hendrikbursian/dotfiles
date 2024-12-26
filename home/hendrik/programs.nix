@@ -58,6 +58,7 @@
     gnuplot
     slurp
     grim
+    scribus
     # flameshot
     # xdg-desktop-portal-gnome
     # xdg-desktop-portal-gtk
@@ -77,6 +78,7 @@
     gimp
     imagemagick
     obsidian
+    openai-whisper
   ];
 
   programs.direnv = {

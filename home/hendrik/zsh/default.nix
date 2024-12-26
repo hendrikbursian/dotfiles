@@ -185,6 +185,7 @@
       o = "xdg-open";
       kp = "kill-port";
       sc = "grim - \"$(slurp)\" | wl-copy";
+      ytdown = "yt-dlp --format-sort vcodec:h265,width:480,+filesize,acodec:m4a --format 'bestaudio+bestvideo*/best' --output './%(playlist|)s/%(playlist_index&{:02d} - |)s%(uploader)s - (%(upload_date>%Y-%m-%d)s) %(title)s [%(id)s].%(ext)s'";
     };
 
     plugins = [

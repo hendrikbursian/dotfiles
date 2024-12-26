@@ -18,8 +18,8 @@ return {
 	},
         -- stylua: ignore
 		event = {
-			"BufReadPre " .. vim.fn.expand("~") .. "/Documents/Notizen/**.md",
-			"BufNewFile " .. vim.fn.expand("~") .. "/Documents/Notizen/**.md",
+			"BufReadPre " .. vim.fn.expand("~") .. "/Documents/18 - Notizen/**.md",
+			"BufNewFile " .. vim.fn.expand("~") .. "/Documents/18 - Notizen/**.md",
 		},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -38,15 +38,15 @@ return {
 		workspaces = {
 			{
 				name = "Notes",
-				path = "~/Documents/Notizen/",
+				path = "~/Documents/18 - Notizen/",
 			},
 			{
 				name = "Journal",
-				path = "~/Documents/Journal/",
+				path = "~/Documents/20 - Journal/",
 			},
 			{
 				name = "Simplonik",
-				path = "~/Documents/Journal/Simplonik/",
+				path = "~/Documents/20 - Journal/Simplonik/",
 			},
 		},
 

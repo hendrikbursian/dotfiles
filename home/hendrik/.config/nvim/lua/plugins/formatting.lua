@@ -45,7 +45,7 @@ return {
 					templ = { "templ" },
 					nix = { "nixpkgs_fmt" },
 					blade = { "blade-formatter" },
-					markdown = { "mdfmt" },
+					markdown = { "prettier" },
 
 					-- filetypes without defined formatters
 					["_"] = { "trim_newlines", "trim_whitespace" },

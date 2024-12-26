@@ -138,7 +138,9 @@ in
     flake = "/home/${user}/Workspace/dotfiles";
   };
 
+  hardware.nvidia-container-toolkit.enable = true;
   virtualisation.docker.enable = true;
+  virtualisation.docker.package = pkgs.docker_25;
   virtualisation.vmVariant = {
     # following configuration is added only when building VM with build-vm
     virtualisation = {
@@ -148,7 +150,7 @@ in
   };
 
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
     channel.enable = false;
     settings = {
       experimental-features = [
