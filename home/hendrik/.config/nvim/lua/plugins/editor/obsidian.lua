@@ -16,11 +16,11 @@ return {
 		"ObsidianLinkNew",
 		"ObsidianWorkspace",
 	},
-        -- stylua: ignore
-		event = {
-			"BufReadPre " .. vim.fn.expand("~") .. "/Documents/18 - Notizen/**.md",
-			"BufNewFile " .. vim.fn.expand("~") .. "/Documents/18 - Notizen/**.md",
-		},
+    -- stylua: ignore
+    event = {
+        "BufReadPre " .. vim.fn.expand("~") .. "/Documents/18 - Notizen/**.md",
+        "BufNewFile " .. vim.fn.expand("~") .. "/Documents/18 - Notizen/**.md",
+    },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{
@@ -35,18 +35,14 @@ return {
 		},
 	},
 	opts = {
+		disable_frontmatter = true,
 		workspaces = {
 			{
 				name = "Notes",
 				path = "~/Documents/18 - Notizen/",
-			},
-			{
-				name = "Journal",
-				path = "~/Documents/20 - Journal/",
-			},
-			{
-				name = "Simplonik",
-				path = "~/Documents/20 - Journal/Simplonik/",
+				-- overrides = {
+				-- 	disable_frontmatter = true,
+				-- },
 			},
 		},
 
