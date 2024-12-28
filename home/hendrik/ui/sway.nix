@@ -220,6 +220,9 @@ in
               # Startpage
               "${modifier}+s" = "exec foot Startpage";
 
+              # Obsidian
+              "${modifier}+o" = "exec obsidian";
+
               # Browser 
               "${modifier}+Shift+Return" = "exec brave";
 
