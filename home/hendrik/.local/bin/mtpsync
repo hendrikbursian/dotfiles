@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+
+MTP_MOUNT_POINT="$HOME/FP3"
+VOICE_NOTE_FILES_DIR="$HOME/Documents/000 - Voice Notes"
+TRANSCRIBED_VOICE_NOTES_DIR="$HOME/Documents/18 - Notizen/Voice Notes"
+
+echo '
+================================================================================
+
+Mointing MTP...
+
+================================================================================
+'
+mkdir -p "$MTP_MOUNT_POINT" "$VOICE_NOTE_FILES_DIR"
+go-mtpfs "$MTP_MOUNT_POINT" &
+MTP_PID=$!
+
+sleep 5
+
+
+echo '
+================================================================================
+
+Syncing MTP voice notes...
+
+================================================================================
+'
+rsync -avh "$MTP_MOUNT_POINT/Interner gemeinsamer Speicher/Recordings/Sound records/" "$VOICE_NOTE_FILES_DIR"
+
+kill $MTP_PID 2>/dev/null
+umount "$MTP_MOUNT_POINT"
+
+echo '
+================================================================================
+
+Starting Whisper Web Service...
+
+================================================================================
+'
+docker kill whisper-web 2>/dev/null
+docker rm whisper-web 2>/dev/null
+docker run -d --name=whisper-web --rm --device nvidia.com/gpu=all -p 9000:9000 -v "$HOME"/.cache/whisper:/root/.cache/whisper -e ASR_MODEL=medium -e ASR_ENGINE=openai_whisper onerahmet/openai-whisper-asr-webservice:latest-gpu 
+
+sleep 11
+
+echo '
+================================================================================
+
+Transcribing voice notes...
+
+================================================================================
+'
+mkdir -p "$TRANSCRIBED_VOICE_NOTES_DIR"
+
+list_file="$TRANSCRIBED_VOICE_NOTES_DIR/00 transcribed_notes.txt"
+if [ ! -f "$list_file" ]; then
+  touch "$list_file"
+fi
+
+for wav_file in "$VOICE_NOTE_FILES_DIR"/*.wav; do
+    base_name=$(basename "$wav_file" .wav)
+
+    if ! grep -Fxq "$base_name" "$list_file"; then
+        echo "Transcribing: $wav_file"
+        
+        CONTENT=$(curl -X 'POST' \
+          'http://localhost:9000/asr?encode=true&task=transcribe&language=de&word_timestamps=false&output=txt' \
+          -H 'accept: application/json' \
+          -H 'Content-Type: multipart/form-data' \
+          -F "audio_file=@$wav_file;type=audio/wav")
+
+        if [[ $? -eq 0 ]]; then
+            echo "$CONTENT" > "$TRANSCRIBED_VOICE_NOTES_DIR"/"$base_name".txt
+            echo "Successfully transcribed $wav_file to $TRANSCRIBED_VOICE_NOTES_DIR/$base_name.txt"
+            echo "$base_name" >> "$list_file"
+        else
+            echo "Failed to transcribe $wav_file. You might try again."
+        fi
+    fi
+done
+
+
+echo '
+================================================================================
+
+Shutting down Whisper Web Service...
+
+================================================================================
+'
+docker kill whisper-web >/dev/null
+
+echo '
+Done
+'

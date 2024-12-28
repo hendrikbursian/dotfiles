@@ -23,6 +23,7 @@
     tmux
     tree
     unzip
+    go-mtpfs
     vim
     xdg-utils
   ];

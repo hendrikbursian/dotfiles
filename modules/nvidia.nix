@@ -31,7 +31,7 @@
 
   # Enable graphics driver in NixOS
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
     };
 
