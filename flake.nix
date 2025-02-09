@@ -59,6 +59,7 @@
 
           "intelephense"
           "obsidian"
+          "teamspeak5-client"
         ];
 
         # make unstable packages accessable via pkgs.unstable

@@ -45,7 +45,7 @@
     sloc
     lynx
     w3m
-    yt-dlp
+    unstable.yt-dlp
     ffmpeg
     sqlitebrowser
     sqlite
@@ -79,6 +79,8 @@
     imagemagick
     obsidian
     openai-whisper
+    teamspeak5_client
+    protonmail-desktop
   ];
 
   programs.direnv = {
