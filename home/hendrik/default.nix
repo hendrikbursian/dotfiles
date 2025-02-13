@@ -34,6 +34,7 @@ in
     ./nvim.nix
     ./tmux.nix
     ./programs.nix
+    ./development.nix
   ];
 
   config = {
