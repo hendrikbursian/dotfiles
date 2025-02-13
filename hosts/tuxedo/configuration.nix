@@ -15,6 +15,8 @@ in
     ../../modules/system-pkgs.nix
     ../../modules/gnome.nix
 
+    ../../modules/development.nix
+
     ../../modules/users/${user}.nix
   ];
 
